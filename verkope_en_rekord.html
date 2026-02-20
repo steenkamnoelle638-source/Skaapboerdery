@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verkope en Rekords - Highveld Boerdery</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <!-- Link CSS file -->
+    <link rel="stylesheet" href="Style.css">
+</head>
+    
+<body>
+    <!-- NAVIGASIE EN MENU -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-group">
+                <img src="Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img">  <!-- Nuwe beeld -->
+                <div class="logo-text">
+                    <h1>Highveld Boerdery</h1>
+                    <p>Skaap Boerdery</p>
+                </div>
+            </div>
+
+            <nav>
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="index.html" class="dropbtn">Tuis<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="index.html#Welkom">Welkom</a></li>
+                            <li><a href="index.html#Hoogtepunte">Ons Hoogtepunte</a></li>
+                            <li><a href="#Bestuursbenadering">Bestuursbenadering</a></li>
+                            <li><a href="index.html#VolhoubareToekoms">Ons volhoubare toekoms</a></li>
+                            <li><a href="index.html#OnsWaardes">Ons Waardes</a></li>
+                            <li><a href="index.html#OnsGalery">Ons Galery</a></li>
+                            <li><a href="index.html#OnsProduksie">Ons Produksie</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="oor_ons.html" class="dropbtn">Oor ons<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="oor_ons.html#Geskiedenis">Ons Geskiedenis</a></li>
+                            <li><a href="oor_ons.html#Missie">Missie & Sleutelwaardes</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="ons_trop.html" class="dropbtn">Ons trop<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="ons_trop.html#HoeBoer">Hoe Ons Boer</a></li>
+                            <li><a href="ons_trop.html#OnsTrop">Ons Trop</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="products.html" class="dropbtn">Ons Produkte<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="products.html#Pryslys">Pryslys</a></li>
+                            <li><a href="products.html#Bestel">Bestel / Aanvraag</a></li>
+                        </ul>
+                    </li>   
+
+                    <li class="dropdown">
+                        <a href="voorraadbestuur.html" class="dropbtn">Voorraadbestuur<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="voorraadbestuur.html#Voorraadbestuur">Huidige Voorraad</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="verkope_en_rekord.html" class="dropbtn">Verkope & Rekords<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="verkope_en_rekord.html#OnlangseVerkope">Onlangse Verkope</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="contact.html" class="dropbtn">Kontak<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="contact.html#Kontak">Kontak Ons</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" style="background-image: url('RotationalGrazing.jpg');">
+        <div class="hero-content">
+            <h1>Produkte & Huidige Pryse</h1>
+            <p>Markpryse word daagliks opgedateer (simulasie vir projek).</p>
+        </div>
+    </section>
+
+    <div class="content-container" id="OnlangseVerkope">
+        <h2>Onlangse verkope</h2>
+        <p class="section-intro">Hier is 'n lys van onlangse skaapverkope wat deur Highveld Boerdery aangebied is.</p>
+
+        <!-- Tans tabel later verander na Databasis -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Produk</th>
+                    <th>Aantal eenhede verkoop</th>
+                    <th style="text-align: right;">Totaal betaal</th>
+                    <th>Datum van Verkoop</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Wol (per kg)</td>
+                    <td>5 kg</td>
+                    <td class="price">R 9 250</td> <!-- 5 kg x R 1 850/kg -->
+                    <td>2026-01-15</td>
+                </tr>
+
+                <tr>
+                    <td>Lammer (lewend)</td>
+                    <td>2</td>
+                    <td class="price">R 4 400</td> <!-- 2 lamme x R 2 200/lam -->
+                    <td>2026-01-16</td>
+                </tr>
+
+                <tr>
+                    <td>Skaapvleis (kg)</td>
+                    <td>7kg</td>
+                    <td class="price">R 665</td> <!-- 7kg x R 95/kg -->
+                    <td>2026-01-18</td>
+                </tr>
+
+                <tr>
+                    <td>Skaap (volwasse)</td>
+                    <td>1</td>
+                    <td class="price">R 3 200</td> <!-- 1 skaap x R 3 200/skaap -->
+                    <td>2026-01-18</td>
+                </tr>
+                
+                <!-- Byprodukte begin hier -->
+                <tr>
+                    <td>Skaapvel (per vel)</td>
+                    <td>0</td>
+                    <td class="price">0</td> <!-- 0 velle x 450-650/vel -->
+                    <td>2026-01-20</td>
+                </tr>
+
+                <tr>
+                    <td>Skaapmis (per sak / 50 kg)</td>
+                    <td>3 sakke</td>
+                    <td class="price">R 255</td> <!-- 3 sakke x R 85/sak -->
+                    <td>2026-01-22</td>
+                </tr>
+
+                <tr>
+                    <td>Skaapvet / talg (per kg)</td>
+                    <td>1kg</td>
+                    <td class="price">R 38</td> <!-- 1kg x R 38/kg -->
+                    <td>2026-01-25</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<!-- Footer bevat copyright simbool gevolg met copyright teks en jaar dan "|" gevolg deur teks wat se all rights reserved -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <p><i class="fa-solid fa-phone"></i>&nbsp;<strong>Telefoon:</strong> 012 345 6789</p>
+                <p><i class="fa-solid fa-envelope"></i>&nbsp;<strong>E-pos:</strong> info@highveldboerdery.co.za</p>
+                <p><i class="fa-solid fa-location-dot"></i>&nbsp;<strong>Ligging:</strong> Pretoria, Gauteng</p>
+            </div>
+            
+            <div class="footer-right">
+                <p><strong>Besigheidsure:</strong></p>
+                <p>Ma – Vry: 08:00 – 17:00</p>
+                <p>Saterdag: 08:00 – 13:00</p>
+                <p>Sondag: Gesluit</p>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© Copyright 2026 Highveld Boerdery | All rights reserved</p>
+        </div>
+    </footer>
+
+    <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+    <!-- Link JavaScript file -->
+    <script src="script.js"></script>
+
+</body>
+</html>

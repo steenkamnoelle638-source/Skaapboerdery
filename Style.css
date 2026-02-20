@@ -1,0 +1,1130 @@
+/* ---------------------------------------------------------------------------------
+   ============================= GLOBAL - ALLE BLADSYE =============================
+   ---------------------------------------------------------------------------------*/  
+
+/* ============================= UNIVERSELE STYL (*) ============================= */
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+/* ============================= GLOBAL LYF EN STYLE ============================= */
+    body{
+        font-family:'Poppins',sans-serif;
+        background:#f4f6f3;
+        color:#333;
+    }
+
+    h1,h2,h3{
+        color:#2f4f2f;
+    }
+
+    section{
+        padding:40px 10%;   /* Verminderde padding vir kleiner spasie tussen sections */
+    }
+
+/* ============================= KOP & NAVIGASIE ============================= */
+    header {
+        background: white;
+        position: sticky;   /* Maak die kop afbeweeg soos jy scroll sodat dit altyd bo in jou skerm is */
+        top: 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        z-index: 1000;
+    }
+
+    .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .logo-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo-group i {
+        font-size: 2.8rem;
+        color: #064e3b;          
+    }
+
+    .logo-text h1 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        font-family: 'Segoe UI';
+        color: #064e3b;          
+    }
+
+    .logo-text p {
+        font-size: 0.75rem;
+        color: #6b7280;
+        margin-top: -0.25rem;   /* Maak die teks effens nader aan die hoof teks(h1) */
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.8rem;    /* Meer spasie tussen die navigasie skakels */
+    }
+
+    .nav li {
+    position: relative;
+    }
+
+    nav a {
+        text-decoration: none;                              /* Verwyder onderstreping van skakels */
+        color: #333;
+        font-weight: 600;
+        padding: 10px 0;
+        transition: color 0.2s ease, transform 0.2s ease;   /* Voeg transform-transition by - sodat kleur en groote geleidelik verander */
+        display: inline-block;                              /* Maak skakels blok element sodat die transform werk sonder op die webblad te breek */
+    }
+
+    nav a:hover {
+        color: #4CAF50;       /* Verander kleur na groen wanneer jy oor die skakel sweef */
+        transform: scale(1.1);  /* Vergroot teks effens (10%) waneer op die skakel sweef */
+    }
+
+    .main-nav {
+    display: flex;
+    list-style: none;
+    gap: 1.8rem;
+    margin: 0;
+    padding: 0;
+    }
+
+    .logo-img {
+        width: 55px;             
+        height: 55px;       
+        object-fit: cover;                  /* maak dat logo prent mooi binne sirkel pas */
+        border-radius: 50%;                 /* maak blok heeltemal rond(sirkel) */
+        border: 3px solid #065f46;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        margin-right: 1rem;
+        transition: transform 0.3s ease;    /* klein sweef-effek */
+    }
+
+    .logo-group:hover .logo-img {
+        transform: scale(1.08);     /* maak logo sirkel effens groter waneer daaroor sweef */
+    }
+
+    /* Responsiwiteit insit */
+        /* Header */
+        /* Logo */
+        /* Nav */
+
+
+/* ================= SUBSKAKELS / AFTREKLYS SKAKELS ================= */
+.dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #f0f7f0;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    border-radius: 6px;
+    z-index: 10;
+    padding: 8px 0;
+    margin-top: 4px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 16px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.dropdown-content a:hover {
+    background: #c2ebc4;
+    color: #2e7d32;
+}
+
+/* Klein pyltjie */
+.dropdown .dropbtn::after {
+    font-size: 0.75em;
+    margin-left: 5px;
+    vertical-align: middle;
+    opacity: 0.6;
+}
+
+.dropdown:hover .dropbtn::after {
+    opacity: 1;
+}
+
+.dropdown:hover .dropbtn i {
+    transform: rotate(180deg);
+    opacity: 1;
+}
+
+.dropbtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+.dropbtn i {
+    font-size: 0.7em;
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+    opacity: 0.7;
+}
+
+
+/* ============================= HERO (prent bo aan gedeelte van bladsy) ============================= */
+    .hero {
+    height: 600px;
+    background-position: center;  /* Hou die posisie */
+    background-size: cover;       /* Hou die grootte */
+    background-repeat: no-repeat; /* Hou die herhaling */
+    display: flex;                /* Die res bly dieselfde */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+    /* Gebruik om swart overlay oor hero prent te plaas */
+    .hero::before {
+        content: "";    /* Skep lee elent (geen teks) */
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.45);
+    }
+
+    .hero-content {
+        position: relative;     /* Plaas die inhoud bo op die overlay */
+        text-align: center;
+        color: white;
+        max-width: 700px;
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+        margin-bottom: 15px;
+        color: white;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+    }
+
+    /* Responsiwiteit insit */
+        /* Hero */
+        /* Content */
+
+
+/* ============================= SKAKEL KNOPPIE ============================= */
+    .cta{
+        /* background:#2f4f2f; */
+        color:white;
+        text-align:center;
+        border-radius: 10px;
+    }
+
+    .cta h2{
+        color:white;
+    }
+
+    /* Knoppie styl vir alle knoppies binne '.cta' en '.alt-section' */
+    .cta button, .alt-section button{
+        background:#4CAF50;
+        color:white;
+        border:none;
+        padding:12px 25px;
+        border-radius:6px;
+        cursor:pointer;     /* Maak muis pyltjie 'n handjie as bo oor sweef */
+        margin-top:20px;
+    }
+
+    .cta button:hover{
+        background:#3e8e41;
+    }
+
+    /* Responsiwiteit insit */
+        /* CTA */
+
+
+/* ============================= TERUG NA BO ============================= */
+    #topBtn{
+        position:fixed;     /* Sodat knoppie altyd op dieselfde plek is waneer jy scroll */
+        bottom:30px;
+        right:30px;
+        background:#4CAF50;
+        color:white;
+        border:none;
+        padding:12px 16px;
+        border-radius:50%;
+        cursor:pointer;
+        display:none;
+    }
+
+    #topBtn:hover {
+        background: #3e8e41;
+    }
+
+    /* Responsiwiteit insit */
+        /* terug na bo */
+
+
+/* ============================= ALGEMENE AFDELINGS ============================= */
+    /* Sodat seksies van die volle bladsy 'n ander agtergronkleur kan he */
+    .alt-section{
+        background:#ffffff;
+    }
+
+    .alt-section-2{
+        background:#f4f6f3;
+    }
+
+    .alt-section-3{
+        background:#eef0e8;
+    }
+
+/* ============================= AGTERGROND FOTO AFDELING ============================= */
+    .bg-section{
+        background:url("RotationalGrazing.jpg") center/cover no-repeat;
+        color:rgb(238, 238, 238);
+        text-align:center;
+        position:relative;
+    }
+
+    .bg-section::before{
+        content:"";
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        top:0;
+        left:0;
+    }
+
+    .bg-content{
+        position:relative;
+        max-width:800px;
+        margin: auto;
+    }
+
+    /* Responsiwiteit insit */
+        /* bg-section */
+        /* bg-content */
+
+/* ================= SPLIT LAYOUT (prent + teks) ================= */
+.split {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    
+    /* Animasiereëls – hier moet dit saam wees sodat dit nie oorskryf word nie */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+    will-change: opacity, transform;  /* beter performance */
+}
+
+.split:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.split.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.split img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.split-text,
+.split-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+    /* Responsiwiteit insit */
+        /* split */
+        /* split-text */
+        /* split-image */
+
+/* ============================= PRODUKTE VOORRAADBESTUUR & VERKOPE INLEIDING + TABEL ============================= */
+    /* Hoof box vir bladsy se inhoud */
+    .content-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+    }
+
+    /* Net op content container se h2 stel */
+    .content-container h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #065f46;
+        margin-bottom: 1.5rem;
+        text-align: left;          /* Of center, afhangende van jou voorkoms */
+    }
+
+    /* Sodat nie n hero het soos tuisblad se intro nie */
+    .section-intro,
+    .page-intro {
+        font-size: 1.3rem;          /* effens groter vir beter leesbaarheid */
+        font-weight: 500;           /* medium vet – lyk meer professioneel */
+        color: #4b5563;             /* hou die sagte grys */
+        max-width: 800px;           /* hou dit nie te wyd nie */
+        line-height: 1.7;           /* beter leesbaarheid */
+        text-align: left;
+    }        
+
+    /* ============================= Tabel ============================= */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+
+        thead {
+            background: #065f46;
+            color: white;
+        }
+
+        th, td {
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+        }
+
+        th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+/* ============================= PRODUKTE & VERKOPE - PRYS KOLOM IN TABEL ============================= */
+    .price {
+        font-weight: 700;
+        color: #065f46;
+        text-align: right;
+    }
+
+/* ============================= VOETSKRIF ============================= */
+    footer {
+        background: #1f331f;
+        color: white;
+        padding: 40px 10%;
+        text-align: center;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto 30px auto;
+        display: flex;
+        justify-content: space-between;     /* Maak dat teks in footer links en regs kan vertoon */
+        flex-wrap: wrap;                    /* As nie genoeg spasie - oorgaan na nuwe lyn */
+        gap: 30px;
+    }
+
+    /* CSS vir die linker en regterkanste blok in voetskrif */
+    .footer-left,
+    .footer-right {
+        flex: 1;
+        min-width: 200px;
+        text-align: left;
+    }
+
+    /* CSS vir linker en regterkanste teks in voetskrif */
+    .footer-left p,
+    .footer-right p {
+        margin: 8px 0;
+        font-size: 1rem;
+    }
+
+    /* Strong blok element sodat op eie lyn kom */
+    .footer-right p strong {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .footer-copyright {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);    /* Ligte lyntjie bo die copyright teks */
+        font-size: 0.9rem;
+    }
+
+/* ---------------------------------------------------------------------------------
+   ============================= TUIS BLADSY =============================
+   ---------------------------------------------------------------------------------*/  
+
+/* ============================= INLEIDING ============================= */
+    .intro {
+        background: url("Plaas.jpg") center/cover no-repeat;
+        text-align: center;
+        padding: 120px 20px;
+        color: rgb(238, 238, 238);
+
+        /* Belangrik vir die ::before overlay */
+        position: relative;
+    }
+
+    .intro p {
+        max-width: 800px;
+        margin: 15px auto 0;
+        font-size: 1.2rem;
+        line-height: 1.7;
+
+        position: relative;         /* of z-index: 1; */
+        z-index: 1;
+    }
+
+    /* Gebruik om swart overlay oor hero prent te plaas */
+    .intro::before {
+        content: "";
+        position: absolute;
+        inset: 0;               /* shorthand vir top:0; right:0; bottom:0; left:0; */
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 0;             /* onder die teks-inhoud */
+    }
+
+/* ============================= GALLERY (CAROUSEL) ============================= */
+    .gallery {
+        position: relative;
+        max-width: 100%;
+        max-height: 600px;
+        margin: 0 auto 40px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .slide { display: none; }
+    .slide.active { display: block; }
+
+    .slide img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+    }
+
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        font-size: 2rem;
+        padding: 12px 18px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 10;
+    }
+
+    .left  { left: 20px; }
+    .right { right: 20px; }
+
+    .dots {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .dot {
+        height: 14px;
+        width: 14px;
+        margin: 0 8px;
+        background-color: transparent;
+        border: 2px solid #4CAF50;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+        background-color: #4CAF50;
+    }
+
+/* ============================= LOGO BLOK ============================= */
+    .logo-block {
+        background: #2f4f2f;
+        color: white;
+        text-align: center;
+        padding: 60px 20px 20px;
+        position: relative;
+        margin: 100px auto 60px;
+        max-width: 900px;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .logo-circle {
+        width: 140px;
+        height: 140px;
+        background: white url("Logo.jpg") center/cover no-repeat;
+        border-radius: 50%;
+        position: absolute;
+        top: -70px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 5px solid #4CAF50;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .logo-block p {
+        font-size: 1.3rem;
+        font-style: italic;
+        max-width: 700px;
+        margin: 0 auto 30px;
+    }
+
+/* ============================= STIPPEL HORISONTALE LYN ============================= */
+    .section-title{
+        text-align:center;
+        max-width:100%;
+        margin:auto;
+    }
+
+    .section-title hr{
+        width:98%;
+        margin:15px auto;
+        border:2px dotted #4CAF50;
+    }
+
+/* ============================= PRENT + TEKS BOX ONDER ============================= */
+    .image-box{
+        display:flex;
+        gap:40px;
+        align-items:center;
+        flex-wrap:wrap;
+    }
+
+    .image-box img{
+        width:100%;
+        border-radius:10px;
+    }
+
+    .text-box{
+        background:#193d1a;
+        padding:25px;
+        box-shadow:0 3px 8px rgba(0,0,0,0.1);
+        margin-top:-60px;
+        position:relative;
+        color: rgb(238, 238, 238);
+        width:100%;
+    }
+
+/* ============================= GENOMMERDE BULLETPUNT ============================= */
+    .feature-list{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:30px;
+        margin-top:40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .feature-item{
+        display:flex;
+        gap:15px;
+    }
+
+    .bullet-icon{
+        width:40px;
+        height:40px;
+        background:#4CAF50;
+        color:white;
+        border-radius:50%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-weight:bold;
+    }
+
+/* ============================= REGMERKIE BULLETPUNT ============================= */
+    .check-list{
+        max-width:1000px;
+        margin:40px auto;
+    }
+
+    .check-item{
+        display:flex;
+        gap:15px;
+        margin-bottom:20px;
+    }
+
+    .check-icon{
+        width:30px;
+        height:30px;
+        border-radius:50%;
+        background:#4CAF50;
+        color:white;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+    
+
+/* ============================= PRODUKTE PRENTE ============================= */
+    .produk-img {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 400px;         
+    display: inline-block;    /* Laat hulle langs mekaar as daar spasie is */
+    vertical-align: top;
+    }
+
+    .produk-img img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .produk-img:hover img {
+        transform: scale(1.05);   /* Ligte zoom op hover */
+    }
+
+/* ---------------------------------------------------------------------------------
+   ============================= OOR ONS BLADSY =============================
+   ---------------------------------------------------------------------------------*/  
+
+/* ============================= PRENT ============================= */
+    .center-image {
+        display: block; /* Images are inline by default, change to block */
+        margin-left: auto; /* Distribute left margin automatically */
+        margin-right: auto; /* Distribute right margin automatically */
+
+        /* Optionally, set a width for better control */
+        width: 90%;
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 25px; /* Adjust the value for desired roundness */
+    }
+
+/* ============================= BLOKAANHALING ============================= */
+    blockquote {
+        font-size: 1.3rem;
+        font-style: italic;
+        color: #4b5563;
+        padding: 20px 40px;
+        border-left: 5px solid #4CAF50;
+        background: #e0f7e1;
+        margin: 30px 0;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+/* ---------------------------------------------------------------------------------
+   ================================ ONS TROP BLADSY ================================
+   ---------------------------------------------------------------------------------*/  
+
+/* ============================= KLEIN GALERY ============================= */
+.mini-gallery {
+    position: relative;
+    width: 100%;
+    max-width: 380px;              /* maksimum breedte van die hele gallery */
+    margin: auto;
+    overflow: hidden;
+    border-radius: 50%;            /* maak die hele gallery 'n sirkel */
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    height: 250px;          /* maak dit laer as breedte */
+    background: #f0f0f0;           /* ligte agtergrond as prent nie vul nie */
+}
+
+/* Elke slide is ook 'n sirkel */
+.mini-slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* Prente vul die sirkel perfek, gesentreer en geknip */
+.mini-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;             /* sny om te pas, hou proporsies */
+    object-position: center;
+    display: block;
+}
+
+.mini-active {
+    display: block;
+}
+
+/* Pyltjies (hou jou huidige styl, maar maak seker hulle bly binne sirkel) */
+.mini-gallery .mini-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background-color: rgba(76, 175, 80, 0.7);
+    color: white;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 20;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.mini-gallery .mini-arrow:hover {
+    background-color: rgba(76, 175, 80, 1);
+    transform: translateY(-50%) scale(1.12);
+}
+
+.mini-gallery .mini-left {
+    left: 10px;
+}
+
+.mini-gallery .mini-right {
+    right: 10px;
+}
+
+/* ============================= Bullets Split ============================= */
+.hoe-boer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);   /* 2 gelyke kolomme */
+    gap: 30px;                               /* spasie tussen blokke – pas aan soos jy wil */
+    padding: 20px;                           /* opsioneel – gee asem rondom */
+    max-width: 1200px;                       /* beperk breedte vir groot skerms */
+    margin: 0 auto;                          /* sentreer */
+}
+
+.hoe-boer-grid > div {
+    background: #d4f2d6;                     /* ligte agtergrond vir kontras – opsioneel */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25); /* effense skadu vir diepte */
+    border: 10px solid #c8eccb;               /* subtiele rand – opsioneel */
+}
+
+.hoe-boer-grid h2 {
+    margin-top: 0;
+    color: #065f46;                          /* pas by jou tema */
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.hoe-boer-grid ul {
+    list-style: disc;
+    padding-left: 25px;
+    margin: 0;
+}
+
+.hoe-boer-grid li {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+/* ---------------------------------------------------------------------------------
+   ================================ PRODUKTE BLADSY ================================
+   ---------------------------------------------------------------------------------*/  
+
+/* ============================= PRODUKTE GALERY (CAROUSEL) ============================= */
+  .produk-carousel-container {
+    position: relative;           /* Dit is die sleutel – maak absolute kinders relatief tot hier */
+    margin: 20px auto;
+    max-width: 1200px;
+    height: 350px;
+    overflow: hidden;
+    /* Voeg dalk 'n bietjie ekstra spasie bo as nodig */
+    padding-top: 60px;            /* probeer as die arrows nog effens te hoog sit */
+}  
+
+.produk-carousel {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-item {
+    width: 300px;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;              /* Belangrik! Knip die scaled img */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: all 0.6s ease-in-out;
+    flex-shrink: 0;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease-in-out;   /* skuif scaling na img */
+    opacity: 0.7;
+}
+
+.carousel-item.center {
+    width: 350px;
+    height: 225px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: scale(1.15);          /* of skuif dit na die img as jy wil */
+    z-index: 2;
+}
+
+.carousel-item.center img {
+    opacity: 1;
+    transform: scale(1.15);          /* Alternatiewelik: skaal net die img */
+    /* As jy scale op wrapper hou, kan jy hierdie een weglaat */
+}
+
+    /* Pyltjies */
+    .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        font-size: 40px;
+        padding: 12px 18px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 10;
+        transition: background 0.3s;
+    }
+
+    .carousel-arrow:hover {
+        background: rgba(0,0,0,0.8);
+    }
+
+    .left-arrow { 
+        left: 10px; 
+    }
+    
+    .right-arrow { 
+        right: 10px; 
+    }
+
+
+/* ============================= BESTELVORM ============================= */
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .form-container h2 {
+        text-align: center;
+        color: #065f46;          /* donker groen */
+        font-size: 2.5rem;
+        margin-bottom: 2.5rem;
+        font-weight: 700;
+    }
+
+    .form-group {
+        margin-bottom: 1.8rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.6rem;
+        color: #374151;
+        font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 1px solid #d1d5db;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+        border-color: #065f46;
+        box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.1);
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 140px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        background: #065f46;
+        color: white;
+        border: none;
+        padding: 1.1rem;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .submit-btn:hover {
+        background: #047857;
+    }
+
+/* ---------------------------------------------------------------------------------
+   ============================= VOORRAADBESTUUR BLADSY =============================
+   ---------------------------------------------------------------------------------*/  
+
+/* ============================= WAARSKUWING IN TABEL ============================= */
+    .low-stock { 
+        color: #dc2626; 
+        font-weight: 700; 
+    }
+
+    .status-low { 
+        color: #dc2626; 
+        font-weight: bold; 
+    }
+
+/* ============================= SOEKVELD EN BYSIT KONTROLE ============================= */
+    .controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        width: 50%; /* Soekbalk breedte stel */
+    }
+
+    input[type="text"] {
+        padding: 0.8rem 1.4rem;
+        border: 1px solid #d1d5db;
+        border-radius: 9999px;
+        width: 340px;
+        font-size: 1rem;
+    }
+
+    button.add-btn {
+            background: #065f46;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+    button.add-btn:hover {
+            background: #047857;
+    }
+   
+
+/* ---------------------------------------------------------------------------------
+   ============================= KONTAK BLADSY =============================
+   ---------------------------------------------------------------------------------*/  
+
+/* ============================= KONTAKVORM ============================= */
+.form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #065f46;          /* donker groen */
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #065f46;
+            box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #065f46;
+            color: white;
+            border: none;
+            padding: 1.1rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #047857;
+        }

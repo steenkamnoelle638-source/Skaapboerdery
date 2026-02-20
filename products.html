@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Highveld Boerdery</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <!-- Link CSS file -->
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <!-- NAVIGASIE EN MENU -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-group">
+                <img src="Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img">  <!-- Nuwe beeld -->
+                <div class="logo-text">
+                    <h1>Highveld Boerdery</h1>
+                    <p>Skaap Boerdery</p>
+                </div>
+            </div>
+
+            <nav>
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="index.html" class="dropbtn">Tuis<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="index.html#Welkom">Welkom</a></li>
+                            <li><a href="index.html#Hoogtepunte">Ons Hoogtepunte</a></li>
+                            <li><a href="#Bestuursbenadering">Bestuursbenadering</a></li>
+                            <li><a href="index.html#VolhoubareToekoms">Ons volhoubare toekoms</a></li>
+                            <li><a href="index.html#OnsWaardes">Ons Waardes</a></li>
+                            <li><a href="index.html#OnsGalery">Ons Galery</a></li>
+                            <li><a href="index.html#OnsProduksie">Ons Produksie</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="oor_ons.html" class="dropbtn">Oor ons<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="oor_ons.html#Geskiedenis">Ons Geskiedenis</a></li>
+                            <li><a href="oor_ons.html#Missie">Missie & Sleutelwaardes</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="ons_trop.html" class="dropbtn">Ons trop<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="ons_trop.html#HoeBoer">Hoe Ons Boer</a></li>
+                            <li><a href="ons_trop.html#OnsTrop">Ons Trop</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="products.html" class="dropbtn">Ons Produkte<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="products.html#Pryslys">Pryslys</a></li>
+                            <li><a href="products.html#Bestel">Bestel / Aanvraag</a></li>
+                        </ul>
+                    </li>   
+
+                    <li class="dropdown">
+                        <a href="voorraadbestuur.html" class="dropbtn">Voorraadbestuur<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="voorraadbestuur.html#Voorraadbestuur">Huidige Voorraad</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="verkope_en_rekord.html" class="dropbtn">Verkope & Rekords<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="verkope_en_rekord.html#OnlangseVerkope">Onlangse Verkope</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="contact.html" class="dropbtn">Kontak<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="contact.html#Kontak">Kontak Ons</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" style="background-image: url('2BlackheadPersian.jpg');">
+        <div class="hero-content">
+            <h1>Ons Produkte</h1>
+            <p>Hoekom kies jy Highveld Boerdery vir jou skaapprodukte?</p>
+        </div>
+    </section>
+
+    <div class="content-container">
+        <h2>Produkte</h2>
+        <p class="section-intro">Ons bied hoë kwaliteit skaapprodukte aan wat voldoen aan die hoogste standaarde vir kwaliteit en veiligheid.</p>
+
+        <div class="produk-carousel-container">
+            <!-- Produk Carousel / Gallery -->
+            <div class="produk-carousel" id="produkCarousel">
+                <!-- Prente vanaf JS -->
+                 <img src="Wol.jpg" alt="Hoë kwaliteit wol"> 
+                 <img src="Babies.jpg" alt="Lammers"> 
+                 <img src="LamVleis.jpg" alt="Skaapvleis"> 
+                 <img src="1Skaap.jpg" alt="Volwasse skaap"> 
+                 <img src="Skaapvel.jpg" alt="Skaapvel"> 
+                 <img src="LamVet.jpg" alt="Skaapvet / talg"> 
+            </div>
+
+            <!-- Pyltjies -->
+            <button class="carousel-arrow left-arrow" onclick="moveSlide(-1)">❮</button>
+            <button class="carousel-arrow right-arrow" onclick="moveSlide(1)">❯</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Produk</th>
+                    <th>Beskrywing</th>
+                    <th style="text-align: right;">Prys (per eenheid)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Wol (per kg)</td>
+                    <td>Hoë kwaliteit Merino/Dorper wol</td>
+                    <td class="price">R 1 850</td>
+                </tr>
+
+                <tr>
+                    <td>Lammer (lewend)</td>
+                    <td>25–35 kg</td>
+                    <td class="price">R 2 200</td>
+                </tr>
+
+                <tr>
+                    <td>Skaapvleis (kg)</td>
+                    <td>Karkas</td>
+                    <td class="price">R 95</td>
+                </tr>
+
+                <tr>
+                    <td>Skaap (volwasse)</td>
+                    <td>Lewende dier</td>
+                    <td class="price">R 3 200</td>
+                </tr>
+
+                <!-- Byprodukte begin hier -->
+                <tr>
+                    <td>Skaapvel (per vel)</td>
+                    <td>Goedgegradeerde, gesoute vel – grootte gemiddeld</td>
+                    <td class="price">R 450 – R 650</td>
+                </tr>
+
+                <tr>
+                    <td>Skaapmis (per sak / 50 kg)</td>
+                    <td>Droog, verpak vir bemesting / tuin</td>
+                    <td class="price">R 85</td>
+                </tr>
+
+                <tr>
+                    <td>Skaapvet / talg (per kg)</td>
+                    <td>Ruwe talg vir seep / kosverwerking</td>
+                    <td class="price">R 38</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Nuwe Bestelvorm -->
+    <section id="Bestel">
+        <div class="form-container">
+            <h2>Bestel 'n Produk</h2>
+
+            <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+                <div class="form-group">
+                    <label>Naam</label>
+                    <input type="text" id="name" required placeholder="Jou volle naam">
+                </div>
+
+                <div class="form-group">
+                    <label>E-pos</label>
+                    <input type="email" id="email" required placeholder="jou@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Produk</label>
+                    <select id="product" required>
+                        <option value="">Kies 'n produk</option>
+                        <option value="Wol">Wol (per kg)</option>
+                        <option value="Lammer">Lammer (lewend)</option>
+                        <option value="Skaapvleis">Skaapvleis (kg)</option>
+                        <option value="Skaap">Skaap (volwasse)</option>
+                        <option value="Skaapvel">Skaapvel (per vel)</option>
+                        <option value="Skaapmis">Skaapmis (per sak)</option>
+                        <option value="Skaapvet">Skaapvet / talg (per kg)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Hoeveelheid</label>
+                    <input type="number" id="quantity" required min="1" placeholder="Hoeveelheid (bv. 5)">
+                </div>
+
+                <div class="form-group">
+                    <label>Afhaal of Aflewering?</label>
+                    <select id="deliveryOption" required onchange="toggleAddressField()">
+                        <option value="">Kies opsie</option>
+                        <option value="self">Self-afhaal by plaas (Pretoria omgewing)</option>
+                        <option value="deliver">Aflewering (ekstra koste mag geld)</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="addressGroup" style="display:none;">
+                    <label>Afleweringsadres</label>
+                    <textarea id="deliveryAddress" rows="3" placeholder="Volledige afleweringsadres (straat, suburb, stad, poskode)"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Bykomende Notas</label>
+                    <textarea id="notes" rows="4" placeholder="Enige spesiale versoeke, voorkeur afhaaltyd, ens..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Plaas Bestelling</button>
+            </form>
+        </div>
+    </section>
+
+<!-- Footer bevat copyright simbool gevolg met copyright teks en jaar dan "|" gevolg deur teks wat se all rights reserved -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <p><i class="fa-solid fa-phone"></i>&nbsp;<strong>Telefoon:</strong> 012 345 6789</p>
+                <p><i class="fa-solid fa-envelope"></i>&nbsp;<strong>E-pos:</strong> info@highveldboerdery.co.za</p>
+                <p><i class="fa-solid fa-location-dot"></i>&nbsp;<strong>Ligging:</strong> Pretoria, Gauteng</p>
+            </div>
+            
+            <div class="footer-right">
+                <p><strong>Besigheidsure:</strong></p>
+                <p>Ma – Vry: 08:00 – 17:00</p>
+                <p>Saterdag: 08:00 – 13:00</p>
+                <p>Sondag: Gesluit</p>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© Copyright 2026 Highveld Boerdery | All rights reserved</p>
+        </div>
+    </footer>
+
+    <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+    <!-- Link JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voorraadbestuur - Highveld Boerdery</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <!-- Link CSS file -->
+    <link rel="stylesheet" href="Style.css">
+</head>
+    
+<body>
+    <!-- NAVIGASIE EN MENU -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-group">
+                <img src="Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img">  <!-- Nuwe beeld -->
+                <div class="logo-text">
+                    <h1>Highveld Boerdery</h1>
+                    <p>Skaap Boerdery</p>
+                </div>
+            </div>
+
+            <nav>
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="index.html" class="dropbtn">Tuis<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="index.html#Welkom">Welkom</a></li>
+                            <li><a href="index.html#Hoogtepunte">Ons Hoogtepunte</a></li>
+                            <li><a href="#Bestuursbenadering">Bestuursbenadering</a></li>
+                            <li><a href="index.html#VolhoubareToekoms">Ons volhoubare toekoms</a></li>
+                            <li><a href="index.html#OnsWaardes">Ons Waardes</a></li>
+                            <li><a href="index.html#OnsGalery">Ons Galery</a></li>
+                            <li><a href="index.html#OnsProduksie">Ons Produksie</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="oor_ons.html" class="dropbtn">Oor ons<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="oor_ons.html#Geskiedenis">Ons Geskiedenis</a></li>
+                            <li><a href="oor_ons.html#Missie">Missie & Sleutelwaardes</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="ons_trop.html" class="dropbtn">Ons trop<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="ons_trop.html#HoeBoer">Hoe Ons Boer</a></li>
+                            <li><a href="ons_trop.html#OnsTrop">Ons Trop</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="products.html" class="dropbtn">Ons Produkte<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="products.html#Pryslys">Pryslys</a></li>
+                            <li><a href="products.html#Bestel">Bestel / Aanvraag</a></li>
+                        </ul>
+                    </li>   
+
+                    <li class="dropdown">
+                        <a href="voorraadbestuur.html" class="dropbtn">Voorraadbestuur<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="voorraadbestuur.html#Voorraadbestuur">Huidige Voorraad</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="verkope_en_rekord.html" class="dropbtn">Verkope & Rekords<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="verkope_en_rekord.html#OnlangseVerkope">Onlangse Verkope</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="contact.html" class="dropbtn">Kontak<i class="fa-solid fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="contact.html#Kontak">Kontak Ons</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" style="background-image: url('BlackheadPersian.jpg');">
+        <div class="hero-content">
+            <h1>Voorraadbestuur</h1>
+            <p>Huidige voorraadbestuur van Highveld Boerdery.</p>
+        </div>
+    </section>
+
+    <!-- WAARSKU AS STOCK LAAG - nog insit -->
+
+    <!-- DATABASIS - tabel gaan in databasis verander -->
+
+    <div class="content-container">
+        <h2>Voorraadbestuur</h2>
+
+        <div class="controls" id="Voorraadbestuur">
+            <input id="searchInv" type="text" placeholder="Soek item..." onkeyup="filterInventory()">
+            <button class="add-btn" onclick="addInventory()">+ Nuwe item</button>
+        </div>
+
+        <table id="inventoryTable">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Kategorie</th>
+                    <th>Hoeveelheid</th>
+                    <th>Eenheid</th>
+                    <th>Herbestel by</th>
+                    <th>Status</th>
+                    <th>Aksie</th>
+                </tr>
+            </thead>
+            <tbody id="inventoryBody">
+                <!-- Begin met statiese rye – JS sal dit bestuur -->
+                <tr data-item="Lusern hooi" data-category="Voer" data-qty="45" data-unit="bale" data-reorder="30">
+                    <td>Lusern hooi</td>
+                    <td>Voer</td>
+                    <td class="">45</td>
+                    <td>bale</td>
+                    <td>30</td>
+                    <td>Goed</td>
+                    <td><button onclick="deleteInventory(this)" style="color:#dc2626; background:none; border:none; cursor:pointer; font-size:1.2rem;"><i class="fas fa-trash"></i></button></td>
+                </tr>
+
+                <tr data-item="Dorper entstof" data-category="Medisyne" data-qty="8" data-unit="bottels" data-reorder="15">
+                    <td>Dorper entstof</td>
+                    <td>Medisyne</td>
+                    <td class="">8</td>
+                    <td>bottels</td>
+                    <td>15</td>
+                    <td>Goed</td>
+                    <td><button onclick="deleteInventory(this)" style="color:#dc2626; background:none; border:none; cursor:pointer; font-size:1.2rem;"><i class="fas fa-trash"></i></button></td>
+                </tr>
+
+                <tr data-item="Skeertoerusting" data-category="Toerusting" data-qty="3" data-unit="stelle" data-reorder="2">
+                    <td>Skeertoerusting</td>
+                    <td>Toerusting</td>
+                    <td class="">3</td>
+                    <td>stelle</td>
+                    <td>2</td>
+                    <td>Goed</td>
+                    <td><button onclick="deleteInventory(this)" style="color:#dc2626; background:none; border:none; cursor:pointer; font-size:1.2rem;"><i class="fas fa-trash"></i></button></td>
+                </tr>
+
+                <tr data-item="Voerkrippe" data-category="Toerusting" data-qty="12" data-unit="stuks" data-reorder="10">
+                    <td>Voerkrippe</td>
+                    <td>Toerusting</td>
+                    <td class="">12</td>
+                    <td>stuks</td>
+                    <td>10</td>
+                    <td>Goed</td>
+                    <td><button onclick="deleteInventory(this)" style="color:#dc2626; background:none; border:none; cursor:pointer; font-size:1.2rem;"><i class="fas fa-trash"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<!-- Footer bevat copyright simbool gevolg met copyright teks en jaar dan "|" gevolg deur teks wat se all rights reserved -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <p><i class="fa-solid fa-phone"></i>&nbsp;<strong>Telefoon:</strong> 012 345 6789</p>
+                <p><i class="fa-solid fa-envelope"></i>&nbsp;<strong>E-pos:</strong> info@highveldboerdery.co.za</p>
+                <p><i class="fa-solid fa-location-dot"></i>&nbsp;<strong>Ligging:</strong> Pretoria, Gauteng</p>
+            </div>
+            
+            <div class="footer-right">
+                <p><strong>Besigheidsure:</strong></p>
+                <p>Ma – Vry: 08:00 – 17:00</p>
+                <p>Saterdag: 08:00 – 13:00</p>
+                <p>Sondag: Gesluit</p>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© Copyright 2026 Highveld Boerdery | All rights reserved</p>
+        </div>
+    </footer>
+
+    <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+    <!-- Link JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
