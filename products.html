@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="af">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Highveld Boerdery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Highveld Boerdery</title>
+
+    <!-- Link na google fonts en fontawesome vir fonts en ikone -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <!-- Link CSS file -->
@@ -13,11 +15,11 @@
 </head>
 
 <body>
-    <!-- NAVIGASIE EN MENU -->
+    <!-- NAVIGASIE EN MENU (menu en dropdownmenu) -->
     <header>
         <div class="nav-container">
             <div class="logo-group">
-                <img src="Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img">  <!-- Nuwe beeld -->
+                <img src="Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img"> 
                 <div class="logo-text">
                     <h1>Highveld Boerdery</h1>
                     <p>Skaap Boerdery</p>
@@ -88,7 +90,7 @@
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- Hero -->
     <section class="hero" style="background-image: url('2BlackheadPersian.jpg');">
         <div class="hero-content">
             <h1>Ons Produkte</h1>
@@ -96,20 +98,16 @@
         </div>
     </section>
 
+    <!-- Seksie wat se hoofopskrifte en paragrawe biedjie anders is -->
     <div class="content-container">
         <h2>Produkte</h2>
         <p class="section-intro">Ons bied hoë kwaliteit skaapprodukte aan wat voldoen aan die hoogste standaarde vir kwaliteit en veiligheid.</p>
 
         <div class="produk-carousel-container">
-            <!-- Produk Carousel / Gallery -->
+
+            <!-- Produk Sirkulere Galery , 3 prente op slag, huidige prent 'middel voor' ander links en regs 'agter' -->
             <div class="produk-carousel" id="produkCarousel">
-                <!-- Prente vanaf JS -->
-                 <img src="Wol.jpg" alt="Hoë kwaliteit wol"> 
-                 <img src="Babies.jpg" alt="Lammers"> 
-                 <img src="LamVleis.jpg" alt="Skaapvleis"> 
-                 <img src="1Skaap.jpg" alt="Volwasse skaap"> 
-                 <img src="Skaapvel.jpg" alt="Skaapvel"> 
-                 <img src="LamVet.jpg" alt="Skaapvet / talg"> 
+                <!-- Prente vanaf JS skikking hier ingevoer dus die id -->
             </div>
 
             <!-- Pyltjies -->
@@ -117,6 +115,7 @@
             <button class="carousel-arrow right-arrow" onclick="moveSlide(1)">❯</button>
         </div>
 
+        <!-- Produkte tabel -->
         <table>
             <thead>
                 <tr>
@@ -130,7 +129,7 @@
                 <tr>
                     <td>Wol (per kg)</td>
                     <td>Hoë kwaliteit Merino/Dorper wol</td>
-                    <td class="price">R 1 850</td>
+                    <td class="price">R 160</td>
                 </tr>
 
                 <tr>
@@ -148,14 +147,14 @@
                 <tr>
                     <td>Skaap (volwasse)</td>
                     <td>Lewende dier</td>
-                    <td class="price">R 3 200</td>
+                    <td class="price">R 3 000</td>
                 </tr>
 
                 <!-- Byprodukte begin hier -->
                 <tr>
                     <td>Skaapvel (per vel)</td>
                     <td>Goedgegradeerde, gesoute vel – grootte gemiddeld</td>
-                    <td class="price">R 450 – R 650</td>
+                    <td class="price">R 2 030</td>
                 </tr>
 
                 <tr>
@@ -167,15 +166,15 @@
                 <tr>
                     <td>Skaapvet / talg (per kg)</td>
                     <td>Ruwe talg vir seep / kosverwerking</td>
-                    <td class="price">R 38</td>
+                    <td class="price">R 73</td>
                 </tr>
 
             </tbody>
         </table>
     </div>
 
-    <!-- Nuwe Bestelvorm -->
-    <section id="Bestel">
+    <!-- Bestelvorm (totale prys bysit in bestelling - standaard aflewering koste R100) -->
+    <section class="alt-section-3" id="Bestel">
         <div class="form-container">
             <h2>Bestel 'n Produk</h2>
 
@@ -190,6 +189,7 @@
                     <input type="email" id="email" required placeholder="jou@email.com">
                 </div>
 
+                <!-- Aftreklys opsies -->
                 <div class="form-group">
                     <label>Produk</label>
                     <select id="product" required>
@@ -209,6 +209,7 @@
                     <input type="number" id="quantity" required min="1" placeholder="Hoeveelheid (bv. 5)">
                 </div>
 
+                <!-- Aftreklys opsies -->
                 <div class="form-group">
                     <label>Afhaal of Aflewering?</label>
                     <select id="deliveryOption" required onchange="toggleAddressField()">
@@ -218,6 +219,7 @@
                     </select>
                 </div>
 
+                <!-- Veld wat versteek is as afhaal gekies word -->
                 <div class="form-group" id="addressGroup" style="display:none;">
                     <label>Afleweringsadres</label>
                     <textarea id="deliveryAddress" rows="3" placeholder="Volledige afleweringsadres (straat, suburb, stad, poskode)"></textarea>
@@ -233,7 +235,7 @@
         </div>
     </section>
 
-<!-- Footer bevat copyright simbool gevolg met copyright teks en jaar dan "|" gevolg deur teks wat se all rights reserved -->
+    <!-- Voetskrif -->
     <footer>
         <div class="footer-container">
             <div class="footer-left">
@@ -255,6 +257,7 @@
         </div>
     </footer>
 
+    <!-- Terug na bo knoppie -->
     <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
     <!-- Link JavaScript file -->

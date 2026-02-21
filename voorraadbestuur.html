@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Voorraadbestuur - Highveld Boerdery</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Link na google fonts en fontawesome vir fonts en ikone -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <!-- Link CSS file -->
@@ -13,11 +15,11 @@
 </head>
     
 <body>
-    <!-- NAVIGASIE EN MENU -->
+    <!-- NAVIGASIE EN MENU (menu en dropdown menu) -->
     <header>
         <div class="nav-container">
             <div class="logo-group">
-                <img src="Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img">  <!-- Nuwe beeld -->
+                <img src="Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img">  
                 <div class="logo-text">
                     <h1>Highveld Boerdery</h1>
                     <p>Skaap Boerdery</p>
@@ -88,7 +90,7 @@
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- Hero -->
     <section class="hero" style="background-image: url('BlackheadPersian.jpg');">
         <div class="hero-content">
             <h1>Voorraadbestuur</h1>
@@ -99,15 +101,16 @@
     <!-- WAARSKU AS STOCK LAAG - nog insit -->
 
     <!-- DATABASIS - tabel gaan in databasis verander -->
-
     <div class="content-container">
         <h2>Voorraadbestuur</h2>
 
+        <!-- Soek en nuwe item knoppies / funksies -->
         <div class="controls" id="Voorraadbestuur">
             <input id="searchInv" type="text" placeholder="Soek item..." onkeyup="filterInventory()">
             <button class="add-btn" onclick="addInventory()">+ Nuwe item</button>
         </div>
 
+        <!-- Voorraadbestuur tabel - bevat id vir nuwe items en delete funksies -->
         <table id="inventoryTable">
             <thead>
                 <tr>
@@ -120,8 +123,9 @@
                     <th>Aksie</th>
                 </tr>
             </thead>
+            <!-- Id - sodat JS op regte plek veranderinge doen soos lae voorraad en delete en bysit -->
             <tbody id="inventoryBody">
-                <!-- Begin met statiese rye – JS sal dit bestuur -->
+                <!-- Paar statiese rye, JS bestuur nuwe rye, dus is items 'ids' gegee met ooreenstemmende data -->
                 <tr data-item="Lusern hooi" data-category="Voer" data-qty="45" data-unit="bale" data-reorder="30">
                     <td>Lusern hooi</td>
                     <td>Voer</td>
@@ -129,6 +133,7 @@
                     <td>bale</td>
                     <td>30</td>
                     <td>Goed</td>
+                    <!-- Delete knoppie in laaste ry -->
                     <td><button onclick="deleteInventory(this)" style="color:#dc2626; background:none; border:none; cursor:pointer; font-size:1.2rem;"><i class="fas fa-trash"></i></button></td>
                 </tr>
 
@@ -165,7 +170,7 @@
         </table>
     </div>
 
-<!-- Footer bevat copyright simbool gevolg met copyright teks en jaar dan "|" gevolg deur teks wat se all rights reserved -->
+    <!-- Voetskrif -->
     <footer>
         <div class="footer-container">
             <div class="footer-left">
@@ -187,6 +192,7 @@
         </div>
     </footer>
 
+    <!-- Terug na bo knoppie -->
     <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
     <!-- Link JavaScript file -->

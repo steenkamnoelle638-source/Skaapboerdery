@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="af">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oor Ons - Highveld Boerdery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Oor Ons - Highveld Boerdery</title>
+
+    <!-- Link na google fonts en awesomefonts vir fonts en ikone -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <!-- Link CSS file -->
@@ -14,11 +16,11 @@
 </head>
 
 <body>
-    <!-- NAVIGASIE EN MENU -->
+    <!-- NAVIGASIE EN MENU (Menu en Dropdown menu) -->
     <header>
         <div class="nav-container">
             <div class="logo-group">
-                <img src="Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img">  <!-- Nuwe beeld -->
+                <img src="Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img">  
                 <div class="logo-text">
                     <h1>Highveld Boerdery</h1>
                     <p>Skaap Boerdery</p>
@@ -89,7 +91,7 @@
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- Hero -->
     <section class="hero" style="background-image: url('Plaas.jpg');">
         <div class="hero-content">
             <h1>Oor Highveld Boerdery</h1>
@@ -97,6 +99,7 @@
         </div>
     </section>
 
+    <!-- Ander bladsy kleur as default een op ander blaaie -->
     <section id="Geskiedenis" class="alt-section">
         <h2>Ons Geskiedenis</h2>
 
@@ -118,9 +121,11 @@
         <img src="1Plaas.jpg" alt="Highveld Boerdery Plaas" class="center-image">
     </section>
 
+    <!-- Ander bladsy kleur, default een vir blaaie -->
     <section id="Missie">
         <h2>Missie</h2>
 
+        <!-- Blok met lyn links, ander font, effense skadu en ligte groen agtergrond kleur -->
         <blockquote>
             Om hoëgehalte Merino-wol en Dorper-vleis van wêreldklas te produseer, terwyl ons die grond, diere en ons gemeenskap met respek en verantwoordelikheid bestuur – sodat toekomstige geslagte ook kan geniet van 'n gesonde, winsgewende en volhoubare plaas.
         </blockquote>
@@ -128,6 +133,7 @@
         <br>
         
         <h2 style="margin-bottom: 10px;">Ons Sleutelwaardes</h2>
+            <!-- Normale bulletpuntlys -->
             <ul style="font-size: 17px;">
                 <li><strong>Volhoubaarheid</strong> 
                     – Ons werk in harmonie met die natuur deur grondgesondheid eerste te stel.
@@ -149,16 +155,17 @@
         
         <br>
 
-        <p>
+        <p style="text-align: center;">
             Kom kuier gerus – ons is trots op ons plaas en deel graag ons storie met besoekers, kopers en vriende van die bedryf.
         </p>
         
-        <p>
+        <!-- Teks wat ephasized is -->
+        <p style="text-align: center;">
             <em>Highveld Boerdery – waar tradisie en toekoms hand aan hand loop.</em>
         </p>
     </section>
 
-<!-- Footer bevat copyright simbool gevolg met copyright teks en jaar dan "|" gevolg deur teks wat se all rights reserved -->
+    <!-- Voetskrif -->
     <footer>
         <div class="footer-container">
             <div class="footer-left">
@@ -180,10 +187,10 @@
         </div>
     </footer>
 
+    <!-- Terug na bo knoppie -->
     <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
     <!-- Link JavaScript file -->
     <script src="script.js"></script>
-
 </body>
 </html>

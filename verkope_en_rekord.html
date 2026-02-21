@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verkope en Rekords - Highveld Boerdery</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Links na google fonts en fontawesome vir fonts en ikone -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <!-- Link CSS file -->
@@ -13,11 +14,11 @@
 </head>
     
 <body>
-    <!-- NAVIGASIE EN MENU -->
+    <!-- NAVIGASIE EN MENU (menu en dropdown menu) -->
     <header>
         <div class="nav-container">
             <div class="logo-group">
-                <img src="Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img">  <!-- Nuwe beeld -->
+                <img src="Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img">
                 <div class="logo-text">
                     <h1>Highveld Boerdery</h1>
                     <p>Skaap Boerdery</p>
@@ -88,7 +89,7 @@
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- Hero -->
     <section class="hero" style="background-image: url('RotationalGrazing.jpg');">
         <div class="hero-content">
             <h1>Produkte & Huidige Pryse</h1>
@@ -96,11 +97,12 @@
         </div>
     </section>
 
+    <!-- Afdeling met ander hoofopskrif styl en paragraaf as ander blaaie -->
     <div class="content-container" id="OnlangseVerkope">
         <h2>Onlangse verkope</h2>
         <p class="section-intro">Hier is 'n lys van onlangse skaapverkope wat deur Highveld Boerdery aangebied is.</p>
 
-        <!-- Tans tabel later verander na Databasis -->
+        <!-- Tabel wat onlangse verkope wys -->
         <table>
             <thead>
                 <tr>
@@ -113,13 +115,14 @@
             <tbody>
                 <tr>
                     <td>Wol (per kg)</td>
-                    <td>5 kg</td>
-                    <td class="price">R 9 250</td> <!-- 5 kg x R 1 850/kg -->
+                    <td>5</td>
+                    <!-- Funksie insit om prys outomaties te bereken baseer op totaal gekoop -->
+                    <td class="price">R 800</td> <!-- 5 kg x R 160/kg -->
                     <td>2026-01-15</td>
                 </tr>
 
                 <tr>
-                    <td>Lammer (lewend)</td>
+                    <td>Lewende Lammer (small/meduim)</td>
                     <td>2</td>
                     <td class="price">R 4 400</td> <!-- 2 lamme x R 2 200/lam -->
                     <td>2026-01-16</td>
@@ -127,7 +130,7 @@
 
                 <tr>
                     <td>Skaapvleis (kg)</td>
-                    <td>7kg</td>
+                    <td>7</td>
                     <td class="price">R 665</td> <!-- 7kg x R 95/kg -->
                     <td>2026-01-18</td>
                 </tr>
@@ -135,7 +138,7 @@
                 <tr>
                     <td>Skaap (volwasse)</td>
                     <td>1</td>
-                    <td class="price">R 3 200</td> <!-- 1 skaap x R 3 200/skaap -->
+                    <td class="price">R 3 000</td> <!-- 1 skaap x R 3 000/skaap -->
                     <td>2026-01-18</td>
                 </tr>
                 
@@ -143,28 +146,28 @@
                 <tr>
                     <td>Skaapvel (per vel)</td>
                     <td>0</td>
-                    <td class="price">0</td> <!-- 0 velle x 450-650/vel -->
+                    <td class="price">0</td> <!-- 0 velle x 2 030/vel -->
                     <td>2026-01-20</td>
                 </tr>
 
                 <tr>
                     <td>Skaapmis (per sak / 50 kg)</td>
-                    <td>3 sakke</td>
+                    <td>3</td>
                     <td class="price">R 255</td> <!-- 3 sakke x R 85/sak -->
                     <td>2026-01-22</td>
                 </tr>
 
                 <tr>
                     <td>Skaapvet / talg (per kg)</td>
-                    <td>1kg</td>
-                    <td class="price">R 38</td> <!-- 1kg x R 38/kg -->
+                    <td>1</td>
+                    <td class="price">R 73</td> <!-- 1kg x R 73/kg -->
                     <td>2026-01-25</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-<!-- Footer bevat copyright simbool gevolg met copyright teks en jaar dan "|" gevolg deur teks wat se all rights reserved -->
+    <!-- Voetskrif -->
     <footer>
         <div class="footer-container">
             <div class="footer-left">
@@ -186,10 +189,10 @@
         </div>
     </footer>
 
+    <!-- Terug na bo knoppie -->
     <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
     <!-- Link JavaScript file -->
     <script src="script.js"></script>
-
 </body>
 </html>
