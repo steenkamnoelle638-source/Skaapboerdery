@@ -1052,3 +1052,121 @@
     button.add-btn:hover {
             background: #047857;
     }
+
+/* ---------------------------------------------------------------------------------
+   ============================= RESPONSIEWE ONTWERP =============================
+   ---------------------------------------------------------------------------------*/  
+
+   /* Globale styl vir prente sodat makliker responsiwiteit kan doen */
+    img {
+        max-width: 100%;       /* Maak beelde nie wyer as hul houer nie */
+        height: auto;         
+        display: block;       /* Verwyder ekstra spasie onder beelde */
+    }
+
+    /* Vir skermgrottes kleiner as 768px (Mobiel / Tablette) */
+    @media (max-width: 768px) 
+    {
+        
+        /* Navigasie */
+        .nav-container {
+            flex-direction: column;     /* Maak nav vertikaal */
+            padding: 1rem;              /* Minder padding */
+            align-items: flex-start;    /* Links uitlyn */
+        }
+
+        .nav {
+            flex-direction: column;     /* Maak menu items vertikaal */
+            gap: 1rem;                  /* Spasie tussen items */
+            width: 100%;                /* Volle breedte */
+        }
+
+        .dropdown-content {
+            position: static;           /* Maak dropdown nie absoluut nie */
+            box-shadow: none;           /* Verwyder skadu vir eenvoud */
+        }
+
+        /* Hero aanpas */
+        .hero {
+            background-size: cover;     /* Bedek hele skerm */
+            min-height: 50vh;           /* Kleiner hoogte op mobiel */
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;            /* Kleiner opskrif */
+        }
+
+        .hero-content p {
+            font-size: 1rem;            /* Kleiner teks */
+        }
+
+        /* Sections en inhoud */
+        section {
+            padding: 20px 5%;           /* Kleiner padding */
+        }
+
+        .content-container {
+            padding: 1rem;              /* Kleiner padding */
+        }
+
+        /* Tabelle responsief maak (scrollbaar) */
+        table {
+            display: block;             /* Maak tabel blok */
+            overflow-x: auto;           /* Horisontale scroll as nodig */
+            white-space: nowrap;        /* Voorkom lynbreking */
+        }
+
+        /* Vorms aanpas */
+        .form-container {
+            padding: 2rem 1rem;         /* Kleiner padding */
+        }
+
+        /* Gallery aanpas */
+        .slideshow-container {
+            max-width: 100%;            /* Volle breedte */
+        }
+
+        .slide img {
+            height: auto;               /* Pas hoogte aan */
+        }
+
+        .mini-gallery {
+            max-width: 100%;            /* Volle breedte */
+        }
+
+        /* Footer aanpas */
+        .footer-container {
+            flex-direction: column;     /* Vertikaal op mobiel */
+            text-align: center;         /* Sentraal uitlyn */
+        }
+    }
+
+    /* Media query vir baie klein skerms (max 480px, bv. ou selfone) */
+    @media (max-width: 480px) {
+        /* Verdere verkleinings */
+        .logo-group {
+            flex-direction: column;     /* Logo en teks vertikaal */
+            text-align: center;         /* Sentraal */
+        }
+
+        .logo-img {
+            margin: 0 auto 0.5rem auto; /* Sentraal en spasie */
+        }
+
+        .nav {
+            gap: 0.5rem;                /* Nog minder spasie */
+        }
+
+        h1, h2 {
+            font-size: 1.5rem;          /* Baie klein opskrifte */
+        }
+
+        .submit-btn {
+            padding: 0.8rem;            /* Kleiner knoppie */
+        }
+
+        /* Carousel aanpas (as jy dit het) */
+        .carousel-item {
+            width: 100%;                /* Volle breedte per item */
+        }
+    }
