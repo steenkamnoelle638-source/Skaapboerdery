@@ -314,7 +314,7 @@
     }
 
 //  ----------------------------------- BESTELVORM -----------------------------------
-    // Funksie: Bepaal sigbaarheid van aflewering adres veld
+    //  Bepaal sigbaarheid van aflewering adres veld
     function toggleAddressField() 
     {
         // Kry selekteerde waarde vanaf veld met id 'deliveryOption' en stoor in waarde
