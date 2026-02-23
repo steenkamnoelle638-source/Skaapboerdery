@@ -638,7 +638,6 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
 
         // Toggle en log vir debug
         const isActiveNow = dropdown.classList.toggle('active');
-        console.log('Dropdown toggled. Is active nou:', isActiveNow, dropdown);
 
         // Maak ander toe
         document.querySelectorAll('.dropdown').forEach(other => {

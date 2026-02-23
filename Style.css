@@ -1166,24 +1166,28 @@
 
         /* Dropdown inhoud */
         .dropdown-content {
-            display: none !important;          /* forceer toe */
-            position: static;
-            width: 100%;
-            background: #f9fafb;
-            margin: 0;
-            padding: 0.4rem 0;
-            overflow: hidden;                  /* ekstra veiligheid */
+            display: none;
+            visibility: hidden;           /* ekstra laag vir sekuriteit */
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: opacity 0.25s ease, height 0.3s ease;
         }
 
-        /* Slegs wanneer die parent .dropdown .active is, wys dit */
+        /* Wanneer aktief: wys dit volledig */
         .dropdown.active .dropdown-content {
-            display: block !important;         /* forceer oop */
+            display: block;
+            visibility: visible;
+            opacity: 1;
+            height: auto;                 /* of max-height: 400px as jy animasie wil */
+            overflow: visible;
         }
 
-        /* As jy sub-items het, maak seker hulle bly binne */
+        /* Verseker sub-items nie hul eie display forceer nie */
+        .dropdown-content,
         .dropdown-content li,
         .dropdown-content a {
-            display: block;                    /* hulle mag binne sigbaar wees */
+            display: inherit !important;  /* erf van parent, maar net wanneer aktief */
         }
 
         /* Elke sub-link: ingekeep van links */
