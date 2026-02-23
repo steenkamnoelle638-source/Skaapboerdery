@@ -594,22 +594,55 @@
 // ------------------------------- NAV ---------------------------------
 // =====================================================================
 // Hamburger menu toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const toggle = document.getElementById('menuToggle');
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.getElementById('menuToggle');
+    const barsIcon = document.getElementById('barsIcon');
+    const xIcon = document.getElementById('xIcon');
     const nav = document.getElementById('mainNav');
 
-    if (toggle && nav) {
-        toggle.addEventListener('click', function() {
-            toggle.classList.toggle('active');
-            nav.classList.toggle('active');
-        });
+    if (!toggleBtn || !nav) return;
 
-        // Maak toe as jy buite klik (opsioneel maar goed)
-        document.addEventListener('click', function(event) {
-            if (!nav.contains(event.target) && !toggle.contains(event.target)) {
-                toggle.classList.remove('active');
-                nav.classList.remove('active');
-            }
+    // Hoof burger menu oop/toe
+    toggleBtn.addEventListener('click', function () {
+        const isOpen = nav.classList.toggle('active');
+
+        if (isOpen) {
+            barsIcon.style.display = 'none';
+            xIcon.style.display = 'inline-block';
+        } else {
+            barsIcon.style.display = 'inline-block';
+            xIcon.style.display = 'none';
+            // Maak alle sub-dropdowns toe wanneer hoofmenu toemaak
+            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+        }
+    });
+
+    // Maak toe as buite gekliek word
+    document.addEventListener('click', function (event) {
+        if (!nav.contains(event.target) && !toggleBtn.contains(event.target)) {
+            nav.classList.remove('active');
+            barsIcon.style.display = 'inline-block';
+            xIcon.style.display = 'none';
+            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+        }
+    });
+
+    // Mobiele dropdowns: net die pyltjie oopmaak/toemaak
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', function (e) {
+            e.stopPropagation(); // voorkom dat die klik na die <a> gaan
+            const dropdown = this.closest('.dropdown');
+            dropdown.classList.toggle('active');
         });
-    }
+    });
+
+    // As op 'n sub-link gekliek word → maak hele mobiele menu toe
+    document.querySelectorAll('.dropdown-content a').forEach(link => {
+        link.addEventListener('click', function () {
+            nav.classList.remove('active');
+            barsIcon.style.display = 'inline-block';
+            xIcon.style.display = 'none';
+            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+        });
+    });
 });
