@@ -589,3 +589,27 @@
         // Vind vorm met id "contactForm" ,maak velde leeg
         document.getElementById('contactForm').reset();
     }
+
+// =====================================================================
+// ------------------------------- NAV ---------------------------------
+// =====================================================================
+// Hamburger menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+
+    if (toggle && nav) {
+        toggle.addEventListener('click', function() {
+            toggle.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Maak toe as jy buite klik (opsioneel maar goed)
+        document.addEventListener('click', function(event) {
+            if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+                toggle.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+    }
+});

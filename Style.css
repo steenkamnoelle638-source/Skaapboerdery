@@ -1067,18 +1067,17 @@
     /* Vir skermgrottes kleiner as 768px (Mobiel / Tablette) */
     @media (max-width: 768px) 
     {
-        
         /* Navigasie */
         .nav-container {
             flex-direction: column;     /* Maak nav vertikaal */
-            padding: 1rem;              /* Minder padding */
-            align-items: flex-start;    /* Links uitlyn */
+            padding: 1rem;              /* Maak padding minder */
+            align-items: flex-start;    /* Sodat soos lys eerder as langs en onder mekaar */
         }
 
         .nav {
-            flex-direction: column;     /* Maak menu items vertikaal */
-            gap: 1rem;                  /* Spasie tussen items */
-            width: 100%;                /* Volle breedte */
+            flex-direction: column;     
+            gap: 1rem;                  /* Spasie tussen items kleiner */
+            width: 100%;                /* Volle breedte van container vul */
         }
 
         .dropdown-content {
