@@ -340,45 +340,166 @@
         }
     }
 
+    // Pryslys vir produkte (in Rand per eenheid)
+    const productPrices = {
+        "Wol": 150,                // per kg
+        "Lammer": 1800,            // per lewendige lam
+        "Skaapvleis": 120,         // per kg
+        "Skaap": 2500,             // per volwasse skaap
+        "Skaapvel": 350,           // per vel
+        "Skaapmis": 80,            // per sak
+        "Skaapvet": 73             // per kg
+    };
+
+    // Bereken en wys totaal
+    function updateTotal() 
+    {
+        const productSelect = document.getElementById('product');
+        const quantityInput = document.getElementById('quantity');
+        const totalElement = document.getElementById('totalPrice');
+        const totalDisplay = document.getElementById('totalDisplay');
+
+        // Kry huidige produk se waarde en stoor in konstante
+        const selectedProduct = productSelect.value;
+        // Stoor hoeveelheid as getal of 0 as dit leeg is in konstante
+        const quantity = parseInt(quantityInput.value) || 0;
+
+        // Toets of produk gekies en hoeveelheid > 0
+        if (selectedProduct && quantity > 0) 
+        {
+            // Prys per eenheid vir gekose produk
+            const pricePerUnit = productPrices[selectedProduct] || 0;
+            // Bereken totale prys
+            const total = pricePerUnit * quantity;
+
+            // Vertoon totaal in formaat "R xxx.xx"
+            totalElement.textContent = `R ${total.toFixed(2)}`;
+            // Maak totale div sigbaar
+            totalDisplay.style.display = 'block';
+        } 
+        else 
+        {
+            // Vertoon nie totaal nie
+            totalDisplay.style.display = 'none';
+        }
+    }
+
+    // Kyk vir veranderinge aan enige van die 2 velde om totaal dan dadelik te herbereken/verander
+    document.addEventListener('DOMContentLoaded', function() {
+        const productSelect = document.getElementById('product');
+        const quantityInput = document.getElementById('quantity');
+
+        // Toets of produkte en aantal op die bladsy bestaan
+        if (productSelect && quantityInput) 
+        {
+            // Kyk waneer gebruiker produk kies en hoeveelheid invoer en bereken dan die totaal
+            productSelect.addEventListener('change', updateTotal);
+            quantityInput.addEventListener('input', updateTotal);
+        }
+    });
+
+// =====================================================================
+// -------------------------- VORM VALIDASIE ---------------------------
+// =====================================================================
     // Voer funksie uit waneer form submit word
     function handleOrderSubmit(e) 
     {
         // Event(submission) objek - stop standaard vorm gedrag(simuleer bestelling ,geen bestelling eintlik geplaas)
         e.preventDefault();
 
+        // Stoor en kry velde se waardes
+        const name = document.getElementById('name').value.trim();
+        const emailField = document.getElementById('email');  // Die element self
+        const email = emailField.value.trim();
+        const product = document.getElementById('product').value;
+        const quantity = parseInt(document.getElementById('quantity').value) || 0;
         const deliveryOption = document.getElementById('deliveryOption').value;
-        // Basiese suksess boodskap met 2 lyne vir ekstra spasie
-        let message = "Bestelling suksesvol geplaas!\n\n";
+        const address = document.getElementById('deliveryAddress').value.trim();
+        const notes = document.getElementById('notes').value.trim();
 
-        // Toets of aflewering gekies is
-        if (deliveryOption === 'deliver') 
+        // Skikking - foute tydens validasie te stoor
+        let errors = [];
+
+        // Valideer elke veld een vir een (As nie voldoen vertoon hierdie in foute skikking)
+        if (!name) 
         {
-            // Kry adres en verwyder ekstra spasie voor of agter (trim)
-            const address = document.getElementById('deliveryAddress').value.trim();
-            // Toets of adres leeg is, as leeg wys waarskuwing en stop funksie
-            if (!address) 
-            {
-                alert("Verskaf asseblief 'n afleweringsadres wanneer jy aflewering kies.");
-                return;
-            }
-            // Voeg aflewering inligting by basiese suksesboodskap
-            message += "Afleweringsopsie: Aflewering\nAdres: " + address + "\n\n";
-        } 
-        else if (deliveryOption === 'self') 
-        {
-            // Voeg self afhaal by basiese suksesboodskap by
-            message += "Afleweringsopsie: Self-afhaal\n\n";
+            // errors.push - Voeg nuwe item aan einde van skikking by
+            errors.push("Naam is verpligtend – vul asseblief jou volle naam in.");
         }
 
-        // Wys finale suksesboodskap in popup
+        if (!emailField.checkValidity()) 
+        {
+            errors.push("Geldige e-posadres is verpligtend (bv. jou@email.com).");
+
+            // Spring na waar fout is
+            emailField.focus();
+        }
+
+        if (!product) 
+        {
+            errors.push("Kies asseblief 'n produk uit die lys.");
+        }
+
+        if (quantity < 1) 
+        {
+            errors.push("Hoeveelheid moet ten minste 1 wees.");
+        }
+
+        if (!deliveryOption) 
+        {
+            errors.push("Kies asseblief self-afhaal of aflewering.");
+        }
+
+        // Spesifieke check vir aflewering
+        if (deliveryOption === 'deliver' && !address) 
+        {
+            errors.push("Afleweringsadres is verpligtend as jy aflewering kies.");
+        }
+
+        // Wys waarskuwing en stop funksie as enige 'foute' is
+        if (errors.length > 0) 
+        {
+            // errors.join - Plaas alle items binne skikking saam in 1 string met nuwe lyn tussen in
+            alert("Daar is foute in die vorm:\n\n" + errors.join("\n"));
+            // Stop hier – geen bestelling word geplaas nie
+            return;  
+        }
+
+        // Bereken totaal as alles reg is
+        const total = productPrices[product] * quantity;
+
+        // Bou sukses-boodskap op (met al die besonderhede)
+        let message = "Bestelling suksesvol geplaas!\n\n";
+        message += `Naam: ${name}\n`;
+        message += `E-pos: ${email}\n`;
+        message += `Produk: ${product} x ${quantity} = R ${total.toFixed(2)}\n`;
+        message += `Afleweringsopsie: ${deliveryOption === 'deliver' ? 'Aflewering' : 'Self-afhaal'}\n`;
+
+        // Voeg adres by as aflewering gekies is
+        if (deliveryOption === 'deliver') 
+        {
+            message += `Adres: ${address}\n`;
+        }
+
+        // Voeg notas by as daar iets ingevul is
+        if (notes) 
+        {
+            message += `Bykomende notas: ${notes}\n`;
+        }
+
+        // Wys finale boodskap in popup
         alert(message);
-        // Maak hele vorm leeg
+
+        // Maak die hele vorm leeg na sukses
         document.getElementById('orderForm').reset();
-        toggleAddressField(); // Maak adresveld toe na reset
+
+        // Maak adresveld toe en steek totaal weg
+        toggleAddressField();
+        document.getElementById('totalDisplay').style.display = 'none';
     }
 
 // =====================================================================
-// VOORRAADBESTUUR - Slegs as die tabel bestaan, sodat js nie crash
+// VOORRAADBESTUUR - As die tabel bestaan, sodat js nie crash
 // =====================================================================
     // Vind <tbody> met id 'inventoryBody' - waar ry data bygevoeg/verwyder word
     const inventoryBodyElement = document.getElementById('inventoryBody');
@@ -661,7 +782,3 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
         });
     });
 });
-
-// =====================================================================
-// -------------------------- VORM VALIDASIE ---------------------------
-// =====================================================================
