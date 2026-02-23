@@ -1265,8 +1265,33 @@
 
     /* Vorms */
         .form-container {
-            padding: 2rem 1rem;         /* Kleiner padding */
-        }
+        padding: 1.5rem 1rem;  /* Nog effens kleiner */
+    }
+
+    /* Invoervelde full-width en groter vir tik */
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+        width: 100%;           /* Volle breedte */
+        min-height: 48px;      /* Groter vir vingers */
+        padding: 0.8rem 1rem;
+        font-size: 1rem;       /* Groter teks vir leesbaarheid */
+        margin-bottom: 1rem;
+    }
+
+    label {
+        font-size: 0.95rem;    /* Kleiner labels om spasie te spaar */
+        margin-bottom: 0.5rem;
+    }
+
+    .submit-btn {
+        min-height: 50px;      /* Groter knoppie vir tik */
+        font-size: 1.05rem;
+        padding: 1rem;
+    }
+
+    /* Vir products.html se bestel-vorm – spesifiek */
+    .order-form {
+        flex-direction: column;  /* Vertikaal op mobiel as dit flex is */
+    }
 
     /* Gallery */
         .slideshow-container {
