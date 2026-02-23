@@ -1060,7 +1060,7 @@
 
 /* Globale styl vir prente sodat makliker responsiwiteit kan doen */
     img {
-        max-width: 100%;       /* Maak beelde nie wyer as hul houer nie */
+        max-width: 100%;       /* Beelde nie wyer as houer nie */
         height: auto;         
         display: block;       /* Verwyder ekstra spasie onder beelde */
     }
@@ -1090,6 +1090,7 @@
             display: block;              /* wys nou die hamburger */ 
         }
 
+        /* Versteek totdat burger menu oopgemaak word */
         .nav {
             position: absolute;
             top: 100%;                  /* reg onder die header */
@@ -1166,29 +1167,25 @@
 
         /* Dropdown inhoud */
         .dropdown-content {
-            display: none;
-            visibility: hidden;           /* ekstra laag vir sekuriteit */
-            opacity: 0;
-            height: 0;
-            overflow: hidden;
-            transition: opacity 0.25s ease, height 0.3s ease;
-        }
+        display: none !important;          /* forceer toe */
+        position: static;
+        width: 100%;
+        background: #f9fafb;
+        margin: 0;
+        padding: 0.4rem 0;
+        overflow: hidden;                  /* ekstra veiligheid */
+    }
 
-        /* Wanneer aktief: wys dit volledig */
-        .dropdown.active .dropdown-content {
-            display: block;
-            visibility: visible;
-            opacity: 1;
-            height: auto;                 /* of max-height: 400px as jy animasie wil */
-            overflow: visible;
-        }
+    /* Slegs wanneer die parent .dropdown .active is, wys dit */
+    .dropdown.active .dropdown-content {
+        display: block !important;         /* forceer oop */
+    }
 
-        /* Verseker sub-items nie hul eie display forceer nie */
-        .dropdown-content,
-        .dropdown-content li,
-        .dropdown-content a {
-            display: inherit !important;  /* erf van parent, maar net wanneer aktief */
-        }
+    /* As jy sub-items het, maak seker hulle bly binne */
+    .dropdown-content li,
+    .dropdown-content a {
+        display: block;                    /* hulle mag binne sigbaar wees */
+    }
 
         /* Elke sub-link: ingekeep van links */
         .dropdown-content a {
@@ -1294,16 +1291,16 @@
 /* Tablet / medium skerms (768px tot 1024px) */
     @media (max-width: 1024px) {
         .nav-container {
-            padding: 0.9rem 1.2rem;           /* effens kleiner padding */
+            padding: 0.7rem 1rem;           /* effens kleiner padding */
         }
 
         .nav-menu {
-            gap: 1.2rem;                      /* kleiner spasie tussen hoof-items */
+            gap: 1rem;                      /* kleiner spasie tussen hoof-items */
         }
 
         .logo-img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
         }
 
         .logo-text h1 {
@@ -1313,6 +1310,22 @@
         .logo-text p {
             font-size: 0.7rem;
         }
+
+        /* Stop hover-kontrole volledig */
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+        display: none !important;
+    }
+
+    /* Wys slegs wanneer .active via JS bygevoeg word */
+    .dropdown.active .dropdown-content {
+        display: block !important;
+    }
+
+    /* Maak die hele area klikbaar, maar voorkom navigasie later in JS */
+    .dropbtn, .dropdown-toggle {
+        pointer-events: auto;
+    }
 
         /* Maak seker dropdowns nie te wyd word nie */
         .dropdown-content {

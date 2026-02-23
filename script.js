@@ -630,11 +630,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Mobiele dropdowns: net die pyltjie oopmaak/toemaak
 document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
     toggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
+        e.preventDefault();         // stop navigasie
+        e.stopPropagation();        // stop borrel na ouer <a>
 
         const dropdown = this.closest('.dropdown');
-        if (!dropdown) return;
+        if (!dropdown) {
+            console.log('Geen dropdown gevind vir hierdie pyltjie');
+            return;
+        }
 
         // Toggle en log vir debug
         const isActiveNow = dropdown.classList.toggle('active');
