@@ -26,10 +26,16 @@
                 </div>
             </div>
 
-            <nav>
-                <ul class="nav">
+            <!-- Hamburger / Close knoppie – net vir mobiel -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu oopmaak/toemaak">
+                <i class="fa-solid fa-bars" id="barsIcon"></i>
+                <i class="fa-solid fa-x" id="xIcon" style="display:none;"></i>
+            </button>
+
+            <nav class="nav" id="mainNav">
+                <ul class="nav-menu">
                     <li class="dropdown">
-                        <a href="index.html" class="dropbtn">Tuis<i class="fa-solid fa-caret-down"></i></a>
+                        <a href="index.html" class="dropbtn">Tuis<span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span></a>
                         <ul class="dropdown-content">
                             <li><a href="index.html#Welkom">Welkom</a></li>
                             <li><a href="index.html#Hoogtepunte">Ons Hoogtepunte</a></li>

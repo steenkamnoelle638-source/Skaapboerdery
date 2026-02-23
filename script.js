@@ -628,13 +628,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Mobiele dropdowns: net die pyltjie oopmaak/toemaak
-    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-        toggle.addEventListener('click', function (e) {
-            e.stopPropagation(); // voorkom dat die klik na die <a> gaan
-            const dropdown = this.closest('.dropdown');
-            dropdown.classList.toggle('active');
+document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+    toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const dropdown = this.closest('.dropdown');
+        if (!dropdown) return;
+
+        // Toggle en log vir debug
+        const isActiveNow = dropdown.classList.toggle('active');
+        console.log('Dropdown toggled. Is active nou:', isActiveNow, dropdown);
+
+        // Maak ander toe
+        document.querySelectorAll('.dropdown').forEach(other => {
+            if (other !== dropdown) {
+                other.classList.remove('active');
+            }
         });
     });
+});
 
     // As op 'n sub-link gekliek word → maak hele mobiele menu toe
     document.querySelectorAll('.dropdown-content a').forEach(link => {
