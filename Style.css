@@ -1108,7 +1108,7 @@
         .nav.active {
             max-height: 700px;          /* groot genoeg vir al jou items */
             opacity: 1;
-            overflow-y: auto;
+            overflow-y: auto;   /* Vertikale scroll waneer inhoud te veel is vir boks */
         }
 
         .nav ul {
