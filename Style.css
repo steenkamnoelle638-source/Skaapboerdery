@@ -1174,25 +1174,25 @@
 
         /* Dropdown inhoud */
         .dropdown-content {
-        display: none !important;          /* forceer toe */
-        position: static;
-        width: 100%;
-        background: #f9fafb;
-        margin: 0;
-        padding: 0.4rem 0;
-        overflow: hidden;                  /* ekstra veiligheid */
-    }
+            display: none !important;          /* forceer toe */
+            position: static;
+            width: 100%;
+            background: #f9fafb;
+            margin: 0;
+            padding: 0.4rem 0;
+            overflow: hidden;                  /* ekstra veiligheid */
+        }
 
-    /* Slegs wanneer die parent .dropdown .active is, wys dit */
-    .dropdown.active .dropdown-content {
-        display: block !important;         /* forceer oop */
-    }
+        /* Slegs wanneer die parent .dropdown .active is, wys dit */
+        .dropdown.active .dropdown-content {
+            display: block !important;         /* forceer oop */
+        }
 
-    /* As jy sub-items het, maak seker hulle bly binne */
-    .dropdown-content li,
-    .dropdown-content a {
-        display: block;                    /* hulle mag binne sigbaar wees */
-    }
+        /* As jy sub-items het, maak seker hulle bly binne */
+        .dropdown-content li,
+        .dropdown-content a {
+            display: block;                    /* hulle mag binne sigbaar wees */
+        }
 
         /* Elke sub-link: ingekeep van links */
         .dropdown-content a {
@@ -1273,32 +1273,32 @@
     /* Vorms */
         .form-container {
         padding: 1.5rem 1rem;  /* Nog effens kleiner */
-    }
+        }
 
-    /* Invoervelde full-width en groter vir tik */
-    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
-        width: 100%;           /* Volle breedte */
-        min-height: 48px;      /* Groter vir vingers */
-        padding: 0.8rem 1rem;
-        font-size: 1rem;       /* Groter teks vir leesbaarheid */
-        margin-bottom: 1rem;
-    }
+        /* Invoervelde full-width en groter vir tik */
+        input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+            width: 100%;           /* Volle breedte */
+            min-height: 48px;      /* Groter vir vingers */
+            padding: 0.8rem 1rem;
+            font-size: 1rem;       /* Groter teks vir leesbaarheid */
+            margin-bottom: 1rem;
+        }
 
-    label {
-        font-size: 0.95rem;    /* Kleiner labels om spasie te spaar */
-        margin-bottom: 0.5rem;
-    }
+        label {
+            font-size: 0.95rem;    /* Kleiner labels om spasie te spaar */
+            margin-bottom: 0.5rem;
+        }
 
-    .submit-btn {
-        min-height: 50px;      /* Groter knoppie vir tik */
-        font-size: 1.05rem;
-        padding: 1rem;
-    }
+        .submit-btn {
+            min-height: 50px;      /* Groter knoppie vir tik */
+            font-size: 1.05rem;
+            padding: 1rem;
+        }
 
-    /* Vir products.html se bestel-vorm – spesifiek */
-    .order-form {
-        flex-direction: column;  /* Vertikaal op mobiel as dit flex is */
-    }
+        /* Vir products.html se bestel-vorm – spesifiek */
+        .order-form {
+            flex-direction: column;  /* Vertikaal op mobiel as dit flex is */
+        }
 
     /* Gallery */
         .slideshow-container {
