@@ -1108,12 +1108,19 @@
         .nav.active {
             max-height: 700px;          /* groot genoeg vir al jou items */
             opacity: 1;
+            overflow-y: auto;
         }
 
         .nav ul {
             flex-direction: column;     /* vertikaal */
             padding: 0;
             gap: 0;
+        }
+
+        /* Maak seker die lys binne-in ook mooi scroll */
+        .nav ul.nav-menu {
+            max-height: 100%;
+            overflow-y: auto;
         }
 
     /* Elke hoof menu item */
