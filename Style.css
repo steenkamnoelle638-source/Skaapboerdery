@@ -1344,20 +1344,20 @@
         }
 
         /* Stop hover-kontrole volledig */
-    .dropdown:hover .dropdown-content,
-    .dropdown:focus-within .dropdown-content {
-        display: none !important;
-    }
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus-within .dropdown-content {
+            display: none !important;
+        }
 
-    /* Wys slegs wanneer .active via JS bygevoeg word */
-    .dropdown.active .dropdown-content {
-        display: block !important;
-    }
+        /* Wys slegs wanneer .active via JS bygevoeg word */
+        .dropdown.active .dropdown-content {
+            display: block !important;
+        }
 
-    /* Maak die hele area klikbaar, maar voorkom navigasie later in JS */
-    .dropbtn, .dropdown-toggle {
-        pointer-events: auto;
-    }
+        /* Maak die hele area klikbaar, maar voorkom navigasie later in JS */
+        .dropbtn, .dropdown-toggle {
+            pointer-events: auto;
+        }
 
         /* Maak seker dropdowns nie te wyd word nie */
         .dropdown-content {
