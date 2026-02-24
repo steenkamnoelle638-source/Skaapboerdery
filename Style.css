@@ -1174,7 +1174,7 @@
 
         /* Dropdown inhoud */
         .dropdown-content {
-            display: none !important;          /* forceer toe */
+            display: none;          /* forceer toe */
             position: static;
             width: 100%;
             background: #f9fafb;
@@ -1185,7 +1185,7 @@
 
         /* Slegs wanneer die parent .dropdown .active is, wys dit */
         .dropdown.active .dropdown-content {
-            display: block !important;         /* forceer oop */
+            display: block;         /* forceer oop */
         }
 
         /* As jy sub-items het, maak seker hulle bly binne */
@@ -1220,7 +1220,7 @@
             padding: 0.7rem 1rem;
         }
 
-        /* Logo en Logo teks in nav langsmekaar vertoon */
+    /* Logo en Logo teks in nav langsmekaar vertoon */
         .logo-group {
             flex-direction: row;            /* forseer horisontaal */
             align-items: left;
