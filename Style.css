@@ -1106,7 +1106,7 @@
         }
 
         .nav.active {
-            max-height: 650px;          /* groot genoeg vir al jou items */
+            max-height: 700px;          /* groot genoeg vir al jou items */
             opacity: 1;
         }
 
