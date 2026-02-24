@@ -4,7 +4,7 @@
     let slideIndex = 0;
 
     // Alles wat in 'slide'-klas is 
-        // -> NodeList - beheer die slides en kolletjies terselfdetyd
+        // NodeList - beheer die slides en kolletjies terselfdetyd
     const slides = document.querySelectorAll(".slide");
     const dots = document.querySelectorAll(".dot");
 
@@ -148,7 +148,10 @@
     // Wag tot hele HTML blad klaar gelaai is - voer dan eers 'initMiniGalleries' uit
     document.addEventListener('DOMContentLoaded', initMiniGalleries);
 
-// ----------------------------------- TERUG NA BO KNOPPIE -----------------------------------
+// =====================================================================
+// ------------------------- Terug na bo knoppie -----------------------
+// =====================================================================
+
     // Stoor die 'id=topBtn' in veranderlike vir makliker gebruik
     const btn = document.getElementById("topBtn");
 
@@ -167,7 +170,10 @@
         }
     };
 
-// ----------------------------------- SPLIT -----------------------------------
+// =====================================================================
+// --------------------------- Split / Verdeel -------------------------
+// =====================================================================    
+    
     // Kyk watter split classe sigbaar is op skerm
     function checkSplitVisibility() 
     {
@@ -215,7 +221,7 @@
 
 
 // =====================================================================
-// CAROUSEL - Slegs uitvoer as die element bestaan, sodat js nie crash
+// --------------------------- Carousel Galery -------------------------
 // =====================================================================
     // Soek in HTML vir 'id=produkCarousel' en stoor in waarde
     const carouselContainer = document.getElementById('produkCarousel');
@@ -313,7 +319,10 @@
         }
     }
 
-//  ----------------------------------- BESTELVORM -----------------------------------
+// =====================================================================
+// ----------------------------- Bestelvorm ----------------------------
+// =====================================================================
+
     //  Bepaal sigbaarheid van aflewering adres veld
     function toggleAddressField() 
     {
@@ -499,8 +508,9 @@
     }
 
 // =====================================================================
-// VOORRAADBESTUUR - As die tabel bestaan, sodat js nie crash
+// --------------------------- Voorraadbestuur -------------------------
 // =====================================================================
+
     // Vind <tbody> met id 'inventoryBody' - waar ry data bygevoeg/verwyder word
     const inventoryBodyElement = document.getElementById('inventoryBody');
 
@@ -698,15 +708,54 @@
     } 
 
 // =====================================================================
-// --------------------- ------ Kontakvorm -----------------------------
+// --------------------------- Kontakvorm -----------------------------
 // =====================================================================
     // Defineer gebeurtenis objek funksie
     function handleSubmit(e) 
     {
         // Keer vorm se standaardgedrag - sodat bladsy nie herlaai, na ander URL beweeg as daar 'n 'action' is
         e.preventDefault();
-        // Wys eenvoudige popup met teks hieronder, stuur geen regte boodskap net 'n simulasie
-        alert("Boodskap suksesvol gestuur!");
+
+        // Stoor in konstantes vir makliker en vinniger gebruik
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        // Skikking - foute tydens validasie te stoor
+        let errors = [];
+
+        // Valideer elke veld een vir een (As nie voldoen vertoon hierdie in foute skikking)
+        if (!name) 
+        {
+            // errors.push - Voeg nuwe item aan einde van skikking by
+            errors.push("Naam is verpligtend – vul asseblief jou volle naam in.");
+        }
+
+        if (!emailField.checkValidity()) 
+        {
+            errors.push("Geldige e-posadres is verpligtend (bv. jou@email.com).");
+
+            // Spring na waar fout is
+            emailField.focus();
+        }        
+        
+        if (message.length < 10)
+        {
+            errors.push("Boodskap moet minstens 10 karakters wees.");
+        }
+
+        // Wys waarskuwing en stop funksie as enige 'foute' is
+        if (errors.length > 0) 
+        {
+            // errors.join - Plaas alle items binne skikking saam in 1 string met nuwe lyn tussen in
+            alert("Daar is foute in die vorm:\n\n" + errors.join("\n"));
+            // Stop hier – geen bestelling word geplaas nie
+            return;  
+        }
+
+        // Bou sukses-boodskap op (met al die besonderhede)
+        alert("Boodskap suksesvol gestuur!\n\nNaam: " + name + "\nE-pos: " + email);
+        
         // Vind vorm met id "contactForm" ,maak velde leeg
         document.getElementById('contactForm').reset();
     }
@@ -714,6 +763,7 @@
 // =====================================================================
 // ------------------------------- NAV ---------------------------------
 // =====================================================================
+
 // Hamburger menu toggle
 document.addEventListener('DOMContentLoaded', function () {
     const toggleBtn = document.getElementById('menuToggle');
@@ -721,16 +771,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const xIcon = document.getElementById('xIcon');
     const nav = document.getElementById('mainNav');
 
-    if (!toggleBtn || !nav) return;
+    if (!toggleBtn || !nav)
+    {
+        return;
+    }
 
     // Hoof burger menu oop/toe
     toggleBtn.addEventListener('click', function () {
         const isOpen = nav.classList.toggle('active');
 
-        if (isOpen) {
+        if (isOpen) 
+        {
             barsIcon.style.display = 'none';
             xIcon.style.display = 'inline-block';
-        } else {
+        } 
+        else 
+        {
             barsIcon.style.display = 'inline-block';
             xIcon.style.display = 'none';
             // Maak alle sub-dropdowns toe wanneer hoofmenu toemaak
@@ -740,7 +796,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Maak toe as buite gekliek word
     document.addEventListener('click', function (event) {
-        if (!nav.contains(event.target) && !toggleBtn.contains(event.target)) {
+        if (!nav.contains(event.target) && !toggleBtn.contains(event.target)) 
+        {
             nav.classList.remove('active');
             barsIcon.style.display = 'inline-block';
             xIcon.style.display = 'none';
@@ -749,28 +806,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Mobiele dropdowns: net die pyltjie oopmaak/toemaak
-document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-    toggle.addEventListener('click', function (e) {
-        e.preventDefault();         // stop navigasie
-        e.stopPropagation();        // stop borrel na ouer <a>
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', function (e) {
+            e.preventDefault();         // stop navigasie
+            e.stopPropagation();        // stop borrel na ouer <a>
 
-        const dropdown = this.closest('.dropdown');
-        if (!dropdown) {
-            console.log('Geen dropdown gevind vir hierdie pyltjie');
-            return;
-        }
-
-        // Toggle en log vir debug
-        const isActiveNow = dropdown.classList.toggle('active');
-
-        // Maak ander toe
-        document.querySelectorAll('.dropdown').forEach(other => {
-            if (other !== dropdown) {
-                other.classList.remove('active');
+            const dropdown = this.closest('.dropdown');
+            if (!dropdown) 
+            {
+                console.log('Geen dropdown gevind vir hierdie pyltjie');
+                return;
             }
+
+            // Toggle en log vir debug
+            const isActiveNow = dropdown.classList.toggle('active');
+
+            // Maak ander toe
+            document.querySelectorAll('.dropdown').forEach(other => {
+                if (other !== dropdown) 
+                {
+                    other.classList.remove('active');
+                }
+            });
         });
     });
-});
 
     // As op 'n sub-link gekliek word → maak hele mobiele menu toe
     document.querySelectorAll('.dropdown-content a').forEach(link => {
