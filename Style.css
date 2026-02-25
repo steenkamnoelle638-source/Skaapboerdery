@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------------------------------
-   ============================= GLOBAL - ALLE BLADSYE =============================
-   ---------------------------------------------------------------------------------*/  
+   ================================== NORMALE CSS ==================================
+   --------------------------------------------------------------------------------- */
 
 /* ============================= UNIVERSELE STYL (*) ============================= */
     *{
@@ -43,7 +43,7 @@
         flex-wrap: wrap;
     }
 
-    /* Groep vir logo deel links op nav balk bevat prent en teks */
+/* Groep vir handelsmerk (logo) deel links op navigasie balk bevat prent en teks */
     .logo-group {
         display: flex;
         align-items: center;
@@ -67,6 +67,26 @@
         font-size: 0.75rem;
         color: #6b7280;
         margin-top: -0.25rem;   /* Maak die teks effens nader aan die hoof teks(h1) */
+    }
+
+    .logo-img {
+        width: 55px;             
+        height: 55px;       
+        object-fit: cover;                  /* maak dat handelsmerk (logo) prent mooi binne sirkel pas */
+        border-radius: 50%;                 /* maak blok heeltemal rond(sirkel) */
+        border: 3px solid #065f46;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        margin-right: 1rem;
+        transition: transform 0.3s ease;    /* klein sweef-effek */
+    }
+
+    .logo-group:hover .logo-img {
+        transform: scale(1.08);     /* maak handelsmerk (logo) sirkel effens groter waneer daaroor sweef */
+    }
+
+/* Navigasie / skakels lys */
+    .nav {
+        transition: max-height 0.4s ease, opacity 0.3s ease;
     }
 
     nav ul {
@@ -93,28 +113,7 @@
         transform: scale(1.1);  /* Vergroot teks effens (10%) waneer op die skakel sweef */
     }
 
-    .logo-img {
-        width: 55px;             
-        height: 55px;       
-        object-fit: cover;                  /* maak dat logo prent mooi binne sirkel pas */
-        border-radius: 50%;                 /* maak blok heeltemal rond(sirkel) */
-        border: 3px solid #065f46;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        margin-right: 1rem;
-        transition: transform 0.3s ease;    /* klein sweef-effek */
-    }
-
-    .logo-group:hover .logo-img {
-        transform: scale(1.08);     /* maak logo sirkel effens groter waneer daaroor sweef */
-    }
-
-    /* Responsiwiteit insit */
-        /* Header */
-        /* Logo */
-        /* Nav */
-
-
-/* ================= SUBSKAKELS / AFTREKLYS SKAKELS ================= */
+/* Subskakels - Dropdown lys */
     .dropdown .dropdown-content {
         display: none;
         position: absolute;
@@ -146,7 +145,7 @@
         color: #2e7d32;
     }
 
-    /* Klein pyltjie */
+    /* Klein pyltjie knoppie */
     .dropdown .dropbtn::after {
         font-size: 0.75em;
         margin-left: 5px;
@@ -169,7 +168,7 @@
         gap: 6px;
     }
 
-
+    /*  */
     .dropbtn i {
         font-size: 0.7em;
         margin-left: 6px;
@@ -177,8 +176,7 @@
         opacity: 0.7;
     }
 
-
-/* ============================= HERO (prent bo aan gedeelte van bladsy) ============================= */
+/* ============================= HERO ============================= */
     .hero {
         height: 600px;
         background-position: center;  /* Hou die posisie */
@@ -190,7 +188,7 @@
         position: relative;
     }
 
-    /* Gebruik om swart overlay oor hero prent te plaas */
+/* Gebruik om swart overlay oor hero prent te plaas */
     .hero::before {
         content: "";    /* Skep lee elent (geen teks) */
         position: absolute;
@@ -215,11 +213,6 @@
     .hero-content p {
         font-size: 18px;
     }
-
-    /* Responsiwiteit insit */
-        /* Hero */
-        /* Content */
-
 
 /* ============================= SKAKEL KNOPPIE ============================= */
     .cta{
@@ -248,11 +241,7 @@
         background:#3e8e41;
     }
 
-    /* Responsiwiteit insit */
-        /* CTA */
-
-
-/* ============================= TERUG NA BO ============================= */
+/* ============================= TERUG NA BO KNOPPIE ============================= */
     #topBtn{
         position:fixed;     /* Sodat knoppie altyd op dieselfde plek is waneer jy scroll */
         bottom:30px;
@@ -270,11 +259,7 @@
         background: #3e8e41;
     }
 
-    /* Responsiwiteit insit */
-        /* terug na bo */
-
-
-/* ============================= ALGEMENE AFDELINGS ============================= */
+/* ============================= ALGEMENE BLADSY AFDELINGS ============================= */
     /* Sodat seksies van die volle bladsy 'n ander agtergronkleur kan he */
     .alt-section{
         background:#ffffff;
@@ -286,147 +271,6 @@
 
     .alt-section-3{
         background:#eef0e8;
-    }
-
-/* ============================= AGTERGROND FOTO AFDELING ============================= */
-    .bg-section{
-        background:url("RotationalGrazing.jpg") center/cover no-repeat;
-        color:rgb(238, 238, 238);
-        text-align:center;
-        position:relative;
-    }
-
-    .bg-section::before{
-        content:"";
-        position:absolute;
-        width:100%;
-        height:100%;
-        background:rgba(0,0,0,0.5);
-        top:0;
-        left:0;
-    }
-
-    .bg-content{
-        position:relative;
-        max-width:800px;
-        margin: auto;
-    }
-
-    /* Responsiwiteit insit */
-        /* bg-section */
-        /* bg-content */
-
-/* ================= SPLIT LAYOUT (prent + teks) ================= */
-    .split {
-        display: flex;
-        align-items: center;
-        max-width: 1200px;
-        gap: 30px;
-        flex-wrap: wrap;
-        margin-bottom: 30px;
-        
-        /* Animasiereëls – moet saam wees sodat nie oorskryf word nie */
-        opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 1.2s ease, transform 1.2s ease;
-        will-change: opacity, transform;  /* beter performance */
-    }
-
-    .split:nth-child(even) {
-        flex-direction: row-reverse;
-    }
-
-    .split.show {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .split img {
-        width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .split-text,
-    .split-image {
-        flex: 1;
-        min-width: 300px;
-    }
-
-    /* Responsiwiteit insit */
-        /* split */
-        /* split-text */
-        /* split-image */
-
-/* ============================= PRODUKTE VOORRAADBESTUUR & VERKOPE INLEIDING + TABEL ============================= */
-    /* Hoof box vir bladsy se inhoud */
-    .content-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 3rem 1.5rem;
-    }
-
-    /* Net op content container se h2 stel */
-    .content-container h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #065f46;
-        margin-bottom: 1.5rem;
-        text-align: left;          /* Of center, afhangende van jou voorkoms */
-    }
-
-    /* Sodat nie n hero het soos tuisblad se intro nie */
-    .section-intro,
-    .page-intro {
-        font-size: 1.3rem;          /* effens groter vir beter leesbaarheid */
-        font-weight: 500;           /* medium vet – lyk meer professioneel */
-        color: #4b5563;             /* hou die sagte grys */
-        max-width: 800px;           /* hou dit nie te wyd nie */
-        line-height: 1.7;           /* beter leesbaarheid */
-        text-align: left;
-    }        
-
-    /* ============================= Tabel ============================= */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background: white;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        border-radius: 8px;
-        overflow: hidden;
-        margin: 1.5rem 0;
-    }
-
-    thead {
-        background: #065f46;
-        color: white;
-    }
-
-    th, td {
-        padding: 1.25rem 1.5rem;
-        text-align: left;
-    }
-
-    th {
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 0.95rem;
-        letter-spacing: 0.5px;
-    }
-
-    td {
-        border-bottom: 1px solid #e5e7eb;
-    }
-
-    tr:last-child td {
-        border-bottom: none;
-    }
-
-/* ============================= PRODUKTE & VERKOPE - PRYS KOLOM IN TABEL ============================= */
-    .price {
-        font-weight: 700;
-        color: #065f46;
-        text-align: right;
     }
 
 /* ============================= VOETSKRIF ============================= */
@@ -474,11 +318,188 @@
         font-size: 0.9rem;
     }
 
-/* ---------------------------------------------------------------------------------
-   ============================= TUIS BLADSY =============================
-   ---------------------------------------------------------------------------------*/  
+/* ============================= AGTERGROND FOTO AFDELING ============================= */
+    .bg-section{
+        background:url("RotationalGrazing.jpg") center/cover no-repeat;
+        color:rgb(238, 238, 238);
+        text-align:center;
+        position:relative;
+    }
 
-/* ============================= INLEIDING ============================= */
+    .bg-section::before{
+        content:"";
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        top:0;
+        left:0;
+    }
+
+    .bg-content{
+        position:relative;
+        max-width:800px;
+        margin: auto;
+    }
+
+/* ================= OPDEEL (SPLIT) LAYOUT ================= */
+    /* Prent 1 kant en teks anderkant, elke 2de div se prent en teks pos ruil */
+    .split {
+        display: flex;
+        align-items: center;
+        max-width: 1200px;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+        
+        /* Animasiereëls – moet saam wees sodat nie oorskryf word nie */
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1.2s ease, transform 1.2s ease;
+        will-change: opacity, transform;  /* beter performance */
+    }
+
+    .split:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .split.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .split img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .split-text,
+    .split-image {
+        flex: 1;
+        min-width: 300px;
+    }
+
+/* ============================= SPESIALE INLEIDING (Op tabel blaaie) ============================= */
+    /* Hoof box vir bladsy se inhoud */
+    .content-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+    }
+
+    /* Net op content container se h2 stel */
+    .content-container h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #065f46;
+        margin-bottom: 1.5rem;
+        text-align: left;          /* Of center, afhangende van jou voorkoms */
+    }
+
+    /* Sodat nie n hero het soos tuisblad se intro nie */
+    .section-intro,
+    .page-intro {
+        font-size: 1.3rem;          /* effens groter vir beter leesbaarheid */
+        font-weight: 500;           /* medium vet – lyk meer professioneel */
+        color: #4b5563;             /* hou die sagte grys */
+        max-width: 800px;           /* hou dit nie te wyd nie */
+        line-height: 1.7;           /* beter leesbaarheid */
+        text-align: left;
+    } 
+
+/* ============================= Tabelle ============================= */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border-radius: 8px;
+        overflow: hidden;
+        margin: 1.5rem 0;
+    }
+
+    thead {
+        background: #065f46;
+        color: white;
+    }
+
+    th, td {
+        padding: 1.25rem 1.5rem;
+        text-align: left;
+    }
+
+    th {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+    }
+
+    td {
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+/* PRYS KOLOM */
+    .price {
+            font-weight: 700;
+            color: #065f46;
+            text-align: right;
+        }
+
+/* WAARSKUWING - LAE VOORRAAD */
+    /* (Aanpas sodat hele ry rooi is - rooi teks / ligte rooi verkleur) */
+    .low-stock { 
+        color: #dc2626; 
+        font-weight: 700; 
+    }
+
+    .status-low { 
+        color: #dc2626; 
+        font-weight: bold; 
+    }
+
+/* ============================= SOEKVELD EN BYSIT (VOORRAADTABEL) ============================= */
+    .controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        width: 50%; /* Soekbalk breedte stel */
+    }
+
+    /* Styl vir alle invoer teks */
+    input[type="text"] {
+        padding: 0.8rem 1.4rem;
+        border: 1px solid #d1d5db;
+        border-radius: 9999px;
+        width: 340px;
+        font-size: 1rem;
+    }
+
+    /* Bysit / Invoeg (Nuwe item) knoppie */
+    button.add-btn {
+            background: #065f46;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+    button.add-btn:hover {
+            background: #047857;
+    }
+
+/* ============================= TUISBLAD INLEIDING ============================= */
     .intro {
         background: url("Plaas.jpg") center/cover no-repeat;
         text-align: center;
@@ -529,6 +550,7 @@
         display: block;
     }
 
+/* Pyltjies om deur prente te navigeer */
     .arrow {
         position: absolute;
         top: 50%;
@@ -546,6 +568,7 @@
     .left  { left: 20px; }
     .right { right: 20px; }
 
+/* Kolletjies vir onder gallery - ekstra navigasie */
     .dots {
         text-align: center;
         margin-top: 15px;
@@ -567,7 +590,7 @@
         background-color: #4CAF50;
     }
 
-/* ============================= LOGO BLOK ============================= */
+/* ============================= HANDELSMERK (LOGO) BLOK ============================= */
     .logo-block {
         background: #2f4f2f;
         color: white;
@@ -638,9 +661,10 @@
         width:100%;
     }
 
-/* ============================= GENOMMERDE BULLETPUNT ============================= */
+/* ============================= KOLPUNTLYSTE (BULLETS) ============================= */
+/* --------------- GENOMMERDE --------------- */
     .feature-list{
-        display:grid;
+        display:grid;   
         /* Herhaal patroon, kolomme outomaties beskikbare spasie ful, min grootte kolom */ 
         grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
         gap:30px;
@@ -666,7 +690,7 @@
         font-weight:bold;
     }
 
-/* ============================= REGMERKIE BULLETPUNT ============================= */
+/* --------------- REGMERKIE --------------- */
     .check-list{
         max-width:1000px;
         margin:40px auto;
@@ -688,9 +712,46 @@
         align-items:center;
         justify-content:center;
     }
-    
 
-/* ============================= PRODUKTE PRENTE ============================= */
+/* Binne blok / Rooster - normale kolpunte */
+    .hoe-boer-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);   /* 2 gelyke kolomme */
+        gap: 30px;                               /* spasie tussen blokke – pas aan soos jy wil */
+        padding: 20px;                           /* opsioneel – gee asem rondom */
+        max-width: 1200px;                       /* beperk breedte vir groot skerms */
+        margin: 0 auto;                          /* sentreer */
+    }
+
+    /* Kies alle elemente wat klas 'hoe-boer-grid' het en slegs direkte direkte kinders ,asook div element is */
+    .hoe-boer-grid > div {
+        background: #d4f2d6;                     /* ligte agtergrond vir kontras – opsioneel */
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.25); /* effense skadu vir diepte */
+        border: 10px solid #c8eccb;               /* subtiele rand – opsioneel */
+    }
+
+    /* Styl van H2 binne blok van die rooster (grid) */
+    .hoe-boer-grid h2 {
+        margin-top: 0;
+        color: #065f46;                          
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .hoe-boer-grid ul {
+        list-style: disc;
+        padding-left: 25px;
+        margin: 0;
+    }
+
+    .hoe-boer-grid li {
+        margin-bottom: 10px;
+        font-size: 1.05rem;
+    }
+
+/* ============================= TUISBLAD PRODUKTE PRENTE ============================= */
     .produk-img {
     margin: 20px auto;
     width: 80%;
@@ -711,20 +772,16 @@
         transform: scale(1.05);   /* Ligte zoom op hover */
     }
 
-/* ---------------------------------------------------------------------------------
-   ============================= OOR ONS BLADSY =============================
-   ---------------------------------------------------------------------------------*/  
-
-/* ============================= PRENT ============================= */
+/* ============================= GESKIEDENIS PRENT ============================= */
     .center-image {
-        display: block; /* Images are inline by default, change to block */
-        margin-left: auto; /* Distribute left margin automatically */
-        margin-right: auto; /* Distribute right margin automatically */
+        display: block;     /* Beelde standaard inlyn - verander na blok */
+        margin-left: auto;  
+        margin-right: auto;
 
-        /* Optionally, set a width for better control */
+        /* Gestelde breedte vir beter beheer */
         width: 90%;
-        height: auto; /* Maintain aspect ratio */
-        border-radius: 25px; /* Adjust the value for desired roundness */
+        height: auto;
+        border-radius: 25px;    /* Geronde rand */
     }
 
 /* ============================= BLOKAANHALING ============================= */
@@ -739,11 +796,8 @@
         box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
 
-/* ---------------------------------------------------------------------------------
-   ================================ ONS TROP BLADSY ================================
-   ---------------------------------------------------------------------------------*/  
-
 /* ============================= KLEIN GALERY ============================= */
+    /* Ons trop se verdeel (split) teks en gallery - skaap rasse */
     .mini-gallery {
         position: relative;
         width: 100%;
@@ -752,18 +806,18 @@
         overflow: hidden;
         border-radius: 50%;              /* maak die hele gallery 'n sirkel */
         box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-        height: 250px;                   /* maak dit laer as breedte */
+        height: 250px;                   /* maak laer as breedte - sodat ovaal */
         background: #f0f0f0;           /* ligte agtergrond as prent nie vul nie */
     }
 
-    /* Elke slide is ook 'n sirkel */
+    /* Elke skyfie (slide) is 'n ovaal - boks / houer vir die prent */
     .mini-slide {
         display: none;
         width: 100%;
         height: 100%;
     }
 
-    /* Prente vul die sirkel perfek, gesentreer en geknip */
+    /* Prente vul die ovaal perfek, gesentreer en geknip */
     .mini-slide img {
         width: 100%;
         height: 100%;
@@ -776,7 +830,7 @@
         display: block;
     }
 
-    /* Pyltjies (hou jou huidige styl, maar maak seker hulle bly binne sirkel) */
+/* Pyltjies (hou styl - maak seker binne sirkel bly) */
     .mini-gallery .mini-arrow {
         position: absolute;
         top: 50%;
@@ -797,11 +851,13 @@
         box-shadow: 0 4px 10px rgba(0,0,0,0.25);
     }
 
+    /* Voorkoms van pyltjies as muis bo-oor beweeg (hover) */
     .mini-gallery .mini-arrow:hover {
         background-color: rgba(76, 175, 80, 1);
         transform: translateY(-50%) scale(1.12);
     }
 
+    /* Inlynstellings vir pyle - regte posisies binne galery houer sit  */
     .mini-gallery .mini-left {
         left: 10px;
     }
@@ -810,48 +866,9 @@
         right: 10px;
     }
 
-/* ============================= Bullets Split ============================= */
-    .hoe-boer-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);   /* 2 gelyke kolomme */
-        gap: 30px;                               /* spasie tussen blokke – pas aan soos jy wil */
-        padding: 20px;                           /* opsioneel – gee asem rondom */
-        max-width: 1200px;                       /* beperk breedte vir groot skerms */
-        margin: 0 auto;                          /* sentreer */
-    }
-
-    /* Kies alle elemenye wat klas 'hoe-boer-grid' het en slegs direkte direkte kinders ,asook div element is */
-    .hoe-boer-grid > div {
-        background: #d4f2d6;                     /* ligte agtergrond vir kontras – opsioneel */
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 6px 14px rgba(0,0,0,0.25); /* effense skadu vir diepte */
-        border: 10px solid #c8eccb;               /* subtiele rand – opsioneel */
-    }
-
-    .hoe-boer-grid h2 {
-        margin-top: 0;
-        color: #065f46;                          
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-    }
-
-    .hoe-boer-grid ul {
-        list-style: disc;
-        padding-left: 25px;
-        margin: 0;
-    }
-
-    .hoe-boer-grid li {
-        margin-bottom: 10px;
-        font-size: 1.05rem;
-    }
-
-/* ---------------------------------------------------------------------------------
-   ================================ PRODUKTE BLADSY ================================
-   ---------------------------------------------------------------------------------*/  
-
 /* ============================= PRODUKTE GALERY (CAROUSEL) ============================= */
+    /* Vertoon 3 prente op 'n slag - huidige prent middel en groter - vorige en volgende 'agterntoe' en ligter */
+
     .produk-carousel-container {
         position: relative;           
         margin: 20px auto;
@@ -861,6 +878,7 @@
         padding-top: 60px;       
     }  
 
+    /* Galery houer - houer vir al 3 prente saam */
     .produk-carousel {
         display: flex;
         transition: transform 0.6s ease-in-out;
@@ -869,6 +887,7 @@
         align-items: center;
     }
 
+    /* Houer vir elke prent individueel */
     .carousel-item {
         width: 300px;
         height: 200px;
@@ -879,6 +898,7 @@
         flex-shrink: 0;
     }
 
+    /* Prent van die individuele prent houers */
     .carousel-item img {
         width: 100%;
         height: 100%;
@@ -888,20 +908,22 @@
         opacity: 0.7;
     }
 
+    /* Middelste prent houer */
     .carousel-item.center {
         width: 350px;
         height: 225px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         transform: scale(1.15);         
-        z-index: 2;
+        z-index: 2;     /* Pos van middelste prent (1   2   3) */
     }
 
+    /* Middelste prent */
     .carousel-item.center img {
         opacity: 1;
-        transform: scale(1.15);          /* Skaal net die img */
+        transform: scale(1.15);          /* Skaal middleste prent - groter as 2 kant prente */
     }
 
-    /* Pyltjies */
+/* Pyltjies */
     .carousel-arrow {
         position: absolute;
         top: 50%;
@@ -917,10 +939,12 @@
         transition: background 0.3s;
     }
 
+    /* Voorkoms as muis bo-oor pyle beweeg */
     .carousel-arrow:hover {
         background: rgba(0,0,0,0.8);
     }
 
+    /* Inlynstellings vir pyle - regte posisies binne galery houer sit  */
     .left-arrow { 
         left: 10px; 
     }
@@ -929,8 +953,7 @@
         right: 10px; 
     }
 
-
-/* ============================= BESTEL EN KONTAKVORM ============================= */
+/* ============================= WEBVORMS ============================= */
     .form-container {
         max-width: 600px;
         margin: 0 auto;
@@ -973,7 +996,7 @@
         transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    /* Wat gebeur as gebruiker op (imput,textarea,select) kliek of hover */
+    /* Wat gebeur as gebruiker op (imput,textarea,select) kliek of oor beweeg (hover) */
     input:focus,
     textarea:focus,
     select:focus {
@@ -987,6 +1010,7 @@
         min-height: 140px;
     }
 
+    /* Knoppie om vorm te stuur (Plaas bestelling / Stuur boodskap) */
     .submit-btn {
         width: 100%;
         background: #065f46;
@@ -1000,90 +1024,40 @@
         transition: background 0.2s;
     }
 
+    /* Voorkoms as bo-oor knoppie met muis beweeg */
     .submit-btn:hover {
         background: #047857;
     }
 
 /* ---------------------------------------------------------------------------------
-   ============================= VOORRAADBESTUUR BLADSY =============================
-   ---------------------------------------------------------------------------------*/  
+   ============================== RESPONSIEWE ONTWERP ==============================
+   --------------------------------- 3 Kermgroottes --------------------------------
+                            Slimfoon        - tussen 480px en 768px
+                            Tablet          - tussen 768px en 1024 px
+                            Ouer slimfone   - minder / kleiner as 480px
+   --------------------------------------------------------------------------------- */
 
-/* ============================= WAARSKUWING IN TABEL ============================= */
-    .low-stock { 
-        color: #dc2626; 
-        font-weight: 700; 
-    }
-
-    .status-low { 
-        color: #dc2626; 
-        font-weight: bold; 
-    }
-
-/* ============================= SOEKVELD EN BYSIT KONTROLE ============================= */
-    .controls {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-        gap: 1.2rem;
-        width: 50%; /* Soekbalk breedte stel */
-    }
-
-    /* Styl vir alle invoer teks */
-    input[type="text"] {
-        padding: 0.8rem 1.4rem;
-        border: 1px solid #d1d5db;
-        border-radius: 9999px;
-        width: 340px;
-        font-size: 1rem;
-    }
-
-    button.add-btn {
-            background: #065f46;
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-    button.add-btn:hover {
-            background: #047857;
-    }
-
-/* ---------------------------------------------------------------------------------
-   ============================= RESPONSIEWE ONTWERP =============================
-   ---------------------------------------------------------------------------------*/  
-
-/* Globale styl vir prente sodat makliker responsiwiteit kan doen */
+/* Globale styl vir prente en navigasielys op kleiner skerms */
+    /* Prente */
     img {
         max-width: 100%;       /* Beelde nie wyer as houer nie */
         height: auto;         
         display: block;       /* Verwyder ekstra spasie onder beelde */
     }
 
-/* Hamburger menu vir op kleiner skerms */
-    /* Hamburger ikoon self */
+    /* Hamburger menu knoppie (3 strepie vir op mobiel) */
     .menu-toggle {
         display: none;                  /* versteek op groot skerms */
-        background: none;
+        background: none;   /* Agtergrond en grens (border) - nie normale knoppie styl he */
         border: none;
-        font-size: 1.4rem;              
+        font-size: 1.4rem;  /* Font / Ikoon grootte */              
         color: #333;
         cursor: pointer;
         padding: 0.2rem;
         margin-left: auto;
     }
 
-    /* Die nav lys self */
-    .nav {
-        transition: max-height 0.4s ease, opacity 0.3s ease;
-    }
-
-/* Vir skermgrottes kleiner as 768px (Mobiel / Klein Tablette) */
+/* Slimfoon skerm (tussen 480 en 768) */
     @media (max-width: 768px) {
     /* Navigasie en menu */
         .menu-toggle {
@@ -1105,19 +1079,22 @@
             z-index: 999;
         }
 
+        /* Waneer navigasie aktief / sigbaar is */
         .nav.active {
-            max-height: 700px;          /* groot genoeg vir al jou items */
+            max-height: 700px;  /* groot genoeg vir al die skakels */
             opacity: 1;
-            overflow-y: auto;   /* Vertikale scroll waneer inhoud te veel is vir boks */
+            overflow-y: auto;   /* Vertikale blaai (scroll) waneer inhoud te veel is vir boks */
         }
 
+        /* Navigasie lys */
         .nav ul {
-            flex-direction: column;     /* vertikaal */
+            flex-direction: column;     /* Maak lys vertikaal (skakels ondermekaar) */
             padding: 0;
             gap: 0;
         }
 
-        /* Maak seker die lys binne-in ook mooi scroll */
+        /* Binne lys ook blaai (scroll) */
+            /* Lys binne klas 'nav-menu' (klas uniek tot kleiner skerms) binne klas 'nav' - virseker dat regte lys aangepas word */
         .nav ul.nav-menu {
             max-height: 100%;
             overflow-y: auto;
@@ -1132,10 +1109,13 @@
             padding: 0;
         }
 
+        /* (>) - Teiken (target) slegs direkte lys (li) items binne die 'nav-menu' klas */
         .nav-menu > li {
             width: 100%;
         }
 
+        /* Eerste (>) - Teiken (target) slegs direkte lys (li) items binne die 'nav-menu' klas
+           Tweede (>) verder 'a' tags (<a>) wat direkte kinders van lys (li) items is maar slegs die 'a' tags met klas 'dropbtn' */
         .nav-menu > li > a.dropbtn {
             display: flex;
             justify-content: space-between;
@@ -1167,14 +1147,14 @@
             transition: transform 0.25s ease;
         }
 
-        /* Wanneer oop – draai pyltjie om */
+        /* Wanneer oop – draai pyltjie om (lyk nou so - ^) */
         .dropdown.active .dropdown-toggle {
             transform: rotate(180deg);
         }
 
-        /* Dropdown inhoud */
+        /* Subskakels (Dropdown) inhoud */
         .dropdown-content {
-            display: none;          /* forceer toe */
+            display: none;          /* forseer toe */
             position: static;
             width: 100%;
             background: #f9fafb;
@@ -1183,7 +1163,7 @@
             overflow: hidden;                  /* ekstra veiligheid */
         }
 
-        /* Slegs wanneer die parent .dropdown .active is, wys dit */
+        /* Slegs wanneer die parent (.dropdown) '.active' is, wys dit */
         .dropdown.active .dropdown-content {
             display: block;         /* forceer oop */
         }
@@ -1320,7 +1300,7 @@
         }
     }
 
-/* Tablet / medium skerms (768px tot 1024px) */
+/* Tablet skerm (tussen 768 en 1024) */
     @media (max-width: 1024px) {
         .nav-container {
             padding: 0.7rem 1rem;           /* effens kleiner padding */
@@ -1374,7 +1354,7 @@
         }
     }
 
-/* Op baie klein skerms (ou fone) */
+/* Ouer slimfone skerm (kleiner as 480) */
     @media (max-width: 480px) {
         .menu-toggle {
             font-size: 1.6rem;
