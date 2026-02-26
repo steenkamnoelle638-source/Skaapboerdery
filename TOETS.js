@@ -1,7 +1,7 @@
 
 // ============================= TERUG NA BO KNOPPIE ============================= 
-    // Stoor die 'id=topBtn' in veranderlike vir makliker gebruik
-    const btn = document.getElementById("topBtn");
+    // Stoor die 'id=naBo' in veranderlike vir makliker gebruik
+    const btn = document.getElementById("naBo");
 
     // Koppel funksie aan scroll van die hele bladsy
     window.onscroll = function() 
@@ -95,11 +95,11 @@
     function initMiniGalleries() 
     {
         // Loop deur alle mini-galery classe op die blad
-        document.querySelectorAll('.mini-gallery').forEach(gallery => {
+        document.querySelectorAll('.klein-galery').forEach(gallery => {
             // Stel huidige / begin indeks as 0
             let currentIndex = 0;
             // NodeList
-            const miniSlides = gallery.querySelectorAll('.mini-slide');
+            const miniSlides = gallery.querySelectorAll('.klein-skyfie');
 
             //Toets of mini galery bestaan in blad
             if (miniSlides.length === 0) 
@@ -111,21 +111,21 @@
             function showMiniSlide(index) 
             {
                 // Gaan deur elke prent in die spesifieke gallery - maak sodat geen slide aktief is voordat nuwe een aktiveer word nie
-                miniSlides.forEach(slide => slide.classList.remove('mini-active'));
+                miniSlides.forEach(slide => slide.classList.remove('klein-active'));
                 
                 // Toets of daar slide by die indeks bestaan 
                 if (miniSlides[index])
                 {  
                     // Maak die huidige slide active
-                    miniSlides[index].classList.add('mini-active');
+                    miniSlides[index].classList.add('klein-active');
                     // Opdateer sodat weet watter indeks tans wys
                     currentIndex = index;
                 }
             }
 
             //Soek spesifiek vir hierdie knoppies sodat nie inmeng met ander op bladsy
-            const leftBtn = gallery.querySelector('.mini-arrow.mini-left'); 
-            const rightBtn = gallery.querySelector('.mini-arrow.mini-right');
+            const leftBtn = gallery.querySelector('.klein-galery.klein-links'); 
+            const rightBtn = gallery.querySelector('.klein-galery.klein-regs');
 
         // Toets waneer op linker of regterpyl gekliek word
             if (leftBtn) 
@@ -219,7 +219,7 @@
 
                 // Skep nuwe div met 'carousel-item'-klas vir elke prent
                 const wrapper = document.createElement('div');
-                wrapper.classList.add('carousel-item');
+                wrapper.classList.add('produk-item');
 
                 // Stel die src en alt vir img element 
                 const img = document.createElement('img');
@@ -539,13 +539,13 @@
                 if (!isNaN(qty) && !isNaN(reorder) && qty < reorder) 
                 {
                     // Voeg rooi op qty selle en verander status na 'Laag'
-                    qtyCell.classList.add('low-stock');
-                    statusCell.innerHTML = '<span class="status-low">LAAG – Bestel!</span>';
+                    qtyCell.classList.add('lae-voorraad');
+                    statusCell.innerHTML = '<span class="status-laag">LAAG – Bestel!</span>';
                 } 
                 else 
                 {
                     // Verwyder waarskuwing en stel status 'Goed'
-                    qtyCell.classList.remove('low-stock');
+                    qtyCell.classList.remove('lae-voorraad');
                     statusCell.innerHTML = 'Goed';
                 }
             });
@@ -716,7 +716,7 @@
     function checkSplitVisibility() 
     {
         // Vind alle split klasse
-        const splits = document.querySelectorAll('.split');
+        const splits = document.querySelectorAll('.opdeel');
         
         // Beweeg deur elke split 1 vir 1
         splits.forEach(split => {
@@ -786,7 +786,7 @@
                 barsIcon.style.display = 'inline-block';
                 xIcon.style.display = 'none';
                 // Maak alle sub-dropdowns toe wanneer hoofmenu toemaak
-                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+                document.querySelectorAll('.afrol').forEach(d => d.classList.remove('active'));
             }
         });
 
@@ -797,17 +797,17 @@
                 nav.classList.remove('active');
                 barsIcon.style.display = 'inline-block';
                 xIcon.style.display = 'none';
-                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+                document.querySelectorAll('.afrol').forEach(d => d.classList.remove('active'));
             }
         });
 
         // Mobiele dropdowns: net die pyltjie oopmaak/toemaak
-        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        document.querySelectorAll('.afrol-toggle').forEach(toggle => {
             toggle.addEventListener('click', function (e) {
                 e.preventDefault();         // stop navigasie
                 e.stopPropagation();        // stop borrel na ouer <a>
 
-                const dropdown = this.closest('.dropdown');
+                const dropdown = this.closest('.afrol');
                 if (!dropdown) 
                 {
                     console.log('Geen dropdown gevind vir hierdie pyltjie');
@@ -828,12 +828,12 @@
         });
 
         // As op 'n sub-link gekliek word → maak hele mobiele menu toe
-        document.querySelectorAll('.dropdown-content a').forEach(link => {
+        document.querySelectorAll('.afrol-content a').forEach(link => {
             link.addEventListener('click', function () {
                 nav.classList.remove('active');
                 barsIcon.style.display = 'inline-block';
                 xIcon.style.display = 'none';
-                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+                document.querySelectorAll('.afrol').forEach(d => d.classList.remove('active'));
             });
         });
     });
