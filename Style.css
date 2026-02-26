@@ -34,7 +34,7 @@
     }
 
     /* Navigasie houer - skakels en logo + teks */
-    .nav-container {
+    .nav-houer {
         max-width: 1400px;
         margin: 0 auto;
         padding: 1rem 1.5rem;
@@ -45,21 +45,21 @@
     }
 
 /* Groep vir handelsmerk (logo) deel links op navigasie balk bevat prent en teks */
-    .logo-group {
+    .logo-area {
         display: flex;
         align-items: center;
         gap: 1rem;
         flex-shrink: 0;     /* sodat nie krimp nie */
     }
 
-    /* Alle 'i' elemente binne 'logo-groep' klas */
-    .logo-group i {
+    /* Alle 'i' elemente binne 'logo-area' klas */
+    .logo-area i {
         font-size: 2.8rem;
         color: #064e3b;          
     }
 
     /* Boerdery / Besigheid naam */
-    .logo-text h1 {
+    .logo-naam h1 {
         font-size: 1.3rem;
         font-weight: 700;
         font-family: 'Segoe UI';
@@ -67,7 +67,7 @@
     }
 
     /* Slagspreuk */
-    .logo-text p {
+    .logo-teks p {
         font-size: 0.75rem;
         color: #6b7280;
         margin-top: -0.25rem;   /* Maak die teks effens nader aan die hoof teks(h1) */
@@ -84,7 +84,7 @@
         transition: transform 0.3s ease;    /* klein sweef-effek */
     }
 
-    .logo-group:hover .logo-img {
+    .logo-area:hover .logo-img {
         transform: scale(1.08);     /* maak handelsmerk (logo) sirkel effens groter waneer daaroor sweef */
     }
 
@@ -205,20 +205,20 @@
         background: rgba(0,0,0,0.45);
     }
 
-    .hero-content {
+    .hero-teks {
         position: relative;     /* Plaas die inhoud bo op die overlay */
         text-align: center;
         color: white;
         max-width: 700px;
     }
 
-    .hero-content h1 {
+    .hero-teks h1 {
         font-size: 48px;
         margin-bottom: 15px;
         color: white;
     }
 
-    .hero-content p {
+    .hero-teks p {
         font-size: 18px;
     }
 
@@ -234,8 +234,8 @@
         color:white;
     }
 
-    /* Knoppie styl vir alle knoppies binne '.cta' en '.alt-section' */
-    .cta button, .alt-section button{
+    /* Knoppie styl vir alle knoppies binne '.cta' en '.afdeling' */
+    .cta button, .afdeling button{
         background:#4CAF50;
         color:white;
         border:none;
@@ -269,15 +269,15 @@
 
 /* ============================= ALGEMENE BLADSY AFDELINGS ============================= */
     /* Sodat seksies van die volle bladsy 'n ander agtergronkleur kan he */
-    .alt-section{
+    .afdeling{
         background:#ffffff;
     }
 
-    .alt-section-2{
+    .afdeling-2{
         background:#f4f6f3;
     }
 
-    .alt-section-3{
+    .afdeling-3{
         background:#eef0e8;
     }
 
@@ -344,7 +344,7 @@
         left:0;
     }
 
-    .bg-content{
+    .bg-teks{
         position:relative;
         max-width:800px;
         margin: auto;
@@ -393,14 +393,14 @@
 
 /* ============================= SPESIALE INLEIDING (Op tabel blaaie) ============================= */
     /* Hoof box vir bladsy se inhoud */
-    .content-container {
+    .content-houer {
         max-width: 1400px;
         margin: 0 auto;
         padding: 3rem 1.5rem;
     }
 
     /* Net op content container se h2 stel */
-    .content-container h2 {
+    .content-houer h2 {
         font-size: 2.5rem;
         font-weight: 700;
         color: #065f46;
@@ -605,7 +605,7 @@
     }
 
 /* ============================= HANDELSMERK (LOGO) BLOK ============================= */
-    .logo-block {
+    .logo-blok {
         background: #2f4f2f;
         color: white;
         text-align: center;
@@ -617,7 +617,7 @@
         box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
-    .logo-circle {
+    .logo-sirkel {
         width: 140px;
         height: 140px;
         background: white url("Logo.jpg") center/cover no-repeat;
@@ -632,7 +632,7 @@
         box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     }
 
-    .logo-block p {
+    .logo-blok p {
         font-size: 1.3rem;
         font-style: italic;
         max-width: 700px;
@@ -653,14 +653,14 @@
     }
 
 /* ============================= PRENT + TEKS BOX ONDER ============================= */
-    .image-box{
+    .prent-boks{
         display:flex;
         gap:40px;
         align-items:center;
         flex-wrap:wrap;     /* As nie genoeg spasie gaan oor na volgende lyn */
     }
 
-    .image-box img{
+    .prent-boks img{
         width:100%;
         border-radius:10px;
     }
@@ -678,7 +678,7 @@
 /* ============================= KOLPUNTLYSTE (BULLETS) ============================= */
 /* --------------- GENOMMERDE --------------- */
     /* Rooster houer met outomatiese kolomme */
-    .feature-list{
+    .nommer-lys{
         display:grid;   
         /* Herhaal patroon, kolomme outomaties beskikbare spasie ful, min grootte kolom */ 
         grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -689,12 +689,12 @@
     }
 
     /* Elke item kry ikoon bullet links */
-    .feature-item{
+    .nommer-item{
         display:flex;
         gap:15px;
     }
 
-    .bullet-icon{
+    .nommer-ikoon{
         width:40px;
         height:40px;
         background:#4CAF50;
@@ -708,19 +708,19 @@
 
 /* --------------- REGMERKIE --------------- */
     /* Houer vir regmerkie ikoon lys */
-    .check-list{
+    .regmerkie-lys{
         max-width:1000px;
         margin:40px auto;
     }
 
     /* Styl die regmerkie lys */
-    .check-item{
+    .regmerkie-item{
         display:flex;
         gap:15px;
         margin-bottom:20px;
     }
 
-    .check-icon{
+    .regmerkie-ikoon{
         width:30px;
         height:30px;
         border-radius:50%;
@@ -733,7 +733,7 @@
 
 /* Binne blok / Rooster - normale kolpunte */
     /* Rooster met 2 kolomme */
-    .hoe-boer-grid {
+    .boerdery-rooster {
         display: grid;
         grid-template-columns: repeat(2, 1fr);   /* 2 gelyke kolomme */
         gap: 30px;                               /* spasie tussen blokke – pas aan soos jy wil */
@@ -742,8 +742,8 @@
         margin: 0 auto;                          /* sentreer */
     }
 
-    /* Kies alle elemente wat klas 'hoe-boer-grid' het en slegs direkte direkte kinders ,asook div element is */
-    .hoe-boer-grid > div {
+    /* Kies alle elemente wat klas 'boerdery-rooster' het en slegs direkte direkte kinders ,asook div element is */
+    .boerdery-rooster > div {
         background: #d4f2d6;                     /* ligte agtergrond vir kontras – opsioneel */
         padding: 20px;
         border-radius: 12px;
@@ -752,36 +752,37 @@
     }
 
     /* Styl van H2 binne blok van die rooster (grid) */
-    .hoe-boer-grid h2 {
+    .boerdery-rooster h2 {
         margin-top: 0;
         color: #065f46;                          
         font-size: 1.5rem;
         margin-bottom: 15px;
     }
 
-    .hoe-boer-grid ul {
+    .boerdery-rooster ul {
         list-style: disc;
         padding-left: 25px;
         margin: 0;
     }
 
-    .hoe-boer-grid li {
+    .boerdery-rooster li {
         margin-bottom: 10px;
         font-size: 1.05rem;
     }
 
 /* ============================= TUISBLAD PRODUKTE PRENTE ============================= */
     /* Houer vir al 3 prente */
-    .produk-img {
+    .produk-prent {
     margin: 20px auto;
     width: 80%;
     max-width: 400px;         
     display: inline-block;    /* Laat hulle langs mekaar as daar spasie is */
     vertical-align: top;
+    padding-left: 15px;
     }
 
     /* Elke individuele prent binne die houer */
-    .produk-img img {
+    .produk-prent img {
         width: 100%;
         height: auto;
         border-radius: 12px;
@@ -789,12 +790,12 @@
         transition: transform 0.3s ease;
     }
 
-    .produk-img:hover img {
+    .produk-prent:hover img {
         transform: scale(1.05);   /* Ligte zoom op hover */
     }
 
 /* ============================= GESKIEDENIS PRENT ============================= */
-    .center-image {
+    .center-prent {
         display: block;     /* Beelde standaard inlyn - verander na blok */
         margin-left: auto;  
         margin-right: auto;
@@ -1220,15 +1221,15 @@
             color: #2e7d32;
         }
 
-        /* Maak seker die hele nav-container bly netjies (logo en knoppie regs bly) */
-        .nav-container {
+        /* Maak seker die hele nav-houer bly netjies (logo en knoppie regs bly) */
+        .nav-houer {
             position: relative;
             justify-content: space-between;
             padding: 0.7rem 1rem;
         }
 
     /* Logo en Logo teks in nav langsmekaar vertoon */
-        .logo-group {
+        .logo-area {
             flex-direction: row;            /* forseer horisontaal */
             align-items: left;
             gap: 0.2rem;                    
@@ -1239,11 +1240,11 @@
             height: 40px;
         }
 
-        .logo-text h1 {
+        .logo-naam h1 {
             font-size: 1.0rem;              /* effens kleiner */
         }
 
-        .logo-text p {
+        .logo-teks p {
             font-size: 0.5rem;
         }
 
@@ -1253,11 +1254,11 @@
             min-height: 50vh;           /* Kleiner hoogte op mobiel */
         }
 
-        .hero-content h1 {
+        .hero-teks h1 {
             font-size: 2rem;            /* Kleiner opskrif */
         }
 
-        .hero-content p {
+        .hero-teks p {
             font-size: 1rem;            /* Kleiner teks */
         }
 
@@ -1266,7 +1267,7 @@
             padding: 20px 5%;           /* Kleiner padding */
         }
 
-        .content-container {
+        .content-houer {
             padding: 1rem;              /* Kleiner padding */
         }
 
@@ -1329,7 +1330,7 @@
 
 /* Tablet skerm (tussen 768 en 1024) */
     @media (max-width: 1024px) {
-        .nav-container {
+        .nav-houer {
             padding: 0.7rem 1rem;           /* effens kleiner padding */
         }
 
@@ -1342,11 +1343,11 @@
             height: 45px;
         }
 
-        .logo-text h1 {
+        .logo-naam h1 {
             font-size: 1.25rem;
         }
 
-        .logo-text p {
+        .logo-teks p {
             font-size: 0.7rem;
         }
 
@@ -1372,7 +1373,7 @@
         }
 
         /* Hero effens kleiner */
-        .hero-content h1 {
+        .hero-teks h1 {
             font-size: 2.8rem;
         }
 
@@ -1388,7 +1389,7 @@
         }
 
         /* Verdere verkleinings */
-        .logo-group {
+        .logo-area {
             flex-direction: column;     /* Logo en teks vertikaal */
             text-align: center;         /* Sentraal */
         }
