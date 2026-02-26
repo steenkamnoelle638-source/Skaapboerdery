@@ -472,7 +472,9 @@
 
             // Stoor in konstantes vir makliker en vinniger gebruik
             const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
+                // emailField is vir element self nie waarde soos email nie
+            const emailField = document.getElementById('email');
+            const email = emailField.value.trim();
             const message = document.getElementById('message').value.trim();
 
             // Skikking - foute tydens validasie te stoor

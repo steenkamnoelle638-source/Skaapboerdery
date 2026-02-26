@@ -52,14 +52,14 @@
         flex-shrink: 0;     /* sodat nie krimp nie */
     }
 
-    /* Alle 'i' elemente binne 'logo-area' klas */
+    /* Alle 'i' elemente binne 'logo-groep' klas */
     .logo-area i {
         font-size: 2.8rem;
         color: #064e3b;          
     }
 
     /* Boerdery / Besigheid naam */
-    .logo-naam h1 {
+    .logo-text h1 {
         font-size: 1.3rem;
         font-weight: 700;
         font-family: 'Segoe UI';
@@ -67,7 +67,7 @@
     }
 
     /* Slagspreuk */
-    .logo-teks p {
+    .logo-text p {
         font-size: 0.75rem;
         color: #6b7280;
         margin-top: -0.25rem;   /* Maak die teks effens nader aan die hoof teks(h1) */
@@ -778,7 +778,6 @@
     max-width: 400px;         
     display: inline-block;    /* Laat hulle langs mekaar as daar spasie is */
     vertical-align: top;
-    padding-left: 15px;
     }
 
     /* Elke individuele prent binne die houer */
@@ -1240,11 +1239,11 @@
             height: 40px;
         }
 
-        .logo-naam h1 {
+        .logo-text h1 {
             font-size: 1.0rem;              /* effens kleiner */
         }
 
-        .logo-teks p {
+        .logo-text p {
             font-size: 0.5rem;
         }
 
@@ -1343,23 +1342,23 @@
             height: 45px;
         }
 
-        .logo-naam h1 {
+        .logo-text h1 {
             font-size: 1.25rem;
         }
 
-        .logo-teks p {
+        .logo-text p {
             font-size: 0.7rem;
         }
 
         /* Stop hover-kontrole volledig */
         .dropdown:hover .dropdown-content,
         .dropdown:focus-within .dropdown-content {
-            display: none !important;
+            display: none;
         }
 
         /* Wys slegs wanneer .active via JS bygevoeg word */
         .dropdown.active .dropdown-content {
-            display: block !important;
+            display: block;
         }
 
         /* Maak die hele area klikbaar, maar voorkom navigasie later in JS */
