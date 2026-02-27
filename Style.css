@@ -1083,7 +1083,7 @@
    --------------------------------- 3 Kermgroottes --------------------------------
                     Tablet                    - tussen 480px en 768px
                     Klein laptop & Tablet     - tussen 768px en 1024 px
-                    Slimfone                   - minder / kleiner as 480px
+                    Slimfone                  - tussen 480px en 360px
    --------------------------------------------------------------------------------- */
 
 /* Globale styl vir prente en navigasielys op kleiner skerms */
@@ -1453,8 +1453,8 @@
         }
     }
 
-/* Slimfone skerm (kleiner as 480) */
-    @media (max-width: 480px) {
+/* Slimfone skerm (tussen 480 en 360) */
+    @media (min-width: 360px) and (max-width: 480px) {
         .menu-toggle {
             font-size: 1.6rem;
         }
