@@ -59,7 +59,7 @@
     }
 
     /* Boerdery / Besigheid naam */
-    .logo-text h1 {
+    .logo-teks h1 {
         font-size: 1.3rem;
         font-weight: 700;
         font-family: 'Segoe UI';
@@ -67,7 +67,7 @@
     }
 
     /* Slagspreuk */
-    .logo-text p {
+    .logo-teks p {
         font-size: 0.75rem;
         color: #6b7280;
         margin-top: -0.25rem;   /* Maak die teks effens nader aan die hoof teks(h1) */
@@ -102,7 +102,7 @@
     }
 
     .nav li {
-    position: relative;
+        position: relative;
     }
 
     /* Individuele hoofskakels */
@@ -640,13 +640,13 @@
     }
 
 /* ============================= STIPPEL HORISONTALE LYN ============================= */
-    .section-title{
+    .hr-afdeling-titel{
         text-align:center;
         max-width:100%;
         margin:auto;
     }
 
-    .section-title hr{
+    .hr-afdeling-titel hr{
         width:98%;
         margin:15px auto;   /* Bo en onder 15, links en regs outomaties */
         border:2px dotted #4CAF50;
@@ -1132,7 +1132,7 @@
             display: flex;
             flex-direction: column;
             gap: 0;
-            margin: 0;
+            margin-left: 10px;
             padding: 0;
         }
 
@@ -1239,11 +1239,11 @@
             height: 40px;
         }
 
-        .logo-text h1 {
+        .logo-teks h1 {
             font-size: 1.0rem;              /* effens kleiner */
         }
 
-        .logo-text p {
+        .logo-teks p {
             font-size: 0.5rem;
         }
 
@@ -1342,11 +1342,11 @@
             height: 45px;
         }
 
-        .logo-text h1 {
+        .logo-teks h1 {
             font-size: 1.25rem;
         }
 
-        .logo-text p {
+        .logo-teks p {
             font-size: 0.7rem;
         }
 
