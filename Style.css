@@ -1247,7 +1247,7 @@
 
     /* Logo en Logo teks in nav langsmekaar vertoon */
         .logo-area {
-            /* width: 387px - 326 = 161(41.60%) */
+            margin-left: -15px;
             display: table;
             width: 280px;
             > span {
@@ -1270,7 +1270,7 @@
             float: left;
             position: relative; 
             margin-left: 0%;
-            padding-left: 0%;
+            padding-left: 5px;
         }
 
         .logo-teks h1 {
