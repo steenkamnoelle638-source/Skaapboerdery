@@ -52,12 +52,6 @@
         flex-shrink: 0;     /* sodat nie krimp nie */
     }
 
-    /* Alle 'i' elemente binne 'logo-groep' klas */
-    .logo-area i {
-        font-size: 2.8rem;
-        color: #064e3b;          
-    }
-
     /* Boerdery / Besigheid naam */
     .logo-teks h1 {
         font-size: 1.3rem;
@@ -652,6 +646,30 @@
         border:2px dotted #4CAF50;
     }
 
+    .afdeling-titel-blok {
+        border: 5px dotted #4CAF50;
+        margin: auto;
+        max-width: 1000px;
+        padding-top: 25px;
+        border-radius: 15px;
+    }
+
+    .afdeling-titel-blok p {
+        max-width: 900px;
+        margin: 0 auto 25px auto;
+        line-height: 1.7;
+
+    }
+
+    .afdeling-titel-blok ul {
+        max-width: 800px;
+        margin: 0 auto 35px auto;
+        line-height: 1.7;
+        padding-left: 40px;
+        line-height: 1.8;
+
+    }
+
 /* ============================= PRENT + TEKS BOX ONDER ============================= */
     .prent-boks{
         display:flex;
@@ -1224,19 +1242,35 @@
         .nav-houer {
             position: relative;
             justify-content: space-between;
-            padding: 0.7rem 1rem;
+            padding: 0 1rem;
         }
 
     /* Logo en Logo teks in nav langsmekaar vertoon */
         .logo-area {
-            flex-direction: row;            /* forseer horisontaal */
-            align-items: left;
-            gap: 0.2rem;                    
+            /* width: 387px - 326 = 161(41.60%) */
+            display: table;
+            width: 280px;
+            > span {
+                display: table-cell;
+                white-space: wrap;
+            }
+
+            .logo-img {
+                justify-content: left;
+                max-width: 44px;
+                min-height: 44px;
+                margin-right: 0%;
+                padding-right: 0%;
+            }
         }
 
-        .logo-img {
-            width: 40px;                    /* effens kleiner op selfoon */
-            height: 40px;
+        .logo-teks {
+            top: -5px;
+            bottom: 4px;
+            float: left;
+            position: relative; 
+            margin-left: 0%;
+            padding-left: 0%;
         }
 
         .logo-teks h1 {
@@ -1353,7 +1387,11 @@
             font-weight: bold;
         }
 
-        
+    /* Horisontale lyn blok afdeling - tuisblad */
+        .afdeling-titel-blok p{
+            margin: 0 15px;
+            text-align: center;
+        }
     }
 
 /* Tablet skerm (tussen 768 en 1024) */
