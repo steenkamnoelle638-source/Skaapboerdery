@@ -1127,7 +1127,7 @@
             overflow-y: auto;
         }
 
-    /* Elke hoof menu item */
+        /* Elke hoof menu item */
         .nav-menu {
             display: flex;
             flex-direction: column;
@@ -1324,6 +1324,11 @@
         .footer-container {
             flex-direction: column;     /* Vertikaal op mobiel */
             text-align: center;         /* Sentraal uitlyn */
+        }
+
+    /* Boerdery rooster */
+        .boerdery-rooster {
+            grid-template-columns: repeat(1, 1fr); 
         }
     }
 
