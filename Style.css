@@ -1249,7 +1249,7 @@
         .logo-area {
             /* width: 387px - 326 = 161(41.60%) */
             display: table;
-            width: 280px;
+            width: 290px;
             > span {
                 display: table-cell;
                 white-space: wrap;
