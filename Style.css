@@ -1487,6 +1487,17 @@
             width: 100%;                /* Volle breedte per item */
         }
 
+        /* Produkte carousel galery */
+        .produk-carousel {
+            transition: transform 0.6s ease-in-out;
+        }
+    
+        .carousel-item.center {
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            transform: none;
+        }
+
         /* Logo en Logo teks in nav langsmekaar vertoon */
         .logo-area {
             margin-left: -15px;
