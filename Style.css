@@ -82,7 +82,11 @@
         transition: transform 0.3s ease;    /* klein sweef-effek */
     }
 
-    .logo-area:hover .logo-img {
+    .logo-img:hover {
+        transform: scale(1.08);     /* maak handelsmerk (logo) sirkel effens groter waneer daaroor sweef */
+    }
+
+    .logo-teks:hover {
         transform: scale(1.08);     /* maak handelsmerk (logo) sirkel effens groter waneer daaroor sweef */
     }
 
@@ -109,13 +113,13 @@
         color: #333;
         font-weight: 600;
         padding: 10px 0;
-        transition: color 0.2s ease, transform 0.2s ease;   /* Voeg transform-transition by - sodat kleur en groote geleidelik verander */
+        transition: color 0.2s ease, transform 0.5s ease;   /* Voeg transform-transition by - sodat kleur en groote geleidelik verander */
         display: inline-block;                              /* Maak skakels blok element sodat die transform werk sonder op die webblad te breek */
     }
 
     nav a:hover {
         color: #4CAF50;       /* Verander kleur na groen wanneer jy oor die skakel sweef */
-        transform: scale(1.1);  /* Vergroot teks effens (10%) waneer op die skakel sweef */
+        transform: scale(1.2);  /* Vergroot teks effens (10%) waneer op die skakel sweef */
     }
 
 /* Subskakels - Dropdown lys */
@@ -1366,7 +1370,7 @@
     
         .carousel-item.center {
             border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.5);
             transform: none;
         }
 
