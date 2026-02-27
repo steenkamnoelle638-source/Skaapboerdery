@@ -721,8 +721,8 @@
     }
 
     .regmerkie-ikoon{
-        width:30px;
-        height:30px;
+        width: 35px;
+        height: 35px;
         border-radius:50%;
         background:#4CAF50;
         color:white;
@@ -1307,7 +1307,7 @@
             flex-direction: column;  /* Vertikaal op mobiel as dit flex is */
         }
 
-    /* Gallery */
+    /* Hoof en Mini galery */
         .slideshow-container {
             max-width: 100%;            /* Volle breedte */
         }
@@ -1320,6 +1320,16 @@
             max-width: 100%;            /* Volle breedte */
         }
 
+    /* Produkte carousel galery */
+        .produk-carousel {
+            transition: transform 0.6s ease-in-out;
+        }
+    
+        .carousel-item.center {
+            border-radius: 12px;
+            transform: none;
+        }
+
     /* Voetskrif */
         .footer-container {
             flex-direction: column;     /* Vertikaal op mobiel */
@@ -1330,6 +1340,19 @@
         .boerdery-rooster {
             grid-template-columns: repeat(1, 1fr); 
         }
+
+    /* Regmerkie en Nommer kolpunte */
+        .nommer-ikoon {
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        .regmerkie-ikoon {
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        
     }
 
 /* Tablet skerm (tussen 768 en 1024) */
