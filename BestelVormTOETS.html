@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <!-- Link CSS file -->
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="BestelVormTOETS.CSS">
 </head>
 
 <body>
@@ -180,7 +180,6 @@
     </div>
 
     <!-- SKAKEL knoppie na beste produkte (Sien ons top verkopers hier) -->
-     <!-- Ook hierdie bysit by aftreklys? -->
 
     <!-- Bestelvorm (standaard aflewering koste R100) -->
     <section class="afdeling-3" id="Bestel">
@@ -190,7 +189,7 @@
             <form id="orderForm" onsubmit="handleOrderSubmit(event)">
                 <div class="form-group">
                     <label>Naam</label>
-                    <input type="text" id="name" required placeholder="Jou volle naam">
+                    <input type="text" id="name" required placeholder="Jou volle naam of besigheid naam">
                 </div>
 
                 <div class="form-group">
@@ -198,26 +197,35 @@
                     <input type="email" id="email" required placeholder="jou@email.com">
                 </div>
 
-                <!-- VERANDER VAN AFTREKLYS NA MULTISELEKTEER -->
-                <!-- Aftreklys opsies -->
-                <div class="form-group">
-                    <label>Produk</label>
-                    <select id="product" required>
-                        <option value="">Kies 'n produk</option>
-                        <option value="Wol">Wol (per kg)</option>
-                        <option value="Lammer">Lammer (lewend)</option>
-                        <option value="Skaapvleis">Skaapvleis (kg)</option>
-                        <option value="Skaap">Skaap (volwasse)</option>
-                        <option value="Skaapvel">Skaapvel (per vel)</option>
-                        <option value="Skaapmis">Skaapmis (per sak)</option>
-                        <option value="Skaapvet">Skaapvet / talg (per kg)</option>
-                    </select>
-                </div>
+                <div class="form-group" id="productsContainer">
+                    <!-- VERANDER VAN AFTREKLYS NA MULTISELEKTEER -->
+                        <!-- Eerste ry word outomaties bygelaai -->  
+                    <label>Produkte en hoeveelhede</label>
 
-                <!-- Hoeveelheid veld aanpas om te se "produknaam hoeveelheid" met veld vir elke gekose produk -->
-                <div class="form-group">
-                    <label>Hoeveelheid</label>
-                    <input type="number" id="quantity" required min="1" placeholder="Hoeveelheid (bv. 5)">
+                    <div class="product-row" data-index="0">
+                        <div class="product-select-wrap">
+                            <select class="product-select" required>
+                                <option value="">Kies produk...</option>
+                                <option value="Wol">Wol (per kg) – R160</option>
+                                <option value="Lammer">Lammer (lewend) – R2 200</option>
+                                <option value="Skaapvleis">Skaapvleis (kg) – R95</option>
+                                <option value="Skaap">Skaap (volwasse) – R3 000</option>
+                                <option value="Skaapvel">Skaapvel (per vel) – R2 030</option>
+                                <option value="Skaapmis">Skaapmis (per sak / 50 kg) – R85</option>
+                                <option value="Skaapvet">Skaapvet / talg (per kg) – R73</option>
+                            </select>
+                        </div>
+
+                        <!-- Hoeveelheid veld aanpas om te se "produknaam hoeveelheid" met veld vir elke gekose produk -->
+                        <div class="quantity-wrap">
+                            <input type="number" class="quantity-input" min="1" placeholder="Aantal" required>
+                        </div>
+                        
+                        <button type="button" class="remove-product-btn" style="display:none;">−</button>
+                    </div>
+        
+                    <!-- Knoppie om nog 'n produk by te voeg -->
+                    <button type="button" id="addProductBtn" class="add-btn">+ Nog 'n produk byvoeg</button>
                 </div>
 
                 <!-- Totaal wys hier -->
@@ -236,36 +244,103 @@
                     </select>
                 </div>
 
+                <!-- Nuwe veld vir afhaaldatum en tyd – versteek eers -->
+                <div class="form-group" id="pickupDateGroup" style="display:none;">
+                    <label>Voorkeur afhaaldatum en tyd</label>
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                        <div style="flex:1; min-width:180px;">
+                            <input 
+                                type="date" 
+                                id="pickupDate" 
+                                name="pickupDate"
+                                required 
+                                placeholder="Kies datum">
+                        </div>
+                        <div style="flex:1; min-width:180px;">
+                            <input 
+                                type="time" 
+                                id="pickupTime" 
+                                name="pickupTime"
+                                required 
+                                placeholder="Kies tyd">
+                        </div>
+                    </div>
+                    <small id="pickupHelp" style="color:#666; display:block; margin-top:0.5rem;">
+                        Afhaal beskikbaar Ma–Vry 08:00–17:00 en Saterdag 08:00–13:00
+                    </small>
+                </div>
+
                 <!-- Veld wat versteek is as afhaal gekies word -->
                     <!-- Bysit - as persoon begin tik wys moontlike adresse -> voorkom spelfoute -->
+                    <!-- Idee abandon want benodig 'n API key van Maps -->
                 <div class="form-group" id="addressGroup" style="display:none;">
                     <label>Afleweringsadres</label>
                     <textarea id="deliveryAddress" rows="3" placeholder="Volledige afleweringsadres (straat, suburb, stad, poskode)"></textarea>
                 </div>
-
-                <!-- Betaalopsies insit -->
-                    <!-- VISA: <i class="fa-brands fa-cc-visa"></i>
-                         Mastercard: <i class="fa-brands fa-cc-mastercard"></i>
-                         Apple pay: <i class="fa-brands fa-cc-apple-pay"></i>
-                         Google pay: <i class="fa-brands fa-google-pay"></i>
-
-                         Vra vir betaal metode (Visa, Mastercard, EFT, Apple pay, Google pay)
-                         Kaartnommer (16 nommers)
-                         Kaarthouer naam 
-                         Expiry date (mm/yy)
-                         Sekuriteit kode (CVV , 3 of 4 nommers)
-                    -->
-
-                <!-- Sit ook by in vertoonboodskap -->
-                    <!-- Aflewering gekies - Ons lewer af binne _ _ werksdae
-                         Afhaal gekies - Kies 'n datum vir afhaal (sit kalender kies by) -->
 
                 <div class="form-group">
                     <label>Bykomende Notas</label>
                     <textarea id="notes" rows="4" placeholder="Enige spesiale versoeke, voorkeur afhaaltyd, ens..."></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">Plaas Bestelling</button>
+                <!-- Betaalopsies keuse + vorm (verskyn na totaal bereken is) -->
+                    <!--Vra vir betaal metode (Visa, Mastercard, EFT, Apple pay, Google pay)
+                        Kaartnommer (16 nommers)
+                        Kaarthouer naam 
+                        Expiry date (mm/yy)
+                        Sekuriteit kode (CVV , 3 of 4 nommers)
+                    -->
+                <div class="form-group" id="paymentSection" style="display:none; margin-top:2rem; padding:1.5rem; background:#f9fafb; border-radius:12px; border:1px solid #e5e7eb;">
+                    <h3 style="text-align:center; color:#065f46; margin-bottom:1.5rem;">Betaalopsies</h3>
+                    
+                    <!-- Radio keuses vir metode -->
+                    <div style="display:flex; justify-content:center; gap:2rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+                        <label style="cursor:pointer; text-align:center;">
+                            <input type="radio" name="paymentMethod" value="card" checked>
+                            <div><i class="fa-brands fa-cc-visa fa-2x" style="color:#1a1f71;"></i> <i class="fa-brands fa-cc-mastercard fa-2x" style="color:#eb001b;"></i></div>
+                            <div>Kaart</div>
+                        </label>
+                        
+                        <label style="cursor:pointer; text-align:center;">
+                            <input type="radio" name="paymentMethod" value="apple">
+                            <div><i class="fa-brands fa-cc-apple-pay fa-2x" style="color:#000;"></i></div>
+                            <div>Apple Pay</div>
+                        </label>
+                        
+                        <label style="cursor:pointer; text-align:center;">
+                            <input type="radio" name="paymentMethod" value="google">
+                            <div><i class="fa-brands fa-google-pay fa-2x" style="color:#4285f4;"></i></div>
+                            <div>Google Pay</div>
+                        </label>
+                    </div>
+
+                    <!-- Kaart besonderhede (verskyn net as "Kaart" gekies is) -->
+                    <div id="cardDetails">
+                        <div class="form-group">
+                            <label>Naam op kaart</label>
+                            <input type="text" id="cardName" placeholder="J. Jou Naam" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Kaartnommer</label>
+                            <input type="text" id="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        
+                        <div style="display:flex; gap:1rem;">
+                            <div class="form-group" style="flex:1;">
+                                <label>Vervaldatum (MM/YY)</label>
+                                <input type="text" id="expiry" maxlength="5" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group" style="flex:1;">
+                                <label>CVV</label>
+                                <input type="text" id="cvv" maxlength="4" placeholder="123" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verander die ou submit knoppie na 'n betaal-knoppie -->
+                <button type="submit" class="submit-btn" id="submitBtn" style="display:none;">Betaal R <span id="payTotal">0.00</span> Nou</button>
             </form>
         </div>
     </section>
@@ -296,6 +371,6 @@
     <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
     <!-- Link JavaScript file -->
-    <script src="script.js"></script>
+    <script src="BestelVormTOETS.js"></script>
 </body>
 </html>

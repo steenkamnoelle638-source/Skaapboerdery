@@ -104,7 +104,7 @@
         gap: 1.8rem;    /* Meer spasie tussen die navigasie skakels */
     }
 
-    .nav li {
+    nav li {
         position: relative;
     }
 

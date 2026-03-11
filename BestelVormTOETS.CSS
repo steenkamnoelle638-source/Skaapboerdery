@@ -1,0 +1,655 @@
+/* ============================= UNIVERSELE STYL (*) ============================= */
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+/* ============================= GLOBAL LYF EN STYLE ============================= */
+    body{
+        font-family:'Poppins',sans-serif;
+        background:#f4f6f3;
+        color:#333;
+    }
+
+    h1,h2,h3{
+        color:#2f4f2f;
+        font-family: "Poppins";
+    }
+    
+    section{
+        padding:40px 10%;   /* Verminderde padding vir kleiner spasie tussen sections */
+    }
+
+/* ============================= KOP & NAVIGASIE ============================= */
+    header {
+        background: white;
+        position: sticky;   /* Maak die kop afbeweeg soos jy scroll sodat dit altyd bo in jou skerm is */
+        top: 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        z-index: 1000;
+    }
+
+    /* Navigasie houer - skakels en logo + teks */
+    .nav-houer {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+/* Groep vir handelsmerk (logo) deel links op navigasie balk bevat prent en teks */
+    .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0;     /* sodat nie krimp nie */
+    }
+
+    .logo-teks {
+        margin-left: -15px;
+    }
+    
+    /* Boerdery / Besigheid naam */
+    .logo-teks h1 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        font-family: 'Segoe UI';
+        color: #064e3b;          
+    }
+
+    /* Slagspreuk */
+    .logo-teks p {
+        font-size: 0.75rem;
+        color: #6b7280;
+        margin-top: -0.25rem;   /* Maak die teks effens nader aan die hoof teks(h1) */
+    }
+
+    .logo-img {
+        width: 55px;             
+        height: 55px;       
+        object-fit: cover;                  /* maak dat handelsmerk (logo) prent mooi binne sirkel pas */
+        border-radius: 50%;                 /* maak blok heeltemal rond(sirkel) */
+        border: 3px solid #065f46;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        margin-right: 1rem;
+        transition: transform 0.3s ease;    /* klein sweef-effek */
+    }
+
+    .logo-img:hover {
+        transform: scale(1.08);     /* maak handelsmerk (logo) sirkel effens groter waneer daaroor sweef */
+    }
+
+    .logo-teks:hover {
+        transform: scale(1.08);     /* maak handelsmerk (logo) sirkel effens groter waneer daaroor sweef */
+    }
+
+/* Navigasie / skakels lys */
+    /* Houer wat hoofskakels / navigasie in is */
+    .nav {
+        /* Mobiele menu animasie */
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.8rem;    /* Meer spasie tussen die navigasie skakels */
+    }
+
+    nav li {
+        position: relative;
+    }
+
+    /* Individuele hoofskakels */
+    nav a {
+        text-decoration: none;                              /* Verwyder onderstreping van skakels */
+        color: #333;
+        font-weight: 600;
+        padding: 10px 0;
+        transition: color 0.2s ease, transform 0.5s ease;   /* Voeg transform-transition by - sodat kleur en groote geleidelik verander */
+        display: inline-block;                              /* Maak skakels blok element sodat die transform werk sonder op die webblad te breek */
+    }
+
+    nav a:hover {
+        color: #4CAF50;       /* Verander kleur na groen wanneer jy oor die skakel sweef */
+        transform: scale(1.2);  /* Vergroot teks effens (10%) waneer op die skakel sweef */
+    }
+
+/* Subskakels - Dropdown lys */
+    .dropdown .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #f0f7f0;
+        min-width: 220px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        border-radius: 6px;
+        z-index: 10;
+        padding: 8px 0;
+        margin-top: 4px;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Individuele subskakels */
+    .dropdown-content a {
+        display: block;
+        padding: 10px 16px;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .dropdown-content a:hover {
+        background: #c2ebc4;
+        color: #2e7d32;
+    }
+
+    /* Klein pyltjie knoppie */
+    .dropdown .dropbtn::after {
+        font-size: 0.75em;
+        margin-left: 5px;
+        vertical-align: middle;
+        opacity: 0.6;
+    }
+
+    .dropdown:hover .dropbtn::after {
+        opacity: 1;
+    }
+
+    .dropdown:hover .dropbtn i {
+        transform: rotate(180deg);
+        opacity: 1;
+    }
+
+    .dropbtn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* Dropdown pyl ikoon */
+    .dropbtn i {
+        font-size: 0.7em;
+        margin-left: 6px;
+        transition: transform 0.3s ease;
+        opacity: 0.7;
+    }
+
+/* ============================= HERO ============================= */
+    .hero {
+        height: 600px;
+        background-position: center;  /* Hou die posisie */
+        background-size: cover;       /* Hou die grootte */
+        background-repeat: no-repeat; /* Hou die herhaling */
+        display: flex;                /* Die res bly dieselfde */
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+/* Gebruik om swart overlay oor hero prent te plaas */
+    .hero::before {
+        content: "";    /* Skep lee elent (geen teks) */
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.45);
+    }
+
+    .hero-teks {
+        position: relative;     /* Plaas die inhoud bo op die overlay */
+        text-align: center;
+        color: white;
+        max-width: 700px;
+    }
+
+    .hero-teks h1 {
+        font-size: 48px;
+        margin-bottom: 15px;
+        color: white;
+    }
+
+    .hero-teks p {
+        font-size: 18px;
+    }
+
+/* ============================= SKAKEL KNOPPIE ============================= */
+    .cta{
+        /* background:#2f4f2f; */
+        color:white;
+        text-align:center;
+        border-radius: 10px;
+    }
+
+    .cta h2{
+        color:white;
+    }
+
+    /* Knoppie styl vir alle knoppies binne '.cta' en '.afdeling' */
+    .cta button, .afdeling button{
+        background:#4CAF50;
+        color:white;
+        border:none;
+        padding:12px 25px;
+        border-radius:6px;
+        cursor:pointer;     /* Maak muis pyltjie 'n handjie as bo oor sweef */
+        margin-top:20px;
+    }
+
+    .cta button:hover{
+        background:#3e8e41;
+    }
+
+/* ============================= TERUG NA BO KNOPPIE ============================= */
+    #topBtn{
+        position:fixed;     /* Sodat knoppie altyd op dieselfde plek is waneer jy scroll */
+        bottom:30px;
+        right:30px;
+        background:#4CAF50;
+        color:white;
+        border:none;
+        padding:12px 16px;
+        border-radius:50%;
+        cursor:pointer;
+        display:none;
+    }
+
+    #topBtn:hover {
+        background: #3e8e41;
+    }
+
+/* ============================= ALGEMENE BLADSY AFDELINGS ============================= */
+    /* Sodat seksies van die volle bladsy 'n ander agtergronkleur kan he */
+    .afdeling{
+        background:#ffffff;
+    }
+
+    .afdeling-2{
+        background:#f4f6f3;
+    }
+
+    .afdeling-3{
+        background:#eef0e8;
+    }
+
+/* ============================= VOETSKRIF ============================= */
+    footer {
+        background: #1f331f;
+        color: white;
+        padding: 40px 10%;
+        text-align: center;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto 30px auto;
+        display: flex;
+        justify-content: space-between;     /* Maak dat teks in footer links en regs kan vertoon */
+        flex-wrap: wrap;                    /* As nie genoeg spasie - oorgaan na nuwe lyn */
+        gap: 30px;
+    }
+
+    /* CSS vir die linker en regterkanste blok in voetskrif */
+    .footer-left,
+    .footer-right {
+        flex: 1;
+        min-width: 200px;
+        text-align: left;
+    }
+
+    /* CSS vir linker en regterkanste teks in voetskrif */
+    .footer-left p,
+    .footer-right p {
+        margin: 8px 0;
+        font-size: 1rem;
+    }
+
+    /* Strong blok element sodat op eie lyn kom */
+    .footer-right p strong {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .footer-copyright {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);    /* Ligte lyntjie bo die copyright teks */
+        font-size: 0.9rem;
+    }
+
+/* ============================= SPESIALE INLEIDING (Op tabel blaaie) ============================= */
+    /* Hoof box vir bladsy se inhoud */
+    .content-houer {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+    }
+
+    /* Net op content container se h2 stel */
+    .content-houer h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #065f46;
+        margin-bottom: 1.5rem;
+        text-align: left;          /* Of center, afhangende van jou voorkoms */
+    }
+
+    /* Sodat nie n hero het soos tuisblad se intro nie */
+    .section-intro,
+    .page-intro {
+        font-size: 1.3rem;          /* effens groter vir beter leesbaarheid */
+        font-weight: 500;           /* medium vet – lyk meer professioneel */
+        color: #4b5563;             /* hou die sagte grys */
+        max-width: 800px;           /* hou dit nie te wyd nie */
+        line-height: 1.7;           /* beter leesbaarheid */
+        text-align: left;
+    } 
+
+/* ============================= Tabelle ============================= */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border-radius: 8px;
+        overflow: hidden;
+        margin: 1.5rem 0;
+    }
+
+    thead {
+        background: #065f46;
+        color: white;
+    }
+
+    th, td {
+        padding: 1.25rem 1.5rem;
+        text-align: left;
+    }
+
+    th {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+    }
+
+    td {
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+/* PRYS KOLOM */
+    .price {
+            font-weight: 700;
+            color: #065f46;
+            text-align: right;
+        }
+
+/* ============================= PRODUKTE GALERY (CAROUSEL) ============================= */
+    /* Vertoon 3 prente op 'n slag - huidige prent middel en groter - vorige en volgende 'agterntoe' en ligter */
+
+    /* Houer vir 3 prent galery */
+    .produk-carousel-container {
+        position: relative;           
+        margin: 20px auto;
+        max-width: 1200px;
+        height: 350px;
+        overflow: hidden;
+        padding-top: 60px;       
+    }  
+
+    /* Animasie vir die items */
+    .produk-carousel {
+        display: flex;
+        transition: transform 0.6s ease-in-out;
+        gap: 40px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Houer vir elke prent individueel */
+    .carousel-item {
+        width: 300px;
+        height: 200px;
+        border-radius: 12px;
+        overflow: hidden;              
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        transition: all 0.6s ease-in-out;
+        flex-shrink: 0;
+    }
+
+    /* Prent van die individuele prent houers */
+    .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s ease-in-out;   
+        opacity: 0.7;
+    }
+
+    /* Middelste prent houer */
+    .carousel-item.center {
+        width: 350px;
+        height: 225px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transform: scale(1.15);         
+        z-index: 2;     /* Pos van middelste prent (1   2   3) */
+    }
+
+    /* Middelste prent */
+    .carousel-item.center img {
+        opacity: 1;
+        transform: scale(1.15);          /* Skaal middleste prent - groter as 2 kant prente */
+    }
+
+/* Pyltjies */
+    .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        font-size: 40px;
+        padding: 12px 18px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 10;
+        transition: background 0.3s;
+    }
+
+    /* Voorkoms as muis bo-oor pyle beweeg */
+    .carousel-arrow:hover {
+        background: rgba(0,0,0,0.8);
+    }
+
+    /* Inlynstellings vir pyle - regte posisies binne galery houer sit  */
+    .left-arrow { 
+        left: 10px; 
+    }
+    
+    .right-arrow { 
+        right: 10px; 
+    }
+    
+
+/* ============================= WEBVORMS ============================= */
+    /* Houer vir hele form - alles is binne hierdie houer */
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .form-container h2 {
+        text-align: center;
+        color: #065f46;          
+        font-size: 2.5rem;
+        margin-bottom: 2.5rem;
+        font-weight: 700;
+    }
+
+    /* Groep om velde en etikete saam te hou */
+    .form-group {
+        margin-bottom: 1.8rem;
+    }
+
+    /* Alle label elemente binne die groep klas */
+    .form-group label {
+        display: block;
+        margin-bottom: 0.6rem;
+        color: #374151;
+        font-weight: 500;
+    }
+
+    /* Stel uniforme styl vir verskeie elemente (text,email,number,select,textarea) */
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 1px solid #d1d5db;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* Wat gebeur as gebruiker op (imput,textarea,select) kliek of oor beweeg (hover) */
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+        border-color: #065f46;
+        box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.1);
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 140px;
+    }
+
+    /* Date input styl soos jou ander velde */
+    input[type="date"] {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 1px solid #d1d5db;
+        border-radius: 12px;
+        font-size: 1rem;
+        background: white;
+        color: #374151;
+    }
+
+    input[type="date"]:focus {
+        outline: none;
+        border-color: #065f46;
+        box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.1);
+    }
+
+    /* Versteek die default spinner as jy wil (opsioneel) */
+    input[type="date"]::-webkit-inner-spin-button,
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0.6;   /* maak dit effens sigbaar maar nie te dominant nie */
+        filter: brightness(0.8);
+    }
+
+    /* Klein hack vir beter voorkoms op sommige browsers */
+    input[type="date"]::before {
+        content: attr(placeholder);
+        color: #9ca3af;
+    }
+
+    /* Dinamiese produk rye */
+    .product-row {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 1rem;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .product-select-wrap {
+        flex: 3;
+        min-width: 220px;
+    }
+
+    .quantity-wrap {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .product-select,
+    .quantity-input {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 1px solid #d1d5db;
+        border-radius: 12px;
+        font-size: 1rem;
+    }
+
+    .add-btn {
+        background: #065f46;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-top: 0.5rem;
+    }
+
+    .add-btn:hover {
+        background: #047857;
+    }
+
+    .remove-product-btn {
+        background: #dc2626;
+        color: white;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        line-height: 1;
+        cursor: pointer;
+        margin-top: 2.2rem; /* pas by input hoogte */
+    }
+
+    .remove-product-btn:hover {
+        background: #b91c1c;
+    }
+
+    /* Knoppie om vorm te stuur (Plaas bestelling / Stuur boodskap) */
+    .submit-btn {
+        width: 100%;
+        background: #065f46;
+        color: white;
+        border: none;
+        padding: 1.1rem;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    /* Voorkoms as bo-oor knoppie met muis beweeg */
+    .submit-btn:hover {
+        background: #047857;
+    }
