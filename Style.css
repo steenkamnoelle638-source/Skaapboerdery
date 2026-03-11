@@ -1112,6 +1112,96 @@
         min-height: 140px;
     }
 
+    /* Date input styl soos jou ander velde */
+    input[type="date"] {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 1px solid #d1d5db;
+        border-radius: 12px;
+        font-size: 1rem;
+        background: white;
+        color: #374151;
+    }
+
+    input[type="date"]:focus {
+        outline: none;
+        border-color: #065f46;
+        box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.1);
+    }
+
+    /* Versteek die default spinner as jy wil (opsioneel) */
+    input[type="date"]::-webkit-inner-spin-button,
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0.6;   /* maak dit effens sigbaar maar nie te dominant nie */
+        filter: brightness(0.8);
+    }
+
+    /* Klein hack vir beter voorkoms op sommige browsers */
+    input[type="date"]::before {
+        content: attr(placeholder);
+        color: #9ca3af;
+    }
+
+    /* Dinamiese produk rye */
+    .product-row {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 1rem;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .product-select-wrap {
+        flex: 3;
+        min-width: 220px;
+    }
+
+    .quantity-wrap {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .product-select,
+    .quantity-input {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 1px solid #d1d5db;
+        border-radius: 12px;
+        font-size: 1rem;
+    }
+
+    .add-btn {
+        background: #065f46;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-top: 0.5rem;
+    }
+
+    .add-btn:hover {
+        background: #047857;
+    }
+
+    .remove-product-btn {
+        background: #dc2626;
+        color: white;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        line-height: 1;
+        cursor: pointer;
+        margin-top: 2.2rem; /* pas by input hoogte */
+    }
+
+    .remove-product-btn:hover {
+        background: #b91c1c;
+    }
+
     /* Knoppie om vorm te stuur (Plaas bestelling / Stuur boodskap) */
     .submit-btn {
         width: 100%;

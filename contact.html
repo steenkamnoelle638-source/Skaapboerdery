@@ -122,10 +122,44 @@
                 </div>
 
                 <!-- Opsie insit om te kies of kontak oor navrae of om plaas te besoek -->
+                <div class="form-group">
+                    <label>Rede vir Kontak</label>
+                    <select id="deliveryOption">
+                        <option value="">Kies opsie</option>
+                        <option value="Navraag">Navrae</option>
+                        <option value="Besoek">Plaas besoek</option>
+                    </select>
+                </div>
+
+                <!-- Veld vir besoek datum + tyd – versteek eers -->
+                <div class="form-group" id="visitDateTimeGroup" style="display:none;">
+                    <label>Wanneer wil jy ons kom besoek?</label>
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                        <div style="flex:1; min-width:180px;">
+                            <input 
+                                type="date" 
+                                id="visitDate" 
+                                name="visitDate"
+                                required 
+                                placeholder="Kies datum">
+                        </div>
+                        <div style="flex:1; min-width:180px;">
+                            <input 
+                                type="time" 
+                                id="visitTime" 
+                                name="visitTime"
+                                required 
+                                placeholder="Kies tyd">
+                        </div>
+                    </div>
+                    <small style="color:#666; display:block; margin-top:0.5rem;">
+                        Besoeke slegs beskikbaar Ma–Vry 08:00–16:00 en Saterdag 08:00–12:00
+                    </small>
+                </div>
 
                 <div class="form-group">
-                    <label>Boodskap</label>
-                    <textarea id="message" rows="6" required placeholder="Jou boodskap of navraag..."></textarea>
+                    <label id="messageLabel">Boodskap</label>
+                    <textarea id="message" rows="6" placeholder="Jou boodskap of navraag..."></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Stuur Boodskap</button>
