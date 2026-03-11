@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verkope en Rekords - Highveld Boerdery</title>
 
-    <!-- Links na google fonts en fontawesome vir fonts en ikone -->
+    <title>Kontak - Highveld Boerdery</title>
+
+    <!-- Link na google fonts en awesomefonts vir fonts en ikone -->
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
     <!-- Link CSS file -->
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="BestelVormTOETS.css">
 </head>
     
+</head>
 <body>
     <!-- NAVIGASIE EN MENU (menu en dropdown menu) -->
     <header>
@@ -96,86 +98,74 @@
     </header>
 
     <!-- Hero -->
-    <section class="hero" style="background-image: url('RotationalGrazing.jpg');">
+    <section class="hero" style="background-image: url('1BlackheadPersian.jpg'); background-position: center top;">
         <div class="hero-teks">
-            <h1>Onlangse verkope</h1>
-            <p>Onlangse verkope en beste verkopers.</p>
+            <h1>Kontak ons</h1>
+            <p>Ons is beskikbaar vir enige vrae of terugvoer wat jy kan hê oor ons produkte of dienste.</p>
         </div>
     </section>
 
-    <!-- Afdeling met ander hoofopskrif styl en paragraaf as ander blaaie -->
-    <div class="content-houer" id="OnlangseVerkope">
-        <h2>Onlangse verkope</h2>
-        <p class="section-intro">Hier is 'n lys van onlangse skaapverkope wat deur Highveld Boerdery aangebied is.</p>
+    <!-- Kontakvorm -->
+    <section id="Kontak">
+        <div class="form-container">
+            <h2>Kontak Ons / Navrae</h2>
 
-        <!-- Tabel wat onlangse verkope wys -->
-            <!-- BYSIT: Klient naam en of besigheidnaam, Tipe klient (boer/slaghuis ens.) -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Produk</th>
-                    <th>Aantal eenhede verkoop</th>
-                    <th style="text-align: right;">Totaal betaal</th>
-                    <th>Datum van Verkoop</th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <tr>
-                    <td>Wol (per kg)</td>
-                    <td>5</td>
-                    <!-- Funksie insit om prys outomaties te bereken baseer op totaal gekoop -->
-                    <td class="price">R 800</td> <!-- 5 kg x R 160/kg -->
-                    <td>2026-01-15</td>
-                </tr>
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Naam</label>
+                    <input type="text" id="name" required placeholder="Jou volle naam">
+                </div>
 
-                <tr>
-                    <td>Lewende Lammer (small/meduim)</td>
-                    <td>2</td>
-                    <td class="price">R 4 400</td> <!-- 2 lamme x R 2 200/lam -->
-                    <td>2026-01-16</td>
-                </tr>
+                <div class="form-group">
+                    <label>E-pos</label>
+                    <input type="email" id="email" required placeholder="jou@email.com">
+                </div>
 
-                <tr>
-                    <td>Skaapvleis (kg)</td>
-                    <td>7</td>
-                    <td class="price">R 665</td> <!-- 7kg x R 95/kg -->
-                    <td>2026-01-18</td>
-                </tr>
+                <!-- Opsie insit om te kies of kontak oor navrae of om plaas te besoek -->
+                <div class="form-group">
+                    <label>Rede vir Kontak</label>
+                    <select id="deliveryOption">
+                        <option value="">Kies opsie</option>
+                        <option value="Navraag">Navrae</option>
+                        <option value="Besoek">Plaas besoek</option>
+                    </select>
+                </div>
 
-                <tr>
-                    <td>Skaap (volwasse)</td>
-                    <td>1</td>
-                    <td class="price">R 3 000</td> <!-- 1 skaap x R 3 000/skaap -->
-                    <td>2026-01-18</td>
-                </tr>
-                
-                <!-- Byprodukte begin hier -->
-                <tr>
-                    <td>Skaapvel (per vel)</td>
-                    <td>0</td>
-                    <td class="price">0</td> <!-- 0 velle x 2 030/vel -->
-                    <td>2026-01-20</td>
-                </tr>
+                <!-- Veld vir besoek datum + tyd – versteek eers -->
+                <div class="form-group" id="visitDateTimeGroup" style="display:none;">
+                    <label>Wanneer wil jy ons kom besoek?</label>
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                        <div style="flex:1; min-width:180px;">
+                            <input 
+                                type="date" 
+                                id="visitDate" 
+                                name="visitDate"
+                                required 
+                                placeholder="Kies datum">
+                        </div>
+                        <div style="flex:1; min-width:180px;">
+                            <input 
+                                type="time" 
+                                id="visitTime" 
+                                name="visitTime"
+                                required 
+                                placeholder="Kies tyd">
+                        </div>
+                    </div>
+                    <small style="color:#666; display:block; margin-top:0.5rem;">
+                        Besoeke slegs beskikbaar Ma–Vry 08:00–16:00 en Saterdag 08:00–12:00
+                    </small>
+                </div>
 
-                <tr>
-                    <td>Skaapmis (per sak / 50 kg)</td>
-                    <td>3</td>
-                    <td class="price">R 255</td> <!-- 3 sakke x R 85/sak -->
-                    <td>2026-01-22</td>
-                </tr>
+                <div class="form-group">
+                    <label id="messageLabel">Boodskap</label>
+                    <textarea id="message" rows="6" placeholder="Jou boodskap of navraag..."></textarea>
+                </div>
 
-                <tr>
-                    <td>Skaapvet / talg (per kg)</td>
-                    <td>1</td>
-                    <td class="price">R 73</td> <!-- 1kg x R 73/kg -->
-                    <td>2026-01-25</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- BYSIT: Bereken watter 3 produkte die meeste verkoop is en vertoon hulle hier -->
+                <button type="submit" class="submit-btn">Stuur Boodskap</button>
+            </form>
+        </div>
+    </section>
 
     <!-- Voetskrif -->
     <footer>
@@ -203,6 +193,6 @@
     <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
     <!-- Link JavaScript file -->
-    <script src="script.js"></script>
+    <script src="BestelVormTOETS.js"></script>
 </body>
 </html>
