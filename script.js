@@ -978,19 +978,25 @@
                 const reorder = parseInt(row.dataset.reorder) || 0;
                 // Maak vaste veranderlikes vir spesifieke ry en kolom
                 const qtyCell = row.cells[2];
+                const reorderCell = row.cells[4];
                 const statusCell = row.cells[5];
 
                 // Toets of beide geldig is en huidige qty minder is as reorder
                 if (!isNaN(qty) && !isNaN(reorder) && qty < reorder) 
                 {
-                    // Voeg rooi op qty selle en verander status na 'Laag'
-                    qtyCell.classList.add('low-stock');
+                    // Ligte rooi agtergrond op die hele ry
+                    row.classList.add('low-stock-row');
+                    // Beklemtoon net hoeveelheid en herbestel by in rooi
+                    qtyCell.classList.add('low-stock-emphasis');
+                    reorderCell.classList.add('low-stock-emphasis');
                     statusCell.innerHTML = '<span class="status-low">LAAG – Bestel!</span>';
                 } 
                 else 
                 {
                     // Verwyder waarskuwing en stel status 'Goed'
-                    qtyCell.classList.remove('low-stock');
+                    row.classList.remove('low-stock-row');
+                    qtyCell.classList.remove('low-stock-emphasis');
+                    reorderCell.classList.remove('low-stock-emphasis');
                     statusCell.innerHTML = 'Goed';
                 }
             });

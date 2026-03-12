@@ -553,9 +553,13 @@
 
 /* WAARSKUWING - LAE VOORRAAD */
     /* (Aanpas sodat hele ry rooi is - rooi teks / ligte rooi verkleur) */
-    .low-stock { 
-        color: #dc2626; 
-        font-weight: 700; 
+    .low-stock-row {
+        background-color: #ffe8e8;
+    }
+
+    .low-stock-emphasis {
+        color: #dc2626;
+        font-weight: 700;
     }
 
     .status-low { 
