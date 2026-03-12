@@ -110,32 +110,45 @@
     <section id="HoeBoer" class="afdeling-2 boerdery-rooster">
         
         <div>
-            <h2>Wat ons aankoop:</h2>
+            <h2>Wat koop ons aan:</h2>
 
             <ul>
                 <li>Skape</li>
                 <li>Voer</li>
                 <li>Medisyne en entstowwe</li>
-                <li>Skeertoerusting</li>
                 <li>Weidingsinsette</li>
+                <li style="margin-bottom: 5px;">Toerusting:</li>
+                    <ul style="font-style: italic;">
+                        <li style="font-size: 15px; margin-bottom: 5px;">Skeertoerusting</li>
+                        <li style="font-size: 15px; margin-bottom: 5px;">Heinings en krale</li>
+                        <li style="font-size: 15px; margin-bottom: 5px;">Voerkrippe</li>
+                        <li style="font-size: 15px; margin-bottom: 5px;">Lekbakke</li>
+                        <li style="font-size: 15px; margin-bottom: 5px;">Laaigeriewe</li>
+                    </ul>
             </ul>
         </div>
 
         <div>
-            <h2>Wat ons moniteer:</h2>
+            <h2>Wat moniteer ons:</h2>
 
             <ul>
-                <li>Gesondheid van die skape</li>
+                <li style="margin-bottom: 5px;">Gesondheid van die skape</li>
+                    <ul style="font-style: italic;">
+                        <li style="font-size: 15px; margin-bottom: 5px;">Inenting status</li>
+                        <li style="font-size: 15px; margin-bottom: 5px;">Sietes en toestande</li>
+                        <li style="font-size: 15px; margin-bottom: 5px;">Behandeling van infeksie en siektes</li>
+                    </ul>
                 <li>Gewig en groei van die skape</li>
-                <li>Weidingstoestande</li>
-                <li>Voertoestande</li>
-                <li>Lamseisoen</li>
+                <li>Klimaat, voer en weidingtoestande</li>
+                <li>Teel en lamseisoen</li>
                 <li>Kostes en winsgewendheid</li>
+                <li>Produksiedata en voorraadbeheer</li>
+                <li>Markpryse vir produkte</li>
             </ul>
         </div>
 
         <div>
-            <h2>Hoe ons die trop bestuur:</h2>
+            <h2>Hoe bestuur ons die trop:</h2>
 
             <ul>        
                 <li>Groepeer skape volgens ouderdom en geslag</li>
@@ -147,7 +160,7 @@
 
     <!-- Ander kleur agtergrond met stippel lyn blokkie -->
     <section class="afdeling" id="OnsTrop">
-        <div style="border: 5px dotted #4CAF50; margin: auto; max-width: 1000px; padding-top: 25px;">
+        <div style="border: 5px dotted #4CAF50; margin: auto; max-width: 1000px; padding: 25px 15px 0;">
             <div class="hr-afdeling-titel">
                 <h2>Ons Trop</h2>
 
@@ -161,24 +174,32 @@
                 </p>
             </div>
 
-            <div style="max-width: 1000px; margin: 60px auto; text-align: center; font-size: 1.1rem; color: #333; margin-top: 20px; margin-bottom: 25px;" >
-                <p>
-                    <strong>Gemiddelde tropgrootte:</strong> 480–520 skape (seisoenaal aanpasbaar)<br>  
-                    <strong>Gesondheidsstatus:</strong> gereelde entstowwe, veearts-kontrole elke 3 maande <br>  
-                    <strong>Teiken:</strong> 160–180% lammingspersentasie per jaar
-                </p>
+            <!-- Grid gemaak sodat teks na dubbelpunte mooi ondermekaar is asof daar tab gedruk is -->
+            <div style="max-width: 1000px; margin: 25px auto 25px 90px; font-size: 1.1rem; color: #333; text-align: center;">
+                <div style="display: grid; grid-template-columns: auto 1fr; gap: 0 1rem; justify-content: center; text-align: left; max-width: fit-content; margin: 0 auto;">
+                    <strong>Gemiddelde tropgrootte:</strong>
+                    <span>480–520 skape (seisoenaal aanpasbaar)</span>
+
+                    <strong>Gesondheidsstatus:</strong>
+                    <span>gereelde entstowwe, veearts-kontrole elke 3 maande</span>
+
+                    <strong>Teiken:</strong>
+                    <span>160–180% lammingspersentasie per jaar</span>
+                </div>
             </div>
         </div>
 
         <!-- Mini sirkel galery oor elke skaap met ooreenstemmende teks langsaan -->
         <div style="margin: 0 auto 50px auto; line-height: 1.7;">
-            <h2 style="text-align: center; color: #065f46; margin-bottom: 20px; margin-top: 30px; font-size: 20px;">Waarom juis hierdie drie rasse?</h2>
+            <h2 style="text-align: center; color: #065f46; margin-top: 30px; font-size: 30px;">Waarom juis hierdie drie rasse?</h2>
+                                                                        <!-- top , right , bottom , left -->
+            <hr style="border: 2px dotted #077153; max-width: 1000px; margin: 0 auto 25px auto;">
             
             <div class="split">
                 <div class="split-text">
 
                     <h4 style="font-size: 17px;">Merino – die wolkoning</h4>
-                    <p>
+                    <p style="text-align: justify;">
                         Ons Merino-trop lewer fyn, sagte wol met 'n gemiddelde mikron van 18–20 μm. 
                         Hierdie kwaliteit wol word baie gesog vir klere, breiwerk en luukse tekstiele. 
                         Ons fokus op goeie veldekkings, lang stapellengte en lae beskerming (bellae). 
@@ -202,7 +223,7 @@
                 <div class="split-text">
                     <h4 style="font-size: 17px;">Dorper – vleisprestasie en aanpasbaarheid</h4>
 
-                    <p>
+                    <p style="text-align: justify;">
                         Die Dorper-ras is die ruggraat van ons vleisproduksie. Hulle groei vinnig, 
                         het uitstekende speengewigte en lewer 'n goeie karkas met hoë vleis-tot-been-verhouding. 
                         Omdat hulle nie wol het nie, is hulle baie bestand teen vlieë en parasiete, 
@@ -229,7 +250,7 @@
                 <div class="split-text">
                     <h4 style="font-size: 17px;">Blackhead Persian – die woestyn-aanpasser</h4>
 
-                    <p>
+                    <p style="text-align: justify;">
                         Die Blackhead Persian bring hardkoppigheid en hitteweerstand na ons trop. 
                         Hulle is uitstekende moeders, het goeie melkproduksie en kan goed oorleef 
                         in droër periodes. Ons gebruik hulle veral in kruisings om die trop se 
