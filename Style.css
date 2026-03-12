@@ -417,10 +417,96 @@
         font-size: 1.3rem;          /* effens groter vir beter leesbaarheid */
         font-weight: 500;           /* medium vet – lyk meer professioneel */
         color: #4b5563;             /* hou die sagte grys */
-        max-width: 800px;           /* hou dit nie te wyd nie */
+        /* max-width: 1200px;           hou dit nie te wyd nie */
         line-height: 1.7;           /* beter leesbaarheid */
         text-align: left;
     } 
+
+/* ============================= TOP VERKOPE PREVIEW (PRODUCTS) ============================= */
+    .top-verkope-preview {
+        padding-top: 0;
+    }
+
+    .top-products-cards {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 1.5rem 0;
+    }
+
+    .top-product-card {
+        width: 280px;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        transition: all 0.35s ease-in-out;
+    }
+
+    .top-product-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.35s ease-in-out;
+    }
+
+    .top-product-card.center {
+        transform: scale(1.08);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .top-product-card.center img {
+        opacity: 1;
+    }
+
+    .top-product-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .top-product-card.center:hover {
+        transform: scale(1.08) translateY(-4px);
+    }
+
+    .top-product-card:hover img {
+        transform: scale(1.04);
+    }
+
+    .top-product-card-body {
+        padding: 1rem 1.1rem 1.2rem;
+    }
+
+    .top-product-rank {
+        display: inline-block;
+        font-weight: 700;
+        color: #065f46;
+        margin-bottom: 0.35rem;
+    }
+
+    .top-product-name {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .top-product-qty {
+        margin: 0.5rem 0 0;
+        color: #065f46;
+        font-weight: 600;
+    }
+
+    .top-products-link {
+        color: #065f46;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .top-products-link:hover {
+        text-decoration: underline;
+    }
 
 /* ============================= Tabelle ============================= */
     table {
@@ -961,11 +1047,11 @@
     /* Houer vir 3 prent galery */
     .produk-carousel-container {
         position: relative;           
-        margin: 20px auto;
+        margin: 5px auto;
         max-width: 1200px;
         height: 350px;
         overflow: hidden;
-        padding-top: 60px;       
+        padding-top: 50px;       
     }  
 
     /* Animasie vir die items */

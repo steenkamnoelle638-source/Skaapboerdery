@@ -175,6 +175,8 @@
     // Wag tot hele HTML blad klaar gelaai is - voer dan eers 'initMiniGalleries' uit
     document.addEventListener('DOMContentLoaded', initMiniGalleries);
 
+    document.addEventListener('DOMContentLoaded', initTopProductsPreview);
+
 // ============================= PRODUKTE GALERY ============================= 
     // Soek in HTML vir 'id=produkCarousel' en stoor in waarde
     const carouselContainer = document.getElementById('produkCarousel');
@@ -270,6 +272,99 @@
                 autoScroll = setInterval(() => moveSlide(1), 4000);
             });
         }
+    }
+
+// ============================= TOP 3 BESTE VERKOPE PREVIEW =============================
+    async function initTopProductsPreview() 
+    {
+        const previewContainer = document.getElementById('topProductsPreview');
+
+        if (!previewContainer) 
+        {
+            return;
+        }
+
+        // Gebruik huidige tabel as ons reeds op Verkope-blad is, anders lees uit verkope_en_rekord.html
+        let salesRows = [];
+        const localSalesTable = document.querySelector('#OnlangseVerkope table tbody');
+
+        if (localSalesTable) 
+        {
+            salesRows = Array.from(localSalesTable.querySelectorAll('tr'));
+        }
+        else
+        {
+            try
+            {
+                const response = await fetch('verkope_en_rekord.html');
+                const html = await response.text();
+                const parser = new DOMParser();
+                const salesDoc = parser.parseFromString(html, 'text/html');
+                salesRows = Array.from(salesDoc.querySelectorAll('#OnlangseVerkope table tbody tr'));
+            }
+            catch (error)
+            {
+                previewContainer.innerHTML = '<p>Kon nie top verkope laai nie. <a class="top-products-link" href="verkope_en_rekord.html#OnlangseVerkope">Klik hier om die verkope blad oop te maak.</a></p>';
+                return;
+            }
+        }
+
+        // Koppel produknaam na bestaande produk-prente
+        const topProductImageMap = [
+            { matcher: ['wol'], src: 'Wol.jpg', alt: 'Hoë kwaliteit wol' },
+            { matcher: ['lammer', 'lam'], src: 'Babies.jpg', alt: 'Lewende lammers' },
+            { matcher: ['skaapvleis', 'vleis'], src: 'LamVleis.jpg', alt: 'Skaapvleis' },
+            { matcher: ['skaap (volwasse)', 'volwasse'], src: '1BlackheadPersian.jpg', alt: 'Volwasse skaap' },
+            { matcher: ['skaapvel', 'vel'], src: 'Skaapvel.jpg', alt: 'Skaapvel' },
+            { matcher: ['skaapmis', 'mis'], src: 'SkaapMis.jpg', alt: 'Skaapmis' },
+            { matcher: ['skaapvet', 'talg', 'vet'], src: 'LamVet.jpg', alt: 'Skaapvet / talg' }
+        ];
+
+        function resolveTopImage(productName)
+        {
+            const normalizedName = (productName || '').toLowerCase();
+
+            const match = topProductImageMap.find(item =>
+                item.matcher.some(keyword => normalizedName.includes(keyword))
+            );
+
+            return match || { src: 'Wol.jpg', alt: productName || 'Produk prent' };
+        }
+
+        const topProducts = salesRows
+            .map(row => {
+                const cells = row.querySelectorAll('td');
+                const productName = cells[0]?.textContent?.trim() || '';
+                const quantityText = cells[1]?.textContent?.trim() || '0';
+                const quantity = parseInt(quantityText.replace(/[^\d-]/g, ''), 10) || 0;
+                const image = resolveTopImage(productName);
+
+                return { productName, quantity, image };
+            })
+            .filter(item => item.productName && item.quantity > 0)
+            .sort((a, b) => b.quantity - a.quantity)
+            .slice(0, 3);
+
+        if (topProducts.length === 0)
+        {
+            previewContainer.innerHTML = '<p>Geen top verkope beskikbaar nie.</p>';
+            return;
+        }
+
+        const topItemsHtml = topProducts
+            .map((item, index) => `
+                <article class="top-product-card ${index === 0 ? 'center' : ''}">
+                    <img src="${item.image.src}" alt="${item.image.alt}">
+                    <div class="top-product-card-body">
+                        <span class="top-product-rank">#${index + 1}</span>
+                        <h3 class="top-product-name">${item.productName}</h3>
+                        <p class="top-product-qty">${item.quantity} verkoop</p>
+                    </div>
+                </article>
+            `)
+            .join('');
+
+        previewContainer.innerHTML = `<div class="top-products-cards">${topItemsHtml}</div>`;
     }
 
 // ---------------------------------------------------------------------------------
