@@ -605,9 +605,9 @@
 
 /* ============================= TUISBLAD INLEIDING ============================= */
     .intro {
-        background: url("2Plaas.jpg") center/cover no-repeat;
+        background: url("Skapies.jpeg") center/cover no-repeat;
         text-align: center;
-        padding: 120px 20px;
+        padding: 140px 20px;
         color: rgb(238, 238, 238);
 
         /* Belangrik vir die ::before overlay */
