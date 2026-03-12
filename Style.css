@@ -1346,6 +1346,7 @@
             background: white;
             max-height: 0;              /* begin toegevou */
             overflow: hidden;
+            overflow-x: hidden;         /* keer dat skakels horisontaal uitdruk */
             opacity: 0;
             transition: max-height 0.4s ease, opacity 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -1378,7 +1379,7 @@
             display: flex;
             flex-direction: column;
             gap: 0;
-            margin-left: 10px;
+            margin-left: 0px;
             padding: 0;
         }
 
@@ -1464,6 +1465,11 @@
         .dropdown-content a:active {
             background: #e8f5e9;
             color: #2e7d32;
+        }
+
+        /* Op touch-skerms kan :hover "vassit" en links buite skerm vergroot */
+        nav a:hover {
+            transform: none;
         }
 
         /* Maak seker die hele nav-houer bly netjies (logo en knoppie regs bly) */
@@ -1682,6 +1688,11 @@
     @media (min-width: 360px) and (max-width: 480px) {
         .menu-toggle {
             font-size: 1.6rem;
+        }
+
+        /* Op touch-skerms kan :hover "vassit" en links buite skerm vergroot */
+        nav a:hover {
+            transform: none;
         }
 
         /* Verdere verkleinings */
