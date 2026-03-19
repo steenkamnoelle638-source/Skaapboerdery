@@ -646,8 +646,15 @@
     }
 
     /* Individuele houer vir elke prent */
-    .slide { display: none; }
-    .slide.active { display: block; }
+    .slide 
+    { 
+        display: none; 
+    }
+    
+    .slide.active 
+    { 
+        display: block; 
+    }
 
     /* Prent wat binne skyfie houer is */
     .slide img {

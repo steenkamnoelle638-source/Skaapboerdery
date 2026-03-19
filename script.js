@@ -304,7 +304,7 @@
             }
             catch (error)
             {
-                previewContainer.innerHTML = '<p>Kon nie top verkope laai nie. <a class="top-products-link" href="verkope_en_rekord.html#OnlangseVerkope">Klik hier om die verkope blad oop te maak.</a></p>';
+                previewContainer.innerHTML = '<p style="text-align: center;">Kon nie top verkope laai nie. <a class="top-products-link" href="verkope_en_rekord.html#OnlangseVerkope">Klik hier om die verkope blad oop te maak.</a></p>';
                 return;
             }
         }
@@ -489,7 +489,6 @@
             }
 
             // Roep dit in calculateTotal na die totaal wys
-            // Voeg by einde van calculateTotal():
             updatePaymentVisibility();
 
             // Wys/versteek kaartvelde afhangend van watter betaalopsie gekies is
