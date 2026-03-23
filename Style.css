@@ -1682,39 +1682,6 @@
             transform: none;
         }
 
-        /* Verdere verkleinings */
-        .logo-area {
-            flex-direction: column;     /* Logo en teks vertikaal */
-            text-align: center;         /* Sentraal */
-        }
-
-        .logo-img {
-            margin: 0 auto 0.5rem auto; /* Sentraal en spasie */
-        }
-
-        .nav {
-            gap: 0.5rem;                /* Nog minder spasie */
-        }
-
-        h1, h2 {
-            font-size: 1.5rem;          /* Baie klein opskrifte */
-        }
-
-        .submit-btn {
-            padding: 0.8rem;            /* Kleiner knoppie */
-        }
-
-        /* Carousel aanpas (as jy dit het) */
-        .carousel-item {
-            width: 100%;                /* Volle breedte per item */
-        }
-    
-        .carousel-item.center {
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-            transform: none;
-        }
-
         /* Logo en Logo teks in nav langsmekaar vertoon */
         .logo-area {
             margin-left: -15px;
@@ -1750,4 +1717,29 @@
         .logo-teks p {
             font-size: 0.5rem;
         }
+
+        .nav {
+            gap: 0.5rem;                /* Nog minder spasie */
+        }
+
+        h1, h2 {
+            font-size: 1.5rem;          /* Baie klein opskrifte */
+        }
+
+        .submit-btn {
+            padding: 0.8rem;            /* Kleiner knoppie */
+        }
+
+        /* Carousel aanpas (as jy dit het) */
+        .carousel-item {
+            width: 100%;                /* Volle breedte per item */
+        }
+    
+        .carousel-item.center {
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            transform: none;
+        }
+
+        /* Terug na bo knoppie  */
     }
