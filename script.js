@@ -435,6 +435,7 @@
             {
                 let total = 0;
                 // Beweeg deur al die rye, kyk watter produk gekies is en hoeveel gekies
+                    // Spinner insit vir hoeveelheid (op en af pyltjies om waarde te vergroot / klein) saam met waarde invul opsie
                 document.querySelectorAll('.product-row').forEach(row => {
                     const select = row.querySelector('.product-select');
                     const qty = row.querySelector('.quantity-input');

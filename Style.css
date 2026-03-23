@@ -157,17 +157,6 @@
     }
 
     /* Klein pyltjie knoppie */
-    .dropdown .dropbtn::after {
-        font-size: 0.75em;
-        margin-left: 5px;
-        vertical-align: middle;
-        opacity: 0.6;
-    }
-
-    .dropdown:hover .dropbtn::after {
-        opacity: 1;
-    }
-
     .dropdown:hover .dropbtn i {
         transform: rotate(180deg);
         opacity: 1;
@@ -939,9 +928,7 @@
 /* ============================= GESKIEDENIS PRENT ============================= */
     .center-prent {
         display: block;     /* Beelde standaard inlyn - verander na blok */
-        margin-left: auto;  
-        margin-right: auto;
-
+        margin: 0 auto;
         /* Gestelde breedte vir beter beheer */
         width: 90%;
         height: auto;
