@@ -1,0 +1,78 @@
+/* =============================================
+   PRINT.CSS – VOLLEDIG OPGELOOS (Hoofstuk 5 & 6)
+   ============================================= */
+
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 1.5cm;
+    }
+
+    /* Alles sigbaar maak – geen leë bladsye meer nie */
+    body, .hero, .nav-houer, .nav, .nav-menu, .dropdown-content,
+    .afdeling, .content-houer, .form-container, .split, .logo-blok,
+    table, .top-products-cards, .carousel-item {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    /* Swart overlays heeltemal weg */
+    .hero::before, .intro::before, .bg-section::before {
+        display: none !important;
+    }
+
+    /* Split klasse – nou langsmekaar in print */
+    .split {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 20px !important;
+        page-break-inside: avoid;
+    }
+    .split:nth-child(even) { flex-direction: row-reverse !important; }
+    .split-text, .split-image { flex: 1 !important; }
+
+    /* Teks kleure regmaak */
+    body { color: #000 !important; background: white !important; }
+    h1, h2, h3, .price, strong { color: #000 !important; }
+    .logo-teks h1, .logo-teks p { color: #065f46 !important; }
+
+    /* Select / opsies nou sigbaar in print */
+    select, option {
+        display: block !important;
+        color: #000 !important;
+        background: white !important;
+        border: 1px solid #000 !important;
+        padding: 4px 8px !important;
+    }
+
+    /* Tabelle – ligte grys rande soos jy gevra het */
+    table {
+        width: 100% !important;
+        table-layout: auto !important;
+        border-collapse: collapse;
+        page-break-inside: avoid;
+    }
+    th, td {
+        border: 1px solid #ccc !important;   /* ligte grys */
+        padding: 8px 10px !important;
+        color: #000 !important;
+    }
+    thead { background: #f0f0f0 !important; }
+
+    /* Knoppies en add-btn */
+    .add-btn, button.add-btn, .submit-btn {
+        display: inline-block !important;
+        background: #065f46 !important;
+        color: white !important;
+        border: 2px solid #000 !important;
+    }
+
+    /* Bladsy-breuke */
+    .afdeling, .content-houer, .split, .form-container, .logo-blok {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}

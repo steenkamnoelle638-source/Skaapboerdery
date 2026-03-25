@@ -12,6 +12,7 @@
 
     <!-- Link CSS file -->
     <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="print.css" media="print">
 </head>
 
 <body>
@@ -124,6 +125,10 @@
 
         <!-- Produkte tabel -->
         <table>
+            <caption style="caption-side:top; font-size:1.3rem; font-weight:700; margin-bottom:10px; color:#065f46;">
+                Pryslys vir ons hoe kwaliteit skaapprodukte
+            </caption>
+
             <thead>
                 <tr>
                     <th>Produk</th>
@@ -363,25 +368,29 @@
 
     <!-- Voetskrif -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-left">
-                <p><i class="fa-solid fa-phone"></i>&nbsp;<strong>Telefoon:</strong> 012 000 6789</p>
-                <p><i class="fa-solid fa-envelope"></i>&nbsp;<strong>E-pos:</strong> info@highveldboerdery.co.za</p>
-                <p><i class="fa-solid fa-location-dot"></i>&nbsp;<strong>Ligging:</strong> Pretoria, Gauteng</p>
-            </div>
-            
-            <div class="footer-right">
-                <p><strong>Besigheidsure:</strong></p>
-                <p>Ma – Vry: 08:00 – 17:00</p>
-                <p>Saterdag: 08:00 – 13:00</p>
-                <p>Sondag: Gesluit</p>
-            </div>
+    <div class="footer-container">
+        <div class="footer-left">
+            <p><i class="fa-solid fa-phone"></i>&nbsp;<strong>Telefoon:</strong> 
+                <a href="tel:0120006789" style="color:white; text-decoration:none;">012 000 6789</a>
+            </p>
+            <p><i class="fa-solid fa-envelope"></i>&nbsp;<strong>E-pos:</strong> 
+                <a href="mailto:info@highveldboerdery.co.za" style="color:white; text-decoration:none;">info@highveldboerdery.co.za</a>
+            </p>
+            <p><i class="fa-solid fa-location-dot"></i>&nbsp;<strong>Ligging:</strong> Pretoria, Gauteng</p>
         </div>
         
-        <div class="footer-copyright">
-            <p>© Copyright 2026 Highveld Boerdery | All rights reserved</p>
+        <div class="footer-right">
+            <p><strong>Besigheidsure:</strong></p>
+            <p>Ma – Vry: 08:00 – 17:00</p>
+            <p>Saterdag: 08:00 – 13:00</p>
+            <p>Sondag: Gesluit</p>
         </div>
-    </footer>
+    </div>
+    
+    <div class="footer-copyright">
+        <p>© Copyright 2026 Highveld Boerdery | All rights reserved</p>
+    </div>
+</footer>
 
     <!-- Terug na bo knoppie -->
     <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>

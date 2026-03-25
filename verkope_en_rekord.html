@@ -11,6 +11,7 @@
 
     <!-- Link CSS file -->
     <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="print.css" media="print">
 </head>
     
 <body>
@@ -173,29 +174,70 @@
                 </tr>
             </tbody>
         </table>
+
+        <h3 style="margin-top:40px; text-align:center; color:#065f46;">Totale Verkope per Jaar</h3>
+
+<table>
+    <caption style="caption-side:top; font-size:1.4rem; font-weight:700; margin-bottom:15px; color:#065f46;">
+        Jaarlikse Totale Verkope & Wins per Produk
+    </caption>
+    <thead>
+        <tr>
+            <th>Jaar</th>
+            <th>Produk</th>
+            <th>Aantal eenhede</th>
+            <th style="text-align:right;">Totale Prys (R)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- 2025 -->
+        <tr><td rowspan="7"><strong>2025</strong></td>
+            <td>Wol (per kg)</td><td>5</td><td class="price">R 800</td></tr>
+        <tr><td>Lammer (lewend)</td><td>2</td><td class="price">R 4 400</td></tr>
+        <tr><td>Skaapvleis (kg)</td><td>7</td><td class="price">R 665</td></tr>
+        <tr><td>Skaap (volwasse)</td><td>1</td><td class="price">R 3 000</td></tr>
+        <tr><td>Skaapvel</td><td>0</td><td class="price">R 0</td></tr>
+        <tr><td>Skaapmis</td><td>3</td><td class="price">R 255</td></tr>
+        <tr><td>Skaapvet</td><td>1</td><td class="price">R 73</td></tr>
+        
+        <!-- 2026 -->
+        <tr><td rowspan="7"><strong>2026</strong></td>
+            <td>Wol (per kg)</td><td>5</td><td class="price">R 800</td></tr>
+        <tr><td>Lammer (lewend)</td><td>2</td><td class="price">R 4 400</td></tr>
+        <tr><td>Skaapvleis (kg)</td><td>7</td><td class="price">R 665</td></tr>
+        <tr><td>Skaap (volwasse)</td><td>1</td><td class="price">R 3 000</td></tr>
+        <tr><td>Skaapvel</td><td>0</td><td class="price">R 0</td></tr>
+        <tr><td>Skaapmis</td><td>3</td><td class="price">R 255</td></tr>
+        <tr><td>Skaapvet</td><td>1</td><td class="price">R 73</td></tr>
+    </tbody>
+</table>
     </div>
 
     <!-- Voetskrif -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-left">
-                <p><i class="fa-solid fa-phone"></i>&nbsp;<strong>Telefoon:</strong> 012 000 6789</p>
-                <p><i class="fa-solid fa-envelope"></i>&nbsp;<strong>E-pos:</strong> info@highveldboerdery.co.za</p>
-                <p><i class="fa-solid fa-location-dot"></i>&nbsp;<strong>Ligging:</strong> Pretoria, Gauteng</p>
-            </div>
-            
-            <div class="footer-right">
-                <p><strong>Besigheidsure:</strong></p>
-                <p>Ma – Vry: 08:00 – 17:00</p>
-                <p>Saterdag: 08:00 – 13:00</p>
-                <p>Sondag: Gesluit</p>
-            </div>
+    <div class="footer-container">
+        <div class="footer-left">
+            <p><i class="fa-solid fa-phone"></i>&nbsp;<strong>Telefoon:</strong> 
+                <a href="tel:0120006789" style="color:white; text-decoration:none;">012 000 6789</a>
+            </p>
+            <p><i class="fa-solid fa-envelope"></i>&nbsp;<strong>E-pos:</strong> 
+                <a href="mailto:info@highveldboerdery.co.za" style="color:white; text-decoration:none;">info@highveldboerdery.co.za</a>
+            </p>
+            <p><i class="fa-solid fa-location-dot"></i>&nbsp;<strong>Ligging:</strong> Pretoria, Gauteng</p>
         </div>
         
-        <div class="footer-copyright">
-            <p>© Copyright 2026 Highveld Boerdery | All rights reserved</p>
+        <div class="footer-right">
+            <p><strong>Besigheidsure:</strong></p>
+            <p>Ma – Vry: 08:00 – 17:00</p>
+            <p>Saterdag: 08:00 – 13:00</p>
+            <p>Sondag: Gesluit</p>
         </div>
-    </footer>
+    </div>
+    
+    <div class="footer-copyright">
+        <p>© Copyright 2026 Highveld Boerdery | All rights reserved</p>
+    </div>
+</footer>
 
     <!-- Terug na bo knoppie -->
     <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>

@@ -12,6 +12,7 @@
 
     <!-- Link CSS file -->
     <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="print.css" media="print">
 
 </head>
 
@@ -125,7 +126,26 @@
         </p>
         <br>
 
-        <img src="1Plaas.jpg" alt="Highveld Boerdery Plaas" class="center-prent">
+        <h3 style="margin-top:30px;">Hoe lyk ons plaas en watter aktiwiteite het ons</h3>
+
+<video id="marketingVideo" width="100%" height="auto" 
+       poster="1Plaas.jpg" 
+       controls 
+       style="border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+    <source src="Bemarking.mp4" type="video/mp4">
+    Jou blaaier ondersteun nie video nie.
+    <track kind="captions" src="bemarking.vtt" srclang="af" label="Afrikaans" default>
+</video>
+
+<!-- Logo-blok wat in laaste 5 sekondes fade-in bo-op video -->
+<div id="videoEndLogo" style="display:none; position:absolute; bottom:30px; left:50%; transform:translateX(-50%); z-index:10; opacity:0; transition:opacity 1s;">
+    <div class="logo-blok" style="margin:0; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+        <div class="logo-sirkel"></div>
+        <h2>Kom kuier gerus</h2>
+        <p style="font-style:normal; font-size:24px;">Ons is trots op ons plaas en deel graag ons storie.</p>
+        <button onclick="location.href='contact.html'" class="submit-btn">Besoek ons vandag</button>
+    </div>
+</div>
     </section>
 
     <!-- Ander bladsy kleur, default een vir blaaie -->
