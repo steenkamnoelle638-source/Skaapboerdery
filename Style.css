@@ -743,6 +743,12 @@
         line-height: 1.7;
     }
 
+    .afdeling-titel-blok ul, li {
+        max-width: 900px;
+        margin: 0 auto 10px auto;
+        line-height: 1.7;
+    }
+
 /* ============================= PRENT + TEKS BOX ONDER ============================= */
     .prent-boks{
         display:flex;
@@ -1730,3 +1736,15 @@
 
         /* Terug na bo knoppie  */
     }
+
+/* CSS Filter (Hoofstuk 4) - voorbeeld op logo en prente */
+.logo-img, .split img, .carousel-item img {
+    filter: brightness(1.05) contrast(1.1);   /* ligte verbetering */
+}
+
+/* In print maak dit nog meer professioneel */
+@media print {
+    .logo-img, .split img {
+        filter: grayscale(0.2) brightness(1.1);   /* baie ligte grys + helderheid */
+    }
+}

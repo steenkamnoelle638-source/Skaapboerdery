@@ -124,28 +124,32 @@
             Vandag boer die tweede geslag saam met die oorspronklikes, en ons sien daarna uit om die tradisie na die derde geslag oor te dra. 
             Ons plaas lê op ongeveer 50 hektaar, waar ons die natuurlike Hoëveld-grasse respekteer en verbeter deur rotasie-weiding en bewaringsboerdery.
         </p>
-        <br>
 
-        <h3 style="margin-top:30px;">Hoe lyk ons plaas en watter aktiwiteite het ons</h3>
+        <h3 style="margin-top:30px; margin-bottom:15px; font-size: 25px;">Hoe lyk ons plaas en watter aktiwiteite het ons</h3>
+        <!-- Video houer met relative positioning -->
+        <div style="position: relative; display: inline-block; width: 100%; max-width: 100%;">
+            <video id="marketingVideo" width="100%" height="auto" 
+                    controls style="border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+                <source src="Bemarking.mp4" type="video/mp4">
+                <track kind="captions" src="bemarking.vtt" srclang="af" label="Afrikaans" default>
+            </video>
 
-<video id="marketingVideo" width="100%" height="auto" 
-       poster="1Plaas.jpg" 
-       controls 
-       style="border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2);">
-    <source src="Bemarking.mp4" type="video/mp4">
-    Jou blaaier ondersteun nie video nie.
-    <track kind="captions" src="bemarking.vtt" srclang="af" label="Afrikaans" default>
-</video>
+            <!-- Logo-blok presies in die middel van die video -->
+            <div id="videoEndLogo" style="display:none; position:absolute; top:50%; left:50%; 
+                                        transform:translate(-50%, -50%); z-index:10; opacity:0; 
+                                        transition:opacity 1.2s ease;">
+                <div class="logo-blok">
+                    <div class="logo-sirkel"></div>
+                    <p style="font-style: normal; font-size: 24px; margin-bottom: 0px; font-weight: 550; margin-top: 15px;">Kom kuier gerus</p>
+                    <p style="font-style: normal; font-size: medium; margin-bottom: 0px;">Ons is trots op ons plaas en deel graag ons storie met besoekers, kopers en vriende van die bedryf.</p>
 
-<!-- Logo-blok wat in laaste 5 sekondes fade-in bo-op video -->
-<div id="videoEndLogo" style="display:none; position:absolute; bottom:30px; left:50%; transform:translateX(-50%); z-index:10; opacity:0; transition:opacity 1s;">
-    <div class="logo-blok" style="margin:0; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
-        <div class="logo-sirkel"></div>
-        <h2>Kom kuier gerus</h2>
-        <p style="font-style:normal; font-size:24px;">Ons is trots op ons plaas en deel graag ons storie.</p>
-        <button onclick="location.href='contact.html'" class="submit-btn">Besoek ons vandag</button>
-    </div>
-</div>
+                    <!-- Sit skakel na kontakblad in -->
+                    <div class="cta">
+                        <button onclick="location.href='contact.html'">Besoek ons vandag</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Ander bladsy kleur, default een vir blaaie -->
@@ -181,28 +185,18 @@
                     – Ons pas moderne tegnologie en beste praktyke toe sonder om ons wortels te vergeet.
                 </li>
             </ul>
-        
-        <br>
-
-        <section class="logo-blok">
-            <div class="logo-sirkel"></div>
-            <h2>Kom kuier gerus</h2>
-            <p style="font-style: normal; font-size: 24px; margin-bottom: 0px; font-weight: 550;">Kom kuier gerus</p>
-            <p style="font-style: normal; font-size: medium; margin-bottom: 0px;">Ons is trots op ons plaas en deel graag ons storie met besoekers, kopers en vriende van die bedryf.</p>
-
-            <!-- Sit skakel na kontakblad in -->
-            <div class="cta">
-                <button onclick="location.href='contact.html'">Besoek ons vandag</button>
-            </div>
-        </section>
     </section>
 
     <!-- Voetskrif -->
     <footer>
         <div class="footer-container">
             <div class="footer-left">
-                <p><i class="fa-solid fa-phone"></i>&nbsp;<strong>Telefoon:</strong> 012 000 6789</p>
-                <p><i class="fa-solid fa-envelope"></i>&nbsp;<strong>E-pos:</strong> info@highveldboerdery.co.za</p>
+                <p><i class="fa-solid fa-phone"></i>&nbsp;<strong>Telefoon:</strong> 
+                    <a href="tel:0120006789" style="color:white; text-decoration:none;">012 000 6789</a>
+                </p>
+                <p><i class="fa-solid fa-envelope"></i>&nbsp;<strong>E-pos:</strong> 
+                    <a href="mailto:info@highveldboerdery.co.za" style="color:white; text-decoration:none;">info@highveldboerdery.co.za</a>
+                </p>
                 <p><i class="fa-solid fa-location-dot"></i>&nbsp;<strong>Ligging:</strong> Pretoria, Gauteng</p>
             </div>
             
@@ -215,7 +209,6 @@
         </div>
         
         <div class="footer-copyright">
-            <p><em>Highveld Boerdery – waar tradisie en toekoms hand aan hand loop.</em></p>
             <p>© Copyright 2026 Highveld Boerdery | All rights reserved</p>
         </div>
     </footer>

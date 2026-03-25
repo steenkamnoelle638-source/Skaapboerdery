@@ -1287,6 +1287,34 @@
                 document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
             });
         });
+
+// ============================= INTERAKTIEWE VIDEO + DATUM OBJEK =============================
+    const video = document.getElementById('marketingVideo');
+    const endLogo = document.getElementById('videoEndLogo');
+
+    if (video) {
+        video.addEventListener('timeupdate', () => {
+            if (video.currentTime >= video.duration - 5) {   // laaste 5 sekondes
+                endLogo.style.display = 'block';
+                endLogo.style.opacity = '1';
+            }
+        });
+
+        video.addEventListener('ended', () => {
+            endLogo.style.opacity = '1';
+        });
+    }
+
+    // Datum-objek: minimum datum vir afhaal/besoek (môre)
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+    const minDate = tomorrow.toISOString().split('T')[0];
+
+    const pickupDate = document.getElementById('pickupDate');
+    const visitDate = document.getElementById('visitDate');
+    if (pickupDate) pickupDate.setAttribute('min', minDate);
+    if (visitDate) visitDate.setAttribute('min', minDate);
     });
 
     

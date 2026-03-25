@@ -1,78 +1,110 @@
 /* =============================================
-   PRINT.CSS – VOLLEDIG OPGELOOS (Hoofstuk 5 & 6)
+   PRINT.CSS – Finale weergawe (herstel prente + verwyder overlays)
    ============================================= */
-
 @media print {
     @page {
         size: A4 portrait;
         margin: 1.5cm;
     }
 
-    /* Alles sigbaar maak – geen leë bladsye meer nie */
-    body, .hero, .nav-houer, .nav, .nav-menu, .dropdown-content,
-    .afdeling, .content-houer, .form-container, .split, .logo-blok,
-    table, .top-products-cards, .carousel-item {
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        animation: none !important;
-        transition: none !important;
-    }
-
-    /* Swart overlays heeltemal weg */
-    .hero::before, .intro::before, .bg-section::before {
-        display: none !important;
-    }
-
-    /* Split klasse – nou langsmekaar in print */
-    .split {
+    /* 1. WYS ALLE OVERLAYS heeltemal (hero, intro, bg-section) */
+    .hero::before,
+    .intro::before,
+    .bg-section::before,
+    .hero > *::before,
+    .intro > *::before,
+    .bg-section > *::before {
         display: flex !important;
-        flex-direction: row !important;
-        gap: 20px !important;
-        page-break-inside: avoid;
+        content: "" !important;
+        background: rgba(0,0,0,0.45) !important;
+        opacity: 1 !important;
     }
-    .split:nth-child(even) { flex-direction: row-reverse !important; }
-    .split-text, .split-image { flex: 1 !important; }
 
-    /* Teks kleure regmaak */
-    body { color: #000 !important; background: white !important; }
-    h1, h2, h3, .price, strong { color: #000 !important; }
-    .logo-teks h1, .logo-teks p { color: #065f46 !important; }
+    .intro {
+        text-align: center !important;
+        padding: 140px 20px !important;
+        color: rgb(238, 238, 238) !important;
 
-    /* Select / opsies nou sigbaar in print */
-    select, option {
+        /* Belangrik vir die ::before overlay */
+        position: relative !important;
+    }
+
+    /* 2. MAAK ALLE PRENTE SIGBAAR */
+    img {
         display: block !important;
-        color: #000 !important;
-        background: white !important;
-        border: 1px solid #000 !important;
-        padding: 4px 8px !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        max-width: 100% !important;
+        height: auto !important;
     }
 
-    /* Tabelle – ligte grys rande soos jy gevra het */
+    /* 3. Logo-blok op video – behou jou oorspronklike kleure */
+    #videoEndLogo .logo-blok {
+        background: white !important;
+        border: 5px solid #065f46 !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+        padding: 20px 30px !important;
+        text-align: center !important;
+    }
+    #videoEndLogo .logo-sirkel {
+        background: white url("Logo.jpg") center/cover no-repeat !important;
+        border: 5px solid #065f46 !important;
+    }
+    #videoEndLogo h2,
+    #videoEndLogo p {
+        color: #065f46 !important;
+    }
+
+    /* 4. Teks kleure bly jou oorspronklike (donker groen waar dit moet wees) */
+    body { 
+        font-family:'Poppins',sans-serif !important;
+        background:#f4f6f3 !important;
+        color:#333 !important; 
+    }
+
+    /* 5. Langsmekaar elemente bly saam in print */
+    .split, .footer-container, .top-products-cards, .product-row, .carousel-item {
+        opacity: 1;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 10px !important;
+        font-size: 0.95rem !important;
+
+    }
+
+    /* 6. Tabelle en vorms */
     table {
         width: 100% !important;
-        table-layout: auto !important;
         border-collapse: collapse;
         page-break-inside: avoid;
     }
     th, td {
         border: 1px solid #ccc !important;   /* ligte grys */
         padding: 8px 10px !important;
-        color: #000 !important;
+        color: #333 !important;
     }
     thead { background: #f0f0f0 !important; }
 
-    /* Knoppies en add-btn */
-    .add-btn, button.add-btn, .submit-btn {
+    /* Knoppies */
+    .add-btn, .submit-btn {
         display: inline-block !important;
         background: #065f46 !important;
         color: white !important;
-        border: 2px solid #000 !important;
     }
 
     /* Bladsy-breuke */
-    .afdeling, .content-houer, .split, .form-container, .logo-blok {
+    .afdeling, .content-houer, .split, .form-container, .logo-blok, #Hoogtepunte, .footer-container {
         page-break-inside: avoid;
         break-inside: avoid;
     }
+
+    .bg-section{
+        page-break-inside: avoid;
+    }
+
+    /* Steek onnodige goed op print weg */
+    header, nav {
+        display: none !important;
+    }
+
 }
