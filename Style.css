@@ -1336,6 +1336,51 @@
         background: #047857;
     }
 
+/* ============================= LIGGING KAART ============================= */
+    .location-map-section {
+        padding-top: 0;
+    }
+
+    .location-map-card {
+        max-width: 900px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        padding: 2rem;
+    }
+
+    .location-map-card h2 {
+        text-align: center;
+        color: #065f46;
+        margin-bottom: 0.8rem;
+    }
+
+    .location-map-card p {
+        text-align: center;
+        color: #4b5563;
+        margin-bottom: 1.3rem;
+    }
+
+    .location-map-frame {
+        overflow: hidden;
+        border-radius: 14px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .map-link {
+        display: inline-block;
+        margin-top: 1rem;
+        color: #065f46;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .map-link:hover {
+        text-decoration: underline;
+        color: #047857;
+    }
+
 /* ============================= CSS FILTER - logo en prente ============================= */
     .logo-img, .split img, .carousel-item img {
         filter: brightness(1.05) contrast(1.1);   /* ligte verbetering */
