@@ -1885,6 +1885,19 @@
             border-radius: 10px;
         }
 
+        /* Verwyder keyframe */
+        .cta button,
+        .submit-btn {
+            transition: none;
+            animation: none;
+        }
+        
+        .cta button:hover,
+        .submit-btn:hover{
+            transform: none;
+            transition: none;
+        }
+
         /* Terug na bo knoppie  */
         #topBtn{
             align-items: safe;
