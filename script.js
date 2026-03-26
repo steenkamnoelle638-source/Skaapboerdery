@@ -600,13 +600,14 @@
                 attachChangeListeners(newRow);
 
                 // Belangrik: herbereken totaal + opdateer betaalmetode sigbaarheid dadelik
-                `calculateTotal();
-                 updatePaymentVisibility();`
+                calculateTotal();
+                updatePaymentVisibility();
 
                 // Verwyder knoppie se funksionaliteit + herroep totaal bereken metode
                 newRow.querySelector('.remove-product-btn').addEventListener('click', function() {
                     newRow.remove();
                     calculateTotal();
+                    updatePaymentVisibility();
                 });
                 
                 // Wys verwyder knoppie op alle rye as daar >1 is
