@@ -1864,11 +1864,15 @@
         }
 
         /* Terug na bo knoppie  */
-
+        #topBtn{
+            align-items: safe;
+            align-self: safe;
+        }
 
         /* Footer */
         .footer-container{
-            margin-left: 0;
+            margin: auto;
+            align-items: center;
         }
     }
 
