@@ -493,11 +493,31 @@
             updatePaymentVisibility();
 
             // Wys/versteek kaartvelde afhangend van watter betaalopsie gekies is
-            document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    document.getElementById('cardDetails').style.display = (this.value === 'card') ? 'block' : 'none';
+            function toggleCardDetailsRequirement() {
+                const method = document.querySelector('input[name="paymentMethod"]:checked')?.value;
+                const isCard = method === 'card';
+                const cardDetails = document.getElementById('cardDetails');
+                const cardFields = ['cardName', 'cardNumber', 'expiry', 'cvv']
+                    .map(id => document.getElementById(id))
+                    .filter(Boolean);
+
+                if (cardDetails) {
+                    cardDetails.style.display = isCard ? 'block' : 'none';
+                }
+
+                cardFields.forEach(field => {
+                    field.required = isCard;
+                    field.disabled = !isCard;
+                    if (!isCard) field.value = '';
                 });
+            }
+
+            document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+                radio.addEventListener('change', toggleCardDetailsRequirement);
             });
+
+            // Stel reg by aanvanklike laai ook
+            toggleCardDetailsRequirement();
 
             // Basiese formaat & validasie
             document.getElementById('cardNumber')?.addEventListener('input', function(e) {
@@ -878,6 +898,16 @@
 
             // Maak die hele vorm leeg na sukses
             document.getElementById('orderForm').reset();
+
+            // Herstel betaalopsie na kaart met toepaslike vereistes na reset
+            const cardDetails = document.getElementById('cardDetails');
+            if (cardDetails) cardDetails.style.display = 'block';
+            ['cardName', 'cardNumber', 'expiry', 'cvv'].forEach(id => {
+                const field = document.getElementById(id);
+                if (!field) return;
+                field.disabled = false;
+                field.required = true;
+            });
 
             // Maak adresveld toe en steek totaal weg
             toggleAddressField();
