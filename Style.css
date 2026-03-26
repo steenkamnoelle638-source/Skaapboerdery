@@ -1864,6 +1864,12 @@
         }
 
         /* Terug na bo knoppie  */
+
+
+        /* Footer */
+        .footer-container{
+            margin-left: 0;
+        }
     }
 
 /* ============================= PRINT ============================= */
