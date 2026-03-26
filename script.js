@@ -1315,6 +1315,31 @@
     const visitDate = document.getElementById('visitDate');
     if (pickupDate) pickupDate.setAttribute('min', minDate);
     if (visitDate) visitDate.setAttribute('min', minDate);
+
+    // BYSIT TOT VOOR EINDE VAN FUNKSIE
+    // Print: maak select-opsies volledig sigbaar
+    const selectStates = [];
+    function expandSelectsForPrint() {
+        document.querySelectorAll('select').forEach((select) => {
+            selectStates.push({ el: select, size: select.getAttribute('size') });
+            select.setAttribute('size', String(Math.max(select.options.length, 2)));
+        });
+    }
+
+    function restoreSelectsAfterPrint() {
+        selectStates.forEach(({ el, size }) => {
+            if (!el) return;
+            if (size === null) {
+                el.removeAttribute('size');
+            } else {
+                el.setAttribute('size', size);
+            }
+        });
+        selectStates.length = 0;
+    }
+
+    window.addEventListener('beforeprint', expandSelectsForPrint);
+    window.addEventListener('afterprint', restoreSelectsAfterPrint);
     });
 
     

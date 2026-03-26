@@ -1,110 +1,293 @@
-/* =============================================
-   PRINT.CSS – Finale weergawe (herstel prente + verwyder overlays)
-   ============================================= */
 @media print {
     @page {
         size: A4 portrait;
-        margin: 1.5cm;
+        margin: 1.2cm;
     }
 
-    /* 1. WYS ALLE OVERLAYS heeltemal (hero, intro, bg-section) */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body {
+        background: #f4f6f3 !important;
+        color: #333 !important;
+        font-size: 10.5pt;
+    }
+
+    /* Hou prent kleure soos in style.css */
+    .logo-img,
+    .split img,
+    .carousel-item img {
+        filter: none !important;
+    }
+
+    /* Elemente wat met animasie en dus opacity van 0 oorspronklik -> opacity van 1 sodat vertoon */
+    .split,
+    .slide,
+    .mini-slide,
+    .carousel-item,
+    [class*="fade"],
+    [class*="Fade"] {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+
+    .slide,
+    .mini-slide {
+        display: block !important;
+    }
+
+    /* Vertoon alle prente en alle prent overlays */
+    img,
     .hero::before,
     .intro::before,
-    .bg-section::before,
-    .hero > *::before,
-    .intro > *::before,
-    .bg-section > *::before {
-        display: flex !important;
-        content: "" !important;
-        background: rgba(0,0,0,0.45) !important;
-        opacity: 1 !important;
-    }
-
-    .intro {
-        text-align: center !important;
-        padding: 140px 20px !important;
-        color: rgb(238, 238, 238) !important;
-
-        /* Belangrik vir die ::before overlay */
-        position: relative !important;
-    }
-
-    /* 2. MAAK ALLE PRENTE SIGBAAR */
-    img {
+    .bg-section::before {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        max-width: 100% !important;
+    }
+
+    /* Items bly langsmekaar vertoon soos in style.css */
+    .split,
+    .footer-container,
+    .top-products-cards,
+    .product-row,
+    .prent-boks,
+    .produk-prent{
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+
+    .split-text,
+    .split-image,
+    .footer-left,
+    .footer-right {
+        min-width: 0 !important;
+        flex: 1 1 0 !important;
+    }
+
+    /* Spasie tussen split rye */
+    .split{
+        margin-bottom: -27.5px !important;
+    }
+
+    .split-text{
+        margin: auto !important;
+    }
+
+    /* Gallery spesifiek sodat teks nie agter prente is */
+    #GalerySplit .split-image{
+        margin: 40px auto !important;
+        padding: 17px !important;
+    }
+
+
+    /* Maak seker footer bly flex sodat flex properties op kan toepas op kinders (links en regs eweredig spasie deel) */
+    .footer-container {      
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;   
+        align-items: flex-start !important;
+        gap: 30px !important;                       
+        width: 100% !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        margin: auto -5px !important;   /* Sodat linker deel nie regter deel squish */
+    }
+
+    .footer-left,
+    .footer-right {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    .footer-copyright{
+        margin-top: 2px !important;
+    }
+
+    /* Tabel moet op blad pas */
+    table {
+        width: 100% !important;
+        table-layout: fixed !important;
+        border-collapse: collapse !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        font-size: 9.5pt;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    td,
+    th {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        word-break: break-word !important;
+        white-space: normal !important;
+    }
+
+    th,
+    td {
+        padding: 6px 8px !important;
+    }
+
+    /* klasse moet nie oor bladsy verdeel word a.g.v page break nie */
+    .afdeling,
+    .content-houer,
+    .logo-blok,
+    .bg-section,
+    .form-container,
+    .hr-afdeling-titel,
+    .afdeling-titel-blok,
+    blockquote,
+    .nommer-item,
+    .regmerkie-item,
+    .rooster-regmerkie-item,
+    .mini-gallery {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    /* Vorm beter op A4 pas */
+    .form-container{
+        margin: -10px auto;
+    }
+    
+    .form-container h2{
+        margin-bottom: 0 !important;
+    }
+
+    .form-group {
+        margin-bottom: 2px !important;
+    }
+
+    textarea{
+        margin-bottom: 4px !important;
+    }
+
+    .add-btn{
+        margin-top: -20px !important;
+    }
+    
+    /* Wys alle kieslys opsies */
+    select {
         height: auto !important;
     }
 
-    /* 3. Logo-blok op video – behou jou oorspronklike kleure */
-    #videoEndLogo .logo-blok {
-        background: white !important;
-        border: 5px solid #065f46 !important;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
-        padding: 20px 30px !important;
-        text-align: center !important;
-    }
-    #videoEndLogo .logo-sirkel {
-        background: white url("Logo.jpg") center/cover no-repeat !important;
-        border: 5px solid #065f46 !important;
-    }
-    #videoEndLogo h2,
-    #videoEndLogo p {
-        color: #065f46 !important;
-    }
-
-    /* 4. Teks kleure bly jou oorspronklike (donker groen waar dit moet wees) */
-    body { 
-        font-family:'Poppins',sans-serif !important;
-        background:#f4f6f3 !important;
-        color:#333 !important; 
-    }
-
-    /* 5. Langsmekaar elemente bly saam in print */
-    .split, .footer-container, .top-products-cards, .product-row, .carousel-item {
-        opacity: 1;
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        gap: 10px !important;
-        font-size: 0.95rem !important;
-
-    }
-
-    /* 6. Tabelle en vorms */
-    table {
-        width: 100% !important;
-        border-collapse: collapse;
-        page-break-inside: avoid;
-    }
-    th, td {
-        border: 1px solid #ccc !important;   /* ligte grys */
-        padding: 8px 10px !important;
+    select option {
+        display: block !important;
         color: #333 !important;
     }
-    thead { background: #f0f0f0 !important; }
 
-    /* Knoppies */
-    .add-btn, .submit-btn {
-        display: inline-block !important;
-        background: #065f46 !important;
-        color: white !important;
+    .print-product-row {
+        display: grid;
+        grid-template-columns: 1fr 120px;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 0.4rem;
     }
 
-    /* Bladsy-breuke */
-    .afdeling, .content-houer, .split, .form-container, .logo-blok, #Hoogtepunte, .footer-container {
-        page-break-inside: avoid;
-        break-inside: avoid;
+    /* Produkte ry houer */
+    .print-product-row input {
+        border: 1px solid #999 !important;
+        border-radius: 4px !important;
+        min-height: 28px !important;
+        margin-bottom: 3px !important;
     }
 
-    .bg-section{
-        page-break-inside: avoid;
+    /* Maak seker submit knoppie wys */
+    #submitBtn {
+        display: block !important;
+        margin-top: -8px !important;
     }
 
-    /* Steek onnodige goed op print weg */
-    header, nav {
+    #Kontak .form-container h2{
+        margin-top: -10px !important;
+        font-size: 23px !important;
+    }
+
+    #Kontak .form-group{
+        margin: 0px;
+    }
+
+    /* Wys nie die volgende klasse nie */
+    header,
+    nav,
+    #topBtn,
+    .menu-toggle,
+    .arrow,
+    .carousel-arrow,
+    .mini-arrow,
+    .dots {
         display: none !important;
     }
 
+    /* Sit lys ondermekaar sodat nie afsny aan kante */
+    .nommer-lys {
+        grid-template-columns: 1fr !important;
+        margin: 10px 0 !important;
+        gap: 10px !important;
+        width: 100% !important;
+        font-size: 9.2pt !important;
+    }
+
+    .nommer-item {
+        padding: 10px 12px !important;
+    }
+
+    .nommer-ikoon {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Boerdery rooster se lys se spasie aanpas sodat eerste rooster nie oorstrek na 2de blad */
+    .boerdery-rooster li{
+        margin-bottom: 13px;
+        line-height: 20px;
+    }
+
+     /* Maak dat prent en teksboks bo op mekaar vertoon soos in style.css */
+    #Bestuursbenadering .prent-boks,
+    #Bestuursbenadering .prent-boks img,
+    #Bestuursbenadering .text-box {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        font-size: 12px;
+        padding: 13px 20px !important;
+    }
+
+    #Bestuursbenadering .text-box {
+        margin-top: -40px !important;
+    }
+
+    /* Pas aan sodat op 1 bladsy saam hero pas */
+    .intro{
+        padding: 120px 20px !important;
+    }
+
+    /* Sodat remerkies nader aan hr is - reg onder hr is */
+    .regmerkie-lys{
+        margin-top: -10px !important;
+    }
+
+    /* Bullets binne stippel blok mooi is */
+    .afdeling-titel-blok li{
+        margin-left: 23px !important;
+    }
+
+    /* Definisielys spasie onder */
+    .waardes-definisie {
+        margin-bottom: -5px !important;
+    }
 }

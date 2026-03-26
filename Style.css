@@ -208,10 +208,12 @@
         font-size: 48px;
         margin-bottom: 15px;
         color: white;
+        text-shadow: 0 3px 8px rgba(0, 0, 0, 0.65);
     }
 
     .hero-teks p {
         font-size: 18px;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
     }
 
 /* ============================= SKAKEL KNOPPIE ============================= */
@@ -816,7 +818,7 @@
         font-weight:bold;
     }
 
-/* --------------- REGMERKIE --------------- */
+/* --------------- REGMERKIE (ondermekaar) --------------- */
     /* Houer vir regmerkie ikoon lys */
     .regmerkie-lys{
         max-width:1000px;
@@ -841,7 +843,7 @@
         justify-content:center;
     }
 
-/* --------------- ROOSTER REGMERKIE --------------- */
+/* --------------- REGMERKIE ROOSTER (langsmekaar) --------------- */
     /* Houer vir regmerkie ikoon lys */
     .rooster-regmerkie-lys{
         max-width:90%;
@@ -868,7 +870,35 @@
         justify-content:center;
         font-weight:bold;
     }
-/* --------------- Boerdery Rooster --------------- */
+/* --------------- DEFINISIE LYS --------------- */
+    .waardes-definisie {
+        margin: 25px 0;
+        font-size: 1.05rem;
+    }
+
+    .waardes-definisie dt {
+        font-weight: 700;
+        color: #065f46;
+        margin-top: 1.2rem;
+        font-size: 1.15rem;
+        position: relative;
+        padding-left: 28px;
+    }
+
+    .waardes-definisie dt::before {
+        content: "►";
+        position: absolute;
+        left: 0;
+        color: #4CAF50;
+    }
+
+    .waardes-definisie dd {
+        margin-left: 28px;
+        line-height: 1.6;
+        color: #444;
+    }
+
+/* ============================= BOERDERY ROOSTER ============================= */
     /* Binne blok / Rooster - normale kolpunte */
     /* Rooster met 2 kolomme */
     .boerdery-rooster {
@@ -1145,6 +1175,7 @@
         font-weight: 500;
     }
 
+
     /* Stel uniforme styl vir verskeie elemente (text,email,number,select,textarea) */
     input[type="text"],
     input[type="email"],
@@ -1239,7 +1270,7 @@
         border-radius: 12px;
         cursor: pointer;
         font-weight: 600;
-        margin-top: 0.5rem;
+        margin-top: -2px;
     }
 
     .add-btn:hover {
@@ -1263,6 +1294,29 @@
         background: #b91c1c;
     }
 
+    /* Print-only produk hoeveelheid rooster */
+    .print-product-matrix {
+        display: none;
+    }
+
+    /* Checkbox knoppie */
+    .checkbox-group label {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-weight: 500;
+        cursor: pointer;
+        line-height: 1.5;
+        margin-top: 8px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+        margin-top: 4px;
+        accent-color: #065f46;
+        transform: scale(1.15);
+    }
+
+
     /* Knoppie om vorm te stuur (Plaas bestelling / Stuur boodskap) */
     .submit-btn {
         width: 100%;
@@ -1280,6 +1334,36 @@
     /* Voorkoms as bo-oor knoppie met muis beweeg */
     .submit-btn:hover {
         background: #047857;
+    }
+
+/* ============================= CSS FILTER - logo en prente ============================= */
+    .logo-img, .split img, .carousel-item img {
+        filter: brightness(1.05) contrast(1.1);   /* ligte verbetering */
+    }
+
+/* ============================= KEYFRAME ANIMASIE ============================= */
+    /* Klein pulse animasie op koppies hover */
+    .cta button,
+    .submit-btn {
+        transition: all 0.3s ease;
+        
+    }
+
+    .cta button:hover,
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(6, 95, 70, 0.35);
+        animation: pulse 1.2s infinite ease-in-out;
+    }
+
+    /* Pulse animasie */
+    @keyframes pulse {
+        0%, 100% {
+            transform: translateY(-2px) scale(1);
+        }
+        50% {
+            transform: translateY(-2px) scale(1.06);
+        }
     }
 
 /* ---------------------------------------------------------------------------------
@@ -1737,12 +1821,7 @@
         /* Terug na bo knoppie  */
     }
 
-/* CSS Filter (Hoofstuk 4) - voorbeeld op logo en prente */
-.logo-img, .split img, .carousel-item img {
-    filter: brightness(1.05) contrast(1.1);   /* ligte verbetering */
-}
-
-/* In print maak dit nog meer professioneel */
+/* ============================= PRINT ============================= */
 @media print {
     .logo-img, .split img {
         filter: grayscale(0.2) brightness(1.1);   /* baie ligte grys + helderheid */

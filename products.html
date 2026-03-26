@@ -243,7 +243,28 @@
         
                     <!-- Knoppie om nog 'n produk by te voeg -->
                     <button type="button" id="addProductBtn" class="add-btn">+ Nog 'n produk byvoeg</button>
+                
+                    <!-- CHECKBOX -->
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="termsOrder" required>
+                            Ek stem in tot die verkoopvoorwaardes en afleweringsbeleid
+                        </label>
+                    </div>
+
                 </div>
+
+                <!-- BYVOEG TOT VOOR form-group clas div -->
+                <!-- <div class="print-product-matrix">
+                    <h3>Produkte en hoeveelhede</h3>
+                    <div class="print-product-row"><span>Wol (per kg)</span><input type="number" min="0" placeholder="Aantal"></div>
+                    <div class="print-product-row"><span>Lammer (lewend)</span><input type="number" min="0" placeholder="Aantal"></div>
+                    <div class="print-product-row"><span>Skaapvleis (kg)</span><input type="number" min="0" placeholder="Aantal"></div>
+                    <div class="print-product-row"><span>Skaap (volwasse)</span><input type="number" min="0" placeholder="Aantal"></div>
+                    <div class="print-product-row"><span>Skaapvel (per vel)</span><input type="number" min="0" placeholder="Aantal"></div>
+                    <div class="print-product-row"><span>Skaapmis (per sak / 50 kg)</span><input type="number" min="0" placeholder="Aantal"></div>
+                    <div class="print-product-row"><span>Skaapvet / talg (per kg)</span><input type="number" min="0" placeholder="Aantal"></div>
+                </div> -->
 
                 <!-- Totaal wys hier -->
                 <div class="form-group" id="totalDisplay" style="display:none; font-weight:bold; color:#2f4f2f;">
@@ -260,6 +281,20 @@
                         <option value="deliver">Aflewering (ekstra koste mag geld)</option>
                     </select>
                 </div>
+
+                <!-- DATALIST -->
+                <div class="form-group" id="addressGroup" style="display:none;">
+    <label>Afleweringsadres</label>
+    <input list="commonAddresses" id="deliveryAddress" placeholder="Begin tik vir voorstelle..." rows="3">
+    <datalist id="commonAddresses">
+        <option value="Pretoria East, Gauteng">
+        <option value="Centurion, Gauteng">
+        <option value="Midrand, Gauteng">
+        <option value="Silver Lakes, Pretoria">
+        <option value="Brooklyn, Pretoria">
+        <option value="Menlyn, Pretoria">
+    </datalist>
+</div>
 
                 <!-- Nuwe veld vir afhaaldatum en tyd – versteek eers -->
                 <div class="form-group" id="pickupDateGroup" style="display:none;">
