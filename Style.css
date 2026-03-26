@@ -283,7 +283,7 @@
 
     .footer-container {
         max-width: 1200px;
-        margin: 0 auto 30px;
+        margin: 0 auto 30px 180px;
         display: flex;
         justify-content: space-between;     /* Maak dat teks in footer links en regs kan vertoon */
         flex-wrap: wrap;                    /* As nie genoeg spasie - oorgaan na nuwe lyn */
