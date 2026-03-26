@@ -284,17 +284,17 @@
 
                 <!-- DATALIST -->
                 <div class="form-group" id="addressGroup" style="display:none;">
-    <label>Afleweringsadres</label>
-    <input list="commonAddresses" id="deliveryAddress" placeholder="Begin tik vir voorstelle..." rows="3">
-    <datalist id="commonAddresses">
-        <option value="Pretoria East, Gauteng">
-        <option value="Centurion, Gauteng">
-        <option value="Midrand, Gauteng">
-        <option value="Silver Lakes, Pretoria">
-        <option value="Brooklyn, Pretoria">
-        <option value="Menlyn, Pretoria">
-    </datalist>
-</div>
+                    <label>Afleweringsadres</label>
+                    <input list="commonAddresses" id="deliveryAddress" name="deliveryAddress" placeholder="Volledige afleweringsadres (straat, suburb, stad, poskode)">
+                    <datalist id="commonAddresses">
+                        <option value="Pretoria East, Gauteng">
+                        <option value="Centurion, Gauteng">
+                        <option value="Midrand, Gauteng">
+                        <option value="Silver Lakes, Pretoria">
+                        <option value="Brooklyn, Pretoria">
+                        <option value="Menlyn, Pretoria">
+                    </datalist>
+                </div>>
 
                 <!-- Nuwe veld vir afhaaldatum en tyd – versteek eers -->
                 <div class="form-group" id="pickupDateGroup" style="display:none;">
@@ -320,14 +320,6 @@
                     <small id="pickupHelp" style="color:#666; display:block; margin-top:0.5rem;">
                         Afhaal beskikbaar Ma–Vry 08:00–17:00 en Saterdag 08:00–13:00
                     </small>
-                </div>
-
-                <!-- Veld wat versteek is as afhaal gekies word -->
-                    <!-- Bysit - as persoon begin tik wys moontlike adresse -> voorkom spelfoute -->
-                    <!-- Idee abandon want benodig 'n API key van Maps -->
-                <div class="form-group" id="addressGroup" style="display:none;">
-                    <label>Afleweringsadres</label>
-                    <textarea id="deliveryAddress" rows="3" placeholder="Volledige afleweringsadres (straat, suburb, stad, poskode)"></textarea>
                 </div>
 
                 <div class="form-group">
