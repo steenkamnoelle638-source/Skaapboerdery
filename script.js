@@ -501,14 +501,19 @@
                     .map(id => document.getElementById(id))
                     .filter(Boolean);
 
-                if (cardDetails) {
+                if (cardDetails) 
+                {
                     cardDetails.style.display = isCard ? 'block' : 'none';
                 }
 
                 cardFields.forEach(field => {
                     field.required = isCard;
                     field.disabled = !isCard;
-                    if (!isCard) field.value = '';
+
+                    if (!isCard)
+                    {
+                        field.value = '';
+                    }
                 });
             }
 
@@ -522,12 +527,21 @@
             // Basiese formaat & validasie
             document.getElementById('cardNumber')?.addEventListener('input', function(e) {
                 let val = e.target.value.replace(/\D/g, '').match(/.{1,4}/g);
-                if (val) e.target.value = val.join(' ');
+
+                if (val)
+                {
+                    e.target.value = val.join(' ');
+                } 
             });
 
             document.getElementById('expiry')?.addEventListener('input', function(e) {
                 let val = e.target.value.replace(/\D/g, '');
-                if (val.length > 2) val = val.slice(0,2) + '/' + val.slice(2);
+
+                if (val.length > 2) 
+                {
+                    val = val.slice(0,2) + '/' + val.slice(2);
+                }
+
                 e.target.value = val.slice(0,5);
             });
 
@@ -638,7 +652,10 @@
                 const addressGroup = document.getElementById('addressGroup');
                 const addressField = document.getElementById('deliveryAddress');
 
-                if (!pickupGroup || !addressGroup) return; // veiligheid
+                if (!pickupGroup || !addressGroup) 
+                {
+                    return; // veiligheid
+                }
 
                 // Toets of self afhaal gekies
                 if (value === 'self') 
@@ -706,13 +723,19 @@
         {
             const select = document.getElementById('deliveryOption');
             // As afleweringopsie nie gekies return
-            if (!select) return;
+            if (!select) 
+            {
+                return;
+            }
 
             const messageField = document.getElementById('message');
             const messageLabel = document.getElementById('messageLabel');
 
             // As geen boodskapveld of label return
-            if (!messageField || !messageLabel) return;
+            if (!messageField || !messageLabel) 
+            {
+                return;
+            }
 
             const isNavraag = select.value === 'Navraag';
 
@@ -902,10 +925,18 @@
 
             // Herstel betaalopsie na kaart met toepaslike vereistes na reset
             const cardDetails = document.getElementById('cardDetails');
-            if (cardDetails) cardDetails.style.display = 'block';
+            if (cardDetails)
+            { 
+                cardDetails.style.display = 'block';
+            }
+
             ['cardName', 'cardNumber', 'expiry', 'cvv'].forEach(id => {
                 const field = document.getElementById(id);
-                if (!field) return;
+                if (!field) 
+                {
+                    return;
+                }
+
                 field.disabled = false;
                 field.required = true;
             });
@@ -1323,9 +1354,11 @@
     const video = document.getElementById('marketingVideo');
     const endLogo = document.getElementById('videoEndLogo');
 
-    if (video) {
+    if (video) 
+    {
         video.addEventListener('timeupdate', () => {
-            if (video.currentTime >= video.duration - 5) {   // laaste 5 sekondes
+            if (video.currentTime >= video.duration - 5) // laaste 5 sekondes
+            {   
                 endLogo.style.display = 'block';
                 endLogo.style.opacity = '1';
             }
@@ -1350,14 +1383,16 @@
     // BYSIT TOT VOOR EINDE VAN FUNKSIE
     // Print: maak select-opsies volledig sigbaar
     const selectStates = [];
-    function expandSelectsForPrint() {
+    function expandSelectsForPrint() 
+    {
         document.querySelectorAll('select').forEach((select) => {
             selectStates.push({ el: select, size: select.getAttribute('size') });
             select.setAttribute('size', String(Math.max(select.options.length, 2)));
         });
     }
 
-    function restoreSelectsAfterPrint() {
+    function restoreSelectsAfterPrint() 
+    {
         selectStates.forEach(({ el, size }) => {
             if (!el) return;
             if (size === null) {
