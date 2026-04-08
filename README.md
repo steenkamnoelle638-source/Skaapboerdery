@@ -19,7 +19,7 @@
 
 
 ## Tegnologie gebruik:
-    -**Kode:** HTML5, CSS, JavaScript
+    - **Kode:** HTML5, CSS, JavaScript
     - **Styling:** Eksterne Style.css met media queries vir responsiwiteit
     - **Interaktiwiteit:** script.js (galerye, animasies, vormvalidasie, DOM-manipulasie)
     - **Databasis:** [bv. PHP + MySQL / Node.js + SQLite / Firebase – vul self in]
