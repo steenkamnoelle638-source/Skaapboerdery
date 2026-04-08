@@ -25,14 +25,12 @@ My voorraadbestuur tabel gaan ek in 'n SQL databasis verander
 - **Databasis:** [bv. PHP + MySQL / Node.js + SQLite / Firebase – vul self in]
 - **Eksterne bronne:** Google Fonts (Poppins, Playfair Display), Font Awesome ikone
 
- - hello
-
 ## Belangrike funksionaliteit:
-    - Multi-bladsy responsiewe ontwerp (werk op mobiel, tablet en desktop)
-    - Professionele navigasie met dropdown-menus en hamburger-menu vir klein skerms
-    - Dinamiese galerye (hoof-galery op tuisblad + mini-galerye op Ons Trop)
-    - Voorraadbestuur met visuele waarskuwings vir lae voorraad
-    - Produkpryslys en bestelvorm met outomatiese totaal-berekening
-    - Onlangse verkope-oorsig
-    - Kontak- / navrae-vorm
-    - Volledige CRUD-operasies op voorraad-items (via databasis)
+- Multi-bladsy responsiewe ontwerp (werk op mobiel, tablet en desktop)
+- Professionele navigasie met dropdown-menus en hamburger-menu vir klein skerms
+- Dinamiese galerye (hoof-galery op tuisblad + mini-galerye op Ons Trop)
+- Voorraadbestuur met visuele waarskuwings vir lae voorraad
+- Produkpryslys en bestelvorm met outomatiese totaal-berekening
+- Onlangse verkope-oorsig
+- Kontak- / navrae-vorm
+- Volledige CRUD-operasies op voorraad-items (via databasis)
