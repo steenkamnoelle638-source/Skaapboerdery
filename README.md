@@ -11,10 +11,10 @@ Die webblad bevat inligting oor:
 - Onlangse verkope en rekords
 - Kontakbesonderhede / -vorm
 
-Daar is gebruik gemaak van CSS en JS om die webtuiste profesioneel, aantreklik en gebruikersvriendelik te maak en te maak lyk.
-Die webblad moet 'n multibladsy ontwerp he met multimedia, tabelle, 2 webvorms en 'n CRUD databasis.
-Die webwerf moet dus 'n profesionele multifunksie webblad wees wat responsief is , databerging implimenteer asook verskeie prente en inligting oor die berdery bevat.
-Tans is die webwerf net 'n simulasie en word geen data gestoor nie, eers in fase 5 sal data gestoor word en dan sal net voorraad en voorraadinligting in 'n databasis gestoor word
+- Daar is gebruik gemaak van CSS en JS om die webtuiste profesioneel, aantreklik en gebruikersvriendelik te maak en te maak lyk.
+- Die webblad moet 'n multibladsy ontwerp he met multimedia, tabelle, 2 webvorms en 'n CRUD databasis.
+- Die webwerf moet dus 'n profesionele multifunksie webblad wees wat responsief is , databerging implimenteer asook verskeie prente en inligting oor die berdery bevat.
+- Tans is die webwerf net 'n simulasie en word geen data gestoor nie, eers in fase 5 sal data gestoor word en dan sal net voorraad en voorraadinligting in 'n databasis gestoor word
 
 
 ## Databasis Struktuur
