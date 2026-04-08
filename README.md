@@ -1,6 +1,6 @@
 # Skaapboerdery
 
-Beskrywing van my projek:
+## Beskrywing van my projek:
     Highveld Boerdery is 'n volledige, responsiewe en multi-bladsy webtuiste oor skaapboerdery.
     Die webblad bevat inligting oor:
         - Die boerdery (Geskiedenis, missie en waardes)
@@ -15,17 +15,17 @@ Beskrywing van my projek:
     Tans is die webwerf net 'n simulasie en word geen data gestoor nie, eers in fase 5 sal data gestoor word en dan sal net voorraad en voorraadinligting in 'n databasis gestoor word
 
 
-Databasis Struktuur
+## Databasis Struktuur
 
 
-Tegnologie gebruik:
-    - Kode: HTML5, CSS, JavaScript
-    - Styling: Eksterne Style.css met media queries vir responsiwiteit
-    - Interaktiwiteit: script.js (galerye, animasies, vormvalidasie, DOM-manipulasie)
-    - Databasis: [bv. PHP + MySQL / Node.js + SQLite / Firebase – vul self in]
-    - Eksterne bronne: Google Fonts (Poppins, Playfair Display), Font Awesome ikone
+## Tegnologie gebruik:
+    - **Kode:** HTML5, CSS, JavaScript
+    - **Styling:** Eksterne Style.css met media queries vir responsiwiteit
+    - **Interaktiwiteit:** script.js (galerye, animasies, vormvalidasie, DOM-manipulasie)
+    - **Databasis:** [bv. PHP + MySQL / Node.js + SQLite / Firebase – vul self in]
+    - **Eksterne bronne:** Google Fonts (Poppins, Playfair Display), Font Awesome ikone
 
-Belangrike funksionaliteit:
+## Belangrike funksionaliteit:
     - Multi-bladsy responsiewe ontwerp (werk op mobiel, tablet en desktop)
     - Professionele navigasie met dropdown-menus en hamburger-menu vir klein skerms
     - Dinamiese galerye (hoof-galery op tuisblad + mini-galerye op Ons Trop)
