@@ -2,6 +2,7 @@
 
 ## Beskrywing van my projek:
 Highveld Boerdery is 'n volledige, responsiewe en multi-bladsy webtuiste oor skaapboerdery.
+
 Die webblad bevat inligting oor:
 - Die boerdery (Geskiedenis, missie en waardes)
 - Die trop (3 skaaprasse en boerdery inligting)
@@ -9,6 +10,7 @@ Die webblad bevat inligting oor:
 - Voorraadbestuur (Databasis om die voorraad van produkte)
 - Onlangse verkope en rekords
 - Kontakbesonderhede / -vorm
+
 Daar is gebruik gemaak van CSS en JS om die webtuiste profesioneel, aantreklik en gebruikersvriendelik te maak en te maak lyk.
 Die webblad moet 'n multibladsy ontwerp he met multimedia, tabelle, 2 webvorms en 'n CRUD databasis.
 Die webwerf moet dus 'n profesionele multifunksie webblad wees wat responsief is , databerging implimenteer asook verskeie prente en inligting oor die berdery bevat.
