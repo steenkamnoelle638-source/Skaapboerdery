@@ -1417,7 +1417,8 @@ let inventoryDB = [];
 let transactions = [];
 
 // Laai uit localStorage (ons "SQL databasis")
-function loadDB() {
+function loadDB() 
+{
     const saved = localStorage.getItem(DB_KEY);
     inventoryDB = saved ? JSON.parse(saved) : [
         { id:1, item_name:"Lusern hooi", category:"Voer", quantity:45, unit:"bale", reorder_level:30 },
@@ -1431,13 +1432,15 @@ function loadDB() {
 }
 
 // Stoor na localStorage
-function saveDB() {
+function saveDB() 
+{
     localStorage.setItem(DB_KEY, JSON.stringify(inventoryDB));
     localStorage.setItem(TX_KEY, JSON.stringify(transactions));
 }
 
 // Voeg transaksie by (soos 'n regte databasis log)
-function addTransaction(item_id, type, qty, notes) {
+function addTransaction(item_id, type, qty, notes) 
+{
     const tx = {
         id: Date.now(),
         item_id: item_id,
@@ -1451,7 +1454,8 @@ function addTransaction(item_id, type, qty, notes) {
 }
 
 // Herbou die tabel
-function renderInventory() {
+function renderInventory() 
+{
     const tbody = document.getElementById('inventoryBody');
     tbody.innerHTML = '';
 
