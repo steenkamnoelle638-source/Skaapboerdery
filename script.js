@@ -1023,206 +1023,206 @@
 
 // ============================= VOORRAADBESTUUR BLAD ============================= 
     // Vind <tbody> met id 'inventoryBody' - waar ry data bygevoeg/verwyder word
-    const inventoryBodyElement = document.getElementById('inventoryBody');
+    // const inventoryBodyElement = document.getElementById('inventoryBody');
 
-    // Toets of in bladsy bestaan
-    if (inventoryBodyElement) 
-    {
-        // Hoof funksie wat wat status nagaan en opdateer (laag / goed)
-        function updateStockStatus() 
-        {
-            // Kry alle ry binne lyf
-            const rows = document.querySelectorAll('#inventoryBody tr');
-            // Gaan deur elke ry 1 vir 1
-            rows.forEach(row => {
-                // Lees qry en reorder , as nie getal is vertoon 0
-                const qty = parseInt(row.dataset.qty) || 0;
-                const reorder = parseInt(row.dataset.reorder) || 0;
-                // Maak vaste veranderlikes vir spesifieke ry en kolom
-                const qtyCell = row.cells[2];
-                const reorderCell = row.cells[4];
-                const statusCell = row.cells[5];
+    // // Toets of in bladsy bestaan
+    // if (inventoryBodyElement) 
+    // {
+    //     // Hoof funksie wat wat status nagaan en opdateer (laag / goed)
+    //     function updateStockStatus() 
+    //     {
+    //         // Kry alle ry binne lyf
+    //         const rows = document.querySelectorAll('#inventoryBody tr');
+    //         // Gaan deur elke ry 1 vir 1
+    //         rows.forEach(row => {
+    //             // Lees qry en reorder , as nie getal is vertoon 0
+    //             const qty = parseInt(row.dataset.qty) || 0;
+    //             const reorder = parseInt(row.dataset.reorder) || 0;
+    //             // Maak vaste veranderlikes vir spesifieke ry en kolom
+    //             const qtyCell = row.cells[2];
+    //             const reorderCell = row.cells[4];
+    //             const statusCell = row.cells[5];
 
-                // Toets of beide geldig is en huidige qty minder is as reorder
-                if (!isNaN(qty) && !isNaN(reorder) && qty < reorder) 
-                {
-                    // Ligte rooi agtergrond op die hele ry
-                    row.classList.add('low-stock-row');
-                    // Beklemtoon net hoeveelheid en herbestel by in rooi
-                    qtyCell.classList.add('low-stock-emphasis');
-                    reorderCell.classList.add('low-stock-emphasis');
-                    statusCell.innerHTML = '<span class="status-low">LAAG – Bestel!</span>';
-                } 
-                else 
-                {
-                    // Verwyder waarskuwing en stel status 'Goed'
-                    row.classList.remove('low-stock-row');
-                    qtyCell.classList.remove('low-stock-emphasis');
-                    reorderCell.classList.remove('low-stock-emphasis');
-                    statusCell.innerHTML = 'Goed';
-                }
-            });
-        }
+    //             // Toets of beide geldig is en huidige qty minder is as reorder
+    //             if (!isNaN(qty) && !isNaN(reorder) && qty < reorder) 
+    //             {
+    //                 // Ligte rooi agtergrond op die hele ry
+    //                 row.classList.add('low-stock-row');
+    //                 // Beklemtoon net hoeveelheid en herbestel by in rooi
+    //                 qtyCell.classList.add('low-stock-emphasis');
+    //                 reorderCell.classList.add('low-stock-emphasis');
+    //                 statusCell.innerHTML = '<span class="status-low">LAAG – Bestel!</span>';
+    //             } 
+    //             else 
+    //             {
+    //                 // Verwyder waarskuwing en stel status 'Goed'
+    //                 row.classList.remove('low-stock-row');
+    //                 qtyCell.classList.remove('low-stock-emphasis');
+    //                 reorderCell.classList.remove('low-stock-emphasis');
+    //                 statusCell.innerHTML = 'Goed';
+    //             }
+    //         });
+    //     }
 
-        // Globale funksies sodat HTML-knoppie direk kan roep
-        window.addInventory = function() 
-        {
-            // Vra gebruiker vir prompt
+    //     // Globale funksies sodat HTML-knoppie direk kan roep
+    //     window.addInventory = function() 
+    //     {
+    //         // Vra gebruiker vir prompt
 
-            let item = prompt("Item naam:")
+    //         let item = prompt("Item naam:")
 
-            // Toets of waarde ingevul/geldig is
-            if (item === null || item === undefined) 
-            {
-                // Standaardwaarde
-                item = "Nuwe item";
-            } 
-            else 
-            {
-                // Verwyder ekstra spasies voor of na woord
-                item = item.trim();
-            }
+    //         // Toets of waarde ingevul/geldig is
+    //         if (item === null || item === undefined) 
+    //         {
+    //             // Standaardwaarde
+    //             item = "Nuwe item";
+    //         } 
+    //         else 
+    //         {
+    //             // Verwyder ekstra spasies voor of na woord
+    //             item = item.trim();
+    //         }
 
-            let categoryInput = prompt("Kategorie:");
+    //         let categoryInput = prompt("Kategorie:");
     
-            if (categoryInput === null || categoryInput === undefined) 
-            {
-                categoryInput = "Voer";
-            } 
-            else 
-            {
-                categoryInput = categoryInput.trim();
-            }
-            let category = categoryInput;
+    //         if (categoryInput === null || categoryInput === undefined) 
+    //         {
+    //             categoryInput = "Voer";
+    //         } 
+    //         else 
+    //         {
+    //             categoryInput = categoryInput.trim();
+    //         }
+    //         let category = categoryInput;
 
-            // Hoeveelheid
-            let qtyInput = prompt("Hoeveelheid:", "10");
+    //         // Hoeveelheid
+    //         let qtyInput = prompt("Hoeveelheid:", "10");
             
-            let qty;
-            if (qtyInput === null || qtyInput === undefined || qtyInput.trim() === "")
-            {
-                qty = 10;
-            } 
-            else 
-            {
-                qty = parseInt(qtyInput);
-                // As parseInt nie 'n getal kon maak nie (bv. letters ingetik)
-                if (isNaN(qty)) 
-                {
-                    qty = 10;
-                }
-            }
+    //         let qty;
+    //         if (qtyInput === null || qtyInput === undefined || qtyInput.trim() === "")
+    //         {
+    //             qty = 10;
+    //         } 
+    //         else 
+    //         {
+    //             qty = parseInt(qtyInput);
+    //             // As parseInt nie 'n getal kon maak nie (bv. letters ingetik)
+    //             if (isNaN(qty)) 
+    //             {
+    //                 qty = 10;
+    //             }
+    //         }
 
-            // Eenheid
-            let unitInput = prompt("Eenheid:");
+    //         // Eenheid
+    //         let unitInput = prompt("Eenheid:");
             
-            if (unitInput === null || unitInput === undefined) 
-            {
-                unitInput = "stuks";
-            } 
-            else 
-            {
-                unitInput = unitInput.trim();
-            }
-            let unit = unitInput;
+    //         if (unitInput === null || unitInput === undefined) 
+    //         {
+    //             unitInput = "stuks";
+    //         } 
+    //         else 
+    //         {
+    //             unitInput = unitInput.trim();
+    //         }
+    //         let unit = unitInput;
 
-            // Herbestel-punt
-            let reorderInput = prompt("Herbestel by:", "5");
+    //         // Herbestel-punt
+    //         let reorderInput = prompt("Herbestel by:", "5");
             
-            let reorder;
-            if (reorderInput === null || reorderInput === undefined || reorderInput.trim() === "") 
-            {
-                reorder = 5;
-            } 
-            else 
-            {
-                reorder = parseInt(reorderInput);
-                if (isNaN(reorder)) 
-                {
-                    reorder = 5;
-                }
-            }
+    //         let reorder;
+    //         if (reorderInput === null || reorderInput === undefined || reorderInput.trim() === "") 
+    //         {
+    //             reorder = 5;
+    //         } 
+    //         else 
+    //         {
+    //             reorder = parseInt(reorderInput);
+    //             if (isNaN(reorder)) 
+    //             {
+    //                 reorder = 5;
+    //             }
+    //         }
 
-            // Skep nuwe tabel ry
-            const tr = document.createElement('tr');
+    //         // Skep nuwe tabel ry
+    //         const tr = document.createElement('tr');
 
-            // Stoor waardes
-            tr.dataset.item = item;
-            tr.dataset.category = category;
-            tr.dataset.qty = qty;
-            tr.dataset.unit = unit;
-            tr.dataset.reorder = reorder;
+    //         // Stoor waardes
+    //         tr.dataset.item = item;
+    //         tr.dataset.category = category;
+    //         tr.dataset.qty = qty;
+    //         tr.dataset.unit = unit;
+    //         tr.dataset.reorder = reorder;
 
-            // Vul ry met inhoud wat binne HTML is
-            tr.innerHTML = `
-                <td>${item}</td>
-                <td>${category}</td>
-                <td>${qty}</td>
-                <td>${unit}</td>
-                <td>${reorder}</td>
-                <td>Goed</td>
-                <td><button onclick="deleteInventory(this)" style="color:#dc2626; background:none; border:none; cursor:pointer; font-size:1.2rem;"><i class="fas fa-trash"></i></button></td>
-            `;
+    //         // Vul ry met inhoud wat binne HTML is
+    //         tr.innerHTML = `
+    //             <td>${item}</td>
+    //             <td>${category}</td>
+    //             <td>${qty}</td>
+    //             <td>${unit}</td>
+    //             <td>${reorder}</td>
+    //             <td>Goed</td>
+    //             <td><button onclick="deleteInventory(this)" style="color:#dc2626; background:none; border:none; cursor:pointer; font-size:1.2rem;"><i class="fas fa-trash"></i></button></td>
+    //         `;
 
-            // Voeg die ry by tabel en opdateer status
-            inventoryBodyElement.appendChild(tr);
-            updateStockStatus();
-        };
+    //         // Voeg die ry by tabel en opdateer status
+    //         inventoryBodyElement.appendChild(tr);
+    //         updateStockStatus();
+    //     };
 
-        // Funksie om rye te delete - button is delete knoppie
-        window.deleteInventory = function(button) 
-        {
-            // Wys standaarde conformasie met ok en cancel knoppies
-            if (confirm("Verwyder hierdie item?")) 
-            {
-                // Stoor naaste 'tr' opwaarts vanaf knoppie
-                const row = button.closest('tr');
+    //     // Funksie om rye te delete - button is delete knoppie
+    //     window.deleteInventory = function(button) 
+    //     {
+    //         // Wys standaarde conformasie met ok en cancel knoppies
+    //         if (confirm("Verwyder hierdie item?")) 
+    //         {
+    //             // Stoor naaste 'tr' opwaarts vanaf knoppie
+    //             const row = button.closest('tr');
         
-                // Toets of naaste gekry is
-                if (row)
-                {              
-                    // Verwyder naaste ry
-                    row.remove();
-                }
-            }
-        };
+    //             // Toets of naaste gekry is
+    //             if (row)
+    //             {              
+    //                 // Verwyder naaste ry
+    //                 row.remove();
+    //             }
+    //         }
+    //     };
 
-        // Filter funksie
-        window.filterInventory = function() 
-        {
-            // Stoor soek-input in html met id "searchInv"
-            const input = document.getElementById('searchInv');
-            // Toets of daar geen element met daai id is
-            if (!input) 
-            {
-                return;
-            }
+    //     // Filter funksie
+    //     window.filterInventory = function() 
+    //     {
+    //         // Stoor soek-input in html met id "searchInv"
+    //         const input = document.getElementById('searchInv');
+    //         // Toets of daar geen element met daai id is
+    //         if (!input) 
+    //         {
+    //             return;
+    //         }
 
-            // Kry gebruiker se invoer,maak kleinerllers en verwyder spasies voor en na
-            const val = input.value.toLowerCase().trim();
-            // Stoor alle <tr> rye wat in tabel is
-            const rows = document.querySelectorAll('#inventoryBody tr');
+    //         // Kry gebruiker se invoer,maak kleinerllers en verwyder spasies voor en na
+    //         const val = input.value.toLowerCase().trim();
+    //         // Stoor alle <tr> rye wat in tabel is
+    //         const rows = document.querySelectorAll('#inventoryBody tr');
 
-            // Gaan deur elke ry 1 vir 1
-            rows.forEach(row => {
-                // Lees data item en kategorie, gebruik lee string as nie bestaan
-                const item = (row.dataset.item || '').toLowerCase();
-                const cat = (row.dataset.category || '').toLowerCase();
-                // Kyk of soekterm in item naam of kategorie voorkom
-                if (item.includes(val) || cat.includes(val)) 
-                {
-                    row.style.display = '';      // wys die ry
-                } 
-                else 
-                {
-                    row.style.display = 'none';  // versteek die ry
-                }
-            });
-        };
+    //         // Gaan deur elke ry 1 vir 1
+    //         rows.forEach(row => {
+    //             // Lees data item en kategorie, gebruik lee string as nie bestaan
+    //             const item = (row.dataset.item || '').toLowerCase();
+    //             const cat = (row.dataset.category || '').toLowerCase();
+    //             // Kyk of soekterm in item naam of kategorie voorkom
+    //             if (item.includes(val) || cat.includes(val)) 
+    //             {
+    //                 row.style.display = '';      // wys die ry
+    //             } 
+    //             else 
+    //             {
+    //                 row.style.display = 'none';  // versteek die ry
+    //             }
+    //         });
+    //     };
 
-        // Roep sodra kode gelaai is - maak dat tabel reg lyk op oopmaak
-        updateStockStatus();
-    }
+    //     // Roep sodra kode gelaai is - maak dat tabel reg lyk op oopmaak
+    //     updateStockStatus();
+    // }
 
 // ============================= VERDEEL (SPLIT) ============================= 
     // Kyk watter split classe sigbaar is op skerm
@@ -1408,4 +1408,147 @@
     window.addEventListener('afterprint', restoreSelectsAfterPrint);
     });
 
+
+// ============================= VOORRAADBESTUUR BLAD DATABASIS ============================= 
+const DB_KEY = 'highveld_inventory';
+const TX_KEY = 'highveld_transactions';
+
+let inventoryDB = [];
+let transactions = [];
+
+// Laai uit localStorage (ons "SQL databasis")
+function loadDB() {
+    const saved = localStorage.getItem(DB_KEY);
+    inventoryDB = saved ? JSON.parse(saved) : [
+        { id:1, item_name:"Lusern hooi", category:"Voer", quantity:45, unit:"bale", reorder_level:30 },
+        { id:2, item_name:"Dorper entstof", category:"Medisyne", quantity:8, unit:"bottels", reorder_level:15 },
+        { id:3, item_name:"Skeertoerusting", category:"Toerusting", quantity:3, unit:"stelle", reorder_level:2 },
+        { id:4, item_name:"Voerkrippe", category:"Toerusting", quantity:12, unit:"stuks", reorder_level:10 }
+    ];
+
+    const savedTx = localStorage.getItem(TX_KEY);
+    transactions = savedTx ? JSON.parse(savedTx) : [];
+}
+
+// Stoor na localStorage
+function saveDB() {
+    localStorage.setItem(DB_KEY, JSON.stringify(inventoryDB));
+    localStorage.setItem(TX_KEY, JSON.stringify(transactions));
+}
+
+// Voeg transaksie by (soos 'n regte databasis log)
+function addTransaction(item_id, type, qty, notes) {
+    const tx = {
+        id: Date.now(),
+        item_id: item_id,
+        transaction_type: type,
+        quantity: qty,
+        date: new Date().toISOString(),
+        notes: notes || ''
+    };
+    transactions.unshift(tx); // nuutste bo
+    saveDB();
+}
+
+// Herbou die tabel
+function renderInventory() {
+    const tbody = document.getElementById('inventoryBody');
+    tbody.innerHTML = '';
+
+    inventoryDB.forEach(item => {
+        const isLow = item.quantity < item.reorder_level;
+        const rowHTML = `
+            <tr ${isLow ? 'class="low-stock-row"' : ''}>
+                <td>${item.item_name}</td>
+                <td>${item.category}</td>
+                <td class="${isLow ? 'low-stock-emphasis' : ''}">${item.quantity}</td>
+                <td>${item.unit}</td>
+                <td>${item.reorder_level}</td>
+                <td>${isLow ? '<span class="status-low">LAAG – Bestel!</span>' : 'Goed'}</td>
+                <td>
+                    <button onclick="editItem(${item.id})" style="margin-right:8px; color:#065f46;">✏️</button>
+                    <button onclick="deleteInventory(${item.id})" style="color:#dc2626;">🗑️</button>
+                </td>
+            </tr>`;
+        tbody.innerHTML += rowHTML;
+    });
+}
+
+// CRUD funksies
+window.addInventory = function() {
+    const item_name = prompt("Item naam:") || "Nuwe item";
+    const category = prompt("Kategorie:", "Voer") || "Voer";
+    const quantity = parseInt(prompt("Hoeveelheid:", "10")) || 10;
+    const unit = prompt("Eenheid:", "stuks") || "stuks";
+    const reorder = parseInt(prompt("Herbestel by:", "5")) || 5;
+
+    const newItem = {
+        id: Date.now(),
+        item_name,
+        category,
+        quantity,
+        unit,
+        reorder_level: reorder
+    };
+
+    inventoryDB.push(newItem);
+    addTransaction(newItem.id, 'add', quantity, 'Handmatig bygevoeg');
+    saveDB();
+    renderInventory();
+};
+
+window.deleteInventory = function(id) {
+    if (!confirm("Verwyder hierdie item permanent?")) return;
+    const item = inventoryDB.find(i => i.id === id);
+    if (item) addTransaction(id, 'sell', item.quantity, 'Verwyder uit voorraad');
     
+    inventoryDB = inventoryDB.filter(i => i.id !== id);
+    saveDB();
+    renderInventory();
+};
+
+window.editItem = function(id) {
+    const item = inventoryDB.find(i => i.id === id);
+    if (!item) return;
+
+    const newQty = parseInt(prompt(`Nuwe hoeveelheid vir ${item.item_name}:`, item.quantity));
+    if (isNaN(newQty)) return;
+
+    const diff = newQty - item.quantity;
+    item.quantity = newQty;
+    item.last_updated = new Date().toISOString();
+
+    addTransaction(id, diff > 0 ? 'add' : 'adjust', Math.abs(diff), 'Handmatig gewysig');
+    saveDB();
+    renderInventory();
+};
+
+window.filterInventory = function() {
+    const val = document.getElementById('searchInv').value.toLowerCase().trim();
+    const rows = document.querySelectorAll('#inventoryBody tr');
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(val) ? '' : 'none';
+    });
+};
+
+window.showTransactions = function() {
+    let msg = "📋 LAATSTE TRANSAKSIES\n\n";
+    transactions.slice(0, 15).forEach(tx => {
+        const item = inventoryDB.find(i => i.id === tx.item_id);
+        const itemName = item ? item.item_name : 'Onbekend';
+        msg += `${tx.date.split('T')[0]} ${tx.transaction_type.toUpperCase()} ${tx.quantity} × ${itemName} ${tx.notes ? '('+tx.notes+')' : ''}\n`;
+    });
+    if (transactions.length === 0) msg += "Nog geen transaksies nie.\n";
+    alert(msg);
+};
+
+// Inisialiseer
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('inventoryBody')) {
+        loadDB();
+        renderInventory();
+        // Herlaai elke 30 sekondes (demo)
+        setInterval(() => { if (document.getElementById('inventoryBody')) renderInventory(); }, 30000);
+    }
+});
