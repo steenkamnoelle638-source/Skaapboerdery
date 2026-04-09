@@ -322,7 +322,7 @@
 
 /* ============================= AGTERGROND FOTO AFDELING ============================= */
     .bg-section{
-        background:url("RotationalGrazing.jpg") center/cover no-repeat;
+        background:url("Media/RotationalGrazing.jpg") center/cover no-repeat;
         color:rgb(238, 238, 238);
         text-align:center;
         position:relative;
@@ -584,7 +584,7 @@
 
 /* ============================= TUISBLAD INLEIDING ============================= */
     .intro {
-        background: url("Skapies.jpeg") center/cover no-repeat;
+        background: url("Media/SkaapFamilie.jpg") center/cover no-repeat;
         text-align: center;
         padding: 140px 20px;
         color: rgb(238, 238, 238);
@@ -1710,9 +1710,24 @@
         }
 
     /* Voetskrif */
-        .footer-container {
-            flex-direction: column;     /* Vertikaal op mobiel */
-            text-align: center;         /* Sentraal uitlyn */
+        .footer-container {      
+            flex-direction: row;
+            flex-wrap: nowrap;  
+            align-items: flex-start;
+            gap: 100px;                       
+            margin: auto -5px;   /* Sodat linker deel nie regter deel squish */
+            max-width: 758px;
+        }
+
+        .footer-left,
+        .footer-right {
+            flex: 1;
+            min-width: 0;
+            width: 300px;
+        }
+
+        .footer-left p{
+            border-right: -50px;
         }
 
     /* Boerdery rooster */
@@ -1720,76 +1735,154 @@
             grid-template-columns: repeat(1, 1fr); 
         }
 
-    /* Regmerkie en Nommer kolpunte */
-        .nommer-ikoon {
-            font-size: 15px;
-            padding: 10px;
+    /* Regmerkie kolpunt */
+        .regmerkie-lys{
+            max-width:758px;
+            margin:20px auto;
         }
 
         .regmerkie-ikoon {
             font-size: 15px;
             padding: 10px;
+            width: 28px;
+            height: 28px;
             font-weight: bold;
         }
+
+    /* Regmerkie rooster */
+        .rooster-regmerkie-lys{
+            max-width:100%;
+            margin:40px -15px;
+            gap: 20px;
+        }
+
+    /* Produksie se kolpunte */
+    .afdeling-titel-blok ul, li {
+        max-width: 900px;
+        margin: 0 5px 10px 15px;
+        line-height: 1.7;
+    }
 
     /* Horisontale lyn blok afdeling - tuisblad */
         .afdeling-titel-blok p{
             margin: 0 15px;
             text-align: center;
         }
+
+    /* Pas nommer kolpunte aan sodat hulle pas by die skerm pas */
+        .nommer-lys {
+            margin-left: -30px !important;
+            margin-right: -30px !important;
+            padding: 0 10px;
+            gap: 12px !important;
+        }
+
+        .nommer-item {
+            padding: 15px 15px;
+            gap: 12px;
+        }
+
+        .nommer-ikoon {
+            width: 34px;
+            height: 34px;
+            font-size: 1.1rem;
+        }
     }
 
-/* Klein laptop & Tablet skerm (tussen 768 en 1024) */
-    @media (max-width: 1024px) {
-        .nav-houer {
-            padding: 0.7rem 1rem;           /* effens kleiner padding */
+/* ==================== KLEIN LAPTOP & TABLET (768px - 1024px) ==================== */
+    @media (min-width: 769px) and (max-width: 1024px) {
+
+        /* Hoof houers - maak hulle nie wyer as die skerm nie */
+        .content-houer,
+        section,
+        .afdeling,
+        .afdeling-2,
+        .afdeling-3,
+        .bg-section {
+            padding-left: 5% !important;
+            padding-right: 5% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
         }
 
-        .nav-menu {
-            gap: 1rem;                      /* kleiner spasie tussen hoof-items */
+        /* Split sections (prent + teks) */
+        .split {
+            gap: 25px;
+            padding: 0 5%;
         }
 
-        .logo-img {
-            width: 45px;
-            height: 45px;
+        .split-text,
+        .split-image {
+            min-width: auto !important;
         }
 
-        .logo-teks h1 {
-            font-size: 1.25rem;
+        /* Nommer-lys (Volhoubare Toekoms) - baie belangrik! */
+        .nommer-lys {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding: 0 5%;
+            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
         }
 
-        .logo-teks p {
-            font-size: 0.7rem;
+        .nommer-item {
+            padding: 20px;
         }
 
-        /* Stop hover-kontrole volledig */
-        .dropdown:hover .dropdown-content,
-        .dropdown:focus-within .dropdown-content {
-            display: none;
+        /* Logo-blok (die groen blokke met sirkel) */
+        .logo-blok {
+            margin: 60px 5% !important;
+            max-width: 100% !important;
+            padding: 50px 30px 30px;
         }
 
-        /* Wys slegs wanneer .active via JS bygevoeg word */
-        .dropdown.active .dropdown-content {
-            display: block;
+        /* Tabelle */
+        table {
+            font-size: 0.95rem;
         }
 
-        /* Maak die hele area klikbaar, maar voorkom navigasie later in JS */
-        .dropbtn, .dropdown-toggle {
-            pointer-events: auto;
+        th, td {
+            padding: 14px 12px !important;
         }
 
-        /* Maak seker dropdowns nie te wyd word nie */
-        .dropdown-content {
-            min-width: 180px;                 /* effens smaller as op groot skerms */
-        }
-
-        /* Hero effens kleiner */
+        /* Hero teks */
         .hero-teks h1 {
             font-size: 2.8rem;
         }
 
-        section {
-            padding: 30px 8%;                 /* balans tussen desktop en mobiel */
+        .hero-teks p {
+            font-size: 1.1rem;
+        }
+
+        /* Voetskrif - hou dit mooi */
+        .footer-container {
+            gap: 90px;
+            margin: 0 auto;
+            padding: 0 5%;
+            max-width: 1024px;
+        }
+
+        /* Algemene prente en galerye */
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+
+        .gallery,
+        .produk-carousel-container {
+            max-width: 100% !important;
+        }
+
+        /* Vorms */
+        .form-container {
+            padding: 2rem 5% !important;
+        }
+
+        /* Produksie se kolpunte */
+        .afdeling-titel-blok ul, li {
+            max-width: 900px;
+            margin: 0 5px 10px 15px;
+            line-height: 1.7;
         }
     }
 

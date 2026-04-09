@@ -4,12 +4,13 @@
 Highveld Boerdery is 'n volledige, responsiewe en multi-bladsy webtuiste oor skaapboerdery.
 
 Die webblad bevat inligting oor:
-- Die boerdery (Geskiedenis, missie en waardes)
-- Die trop (3 skaaprasse en boerdery inligting)
-- Die produkte en bestelvorm(wol, lewende lammers en skape, lamvleis en byprodukte)
-- Voorraadbestuur (Databasis om die voorraad van produkte)
-- Onlangse verkope en rekords
-- Kontakbesonderhede / -vorm
+- Oorsig van die boerdery en produkte in **index.html**
+- Die boerdery (Geskiedenis, missie en waardes) in **oor_ons.html**
+- Die trop (3 skaaprasse en boerdery inligting) in **ons_trop.html**
+- Die produkte en bestelvorm(wol, lewende lammers en skape, lamvleis en byprodukte) in **products.html**
+- Voorraadbestuur (Databasis om die voorraad van produkte) in **voorraadbestuur.html**
+- Onlangse verkope en rekords in **verkope_en_rekords**
+- Kontakbesonderhede / -vorm in **contact.html**
 
 Daar is gebruik gemaak van CSS en JS om die webtuiste profesioneel, aantreklik en gebruikersvriendelik te maak en te maak lyk.  
 Die webblad moet 'n multibladsy ontwerp hê met multimedia, tabelle, 2 webvorms en 'n CRUD databasis.  

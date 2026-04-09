@@ -188,12 +188,12 @@
         const carousel = carouselContainer;
         // Skikking vir carousel se prente
         const images = [
-            { src: "Wol.jpg", alt: "Hoë kwaliteit wol" },
-            { src: "Babies.jpg", alt: "Lammers" },
-            { src: "LamVleis.jpg", alt: "Skaapvleis" },
-            { src: "1Skaap.jpg", alt: "Volwasse skaap" },
-            { src: "Skaapvel.jpg", alt: "Skaapvel" },
-            { src: "LamVet.jpg", alt: "Skaapvet / talg" }
+            { src: "Media/Wol.jpg", alt: "Hoë kwaliteit wol" },
+            { src: "Media/Babies.jpg", alt: "Lammers" },
+            { src: "Media/LamVleis.jpg", alt: "Skaapvleis" },
+            { src: "Media/1Skaap.jpg", alt: "Volwasse skaap" },
+            { src: "Media/Skaapvel.jpg", alt: "Skaapvel" },
+            { src: "Media/LamVet.jpg", alt: "Skaapvet / talg" }
         ];
 
         // Watter prent tans in middel is
@@ -311,13 +311,13 @@
 
         // Koppel produknaam na bestaande produk-prente
         const topProductImageMap = [
-            { matcher: ['wol'], src: 'Wol.jpg', alt: 'Hoë kwaliteit wol' },
-            { matcher: ['lammer', 'lam'], src: 'Babies.jpg', alt: 'Lewende lammers' },
-            { matcher: ['skaapvleis', 'vleis'], src: 'LamVleis.jpg', alt: 'Skaapvleis' },
-            { matcher: ['skaap (volwasse)', 'volwasse'], src: '1BlackheadPersian.jpg', alt: 'Volwasse skaap' },
-            { matcher: ['skaapvel', 'vel'], src: 'Skaapvel.jpg', alt: 'Skaapvel' },
-            { matcher: ['skaapmis', 'mis'], src: 'SkaapMis.jpg', alt: 'Skaapmis' },
-            { matcher: ['skaapvet', 'talg', 'vet'], src: 'LamVet.jpg', alt: 'Skaapvet / talg' }
+            { matcher: ['wol'], src: 'Media/Wol.jpg', alt: 'Hoë kwaliteit wol' },
+            { matcher: ['lammer', 'lam'], src: 'Media/Babies.jpg', alt: 'Lewende lammers' },
+            { matcher: ['skaapvleis', 'vleis'], src: 'Media/LamVleis.jpg', alt: 'Skaapvleis' },
+            { matcher: ['skaap (volwasse)', 'volwasse'], src: 'Media/1Media/BlackheadPersian.jpg', alt: 'Volwasse skaap' },
+            { matcher: ['skaapvel', 'vel'], src: 'Media/Skaapvel.jpg', alt: 'Skaapvel' },
+            { matcher: ['skaapmis', 'mis'], src: 'Media/SkaapMis.jpg', alt: 'Skaapmis' },
+            { matcher: ['skaapvet', 'talg', 'vet'], src: 'Media/LamVet.jpg', alt: 'Skaapvet / talg' }
         ];
 
         function resolveTopImage(productName)
@@ -328,7 +328,7 @@
                 item.matcher.some(keyword => normalizedName.includes(keyword))
             );
 
-            return match || { src: 'Wol.jpg', alt: productName || 'Produk prent' };
+            return match || { src: 'Media/Wol.jpg', alt: productName || 'Produk prent' };
         }
 
         const topProducts = salesRows
