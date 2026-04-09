@@ -18,7 +18,8 @@ Die webwerf is tans net 'n simulasie en word geen data gestoor nie. Eers in fase
 
 
 ## Databasis Struktuur
-My voorraadbestuur tabel gaan ek in 'n SQL databasis verander
+- Voorraad items (naam, kategorie, hoeveelheid, eenheid, herbestelpunt)
+- Transaksies (datum, tipe, hoeveelheid, notas)
 
 ## Tegnologie gebruik:
 - **Kode:** HTML5, CSS, JavaScript
