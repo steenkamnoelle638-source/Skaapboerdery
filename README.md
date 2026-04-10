@@ -19,8 +19,15 @@ Die webwerf is tans net 'n simulasie en word geen data gestoor nie. Eers in fase
 
 
 ## Databasis Struktuur
-- Voorraad items (naam, kategorie, hoeveelheid, eenheid, herbestelpunt)
-- Transaksies (datum, tipe, hoeveelheid, notas)
+Die databasis bevat volle CRUD funksies   
+Elke item in die voorraad bevat die volgende velde:
+- **id** – Unieke identifiseerder (timestamp)
+- **item_name** – Naam van die item (bv. "Lusern hooi", "Dorper entstof")
+- **category** – Kategorie (Voer, Medisyne, Toerusting, ens.)
+- **quantity** – Huidige hoeveelheid
+- **unit** – Eenheid (bale, bottels, stelle, stuks, ens.)
+- **reorder_level** – Herbestelpunt (minimum voorraad voordat waarskuwing wys)
+- **last_updated** – Datum en tyd van laaste verandering (opsioneel)
 
 ## Tegnologie gebruik:
 - **Kode:** HTML5, CSS, JavaScript

@@ -699,7 +699,7 @@
     .logo-sirkel {
         width: 140px;
         height: 140px;
-        background: white url("Logo.jpg") center/cover no-repeat;
+        background: white url("Media/Logo.jpg") center/cover no-repeat;
         border-radius: 50%; /* maak sirkel */
         position: absolute;
         top: -70px;     /* Skuif 70px op */
