@@ -29,6 +29,17 @@ Elke item in die voorraad bevat die volgende velde:
 - **reorder_level** – Herbestelpunt (minimum voorraad voordat waarskuwing wys)
 - **last_updated** – Datum en tyd van laaste verandering (opsioneel)
 
+Funksionaliteit wat die databasis het:
+- **Real-time voorraadstatus**: Visuele waarskuwing (rooi) wanneer hoeveelheid onder die herbestelpunt daal
+<!-- - **Transaksie-log**: Volledige geskiedenis van alle voorraadveranderinge -->
+- **Soekfunksie**: vinnige filtering van voorraaditems
+- **CRUD-operasies**:
+  - Create: Nuwe item byvoeg
+  - Read: Voorraad en transaksies bekyk
+  - Update: Hoeveelheid wysig
+  - Delete: Item permanent verwyder
+- **Data persistensie**: Alle data word in die browser se `localStorage` gestoor en bly behoue selfs na bladsy herlaai
+
 ## Tegnologie gebruik:
 - **Kode:** HTML5, CSS, JavaScript
 - **Styling:** Eksterne Style.css met media queries vir responsiwiteit
