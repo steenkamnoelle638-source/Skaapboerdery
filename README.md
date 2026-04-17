@@ -20,25 +20,26 @@ Die webwerf is tans net 'n simulasie en word geen data gestoor nie. Eers in fase
 
 ## Databasis Struktuur
 Die databasis bevat volle CRUD funksies   
-Elke item in die voorraad bevat die volgende velde:
+Die databasis is baseer op 2 tabelle VOORRAAD_ITEMS (products.html tabel) en VERKOPE_REKORDS(verkope_en_rekords.html tabel)   
+Elke item in die voorraad databasis bevat die volgende velde:
 - **id** – Unieke identifiseerder (timestamp)
 - **item_name** – Naam van die item (bv. "Lusern hooi", "Dorper entstof")
 - **category** – Kategorie (Voer, Medisyne, Toerusting, ens.)
 - **quantity** – Huidige hoeveelheid
 - **unit** – Eenheid (bale, bottels, stelle, stuks, ens.)
 - **reorder_level** – Herbestelpunt (minimum voorraad voordat waarskuwing wys)
-- **last_updated** – Datum en tyd van laaste verandering (opsioneel)
+- **last_updated** – Datum en tyd van laaste verandering
 
 **Funksionaliteit wat die databasis het:**
 - **Real-time voorraadstatus**: Visuele waarskuwing (rooi) wanneer hoeveelheid onder die herbestelpunt daal
-<!-- - **Transaksie-log**: Volledige geskiedenis van alle voorraadveranderinge -->
+- **Transaksie-log**: Volledige geskiedenis van alle voorraadveranderinge
 - **Soekfunksie**: vinnige filtering van voorraaditems
 - **CRUD-operasies**:
   - Create: Nuwe item byvoeg
   - Read: Voorraad en transaksies bekyk
   - Update: Hoeveelheid wysig
   - Delete: Item permanent verwyder
-- **Data persistensie**: Alle data word in die browser se `localStorage` gestoor en bly behoue selfs na bladsy herlaai
+- **Data stoor**: Alle data word in `localStorage` gestoor en bly behoue selfs na die bladsy herlaai word
 
 ## Tegnologie gebruik:
 - **Kode:** HTML5, CSS, JavaScript

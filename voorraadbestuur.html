@@ -112,13 +112,19 @@
     <div class="content-houer" id="Voorraadbestuur">
         <h2>Voorraadbestuur</h2>
 
-        <!-- Soek en nuwe item knoppies / funksies -->
+        <!-- Soek , nuwe item en wys transaksie knoppies / funksies -->
         <div class="controls" id="Voorraadbestuur">
             <input id="searchInv" type="text" placeholder="Soek item..." onkeyup="filterInventory()">
-            <button class="add-btn" onclick="addInventory()">+ Nuwe item</button>
+            
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="add-btn" onclick="addInventory()">+ Nuwe item</button>
+                <button class="add-btn" onclick="showTransactions()" style="background:#848884; color:white;">
+                    Wys Transaksies
+                </button>
+            </div>
         </div>
 
-        <!-- Voorraadbestuur tabel - bevat id vir nuwe items en delete funksies -->
+        <!-- Voorraadbestuur databsis - bevat id vir nuwe items en delete funksies -->
             <!-- MAAK OOK: Behels verkoopde en aangekoopde items? - dalk doen -->
         <table id="inventoryTable">
             <thead>

@@ -1369,7 +1369,7 @@
         });
     }
 
-    // Datum-objek: minimum datum vir afhaal/besoek (môre)
+// Datum-objek: minimum datum vir afhaal/besoek (môre)
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
@@ -1377,11 +1377,18 @@
 
     const pickupDate = document.getElementById('pickupDate');
     const visitDate = document.getElementById('visitDate');
-    if (pickupDate) pickupDate.setAttribute('min', minDate);
-    if (visitDate) visitDate.setAttribute('min', minDate);
 
-    // BYSIT TOT VOOR EINDE VAN FUNKSIE
-    // Print: maak select-opsies volledig sigbaar
+    if (pickupDate) 
+    {
+        pickupDate.setAttribute('min', minDate);
+    }
+
+    if (visitDate) 
+    {
+        visitDate.setAttribute('min', minDate);
+    }
+
+// Print: maak select-opsies volledig sigbaar
     const selectStates = [];
     function expandSelectsForPrint() 
     {
@@ -1394,10 +1401,17 @@
     function restoreSelectsAfterPrint() 
     {
         selectStates.forEach(({ el, size }) => {
-            if (!el) return;
-            if (size === null) {
+            if (!el) 
+            {
+                return;
+            }
+
+            if (size === null) 
+            {
                 el.removeAttribute('size');
-            } else {
+            } 
+            else 
+            {
                 el.setAttribute('size', size);
             }
         });
@@ -1410,149 +1424,242 @@
 
 
 // ============================= VOORRAADBESTUUR BLAD DATABASIS ============================= 
-const DB_KEY = 'highveld_inventory';
-const TX_KEY = 'highveld_transactions';
+    const DB_KEY = 'highveld_inventory';
+    const TX_KEY = 'highveld_transactions';
 
-let inventoryDB = [];
-let transactions = [];
+    let inventoryDB = [];
+    let transactions = [];
 
-// Laai uit localStorage (ons "SQL databasis")
-function loadDB() 
-{
-    const saved = localStorage.getItem(DB_KEY);
-    inventoryDB = saved ? JSON.parse(saved) : [
-        { id:1, item_name:"Lusern hooi", category:"Voer", quantity:45, unit:"bale", reorder_level:30 },
-        { id:2, item_name:"Dorper entstof", category:"Medisyne", quantity:8, unit:"bottels", reorder_level:15 },
-        { id:3, item_name:"Skeertoerusting", category:"Toerusting", quantity:3, unit:"stelle", reorder_level:2 },
-        { id:4, item_name:"Voerkrippe", category:"Toerusting", quantity:12, unit:"stuks", reorder_level:10 }
-    ];
+// Laai uit localStorage ("SQL databasis")
+    function loadDB() 
+    {
+        const saved = localStorage.getItem(DB_KEY);
+        inventoryDB = saved ? JSON.parse(saved) : [
+            { id:1, item_name:"Lusern hooi", category:"Voer", quantity:45, unit:"bale", reorder_level:30 },
+            { id:2, item_name:"Dorper entstof", category:"Medisyne", quantity:8, unit:"bottels", reorder_level:15 },
+            { id:3, item_name:"Skeertoerusting", category:"Toerusting", quantity:3, unit:"stelle", reorder_level:2 },
+            { id:4, item_name:"Voerkrippe", category:"Toerusting", quantity:12, unit:"stuks", reorder_level:10 }
+        ];
 
-    const savedTx = localStorage.getItem(TX_KEY);
-    transactions = savedTx ? JSON.parse(savedTx) : [];
-}
+        const savedTx = localStorage.getItem(TX_KEY);
+        transactions = savedTx ? JSON.parse(savedTx) : [];
+    }
 
 // Stoor na localStorage
-function saveDB() 
-{
-    localStorage.setItem(DB_KEY, JSON.stringify(inventoryDB));
-    localStorage.setItem(TX_KEY, JSON.stringify(transactions));
-}
+    function saveDB() 
+    {
+        localStorage.setItem(DB_KEY, JSON.stringify(inventoryDB));
+        localStorage.setItem(TX_KEY, JSON.stringify(transactions));
+    }
 
 // Voeg transaksie by (soos 'n regte databasis log)
-function addTransaction(item_id, type, qty, notes) 
-{
-    const tx = {
-        id: Date.now(),
-        item_id: item_id,
-        transaction_type: type,
-        quantity: qty,
-        date: new Date().toISOString(),
-        notes: notes || ''
-    };
-    transactions.unshift(tx); // nuutste bo
-    saveDB();
-}
+    function addTransaction(item_id, type, qty, notes) 
+    {
+        const tx = {
+            id: Date.now(),
+            item_id: item_id,
+            transaction_type: type,
+            quantity: qty,
+            date: new Date().toISOString(),
+            notes: notes || ''
+        };
+        transactions.unshift(tx); // nuutste bo
+        saveDB();
+    }
 
 // Herbou die tabel
-function renderInventory() 
-{
-    const tbody = document.getElementById('inventoryBody');
-    tbody.innerHTML = '';
+    function renderInventory() 
+    {
+        const tbody = document.getElementById('inventoryBody');
+        tbody.innerHTML = '';
 
-    inventoryDB.forEach(item => {
-        const isLow = item.quantity < item.reorder_level;
-        const rowHTML = `
-            <tr ${isLow ? 'class="low-stock-row"' : ''}>
-                <td>${item.item_name}</td>
-                <td>${item.category}</td>
-                <td class="${isLow ? 'low-stock-emphasis' : ''}">${item.quantity}</td>
-                <td>${item.unit}</td>
-                <td>${item.reorder_level}</td>
-                <td>${isLow ? '<span class="status-low">LAAG – Bestel!</span>' : 'Goed'}</td>
-                <td>
-                    <button onclick="editItem(${item.id})" style="margin-right:8px; color:#065f46;">✏️</button>
-                    <button onclick="deleteInventory(${item.id})" style="color:#dc2626;">🗑️</button>
-                </td>
-            </tr>`;
-        tbody.innerHTML += rowHTML;
-    });
-}
+        inventoryDB.forEach(item => {
+            const isLow = item.quantity < item.reorder_level;
+            const rowHTML = `
+                <tr ${isLow ? 'class="low-stock-row"' : ''}>
+                    <td>${item.item_name}</td>
+                    <td>${item.category}</td>
+                    <td class="${isLow ? 'low-stock-emphasis' : ''}">${item.quantity}</td>
+                    <td>${item.unit}</td>
+                    <td>${item.reorder_level}</td>
+                    <td>${isLow ? '<span class="status-low">LAAG – Bestel!</span>' : 'Goed'}</td>
+                    <td>
+                        <button onclick="editItem(${item.id})" style="margin-right:8px; color:#065f46;">✏️</button>
+                        <button onclick="deleteInventory(${item.id})" style="color:#dc2626;">🗑️</button>
+                    </td>
+                </tr>`;
+            tbody.innerHTML += rowHTML;
+        });
+    }
 
 // CRUD funksies
-window.addInventory = function() {
-    const item_name = prompt("Item naam:") || "Nuwe item";
-    const category = prompt("Kategorie:", "Voer") || "Voer";
-    const quantity = parseInt(prompt("Hoeveelheid:", "10")) || 10;
-    const unit = prompt("Eenheid:", "stuks") || "stuks";
-    const reorder = parseInt(prompt("Herbestel by:", "5")) || 5;
+    // Bysit funksie (CREATE)
+    window.addInventory = function() 
+    {
+        const item_name = prompt("Item naam:") || "Nuwe item";
+        const category = prompt("Kategorie:", "Voer") || "Voer";
+        const quantity = parseInt(prompt("Hoeveelheid:", "10")) || 10;
+        const unit = prompt("Eenheid:", "stuks") || "stuks";
+        const reorder = parseInt(prompt("Herbestel by:", "5")) || 5;
 
-    const newItem = {
-        id: Date.now(),
-        item_name,
-        category,
-        quantity,
-        unit,
-        reorder_level: reorder
+        const newItem = {
+            id: Date.now(),
+            item_name,
+            category,
+            quantity,
+            unit,
+            reorder_level: reorder
+        };
+
+        inventoryDB.push(newItem);
+        addTransaction(newItem.id, 'add', quantity, 'Handmatig bygevoeg');
+        saveDB();
+        renderInventory();
     };
 
-    inventoryDB.push(newItem);
-    addTransaction(newItem.id, 'add', quantity, 'Handmatig bygevoeg');
-    saveDB();
-    renderInventory();
-};
+    // Verwyder funksie (DELETE)
+    window.deleteInventory = function(id) 
+    {
+        if (!confirm("Verwyder hierdie item permanent?")) 
+        {
+            return;
+        } 
 
-window.deleteInventory = function(id) {
-    if (!confirm("Verwyder hierdie item permanent?")) return;
-    const item = inventoryDB.find(i => i.id === id);
-    if (item) addTransaction(id, 'sell', item.quantity, 'Verwyder uit voorraad');
-    
-    inventoryDB = inventoryDB.filter(i => i.id !== id);
-    saveDB();
-    renderInventory();
-};
+        const item = inventoryDB.find(i => i.id === id);
 
-window.editItem = function(id) {
-    const item = inventoryDB.find(i => i.id === id);
-    if (!item) return;
+        if (item) 
+        {
+            addTransaction(id, 'sell', item.quantity, 'Verwyder uit voorraad');
+        }
+        
+        inventoryDB = inventoryDB.filter(i => i.id !== id);
+        saveDB();
+        renderInventory();
+    };
 
-    const newQty = parseInt(prompt(`Nuwe hoeveelheid vir ${item.item_name}:`, item.quantity));
-    if (isNaN(newQty)) return;
+    // Opdateer funksie (UPDATE)
+    window.editItem = function(id) 
+    {
+        const item = inventoryDB.find(i => i.id === id);
+        if (!item) 
+        {
+            return;
+        }
 
-    const diff = newQty - item.quantity;
-    item.quantity = newQty;
-    item.last_updated = new Date().toISOString();
+        const newQty = parseInt(prompt(`Nuwe hoeveelheid vir ${item.item_name}:`, item.quantity));
+        if (isNaN(newQty)) 
+        {
+            return;
+        }
 
-    addTransaction(id, diff > 0 ? 'add' : 'adjust', Math.abs(diff), 'Handmatig gewysig');
-    saveDB();
-    renderInventory();
-};
+        const diff = newQty - item.quantity;
+        item.quantity = newQty;
+        item.last_updated = new Date().toISOString();
 
-window.filterInventory = function() {
-    const val = document.getElementById('searchInv').value.toLowerCase().trim();
-    const rows = document.querySelectorAll('#inventoryBody tr');
-    rows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        row.style.display = text.includes(val) ? '' : 'none';
-    });
-};
+        addTransaction(id, diff > 0 ? 'add' : 'adjust', Math.abs(diff), 'Handmatig gewysig');
+        saveDB();
+        renderInventory();
+    };
 
-window.showTransactions = function() {
-    let msg = "📋 LAATSTE TRANSAKSIES\n\n";
-    transactions.slice(0, 15).forEach(tx => {
-        const item = inventoryDB.find(i => i.id === tx.item_id);
-        const itemName = item ? item.item_name : 'Onbekend';
-        msg += `${tx.date.split('T')[0]} ${tx.transaction_type.toUpperCase()} ${tx.quantity} × ${itemName} ${tx.notes ? '('+tx.notes+')' : ''}\n`;
-    });
-    if (transactions.length === 0) msg += "Nog geen transaksies nie.\n";
-    alert(msg);
-};
+    // Filter funksie (READ met filter)
+    window.filterInventory = function() 
+    {
+        const val = document.getElementById('searchInv').value.toLowerCase().trim();
+        const rows = document.querySelectorAll('#inventoryBody tr');
+
+        rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(val) ? '' : 'none';
+        });
+    };
+
+    window.showTransactions = function() 
+    {
+        let msg = "LAATSTE TRANSAKSIES\n\n";
+        transactions.slice(0, 15).forEach(tx => {
+            const item = inventoryDB.find(i => i.id === tx.item_id);
+            const itemName = item ? item.item_name : 'Onbekend';
+            msg += `${tx.date.split('T')[0]} ${tx.transaction_type.toUpperCase()} ${tx.quantity} × ${itemName} ${tx.notes ? '('+tx.notes+')' : ''}\n`;
+        });
+
+        if (transactions.length === 0) 
+        {
+            msg += "Nog geen transaksies nie.\n";
+        }
+
+        alert(msg);
+    };
 
 // Inisialiseer
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('inventoryBody')) {
-        loadDB();
-        renderInventory();
-        // Herlaai elke 30 sekondes (demo)
-        setInterval(() => { if (document.getElementById('inventoryBody')) renderInventory(); }, 30000);
-    }
-});
+    document.addEventListener('DOMContentLoaded', () => {
+        if (document.getElementById('inventoryBody')) 
+        {
+            loadDB();
+            renderInventory();
+            // Herlaai elke 30 sekondes (demo)
+            setInterval(() => { if (document.getElementById('inventoryBody')) renderInventory(); }, 30000);
+        }
+    });
+
+// ============================= TRANSaksies LOG =============================
+    window.showTransactions = function() 
+    {
+        if (transactions.length === 0) 
+        {
+            alert("Nog geen transaksies nie.\n\nVoeg items by of verander voorraad om die log te sien.");
+            return;
+        }
+
+        let msg = "LAATSTE TRANSAKSIES (mees onlangse bo)\n\n";
+
+        transactions.slice(0, 20).forEach(tx => {   // wys maksimum 20 transaksies
+            const item = inventoryDB.find(i => i.id === tx.item_id);
+            const itemName = item ? item.item_name : 'Onbekende item';
+            
+            const date = new Date(tx.date);
+            const formattedDate = date.toLocaleString('af-ZA', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            let typeEmoji = '';
+            let typeText = '';
+
+            switch(tx.transaction_type) 
+            {
+                case 'add':
+                    typeEmoji = '➕';
+                    typeText = 'Bygevoeg';
+                    break;
+                case 'sell':
+                    typeEmoji = '➖';
+                    typeText = 'Verwyder';
+                    break;
+                case 'adjust':
+                    typeEmoji = '✏️';
+                    typeText = 'Hoeveelheid aangepas';
+                    break;
+                default:
+                    typeEmoji = '🔄';
+                    typeText = tx.transaction_type;
+            }
+
+            msg += `${typeEmoji} ${formattedDate}\n`;
+            msg += `   ${typeText}: ${tx.quantity} × ${itemName}\n`;
+            
+            if (tx.notes) 
+            {
+                msg += `   Nota: ${tx.notes}\n`;
+            }
+
+            msg += "\n";
+        });
+
+        msg += "=".repeat(60) + "\n";
+        msg += `Totaal transaksies: ${transactions.length}`;
+
+        alert(msg);
+    };
