@@ -49,7 +49,7 @@ Elke item in die voorraad databasis bevat die volgende velde:
 - **reorder_level** – Herbestelpunt (minimum voorraad voordat waarskuwing wys)
 - **last_updated** – Datum en tyd van laaste verandering
 
-**Funksionaliteit wat die databasis het:**
+### Funksionaliteit wat die databasis het:
 - **Real-time voorraadstatus**: Visuele waarskuwing (rooi) wanneer hoeveelheid onder die herbestelpunt daal
 - **Transaksie-log**: Volledige geskiedenis van alle voorraadveranderinge
 - **Soekfunksie**: vinnige filtering van voorraaditems
