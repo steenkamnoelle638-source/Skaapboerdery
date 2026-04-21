@@ -9,7 +9,7 @@ Die webblad bevat inligting oor:
 - Die trop (3 skaaprasse en boerdery inligting) in **ons_trop.html**
 - Die produkte en bestelvorm(wol, lewende lammers en skape, lamvleis en byprodukte) in **products.html**
 - Voorraadbestuur (Databasis om die voorraad van produkte) in **voorraadbestuur.html**
-- Onlangse verkope en rekords in **verkope_en_rekords**
+- Onlangse verkope en rekords in **verkope_en_rekords.html**
 - Kontakbesonderhede / -vorm in **contact.html**
 
 Daar is gebruik gemaak van CSS en JS om die webtuiste profesioneel, aantreklik en gebruikersvriendelik te maak en te maak lyk.  
@@ -43,9 +43,11 @@ Elke item in die voorraad databasis bevat die volgende velde:
 
 ## Tegnologie gebruik:
 - **Kode:** HTML5, CSS, JavaScript
-- **Styling:** Eksterne Style.css met media queries vir responsiwiteit
+- **Styling:** Eksterne Style.css met media queries vir responsiwiteit en Print.css vir pdf en print van webblad
 - **Interaktiwiteit:** script.js (galerye, animasies, vormvalidasie, DOM-manipulasie)
-- **Databasis:** [bv. PHP + MySQL / Node.js + SQLite / Firebase – vul self in]
+- **Databasis**: localStorage met 2 tabelle (VOORRAAD_ITEMS + transaksies)
+- **Multimedia**: Galerye, Carousel, Video met onderskrifte
+- **Responsief**: Werk op selfoon, tablet en rekenaar
 - **Eksterne bronne:** Google Fonts (Poppins, Playfair Display), Font Awesome ikone
 
 ## Belangrike funksionaliteit:
@@ -57,3 +59,74 @@ Elke item in die voorraad databasis bevat die volgende velde:
 - Onlangse verkope-oorsig
 - Kontak- / navrae-vorm
 - Volledige CRUD-operasies op voorraad-items (via databasis)
+
+## Lêerstruktuur
+Highveld-Boerdery-Webtuiste/
+├── index.html
+├── oor_ons.html
+├── ons_trop.html
+├── products.html
+├── voorraadbestuur.html
+├── verkope_en_rekord.html
+├── contact.html
+├── Style.css
+├── print.css
+├── script.js
+├── database.sql
+├── Bemarking.vtt
+├── README.md
+│
+├── Media/                  
+│   ├── 1BlackheadPersian.jpg
+│   ├── 1Dorper.jpg
+│   ├── 1Merino.jpg
+│   ├── 1Shed.jpg
+│   ├── 1Skaap.jpg
+│   ├── 1Trop.jpg
+│   ├── 2BlackheadPersian.jpg
+│   ├── 2Dorper.jpg
+│   ├── 3BlackheadPersian.jpg
+│   ├── 3Dorper.jpg
+│   ├── 4Dorper.jpg
+│   ├── Babies.jpg
+│   ├── Bemarking.mp4
+│   ├── BlackheadPersian.jpg
+│   ├── Dorper.jpg
+│   ├── Grazing.jpg
+│   ├── LamVet.jpg
+│   ├── LamVleis.jpg
+│   ├── Logo.jpg
+│   ├── Marino.jpg
+│   ├── Plaas.jpg
+│   ├── PlaasBoShot.jpg
+│   ├── Plaashek.jpg
+│   ├── Produkte.jpg
+│   ├── RotationalGrazing.jpg
+│   ├── Shed.jpg
+│   ├── SkaapFamilie.jpg
+│   ├── SkaapMis.jpg
+│   ├── Skaapvel.jpg
+│   ├── Skeer.jpg
+│   ├── Voer.jpg
+│   ├── Voorraad.jpg
+│   ├── Wol.jpg
+│   └── Wol2.jpg
+│
+├── Fases_Dokumentasie/    
+│   ├── Fase1_Beplaning+Basies-HTML.docx
+│   ├── Fase2_CSS+Uitleg.docx
+│   ├── Fase3_Reponsief+Tabelle+Webvorm.docx
+│   ├── Fase4_JS+Multimedia.docx
+│   ├── Fase5_Databasis+Finale-Webblad.docx
+│   ├── BuiteHanboekCode.docx
+│   ├── Hanboek&ProjekVoorkom.docx
+│   └── KI_media.docx
+│
+└── Skermskote en Video/   
+    ├── Fase2_-_3Blaaie/
+    │   ├── Tuisblad_Skermskoot.png
+    │   ├── OorOnsBlad_Skermskoot.png
+    │   └── ProdukteBlad_Skermskoot.png
+    └── Fase5_-_FinaleDemo/
+        ├── Rekenaarskerm.mp4
+        └── Slimfoon.mp4
