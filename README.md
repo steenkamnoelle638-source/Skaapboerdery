@@ -21,6 +21,15 @@ Die webblad moet 'n multibladsy ontwerp hê met multimedia, tabelle, 2 webvorms 
 Die webwerf moet dus 'n profesionele multifunksie webblad wees wat responsief is, databerging implementeer asook verskeie prente en inligting oor die boerdery bevat.  
 Die webwerf is tans net 'n simulasie en word geen data gestoor nie. Eers in fase 5 sal data gestoor word en dan sal net voorraad en voorraadinligting in 'n databasis gestoor word.
 
+### Bladsy-oorsig
+- **`index.html`** – Tuisblad en oorsig van die boerdery en produkte.
+- **`oor_ons.html`** – Geskiedenis, missie en waardes.
+- **`ons_trop.html`** – Inligting oor die trop en skaaprasse.
+- **`products.html`** – Produkte en bestelvorm.
+- **`voorraadbestuur.html`** – Voorraadbestuur en CRUD-aksies.
+- **`verkope_en_rekord.html`** – Onlangse verkope en rekords.
+- **`contact.html`** – Kontakbesonderhede en navrae-vorm.
+
 ## Belangrikste Funksionaliteit
 
 - **Multi-bladsy responsiewe ontwerp** (werk uitstekend op selfoon, tablet en rekenaar)
