@@ -9,7 +9,7 @@ Die webblad bevat inligting oor:
 - Die trop (3 skaaprasse en boerdery inligting) in **ons_trop.html**
 - Die produkte en bestelvorm(wol, lewende lammers en skape, lamvleis en byprodukte) in **products.html**
 - Voorraadbestuur (Databasis om die voorraad van produkte) in **voorraadbestuur.html**
-- Onlangse verkope en rekords in **verkope_en_rekords**
+- Onlangse verkope en rekords in **verkope_en_rekords.html**
 - Kontakbesonderhede / -vorm in **contact.html**
 
 Daar is gebruik gemaak van CSS en JS om die webtuiste profesioneel, aantreklik en gebruikersvriendelik te maak en te maak lyk.  

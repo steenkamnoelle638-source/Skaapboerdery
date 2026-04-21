@@ -314,7 +314,7 @@
             { matcher: ['wol'], src: 'Media/Wol.jpg', alt: 'Hoë kwaliteit wol' },
             { matcher: ['lammer', 'lam'], src: 'Media/Babies.jpg', alt: 'Lewende lammers' },
             { matcher: ['skaapvleis', 'vleis'], src: 'Media/LamVleis.jpg', alt: 'Skaapvleis' },
-            { matcher: ['skaap (volwasse)', 'volwasse'], src: 'Media/1Media/BlackheadPersian.jpg', alt: 'Volwasse skaap' },
+            { matcher: ['skaap (volwasse)', 'volwasse'], src: 'Media/1BlackheadPersian.jpg', alt: 'Volwasse skaap' },
             { matcher: ['skaapvel', 'vel'], src: 'Media/Skaapvel.jpg', alt: 'Skaapvel' },
             { matcher: ['skaapmis', 'mis'], src: 'Media/SkaapMis.jpg', alt: 'Skaapmis' },
             { matcher: ['skaapvet', 'talg', 'vet'], src: 'Media/LamVet.jpg', alt: 'Skaapvet / talg' }
