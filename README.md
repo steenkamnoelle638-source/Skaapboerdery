@@ -1,4 +1,8 @@
-# Skaapboerdery
+# Highveld Boerdery – Skaapboerdery Webtuiste
+
+**'n Volledige, responsiewe en multifunksionele webtuiste vir 'n moderne skaapboerdery.**
+
+---
 
 ## Beskrywing van my projek:
 Highveld Boerdery is 'n volledige, responsiewe en multi-bladsy webtuiste oor skaapboerdery.
@@ -9,7 +13,7 @@ Die webblad bevat inligting oor:
 - Die trop (3 skaaprasse en boerdery inligting) in **ons_trop.html**
 - Die produkte en bestelvorm(wol, lewende lammers en skape, lamvleis en byprodukte) in **products.html**
 - Voorraadbestuur (Databasis om die voorraad van produkte) in **voorraadbestuur.html**
-- Onlangse verkope en rekords in **verkope_en_rekords.html**
+- Onlangse verkope en rekords in **verkope_en_rekord.html**
 - Kontakbesonderhede / -vorm in **contact.html**
 
 Daar is gebruik gemaak van CSS en JS om die webtuiste profesioneel, aantreklik en gebruikersvriendelik te maak en te maak lyk.  
@@ -17,10 +21,25 @@ Die webblad moet 'n multibladsy ontwerp hê met multimedia, tabelle, 2 webvorms 
 Die webwerf moet dus 'n profesionele multifunksie webblad wees wat responsief is, databerging implementeer asook verskeie prente en inligting oor die boerdery bevat.  
 Die webwerf is tans net 'n simulasie en word geen data gestoor nie. Eers in fase 5 sal data gestoor word en dan sal net voorraad en voorraadinligting in 'n databasis gestoor word.
 
+## Belangrikste Funksionaliteit
+
+- **Multi-bladsy responsiewe ontwerp** (werk uitstekend op selfoon, tablet en rekenaar)
+- **Professionele navigasie** met dropdown-menus en mobiele hamburger-menu
+- **Dinamiese galerye** en produk-carousel
+- **Produkte & Bestelvorm** met intydse totaal-berekening en betaalopsies
+- **Voorraadbestuur** met volle **CRUD**-funksies en lae-voorraad waarskuwings
+- **Transaksie-log** vir alle voorraadveranderinge
+- **Onlangse verkope** oorsig (dinamies)
+- **Kontakvorm** met besoek-besprekingsopsie
+- **Multimedia** – Foto-galerye, produk-carousel en bemarkingsvideo met onderskrifte
+- **Print-vriendelike** styl vir fakture en verslae
 
 ## Databasis Struktuur
-Die databasis bevat volle CRUD funksies   
-Die databasis is baseer op 2 tabelle VOORRAAD_ITEMS (products.html tabel) en VERKOPE_REKORDS(verkope_en_rekords.html tabel)   
+Die webtuiste gebruik **`localStorage`** as databasis met **twee tabelle** (VOORRAAD_ITEMS (products.html tabel) en VERKOPE_REKORDS(verkope_en_rekord.html tabel)) vir realistiese plaasbestuur:
+
+- **VOORRAAD_ITEMS** – Beheer alle voorraaditems (voer, medisyne, toerusting, produkte, ens.) met velde soos hoeveelheid, eenheid en herbestelpunt.
+- **Transaksies** – Volledige logboek van alle veranderinge (byvoeg, aanpas, verwyder).
+   
 Elke item in die voorraad databasis bevat die volgende velde:
 - **id** – Unieke identifiseerder (timestamp)
 - **item_name** – Naam van die item (bv. "Lusern hooi", "Dorper entstof")
@@ -60,6 +79,9 @@ Elke item in die voorraad databasis bevat die volgende velde:
 - Kontak- / navrae-vorm
 - Volledige CRUD-operasies op voorraad-items (via databasis)
 
+## Fase Dokumentasie
+- **Fase 1 tot 5** se volledige beplanning, CSS-verduidelikings, JavaScript-logika en databasis-dokumentasie is beskikbaar in die gids **`Fases_Dokumentasie/`**.
+
 ## Lêerstruktuur
 Highveld-Boerdery-Webtuiste/   
 ├── index.html   
@@ -76,41 +98,8 @@ Highveld-Boerdery-Webtuiste/
 ├── Bemarking.vtt   
 ├── README.md   
 │   
-├── Media/                  
-│   ├── 1BlackheadPersian.jpg   
-│   ├── 1Dorper.jpg   
-│   ├── 1Merino.jpg   
-│   ├── 1Shed.jpg   
-│   ├── 1Skaap.jpg   
-│   ├── 1Trop.jpg   
-│   ├── 2BlackheadPersian.jpg   
-│   ├── 2Dorper.jpg   
-│   ├── 3BlackheadPersian.jpg   
-│   ├── 3Dorper.jpg   
-│   ├── 4Dorper.jpg   
-│   ├── Babies.jpg   
-│   ├── Bemarking.mp4   
-│   ├── BlackheadPersian.jpg   
-│   ├── Dorper.jpg   
-│   ├── Grazing.jpg   
-│   ├── LamVet.jpg   
-│   ├── LamVleis.jpg   
-│   ├── Logo.jpg   
-│   ├── Marino.jpg   
-│   ├── Plaas.jpg   
-│   ├── PlaasBoShot.jpg   
-│   ├── Plaashek.jpg   
-│   ├── Produkte.jpg   
-│   ├── RotationalGrazing.jpg   
-│   ├── Shed.jpg   
-│   ├── SkaapFamilie.jpg   
-│   ├── SkaapMis.jpg   
-│   ├── Skaapvel.jpg   
-│   ├── Skeer.jpg   
-│   ├── Voer.jpg   
-│   ├── Voorraad.jpg   
-│   ├── Wol.jpg   
-│   └── Wol2.jpg   
+├── Media/                    
+│   └── Alle foto's en video's is hierbinne (34 Leers totaal)   
 │   
 ├── Fases_Dokumentasie/    
 │   ├── Fase1_Beplaning+Basies-HTML.docx   
