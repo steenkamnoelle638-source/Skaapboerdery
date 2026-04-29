@@ -1035,209 +1035,6 @@
             togglePickupDateField();
         }
 
-// ============================= VOORRAADBESTUUR BLAD ============================= 
-    // Vind <tbody> met id 'inventoryBody' - waar ry data bygevoeg/verwyder word
-    // const inventoryBodyElement = document.getElementById('inventoryBody');
-
-    // // Toets of in bladsy bestaan
-    // if (inventoryBodyElement) 
-    // {
-    //     // Hoof funksie wat wat status nagaan en opdateer (laag / goed)
-    //     function updateStockStatus() 
-    //     {
-    //         // Kry alle ry binne lyf
-    //         const rows = document.querySelectorAll('#inventoryBody tr');
-    //         // Gaan deur elke ry 1 vir 1
-    //         rows.forEach(row => {
-    //             // Lees qry en reorder , as nie getal is vertoon 0
-    //             const qty = parseInt(row.dataset.qty) || 0;
-    //             const reorder = parseInt(row.dataset.reorder) || 0;
-    //             // Maak vaste veranderlikes vir spesifieke ry en kolom
-    //             const qtyCell = row.cells[2];
-    //             const reorderCell = row.cells[4];
-    //             const statusCell = row.cells[5];
-
-    //             // Toets of beide geldig is en huidige qty minder is as reorder
-    //             if (!isNaN(qty) && !isNaN(reorder) && qty < reorder) 
-    //             {
-    //                 // Ligte rooi agtergrond op die hele ry
-    //                 row.classList.add('low-stock-row');
-    //                 // Beklemtoon net hoeveelheid en herbestel by in rooi
-    //                 qtyCell.classList.add('low-stock-emphasis');
-    //                 reorderCell.classList.add('low-stock-emphasis');
-    //                 statusCell.innerHTML = '<span class="status-low">LAAG – Bestel!</span>';
-    //             } 
-    //             else 
-    //             {
-    //                 // Verwyder waarskuwing en stel status 'Goed'
-    //                 row.classList.remove('low-stock-row');
-    //                 qtyCell.classList.remove('low-stock-emphasis');
-    //                 reorderCell.classList.remove('low-stock-emphasis');
-    //                 statusCell.innerHTML = 'Goed';
-    //             }
-    //         });
-    //     }
-
-    //     // Globale funksies sodat HTML-knoppie direk kan roep
-    //     window.addInventory = function() 
-    //     {
-    //         // Vra gebruiker vir prompt
-
-    //         let item = prompt("Item naam:")
-
-    //         // Toets of waarde ingevul/geldig is
-    //         if (item === null || item === undefined) 
-    //         {
-    //             // Standaardwaarde
-    //             item = "Nuwe item";
-    //         } 
-    //         else 
-    //         {
-    //             // Verwyder ekstra spasies voor of na woord
-    //             item = item.trim();
-    //         }
-
-    //         let categoryInput = prompt("Kategorie:");
-    
-    //         if (categoryInput === null || categoryInput === undefined) 
-    //         {
-    //             categoryInput = "Voer";
-    //         } 
-    //         else 
-    //         {
-    //             categoryInput = categoryInput.trim();
-    //         }
-    //         let category = categoryInput;
-
-    //         // Hoeveelheid
-    //         let qtyInput = prompt("Hoeveelheid:", "10");
-            
-    //         let qty;
-    //         if (qtyInput === null || qtyInput === undefined || qtyInput.trim() === "")
-    //         {
-    //             qty = 10;
-    //         } 
-    //         else 
-    //         {
-    //             qty = parseInt(qtyInput);
-    //             // As parseInt nie 'n getal kon maak nie (bv. letters ingetik)
-    //             if (isNaN(qty)) 
-    //             {
-    //                 qty = 10;
-    //             }
-    //         }
-
-    //         // Eenheid
-    //         let unitInput = prompt("Eenheid:");
-            
-    //         if (unitInput === null || unitInput === undefined) 
-    //         {
-    //             unitInput = "stuks";
-    //         } 
-    //         else 
-    //         {
-    //             unitInput = unitInput.trim();
-    //         }
-    //         let unit = unitInput;
-
-    //         // Herbestel-punt
-    //         let reorderInput = prompt("Herbestel by:", "5");
-            
-    //         let reorder;
-    //         if (reorderInput === null || reorderInput === undefined || reorderInput.trim() === "") 
-    //         {
-    //             reorder = 5;
-    //         } 
-    //         else 
-    //         {
-    //             reorder = parseInt(reorderInput);
-    //             if (isNaN(reorder)) 
-    //             {
-    //                 reorder = 5;
-    //             }
-    //         }
-
-    //         // Skep nuwe tabel ry
-    //         const tr = document.createElement('tr');
-
-    //         // Stoor waardes
-    //         tr.dataset.item = item;
-    //         tr.dataset.category = category;
-    //         tr.dataset.qty = qty;
-    //         tr.dataset.unit = unit;
-    //         tr.dataset.reorder = reorder;
-
-    //         // Vul ry met inhoud wat binne HTML is
-    //         tr.innerHTML = `
-    //             <td>${item}</td>
-    //             <td>${category}</td>
-    //             <td>${qty}</td>
-    //             <td>${unit}</td>
-    //             <td>${reorder}</td>
-    //             <td>Goed</td>
-    //             <td><button onclick="deleteInventory(this)" style="color:#dc2626; background:none; border:none; cursor:pointer; font-size:1.2rem;"><i class="fas fa-trash"></i></button></td>
-    //         `;
-
-    //         // Voeg die ry by tabel en opdateer status
-    //         inventoryBodyElement.appendChild(tr);
-    //         updateStockStatus();
-    //     };
-
-    //     // Funksie om rye te delete - button is delete knoppie
-    //     window.deleteInventory = function(button) 
-    //     {
-    //         // Wys standaarde conformasie met ok en cancel knoppies
-    //         if (confirm("Verwyder hierdie item?")) 
-    //         {
-    //             // Stoor naaste 'tr' opwaarts vanaf knoppie
-    //             const row = button.closest('tr');
-        
-    //             // Toets of naaste gekry is
-    //             if (row)
-    //             {              
-    //                 // Verwyder naaste ry
-    //                 row.remove();
-    //             }
-    //         }
-    //     };
-
-    //     // Filter funksie
-    //     window.filterInventory = function() 
-    //     {
-    //         // Stoor soek-input in html met id "searchInv"
-    //         const input = document.getElementById('searchInv');
-    //         // Toets of daar geen element met daai id is
-    //         if (!input) 
-    //         {
-    //             return;
-    //         }
-
-    //         // Kry gebruiker se invoer,maak kleinerllers en verwyder spasies voor en na
-    //         const val = input.value.toLowerCase().trim();
-    //         // Stoor alle <tr> rye wat in tabel is
-    //         const rows = document.querySelectorAll('#inventoryBody tr');
-
-    //         // Gaan deur elke ry 1 vir 1
-    //         rows.forEach(row => {
-    //             // Lees data item en kategorie, gebruik lee string as nie bestaan
-    //             const item = (row.dataset.item || '').toLowerCase();
-    //             const cat = (row.dataset.category || '').toLowerCase();
-    //             // Kyk of soekterm in item naam of kategorie voorkom
-    //             if (item.includes(val) || cat.includes(val)) 
-    //             {
-    //                 row.style.display = '';      // wys die ry
-    //             } 
-    //             else 
-    //             {
-    //                 row.style.display = 'none';  // versteek die ry
-    //             }
-    //         });
-    //     };
-
-    //     // Roep sodra kode gelaai is - maak dat tabel reg lyk op oopmaak
-    //     updateStockStatus();
-    // }
-
 // ============================= VERDEEL (SPLIT) ============================= 
     // Kyk watter split classe sigbaar is op skerm
     function checkSplitVisibility() 
@@ -1283,159 +1080,6 @@
         // Kyk of skermgroote verander
     window.addEventListener('scroll', checkSplitVisibility);
     window.addEventListener('resize', checkSplitVisibility);
-
-// ================================================================================= 
-// ----------------------------- RESPONSIEWE NAVIGASIE -----------------------------
-// =================================================================================
-    // Hamburger menu toggle
-    document.addEventListener('DOMContentLoaded', function () {
-        const toggleBtn = document.getElementById('menuToggle');
-        const barsIcon = document.getElementById('barsIcon');
-        const xIcon = document.getElementById('xIcon');
-        const nav = document.getElementById('mainNav');
-
-        if (!toggleBtn || !nav)
-        {
-            return;
-        }
-
-        // Hoof burger menu oop/toe
-        toggleBtn.addEventListener('click', function () {
-            const isOpen = nav.classList.toggle('active');
-
-            if (isOpen) 
-            {
-                barsIcon.style.display = 'none';
-                xIcon.style.display = 'inline-block';
-            } 
-            else 
-            {
-                barsIcon.style.display = 'inline-block';
-                xIcon.style.display = 'none';
-                // Maak alle sub-dropdowns toe wanneer hoofmenu toemaak
-                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
-            }
-        });
-
-        // Maak toe as buite gekliek word
-        document.addEventListener('click', function (event) {
-            if (!nav.contains(event.target) && !toggleBtn.contains(event.target)) 
-            {
-                nav.classList.remove('active');
-                barsIcon.style.display = 'inline-block';
-                xIcon.style.display = 'none';
-                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
-            }
-        });
-
-        // Mobiele dropdowns: net die pyltjie oopmaak/toemaak
-        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-            toggle.addEventListener('click', function (e) {
-                e.preventDefault();         // stop navigasie
-                e.stopPropagation();        // stop borrel na ouer <a>
-
-                const dropdown = this.closest('.dropdown');
-                if (!dropdown) 
-                {
-                    console.log('Geen dropdown gevind vir hierdie pyltjie');
-                    return;
-                }
-
-                // Toggle en log vir debug
-                const isActiveNow = dropdown.classList.toggle('active');
-
-                // Maak ander toe
-                document.querySelectorAll('.dropdown').forEach(other => {
-                    if (other !== dropdown) 
-                    {
-                        other.classList.remove('active');
-                    }
-                });
-            });
-        });
-
-        // As op 'n sub-link gekliek word → maak hele mobiele menu toe
-        document.querySelectorAll('.dropdown-content a').forEach(link => {
-            link.addEventListener('click', function () {
-                nav.classList.remove('active');
-                barsIcon.style.display = 'inline-block';
-                xIcon.style.display = 'none';
-                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
-            });
-        });
-
-// ============================= INTERAKTIEWE VIDEO + DATUM OBJEK =============================
-    const video = document.getElementById('marketingVideo');
-    const endLogo = document.getElementById('videoEndLogo');
-
-    if (video) 
-    {
-        video.addEventListener('timeupdate', () => {
-            if (video.currentTime >= video.duration - 5) // laaste 5 sekondes
-            {   
-                endLogo.style.display = 'block';
-                endLogo.style.opacity = '1';
-            }
-        });
-
-        video.addEventListener('ended', () => {
-            endLogo.style.opacity = '1';
-        });
-    }
-
-// Datum-objek: minimum datum vir afhaal/besoek (môre)
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1);
-    const minDate = tomorrow.toISOString().split('T')[0];
-
-    const pickupDate = document.getElementById('pickupDate');
-    const visitDate = document.getElementById('visitDate');
-
-    if (pickupDate) 
-    {
-        pickupDate.setAttribute('min', minDate);
-    }
-
-    if (visitDate) 
-    {
-        visitDate.setAttribute('min', minDate);
-    }
-
-// Print: maak select-opsies volledig sigbaar
-    const selectStates = [];
-    function expandSelectsForPrint() 
-    {
-        document.querySelectorAll('select').forEach((select) => {
-            selectStates.push({ el: select, size: select.getAttribute('size') });
-            select.setAttribute('size', String(Math.max(select.options.length, 2)));
-        });
-    }
-
-    function restoreSelectsAfterPrint() 
-    {
-        selectStates.forEach(({ el, size }) => {
-            if (!el) 
-            {
-                return;
-            }
-
-            if (size === null) 
-            {
-                el.removeAttribute('size');
-            } 
-            else 
-            {
-                el.setAttribute('size', size);
-            }
-        });
-        selectStates.length = 0;
-    }
-
-    window.addEventListener('beforeprint', expandSelectsForPrint);
-    window.addEventListener('afterprint', restoreSelectsAfterPrint);
-    });
-
 
 // ============================= VOORRAADBESTUUR BLAD DATABASIS ============================= 
     const DB_KEY = 'highveld_inventory';
@@ -1677,3 +1321,365 @@
 
         alert(msg);
     };
+
+// ============================= INTEKEN =============================
+let currentUser = null;
+
+// Laai gebruiker as daar een is
+function loadUser() 
+{
+    const savedUser = localStorage.getItem('highveld_user');
+    if (savedUser)  
+    {
+        currentUser = JSON.parse(savedUser);
+        updateAuthUI();
+    }
+}
+
+// Dateer die user ikoon en toestand op
+function updateAuthUI() 
+{
+    const authBtn = document.getElementById('authBtn');
+    if (!authBtn)
+    { 
+        return;
+    }
+
+    if (currentUser) 
+    {
+        authBtn.innerHTML = `<i class="fa-solid fa-circle-user"></i>`;
+        authBtn.classList.add('logged-in');
+        authBtn.title = `Welkom, ${currentUser.name}`;
+    } 
+    else 
+    {
+        authBtn.innerHTML = `<i class="fa-solid fa-user"></i>`;
+        authBtn.classList.remove('logged-in');
+    }
+}
+
+// Maak modal oop
+function openAuthModal(defaultTab = 'login') 
+{
+    let modal = document.getElementById('authModal');
+    
+    if (!modal) 
+    {
+        createAuthModal();
+        modal = document.getElementById('authModal');
+    }
+    
+    modal.style.display = 'flex';
+    
+    // Skakel na regte tab
+    showTab(defaultTab);
+}
+
+// Skep die modal (eenmalig)
+function createAuthModal() 
+{
+    const modalHTML = `
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAuthModal()">×</span>
+            
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="showTab('login')">Teken In</button>
+                <button class="tab-btn" onclick="showTab('register')">Registreer</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>E-pos</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Wagwoord</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit">Teken In</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" onsubmit="handleRegister(event)" style="display:none;">
+                <div class="form-group">
+                    <label>Volle Naam</label>
+                    <input type="text" id="regName" required>
+                </div>
+                <div class="form-group">
+                    <label>E-pos</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Wagwoord</label>
+                    <input type="password" id="regPassword" required minlength="6">
+                </div>
+                <button type="submit">Registreer</button>
+            </form>
+        </div>
+    </div>`;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+// Wissel tussen tabs
+function showTab(tab) {
+    document.getElementById('loginForm').style.display = tab === 'login' ? 'block' : 'none';
+    document.getElementById('registerForm').style.display = tab === 'register' ? 'block' : 'none';
+    
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', 
+            (tab === 'login' && btn.textContent === 'Teken In') ||
+            (tab === 'register' && btn.textContent === 'Registreer')
+        );
+    });
+}
+
+function closeAuthModal() 
+{
+    const modal = document.getElementById('authModal');
+    if (modal) 
+    {
+        modal.style.display = 'none';
+    }
+}
+
+// Handle Login
+function handleLogin(e) 
+{
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+
+    const users = JSON.parse(localStorage.getItem('highveld_users') || '[]');
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) 
+    {
+        currentUser = { name: user.name, email: user.email };
+        localStorage.setItem('highveld_user', JSON.stringify(currentUser));
+        updateAuthUI();
+        closeAuthModal();
+        alert(`Welkom terug, ${user.name}!`);
+    } 
+    else 
+    {
+        alert("Verkeerde e-pos of wagwoord.");
+    }
+}
+
+// Handle Register
+function handleRegister(e) 
+{
+    e.preventDefault();
+    const name = document.getElementById('regName').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const password = document.getElementById('regPassword').value;
+
+    let users = JSON.parse(localStorage.getItem('highveld_users') || '[]');
+
+    if (users.some(u => u.email === email)) 
+    {
+        alert("Hierdie e-pos is reeds geregistreer.");
+        return;
+    }
+
+    const newUser = { name, email, password };
+    users.push(newUser);
+    localStorage.setItem('highveld_users', JSON.stringify(users));
+
+    currentUser = { name, email };
+    localStorage.setItem('highveld_user', JSON.stringify(currentUser));
+
+    updateAuthUI();
+    closeAuthModal();
+    alert(`Welkom by Highveld Boerdery, ${name}!`);
+}
+
+// Uittree funksie (kan later bygevoeg word in 'n dropdown)
+window.logout = function() 
+{
+    if (confirm("Wil jy regtig uitteken?")) 
+    {
+        currentUser = null;
+        localStorage.removeItem('highveld_user');
+        updateAuthUI();
+    }
+};
+
+// Inisialiseer
+document.addEventListener('DOMContentLoaded', function() {
+    loadUser();
+
+    const authBtn = document.getElementById('authBtn');
+    if (authBtn) 
+    {
+        authBtn.addEventListener('click', () => {
+            if (currentUser) 
+            {
+                // Kan later 'n klein menu maak met "My Rekening" en "Uittree"
+                if (confirm(`Uitteken as ${currentUser.name}?`)) 
+                {
+                    logout();
+                }
+            } 
+            else 
+            {
+                openAuthModal('login');
+            }
+        });
+    }
+});
+
+// ================================================================================= 
+// ----------------------------- RESPONSIEWE NAVIGASIE -----------------------------
+// =================================================================================
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleBtn = document.getElementById('menuToggle');
+        const barsIcon = document.getElementById('barsIcon');
+        const xIcon = document.getElementById('xIcon');
+        const nav = document.getElementById('mainNav');
+
+        if (!toggleBtn || !nav)
+        {
+            return;
+        }
+
+        // Hoof burger menu oop/toe
+        toggleBtn.addEventListener('click', function () {
+            const isOpen = nav.classList.toggle('active');
+
+            if (isOpen) 
+            {
+                barsIcon.style.display = 'none';
+                xIcon.style.display = 'inline-block';
+            } 
+            else 
+            {
+                barsIcon.style.display = 'inline-block';
+                xIcon.style.display = 'none';
+                // Maak alle sub-dropdowns toe wanneer hoofmenu toemaak
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            }
+        });
+
+        // Maak toe as buite gekliek word
+        document.addEventListener('click', function (event) {
+            if (!nav.contains(event.target) && !toggleBtn.contains(event.target)) 
+            {
+                nav.classList.remove('active');
+                barsIcon.style.display = 'inline-block';
+                xIcon.style.display = 'none';
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            }
+        });
+
+        // Mobiele dropdowns: net die pyltjie oopmaak/toemaak
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function (e) {
+                e.preventDefault();         // stop navigasie
+                e.stopPropagation();        // stop borrel na ouer <a>
+
+                const dropdown = this.closest('.dropdown');
+                if (!dropdown) 
+                {
+                    console.log('Geen dropdown gevind vir hierdie pyltjie');
+                    return;
+                }
+
+                // Toggle en log vir debug
+                const isActiveNow = dropdown.classList.toggle('active');
+
+                // Maak ander toe
+                document.querySelectorAll('.dropdown').forEach(other => {
+                    if (other !== dropdown) 
+                    {
+                        other.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // As op 'n sub-link gekliek word → maak hele mobiele menu toe
+        document.querySelectorAll('.dropdown-content a').forEach(link => {
+            link.addEventListener('click', function () {
+                nav.classList.remove('active');
+                barsIcon.style.display = 'inline-block';
+                xIcon.style.display = 'none';
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            });
+        });
+
+// ============================= INTERAKTIEWE VIDEO + DATUM OBJEK =============================
+    const video = document.getElementById('marketingVideo');
+    const endLogo = document.getElementById('videoEndLogo');
+
+    if (video) 
+    {
+        video.addEventListener('timeupdate', () => {
+            if (video.currentTime >= video.duration - 5) // laaste 5 sekondes
+            {   
+                endLogo.style.display = 'block';
+                endLogo.style.opacity = '1';
+            }
+        });
+
+        video.addEventListener('ended', () => {
+            endLogo.style.opacity = '1';
+        });
+    }
+
+// Datum-objek: minimum datum vir afhaal/besoek (môre)
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+    const minDate = tomorrow.toISOString().split('T')[0];
+
+    const pickupDate = document.getElementById('pickupDate');
+    const visitDate = document.getElementById('visitDate');
+
+    if (pickupDate) 
+    {
+        pickupDate.setAttribute('min', minDate);
+    }
+
+    if (visitDate) 
+    {
+        visitDate.setAttribute('min', minDate);
+    }
+
+// Print: maak select-opsies volledig sigbaar
+    const selectStates = [];
+    function expandSelectsForPrint() 
+    {
+        document.querySelectorAll('select').forEach((select) => {
+            selectStates.push({ el: select, size: select.getAttribute('size') });
+            select.setAttribute('size', String(Math.max(select.options.length, 2)));
+        });
+    }
+
+    function restoreSelectsAfterPrint() 
+    {
+        selectStates.forEach(({ el, size }) => {
+            if (!el) 
+            {
+                return;
+            }
+
+            if (size === null) 
+            {
+                el.removeAttribute('size');
+            } 
+            else 
+            {
+                el.setAttribute('size', size);
+            }
+        });
+        selectStates.length = 0;
+    }
+
+    window.addEventListener('beforeprint', expandSelectsForPrint);
+    window.addEventListener('afterprint', restoreSelectsAfterPrint);
+    });

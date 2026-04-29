@@ -43,6 +43,7 @@
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
+        gap: 1rem;
     }
 
 /* Groep vir handelsmerk (logo) deel links op navigasie balk bevat prent en teks */
@@ -55,6 +56,7 @@
 
     .logo-teks {
         margin-left: -15px;
+        white-space: nowrap;
     }
     
     /* Boerdery / Besigheid naam */
@@ -81,6 +83,7 @@
         box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         margin-right: 1rem;
         transition: transform 0.3s ease;    /* klein sweef-effek */
+        flex-shrink: 0;
     }
 
     .logo-img:hover {
@@ -174,6 +177,136 @@
         margin-left: 6px;
         transition: transform 0.3s ease;
         opacity: 0.7;
+    }
+
+/* Inteken - regs in navigasiebalk */
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .auth-area {
+        margin-left: 1rem;
+    }
+
+    .auth-btn {
+        background: none;
+        border: none;
+        font-size: 1.55rem;
+        color: #333;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .auth-btn:hover {
+        background: #f0f7f0;
+        color: #065f46;
+        transform: scale(1.15);
+    }
+
+    .auth-btn.logged-in {
+        color: #065f46;
+    }
+
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 420px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        position: relative;
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #666;
+    }
+
+    .close-modal:hover {
+        color: #dc2626;
+    }
+
+    .tab-buttons {
+        display: flex;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #eee;
+    }
+
+    .tab-btn {
+        flex: 1;
+        padding: 12px;
+        background: none;
+        border: none;
+        font-size: 1.05rem;
+        font-weight: 600;
+        cursor: pointer;
+        color: #666;
+    }
+
+    .tab-btn.active {
+        color: #065f46;
+        border-bottom: 3px solid #4CAF50;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    .modal button[type="submit"] {
+        width: 100%;
+        padding: 14px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.05rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .modal button[type="submit"]:hover {
+        background: #3e8e41;
+    }
+
+    /* Maak seker dit bly heel regs op alle skerms */
+    .nav-houer {
+        justify-content: space-between;   /* Dit help reeds baie */
     }
 
 /* ============================= HERO ============================= */
@@ -1302,18 +1435,20 @@
     /* Checkbox knoppie */
     .checkbox-group label {
         display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        font-weight: 500;
+        align-items: center;   /* beter as flex-start vir 1 lyn */
+        gap: 8px;
+        line-height: 1.4;
         cursor: pointer;
-        line-height: 1.5;
-        margin-top: 8px;
+        margin-top: 7px;
     }
 
+    /* BAIE BELANGRIK */
     .checkbox-group input[type="checkbox"] {
-        margin-top: 4px;
+        width: auto;           /* override die 100% */
+        flex-shrink: 0;        /* keer dat dit rek */
+        margin: 0;
+        transform: scale(1.1);
         accent-color: #065f46;
-        transform: scale(1.15);
     }
 
 
@@ -1489,6 +1624,7 @@
             flex-direction: column;
             gap: 0;
             margin-left: 0px;
+            margin-right: 2px;
             padding: 0;
         }
 
@@ -1593,6 +1729,8 @@
             margin-left: -10px;
             display: table;
             width: 280px;
+            margin-top: 4px;
+            margin-bottom: 4px;
             > span {
                 display: table-cell;
                 white-space: wrap;
@@ -1601,15 +1739,15 @@
             .logo-img {
                 justify-content: left;
                 max-width: 44px;
-                min-height: 44px;
+                max-height: 44px;
                 margin-right: 0%;
                 padding-right: 0%;
             }
         }
 
         .logo-teks {
-            top: -5px;
-            bottom: 4px;
+            top: -2px;
+            bottom: 2px;
             float: left;
             position: relative; 
             margin-left: 0%;
@@ -1618,11 +1756,11 @@
         }
 
         .logo-teks h1 {
-            font-size: 1.0rem;              /* effens kleiner */
+            font-size: 1.2rem;              /* effens kleiner */
         }
 
         .logo-teks p {
-            font-size: 0.5rem;
+            font-size: 0.8rem;
         }
 
     /* Hero */
@@ -1896,10 +2034,16 @@
         nav a:hover {
             transform: none;
         }
+        
+        .nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
 
         /* Logo en Logo teks in nav langsmekaar vertoon */
         .logo-area {
-            margin-left: -15px;
+            margin-left: -10px;
             display: table;
             width: 280px;
             > span {
@@ -1917,24 +2061,24 @@
         }
 
         .logo-teks {
-            top: -11px;
-            bottom: 4px;
+            top: -6px;
+            bottom: 2px;
             float: left;
             position: relative; 
             margin-left: 0%;
-            padding-left: 8px;
+            margin-left: -20px;
         }
 
         .logo-teks h1 {
-            font-size: 1.0rem;              /* effens kleiner */
+            font-size: 1.1rem;              /* effens kleiner */
         }
 
         .logo-teks p {
-            font-size: 0.5rem;
+            font-size: 0.7rem;
         }
 
         .nav {
-            gap: 0.5rem;                /* Nog minder spasie */
+            gap: 0.6rem;                /* Nog minder spasie */
         }
 
         h1, h2 {

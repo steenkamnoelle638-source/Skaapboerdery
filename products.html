@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <!-- NAVIGASIE EN MENU (menu en dropdownmenu) -->
+    <!-- NAVIGASIE EN MENU (Menu + Dropdown menu) -->
     <header>
         <div class="nav-houer">
             <div class="logo-area">
@@ -26,12 +26,6 @@
                     <p>Skaapboerdery</p>
                 </div>
             </div>
-
-            <!-- Hamburger / Close knoppie – net vir mobiel -->
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu oopmaak/toemaak">
-                <i class="fa-solid fa-bars" id="barsIcon"></i>
-                <i class="fa-solid fa-x" id="xIcon" style="display:none;"></i>
-            </button>
 
             <nav class="nav" id="mainNav">
                 <ul class="nav-menu">
@@ -71,7 +65,7 @@
                             <li><a href="products.html#Top3Produkte">Top Produkte</a></li>
                             <li><a href="products.html#Bestel">Bestel</a></li>
                         </ul>
-                    </li>   
+                    </li>    
 
                     <li class="dropdown">
                         <a href="voorraadbestuur.html" class="dropbtn">Voorraadbestuur<span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span></i></a>
@@ -95,6 +89,20 @@
                     </li>
                 </ul>
             </nav>
+
+            <!-- Gebruiker Ikoon + Hamburger (heel regs) -->
+            <div class="nav-right">
+                <!-- Inteken / User ikoon -->
+                <button id="authBtn" class="auth-btn" aria-label="Teken in / My profiel">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+
+                <!-- Hamburger knoppie (mobiel) -->
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu oopmaak/toemaak">
+                    <i class="fa-solid fa-bars" id="barsIcon"></i>
+                    <i class="fa-solid fa-x" id="xIcon" style="display:none;"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -251,20 +259,7 @@
                             Ek stem in tot die verkoopvoorwaardes en afleweringsbeleid
                         </label>
                     </div>
-
                 </div>
-
-                <!-- BYVOEG TOT VOOR form-group clas div -->
-                <!-- <div class="print-product-matrix">
-                    <h3>Produkte en hoeveelhede</h3>
-                    <div class="print-product-row"><span>Wol (per kg)</span><input type="number" min="0" placeholder="Aantal"></div>
-                    <div class="print-product-row"><span>Lammer (lewend)</span><input type="number" min="0" placeholder="Aantal"></div>
-                    <div class="print-product-row"><span>Skaapvleis (kg)</span><input type="number" min="0" placeholder="Aantal"></div>
-                    <div class="print-product-row"><span>Skaap (volwasse)</span><input type="number" min="0" placeholder="Aantal"></div>
-                    <div class="print-product-row"><span>Skaapvel (per vel)</span><input type="number" min="0" placeholder="Aantal"></div>
-                    <div class="print-product-row"><span>Skaapmis (per sak / 50 kg)</span><input type="number" min="0" placeholder="Aantal"></div>
-                    <div class="print-product-row"><span>Skaapvet / talg (per kg)</span><input type="number" min="0" placeholder="Aantal"></div>
-                </div> -->
 
                 <!-- Totaal wys hier -->
                 <div class="form-group" id="totalDisplay" style="display:none; font-weight:bold; color:#2f4f2f;">

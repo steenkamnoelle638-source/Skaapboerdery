@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <!-- NAVIGASIE EN MENU (Menu en Dropdown menu) -->
+    <!-- NAVIGASIE EN MENU (Menu + Dropdown menu) -->
     <header>
         <div class="nav-houer">
             <div class="logo-area">
@@ -27,12 +27,6 @@
                     <p>Skaapboerdery</p>
                 </div>
             </div>
-
-            <!-- Hamburger / Close knoppie – net vir mobiel -->
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu oopmaak/toemaak">
-                <i class="fa-solid fa-bars" id="barsIcon"></i>
-                <i class="fa-solid fa-x" id="xIcon" style="display:none;"></i>
-            </button>
 
             <nav class="nav" id="mainNav">
                 <ul class="nav-menu">
@@ -96,6 +90,20 @@
                     </li>
                 </ul>
             </nav>
+
+            <!-- Gebruiker Ikoon + Hamburger (heel regs) -->
+            <div class="nav-right">
+                <!-- Inteken / User ikoon -->
+                <button id="authBtn" class="auth-btn" aria-label="Teken in / My profiel">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+
+                <!-- Hamburger knoppie (mobiel) -->
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu oopmaak/toemaak">
+                    <i class="fa-solid fa-bars" id="barsIcon"></i>
+                    <i class="fa-solid fa-x" id="xIcon" style="display:none;"></i>
+                </button>
+            </div>
         </div>
     </header>
 
