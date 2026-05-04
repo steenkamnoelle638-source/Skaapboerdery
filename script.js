@@ -959,9 +959,6 @@
             toggleAddressField();
             togglePickupDateField();
             document.getElementById('totalDisplay').style.display = 'none';
-
-            // Kopel bestelvorm aan verkope en rekords tabel
-            
         }
 
     // ============================= KONTAKVORM VALIDASIE =============================
