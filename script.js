@@ -586,12 +586,12 @@
 
                 if (select) select.addEventListener('change', () => {
                     calculateTotal();
-                    updatePaymentVisibility();   // ← Voeg hier by
+                    updatePaymentVisibility();
                 });
 
                 if (qty) qty.addEventListener('input', () => {
                     calculateTotal();
-                    updatePaymentVisibility();   // ← Voeg hier by
+                    updatePaymentVisibility();
                 });
             }
 
