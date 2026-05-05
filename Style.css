@@ -717,7 +717,7 @@
 
 /* ============================= TUISBLAD INLEIDING ============================= */
     .intro {
-        background: url("Media/SkaapFamilie.jpg") center/cover no-repeat;
+        background: url("Media/1Plaas.jpg") center/cover no-repeat;
         text-align: center;
         padding: 140px 20px;
         color: rgb(238, 238, 238);
@@ -741,7 +741,7 @@
         content: "";
         position: absolute;
         inset: 0;               /* shorthand vir top:0; right:0; bottom:0; left:0; */
-        background: rgba(0, 0, 0, 0.45);
+        background: rgba(0, 0, 0, 0.6);
         z-index: 0;             /* onder die teks-inhoud */
     }
 
