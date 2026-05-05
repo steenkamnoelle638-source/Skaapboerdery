@@ -1701,8 +1701,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div style="display:flex; justify-content:space-between; margin:12px 0; padding:8px; background:#f9fafb; border-radius:8px;">
                         <div>
                             <strong>${item.name}</strong><br>
-                            <small>${formatCurrency(item.price)} × ${item.quantity}</small>
-                        </div>
+                            <small>${formatCurrency(item.price)} × ${item.quantity} = ${formatCurrency(subtotal)}</small>                        </div>
                         <div style="text-align:right;">
                             <strong>${formatCurrency(subtotal)}</strong><br>
                             <button onclick="removeFromCart(${index}); showCart();" style="color:#dc2626; font-size:0.9rem;">Verwyder</button>
@@ -1723,9 +1722,9 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.dataset.cartOverlay = 'true';
         modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:flex; align-items:center; justify-content:center; z-index:3000;';
         modal.innerHTML = `
-            <div style="background:white; padding:25px; border-radius:16px; max-width:500px; width:90%; max-height:90vh; overflow:auto;">
+            <div style="background:white; padding:25px; border-radius:16px; max-width:500px; width:90%; max-height:90vh; overflow:auto; position:relative;">
+                <button class="close-modal close-modal-circle" onclick="this.parentElement.parentElement.remove()" aria-label="Sluit mandjie">×</button>
                 ${html}
-                <button onclick="this.parentElement.parentElement.remove()" style="margin-top:15px; width:100%; padding:12px;">Sluit</button>
             </div>`;
         document.body.appendChild(modal);
     }
