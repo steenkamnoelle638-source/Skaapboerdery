@@ -1268,7 +1268,7 @@
         alert(msg);
     };
 
-// Inisialiseer
+    // Inisialiseer
     document.addEventListener('DOMContentLoaded', () => {
         if (document.getElementById('inventoryBody')) 
         {
@@ -1343,210 +1343,211 @@
     };
 
 // ============================= INTEKEN =============================
-let currentUser = null;
+    let currentUser = null;
 
-// Laai gebruiker as daar een is
-function loadUser() 
-{
-    const savedUser = localStorage.getItem('highveld_user');
-    if (savedUser)  
+    // Laai gebruiker as daar een is
+    function loadUser() 
     {
-        currentUser = JSON.parse(savedUser);
-        updateAuthUI();
-    }
-}
-
-// Dateer die user ikoon en toestand op
-function updateAuthUI() 
-{
-    const authBtn = document.getElementById('authBtn');
-    if (!authBtn)
-    { 
-        return;
+        const savedUser = localStorage.getItem('highveld_user');
+        if (savedUser)  
+        {
+            currentUser = JSON.parse(savedUser);
+            updateAuthUI();
+        }
     }
 
-    if (currentUser) 
+    // Dateer die user ikoon en toestand op
+    function updateAuthUI() 
     {
-        authBtn.innerHTML = `<i class="fa-solid fa-circle-user"></i>`;
-        authBtn.classList.add('logged-in');
-        authBtn.title = `Welkom, ${currentUser.name}`;
-    } 
-    else 
-    {
-        authBtn.innerHTML = `<i class="fa-solid fa-user"></i>`;
-        authBtn.classList.remove('logged-in');
-    }
-}
+        const authBtn = document.getElementById('authBtn');
+        if (!authBtn)
+        { 
+            return;
+        }
 
-// Maak modal oop
-function openAuthModal(defaultTab = 'login') 
-{
-    let modal = document.getElementById('authModal');
-    
-    if (!modal) 
-    {
-        createAuthModal();
-        modal = document.getElementById('authModal');
+        if (currentUser) 
+        {
+            authBtn.innerHTML = `<i class="fa-solid fa-circle-user"></i>`;
+            authBtn.classList.add('logged-in');
+            authBtn.title = `Welkom, ${currentUser.name}`;
+        } 
+        else 
+        {
+            authBtn.innerHTML = `<i class="fa-solid fa-user"></i>`;
+            authBtn.classList.remove('logged-in');
+        }
     }
-    
-    modal.style.display = 'flex';
-    
-    // Skakel na regte tab
-    showTab(defaultTab);
-}
 
-// Skep die modal (eenmalig)
-function createAuthModal() 
-{
-    const modalHTML = `
-    <div id="authModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeAuthModal()">×</span>
-            
-            <div class="tab-buttons">
-                <button class="tab-btn active" onclick="showTab('login')">Teken In</button>
-                <button class="tab-btn" onclick="showTab('register')">Registreer</button>
+    // Maak modal oop
+    function openAuthModal(defaultTab = 'login') 
+    {
+        let modal = document.getElementById('authModal');
+        
+        if (!modal) 
+        {
+            createAuthModal();
+            modal = document.getElementById('authModal');
+        }
+        
+        modal.style.display = 'flex';
+        
+        // Skakel na regte tab
+        showTab(defaultTab);
+    }
+
+    // Skep die modal (eenmalig)
+    function createAuthModal() 
+    {
+        const modalHTML = `
+        <div id="authModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeAuthModal()">×</span>
+                
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showTab('login')">Teken In</button>
+                    <button class="tab-btn" onclick="showTab('register')">Registreer</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>E-pos</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Wagwoord</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit">Teken In</button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" onsubmit="handleRegister(event)" style="display:none;">
+                    <div class="form-group">
+                        <label>Volle Naam</label>
+                        <input type="text" id="regName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>E-pos</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Wagwoord</label>
+                        <input type="password" id="regPassword" required minlength="6">
+                    </div>
+                    <button type="submit">Registreer</button>
+                </form>
             </div>
+        </div>`;
 
-            <!-- Login Form -->
-            <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label>E-pos</label>
-                    <input type="email" id="loginEmail" required>
-                </div>
-                <div class="form-group">
-                    <label>Wagwoord</label>
-                    <input type="password" id="loginPassword" required>
-                </div>
-                <button type="submit">Teken In</button>
-            </form>
-
-            <!-- Register Form -->
-            <form id="registerForm" onsubmit="handleRegister(event)" style="display:none;">
-                <div class="form-group">
-                    <label>Volle Naam</label>
-                    <input type="text" id="regName" required>
-                </div>
-                <div class="form-group">
-                    <label>E-pos</label>
-                    <input type="email" id="regEmail" required>
-                </div>
-                <div class="form-group">
-                    <label>Wagwoord</label>
-                    <input type="password" id="regPassword" required minlength="6">
-                </div>
-                <button type="submit">Registreer</button>
-            </form>
-        </div>
-    </div>`;
-
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-}
-
-// Wissel tussen tabs
-function showTab(tab) {
-    document.getElementById('loginForm').style.display = tab === 'login' ? 'block' : 'none';
-    document.getElementById('registerForm').style.display = tab === 'register' ? 'block' : 'none';
-    
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.toggle('active', 
-            (tab === 'login' && btn.textContent === 'Teken In') ||
-            (tab === 'register' && btn.textContent === 'Registreer')
-        );
-    });
-}
-
-function closeAuthModal() 
-{
-    const modal = document.getElementById('authModal');
-    if (modal) 
-    {
-        modal.style.display = 'none';
-    }
-}
-
-// Handle Login
-function handleLogin(e) 
-{
-    e.preventDefault();
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value;
-
-    const users = JSON.parse(localStorage.getItem('highveld_users') || '[]');
-    const user = users.find(u => u.email === email && u.password === password);
-
-    if (user) 
-    {
-        currentUser = { name: user.name, email: user.email };
-        localStorage.setItem('highveld_user', JSON.stringify(currentUser));
-        updateAuthUI();
-        closeAuthModal();
-        alert(`Welkom terug, ${user.name}!`);
-    } 
-    else 
-    {
-        alert("Verkeerde e-pos of wagwoord.");
-    }
-}
-
-// Handle Register
-function handleRegister(e) 
-{
-    e.preventDefault();
-    const name = document.getElementById('regName').value.trim();
-    const email = document.getElementById('regEmail').value.trim();
-    const password = document.getElementById('regPassword').value;
-
-    let users = JSON.parse(localStorage.getItem('highveld_users') || '[]');
-
-    if (users.some(u => u.email === email)) 
-    {
-        alert("Hierdie e-pos is reeds geregistreer.");
-        return;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
     }
 
-    const newUser = { name, email, password };
-    users.push(newUser);
-    localStorage.setItem('highveld_users', JSON.stringify(users));
-
-    currentUser = { name, email };
-    localStorage.setItem('highveld_user', JSON.stringify(currentUser));
-
-    updateAuthUI();
-    closeAuthModal();
-    alert(`Welkom by Highveld Boerdery, ${name}!`);
-}
-
-// Uittree funksie (kan later bygevoeg word in 'n dropdown)
-window.logout = function() 
-{
-    if (confirm("Wil jy regtig uitteken?")) 
+    // Wissel tussen tabs
+    function showTab(tab) 
     {
-        currentUser = null;
-        localStorage.removeItem('highveld_user');
-        updateAuthUI();
-    }
-};
-
-// Inisialiseer
-document.addEventListener('DOMContentLoaded', function() {
-    loadUser();
-
-    const authBtn = document.getElementById('authBtn');
-    if (authBtn) 
-    {
-        authBtn.addEventListener('click', () => {
-            if (currentUser) 
-            {
-                showProfileModal();
-            } 
-            else 
-            {
-                openAuthModal('login');
-            }
+        document.getElementById('loginForm').style.display = tab === 'login' ? 'block' : 'none';
+        document.getElementById('registerForm').style.display = tab === 'register' ? 'block' : 'none';
+        
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.toggle('active', 
+                (tab === 'login' && btn.textContent === 'Teken In') ||
+                (tab === 'register' && btn.textContent === 'Registreer')
+            );
         });
     }
-});
+
+    function closeAuthModal() 
+    {
+        const modal = document.getElementById('authModal');
+        if (modal) 
+        {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Handle Login
+    function handleLogin(e) 
+    {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
+
+        const users = JSON.parse(localStorage.getItem('highveld_users') || '[]');
+        const user = users.find(u => u.email === email && u.password === password);
+
+        if (user) 
+        {
+            currentUser = { name: user.name, email: user.email };
+            localStorage.setItem('highveld_user', JSON.stringify(currentUser));
+            updateAuthUI();
+            closeAuthModal();
+            alert(`Welkom terug, ${user.name}!`);
+        } 
+        else 
+        {
+            alert("Verkeerde e-pos of wagwoord.");
+        }
+    }
+
+    // Handle Register
+    function handleRegister(e) 
+    {
+        e.preventDefault();
+        const name = document.getElementById('regName').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const password = document.getElementById('regPassword').value;
+
+        let users = JSON.parse(localStorage.getItem('highveld_users') || '[]');
+
+        if (users.some(u => u.email === email)) 
+        {
+            alert("Hierdie e-pos is reeds geregistreer.");
+            return;
+        }
+
+        const newUser = { name, email, password };
+        users.push(newUser);
+        localStorage.setItem('highveld_users', JSON.stringify(users));
+
+        currentUser = { name, email };
+        localStorage.setItem('highveld_user', JSON.stringify(currentUser));
+
+        updateAuthUI();
+        closeAuthModal();
+        alert(`Welkom by Highveld Boerdery, ${name}!`);
+    }
+
+    // Uittree funksie (kan later bygevoeg word in 'n dropdown)
+    window.logout = function() 
+    {
+        if (confirm("Wil jy regtig uitteken?")) 
+        {
+            currentUser = null;
+            localStorage.removeItem('highveld_user');
+            updateAuthUI();
+        }
+    };
+
+    // Inisialiseer
+    document.addEventListener('DOMContentLoaded', function() {
+        loadUser();
+
+        const authBtn = document.getElementById('authBtn');
+        if (authBtn) 
+        {
+            authBtn.addEventListener('click', () => {
+                if (currentUser) 
+                {
+                    showProfileModal();
+                } 
+                else 
+                {
+                    openAuthModal('login');
+                }
+            });
+        }
+    });
 
 // ============================= INKOPIE MANDJIE =============================
     const CART_KEY = 'highveld_cart';
@@ -1642,7 +1643,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div id="profileModal" class="modal" style="display:flex;">
                     <div class="modal-content">
                         <span class="close-modal" onclick="closeProfileModal()">×</span>
-                        <h3 style="margin-bottom:0.4rem;">My Profiel</h3>
+                        <h3 style="margin-bottom:0.4rem; font-size: 25px;"><i class="fa-solid fa-circle-user"></i>   My Profiel</h3>
                         <p style="margin-bottom:1rem; color:#4b5563;">${currentUser.name} · ${currentUser.email}</p>
                         <h4 style="margin-bottom:0.6rem;">Laaste 4 bestellings</h4>
                         <div id="profileOrdersList"></div>
