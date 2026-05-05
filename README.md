@@ -94,40 +94,40 @@ Elke item in die voorraad databasis bevat die volgende velde:
 ## Lêerstruktuur
 ```
 Skaapboerdery/   
-├── index.html   
-├── oor_ons.html   
-├── ons_trop.html   
-├── products.html   
-├── voorraadbestuur.html   
-├── verkope_en_rekord.html   
-├── contact.html   
-├── Style.css   
-├── print.css   
-├── script.js   
-├── database.sql   
-├── Bemarking.vtt   
-├── README.md   
+├─ index.html   
+├─ oor_ons.html   
+├─ ons_trop.html   
+├─ products.html   
+├─ voorraadbestuur.html   
+├─ verkope_en_rekord.html   
+├─ contact.html   
+├─ Style.css   
+├─ print.css   
+├─ script.js   
+├─ database.sql   
+├─ Bemarking.vtt   
+├─ README.md   
 │   
-├── Media/                    
-│   └── Alle foto's en video's wat in my webblaaie voorkom is hierbinne (38 Leers totaal)   
+├─ Media/                    
+│   └─ Alle foto's en video's wat in my webblaaie voorkom is hierbinne (38 Leers totaal)   
 │   
-├── Fases_Dokumentasie/    
-│   ├── Fase1_Beplaning+Basies-HTML.docx   
-│   ├── Fase2_CSS+Uitleg.docx   
-│   ├── Fase3_Reponsief+Tabelle+Webvorm.docx   
-│   ├── Fase4_JS+Multimedia.docx   
-│   ├── Fase5_Databasis+Finale-Webblad.docx   
-│   ├── BuiteHanboekCode.docx   
-│   ├── Hanboek&ProjekVoorkom.docx   
-│   └── KI_media.docx   
+├─ Fases_Dokumentasie/    
+│   ├─ Fase1_Beplaning+Basies-HTML.docx   
+│   ├─ Fase2_CSS+Uitleg.docx   
+│   ├─ Fase3_Reponsief+Tabelle+Webvorm.docx   
+│   ├─ Fase4_JS+Multimedia.docx   
+│   ├─ Fase5_Databasis+Finale-Webblad.docx   
+│   ├─ BuiteHanboekCode.docx   
+│   ├─ Hanboek&ProjekVoorkom.docx   
+│   └─ KI_media.docx   
 │   
-└── Skermskote en Video/   
-    ├── Fase2_-_3Blaaie/   
-    │   ├── Tuisblad_Skermskoot.png   
-    │   ├── OorOnsBlad_Skermskoot.png   
-    │   └── ProdukteBlad_Skermskoot.png   
-    └── Fase5_-_FinaleDemo/   
-        ├── Rekenaarskerm.mp4   
-        ├── Tabletskerm.mp4   
-        └── Slimfoon.mp4  
+└─ Skermskote en Video/   
+    ├─ Fase2 - 3Blaaie/   
+    │   ├─ Tuisblad_Skermskoot.png   
+    │   ├─ OorOnsBlad_Skermskoot.png   
+    │   └─ ProdukteBlad_Skermskoot.png   
+    └─ Fase5 - FinaleDemo/   
+        ├─ Rekenaarskerm.mp4   
+        ├─ Tabletskerm.mp4   
+        └─ Slimfoon.mp4  
 ```
