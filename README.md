@@ -93,7 +93,7 @@ Elke item in die voorraad databasis bevat die volgende velde:
 
 ## Lêerstruktuur
 ```
-**Skaapboerdery**/   
+Skaapboerdery/   
 ├── index.html   
 ├── oor_ons.html   
 ├── ons_trop.html   
@@ -108,10 +108,10 @@ Elke item in die voorraad databasis bevat die volgende velde:
 ├── Bemarking.vtt   
 ├── README.md   
 │   
-├── **Media/**                    
+├── Media/                    
 │   └── Alle foto's en video's wat in my webblaaie voorkom is hierbinne (38 Leers totaal)   
 │   
-├── **Fases_Dokumentasie/**    
+├── Fases_Dokumentasie/    
 │   ├── Fase1_Beplaning+Basies-HTML.docx   
 │   ├── Fase2_CSS+Uitleg.docx   
 │   ├── Fase3_Reponsief+Tabelle+Webvorm.docx   
@@ -121,12 +121,12 @@ Elke item in die voorraad databasis bevat die volgende velde:
 │   ├── Hanboek&ProjekVoorkom.docx   
 │   └── KI_media.docx   
 │   
-└── **Skermskote en Video/**   
-    ├── ***Fase2_-_3Blaaie/***   
+└── Skermskote en Video/   
+    ├── Fase2_-_3Blaaie/   
     │   ├── Tuisblad_Skermskoot.png   
     │   ├── OorOnsBlad_Skermskoot.png   
     │   └── ProdukteBlad_Skermskoot.png   
-    └── ***Fase5_-_FinaleDemo/***   
+    └── Fase5_-_FinaleDemo/   
         ├── Rekenaarskerm.mp4   
         ├── Tabletskerm.mp4   
         └── Slimfoon.mp4  
