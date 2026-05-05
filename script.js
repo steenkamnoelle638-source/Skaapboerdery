@@ -947,8 +947,7 @@
             message += `Jou ${orderItemsForMessage.length} produk(te) is by die mandjie gevoeg.\n\n`;
             message += orderItemsForMessage.join("\n") + "\n\n";
             message += `Totaal: R ${totaal.toFixed(2)}\n\n`;
-            message += `Kliek op die 🛒 mandjie-ikoon bo regs om jou bestelling te sien en te finaliseer.`;
-
+            
             alert(message);
 
             // Maak vorm skoon
