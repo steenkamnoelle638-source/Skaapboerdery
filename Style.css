@@ -236,11 +236,11 @@
 
     .close-modal {
         position: absolute;
-        top: 12px;
+        margin-top: 5px;
         right: 16px;
-        font-size: 1.8rem;
+        font-size: 2rem;
         cursor: pointer;
-        color: #666;
+        color: #dc2626;
     }
 
     .close-modal:hover {
@@ -248,26 +248,8 @@
     }
 
     .close-modal-circle {
-        width: 34px;
-        height: 34px;
-        border: none;
         border-radius: 50%;
-        background: #dc2626;
-        color: #fff;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.35rem;
-        font-weight: 700;
-        line-height: 1;
-        right: 14px;
-        top: 12px;
-        padding: 0;
-    }
-
-    .close-modal-circle:hover {
-        background: #b91c1c;
-        color: #fff;
+        border-color: transparent;
     }
 
     .profile-title {

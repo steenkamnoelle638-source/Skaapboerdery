@@ -1642,8 +1642,8 @@
             const profileHtml = `
                 <div id="profileModal" class="modal" style="display:flex;">
                     <div class="modal-content">
-                        <span class="close-modal" onclick="closeProfileModal()">×</span>
-                        <h3 style="margin-bottom:0.4rem; font-size: 25px;"><i class="fa-solid fa-circle-user"></i>   My Profiel</h3>
+                        <h3 class="close-modal" onclick="closeProfileModal()"><i class="fa-solid fa-circle-xmark"></i></h3>
+                        <h3 style="margin-bottom:0.4rem; font-size: 25px;"><i style="font-size: 30px; margin-top: 10px" class="fa-solid fa-circle-user"></i>   My Profiel</h3>
                         <p style="margin-bottom:1rem; color:#4b5563;">${currentUser.name} · ${currentUser.email}</p>
                         <h4 style="margin-bottom:0.6rem;">Laaste 4 bestellings</h4>
                         <div id="profileOrdersList"></div>
@@ -1686,12 +1686,12 @@
     // Wys mandjie modal
     function showCart() 
     {
-        let html = `<h3 style="margin-bottom:1rem;">Jou Inkopie Mandjie</h3>`;
+        let html = `<h3 style="font-size: 25px; margin-bottom:1rem; margin-top: 2px;">Jou Inkopie Mandjie</h3>`;
         let total = 0;
 
         if (cart.length === 0)
         {
-            html += '<p>Jou mandjie is tans leeg.</p>';
+            html += '<p style="margin-top: -1rem;">Geen items in jou mandjie.</p>';
         }
         else
         {
@@ -1702,7 +1702,9 @@
                     <div style="display:flex; justify-content:space-between; margin:12px 0; padding:8px; background:#f9fafb; border-radius:8px;">
                         <div>
                             <strong>${item.name}</strong><br>
-                            <small>${formatCurrency(item.price)} × ${item.quantity} = ${formatCurrency(subtotal)}</small>                        </div>
+                            <small>${formatCurrency(item.price)} × ${item.quantity} = ${formatCurrency(subtotal)}</small>                        
+                        </div>
+
                         <div style="text-align:right;">
                             <strong>${formatCurrency(subtotal)}</strong><br>
                             <button onclick="removeFromCart(${index}); showCart();" style="color:#dc2626; font-size:0.9rem;">Verwyder</button>
@@ -1718,13 +1720,13 @@
 
         document.querySelectorAll('div[data-cart-overlay="true"]').forEach(el => el.remove());
 
-        // Gebruik bestaande modal of maak 'n eenvoudige alert-agtige modal (vir eenvoud)
+        // Gebruik bestaande modal
         const modal = document.createElement('div');
         modal.dataset.cartOverlay = 'true';
         modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:flex; align-items:center; justify-content:center; z-index:3000;';
         modal.innerHTML = `
             <div style="background:white; padding:25px; border-radius:16px; max-width:500px; width:90%; max-height:90vh; overflow:auto; position:relative;">
-                <button class="close-modal close-modal-circle" onclick="this.parentElement.parentElement.remove()" aria-label="Sluit mandjie">×</button>
+                <button class="close-modal close-modal-circle" onclick="this.parentElement.parentElement.remove()" aria-label="Sluit mandjie"><i class="fa-solid fa-circle-xmark"></i></button>
                 ${html}
             </div>`;
         document.body.appendChild(modal);
@@ -1787,9 +1789,7 @@
         saveOrderHistory(orderHistory.slice(0, 50));
 
         alert(`✅ Bestelling suksesvol geplaas!
-
         Totaal: ${formatCurrency(total)}
-
         Dankie vir jou aankoop!`);
 
         cart = [];
