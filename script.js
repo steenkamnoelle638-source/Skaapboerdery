@@ -651,9 +651,13 @@
         
 
         // Nuwe funksie vir afhaal en besoek se datum en tyd velde
-        function togglePickupDateField() {
+        function togglePickupDateField() 
+        {
             const select = document.getElementById('deliveryOption');
-            if (!select) return;  // Geen keuse-element op die bladsy nie → stop dadelik
+            if (!select)
+            { 
+                return;  // Geen keuse-element op die bladsy nie → stop dadelik
+            }
 
             const value = select.value;
 
@@ -927,11 +931,12 @@
                 
                 if (select && select.value && qtyInput && parseInt(qtyInput.value) > 0) 
                 {
-                    const productText = select.options[select.selectedIndex].text;
+                    const selectedOptionText = select.options[select.selectedIndex].text;
+                    const productName = selectedOptionText.split('–')[0].trim();
                     const price = productPrices[select.value] || 0;
                     const qty = parseInt(qtyInput.value);
                     
-                    addToCart(productText, price, qty);
+                    addToCart(productName, qty, price);
                     hasItems = true;
                 }
             });
@@ -1587,7 +1592,7 @@
     }
 
     // Voeg item by mandjie
-    function renderOrderHistoryList(limit = 4)
+    function renderOrderHistoryList(limit = 4, showReorderButton = true)
     {
         const orders = getOrderHistory().slice(0, limit);
 
@@ -1598,10 +1603,7 @@
 
         return orders.map(order => {
             const itemsHtml = order.items.map(item => `
-                <li>
-                    <span>${item.name}</span>
-                    <span>${item.quantity} × ${formatCurrency(item.price)}</span>
-                </li>
+                <li>${item.name} \t ${item.quantity} x ${formatCurrency(item.price)}</li>
             `).join('');
 
             return `
@@ -1611,7 +1613,7 @@
                         <strong>${formatCurrency(order.total)}</strong>
                     </div>
                     <ul class="order-history-products">${itemsHtml}</ul>
-                    <button class="order-history-reorder" onclick="reorderItems(${order.id})">Herbestel</button>
+                    ${showReorderButton ? `<button class="order-history-reorder" onclick="reorderItems(${order.id})">Herbestel</button>` : ""}
                 </article>
             `;
         }).join('');
@@ -1625,7 +1627,7 @@
             return;
         }
 
-        profileOrdersEl.innerHTML = renderOrderHistoryList(4);
+        profileOrdersEl.innerHTML = renderOrderHistoryList(4, false);
     }
 
     function showProfileModal()
@@ -1647,7 +1649,7 @@
                         <p style="margin-bottom:1rem; color:#4b5563;">${currentUser.name} · ${currentUser.email}</p>
                         <h4 style="margin-bottom:0.6rem;">Laaste 4 bestellings</h4>
                         <div id="profileOrdersList"></div>
-                        <button onclick="logout(); closeProfileModal();" style="margin-top:1rem; width:100%; padding:10px; border:1px solid #d1d5db; background:#f9fafb; border-radius:8px; color:#4b5563;">Teken uit</button>
+                        <button onclick="logout(); closeProfileModal();" style="margin-top:2px; width:100%; padding:10px; border:1px solid #d1d5db; background: #a6dbb5; border-radius:8px; color: #303439;">Teken uit</button>
                     </div>
                 </div>`;
             document.body.insertAdjacentHTML('beforeend', profileHtml);
@@ -1686,7 +1688,7 @@
     // Wys mandjie modal
     function showCart() 
     {
-        let html = `<h3 style="font-size: 25px; margin-bottom:1rem; margin-top: 2px;">Jou Inkopie Mandjie</h3>`;
+        let html = `<h3 style="font-size: 25px; margin-bottom:1rem; margin-top: 2px;"><i class="fa-solid fa-basket-shopping"></i>  Jou Inkopie Mandjie</h3>`;
         let total = 0;
 
         if (cart.length === 0)
@@ -1716,8 +1718,7 @@
             html += `<button onclick="placeOrder()" style="width:100%; margin-top:15px; padding:14px; background:#065f46; color:white; border:none; border-radius:8px; font-size:1.1rem;">Plaas Bestelling</button>`;
         }
 
-        html += `<section style="margin-top:1rem;"><h4 class="order-history-title">Laaste 4 bestellings</h4>${renderOrderHistoryList(4)}</section>`;
-
+        html += `<section class="cart-order-history" style="margin-top:1rem;"><h4 class="order-history-title" style="margin-left: -50px;">Laaste 4 bestellings</h4>${renderOrderHistoryList(4)}</section>`;
         document.querySelectorAll('div[data-cart-overlay="true"]').forEach(el => el.remove());
 
         // Gebruik bestaande modal

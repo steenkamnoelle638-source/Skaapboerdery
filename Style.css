@@ -236,11 +236,12 @@
 
     .close-modal {
         position: absolute;
-        margin-top: 5px;
+        margin-top: 2px;
         right: 16px;
         font-size: 2rem;
         cursor: pointer;
         color: #dc2626;
+        font-size: 33px;
     }
 
     .close-modal:hover {
@@ -293,16 +294,27 @@
     }
 
     .order-history-products li {
-        display: flex;
-        justify-content: space-between;
-        gap: 0.8rem;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 170px;
+        align-items: baseline;
+        column-gap: 0.8rem;
         font-size: 0.92rem;
         margin: 0;
         padding: 0;
     }
 
+    .order-item-name {
+        min-width: 0;
+    }
+
+    .order-item-meta {
+        text-align: left;
+        white-space: nowrap;
+    }
+
     .order-history-reorder {
-        margin-top: 0.55rem;
+        display: block;
+        margin: 0.55rem auto 0;
         padding: 6px 10px;
         border: 1px solid #065f46;
         border-radius: 7px;
@@ -310,6 +322,11 @@
         color: #065f46;
         font-weight: 600;
         cursor: pointer;
+    }
+
+    .cart-order-history .order-history-item {
+        width: 130%;
+        margin-left: -50px;
     }
 
     .tab-buttons {
