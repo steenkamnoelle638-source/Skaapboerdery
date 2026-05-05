@@ -944,8 +944,8 @@
 
             // Suksesboodskap
             let message = `✅ Sukses, ${name}!\n\n`;
-            message += `Jou ${orderItemsForMessage.length} produk(te) is by die mandjie gevoeg.\n\n`;
-            message += orderItemsForMessage.join("\n") + "\n\n";
+            message += `Jou ${orderItems.length} produk(te) is by die mandjie gevoeg.\n\n`;
+            message += orderItems.join("\n") + "\n\n";
             message += `Totaal: R ${totaal.toFixed(2)}\n\n`;
             
             alert(message);
@@ -1538,11 +1538,7 @@ document.addEventListener('DOMContentLoaded', function() {
         authBtn.addEventListener('click', () => {
             if (currentUser) 
             {
-                // Kan later 'n klein menu maak met "My Rekening" en "Uittree"
-                if (confirm(`Uitteken as ${currentUser.name}?`)) 
-                {
-                    logout();
-                }
+                showProfileModal();
             } 
             else 
             {
@@ -1553,11 +1549,28 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================= INKOPIE MANDJIE =============================
-    let cart = JSON.parse(localStorage.getItem('highveld_cart') || '[]');
+    const CART_KEY = 'highveld_cart';
+    const ORDER_HISTORY_KEY = 'highveld_orders';
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+
+    function getOrderHistory()
+    {
+        return JSON.parse(localStorage.getItem(ORDER_HISTORY_KEY) || '[]');
+    }
+
+    function saveOrderHistory(history)
+    {
+        localStorage.setItem(ORDER_HISTORY_KEY, JSON.stringify(history));
+    }
+
+    function formatCurrency(amount)
+    {
+        return `R ${Number(amount || 0).toFixed(2)}`;
+    }
 
     function saveCart() 
     {
-        localStorage.setItem('highveld_cart', JSON.stringify(cart));
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
         updateCartCount();
     }
 
@@ -1572,7 +1585,88 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Voeg item by mandjie (vervang jou ou add logic)
+    // Voeg item by mandjie
+    function renderOrderHistoryList(limit = 4)
+    {
+        const orders = getOrderHistory().slice(0, limit);
+
+        if (orders.length === 0)
+        {
+            return `<p class="order-history-empty">Nog geen vorige bestellings nie.</p>`;
+        }
+
+        return orders.map(order => {
+            const itemsHtml = order.items.map(item => `
+                <li>
+                    <span>${item.name}</span>
+                    <span>${item.quantity} × ${formatCurrency(item.price)}</span>
+                </li>
+            `).join('');
+
+            return `
+                <article class="order-history-item">
+                    <div class="order-history-head">
+                        <small>${order.dateLabel}</small>
+                        <strong>${formatCurrency(order.total)}</strong>
+                    </div>
+                    <ul class="order-history-products">${itemsHtml}</ul>
+                    <button class="order-history-reorder" onclick="reorderItems(${order.id})">Herbestel</button>
+                </article>
+            `;
+        }).join('');
+    }
+
+    function renderProfileOrders()
+    {
+        const profileOrdersEl = document.getElementById('profileOrdersList');
+        if (!profileOrdersEl)
+        {
+            return;
+        }
+
+        profileOrdersEl.innerHTML = renderOrderHistoryList(4);
+    }
+
+    function showProfileModal()
+    {
+        if (!currentUser)
+        {
+            openAuthModal('login');
+            return;
+        }
+
+        let modal = document.getElementById('profileModal');
+        if (!modal)
+        {
+            const profileHtml = `
+                <div id="profileModal" class="modal" style="display:flex;">
+                    <div class="modal-content">
+                        <span class="close-modal" onclick="closeProfileModal()">×</span>
+                        <h3 style="margin-bottom:0.4rem;">My Profiel</h3>
+                        <p style="margin-bottom:1rem; color:#4b5563;">${currentUser.name} · ${currentUser.email}</p>
+                        <h4 style="margin-bottom:0.6rem;">Laaste 4 bestellings</h4>
+                        <div id="profileOrdersList"></div>
+                        <button onclick="logout(); closeProfileModal();" style="margin-top:1rem; width:100%; padding:10px; border:1px solid #d1d5db; background:#f9fafb; border-radius:8px; color:#4b5563;">Teken uit</button>
+                    </div>
+                </div>`;
+            document.body.insertAdjacentHTML('beforeend', profileHtml);
+            modal = document.getElementById('profileModal');
+        }
+
+        modal.style.display = 'flex';
+        renderProfileOrders();
+    }
+
+    window.closeProfileModal = function()
+    {
+        const modal = document.getElementById('profileModal');
+        if (modal)
+        {
+            modal.style.display = 'none';
+        }
+    };
+
+
     function addToCart(productName, price, quantity = 1) 
     {
         const existing = cart.find(item => item.name === productName);
@@ -1586,44 +1680,47 @@ document.addEventListener('DOMContentLoaded', function() {
             cart.push({ name: productName, price: price, quantity: quantity });
         }
         saveCart();
-
-        alert(`${quantity} x ${productName} is by die mandjie gevoeg!`);
     }
 
     // Wys mandjie modal
     function showCart() 
     {
-        if (cart.length === 0) 
-        {
-            alert("Jou mandjie is leeg.");
-            return;
-        }
-
         let html = `<h3 style="margin-bottom:1rem;">Jou Inkopie Mandjie</h3>`;
         let total = 0;
 
-        cart.forEach((item, index) => {
-            const subtotal = item.price * item.quantity;
-            total += subtotal;
-            html += `
-                <div style="display:flex; justify-content:space-between; margin:12px 0; padding:8px; background:#f9fafb; border-radius:8px;">
-                    <div>
-                        <strong>${item.name}</strong><br>
-                        <small>R ${item.price} × ${item.quantity}</small>
-                    </div>
-                    <div style="text-align:right;">
-                        <strong>R ${subtotal}</strong><br>
-                        <button onclick="removeFromCart(${index}); showCart();" style="color:#dc2626; font-size:0.9rem;">Verwyder</button>
-                    </div>
-                </div>`;
-        });
+        if (cart.length === 0)
+        {
+            html += '<p>Jou mandjie is tans leeg.</p>';
+        }
+        else
+        {
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                html += `
+                    <div style="display:flex; justify-content:space-between; margin:12px 0; padding:8px; background:#f9fafb; border-radius:8px;">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <small>${formatCurrency(item.price)} × ${item.quantity}</small>
+                        </div>
+                        <div style="text-align:right;">
+                            <strong>${formatCurrency(subtotal)}</strong><br>
+                            <button onclick="removeFromCart(${index}); showCart();" style="color:#dc2626; font-size:0.9rem;">Verwyder</button>
+                        </div>
+                    </div>`;
+            });
 
-        html += `<hr><p style="font-size:1.3rem; font-weight:bold; color:#065f46;">Totaal: R ${total.toFixed(2)}</p>`;
+            html += `<hr><p style="font-size:1.3rem; font-weight:bold; color:#065f46;">Totaal: ${formatCurrency(total)}</p>`;
+            html += `<button onclick="placeOrder()" style="width:100%; margin-top:15px; padding:14px; background:#065f46; color:white; border:none; border-radius:8px; font-size:1.1rem;">Plaas Bestelling</button>`;
+        }
 
-        html += `<button onclick="placeOrder()" style="width:100%; margin-top:15px; padding:14px; background:#065f46; color:white; border:none; border-radius:8px; font-size:1.1rem;">Plaas Bestelling</button>`;
+        html += `<section style="margin-top:1rem;"><h4 class="order-history-title">Laaste 4 bestellings</h4>${renderOrderHistoryList(4)}</section>`;
+
+        document.querySelectorAll('div[data-cart-overlay="true"]').forEach(el => el.remove());
 
         // Gebruik bestaande modal of maak 'n eenvoudige alert-agtige modal (vir eenvoud)
         const modal = document.createElement('div');
+        modal.dataset.cartOverlay = 'true';
         modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:flex; align-items:center; justify-content:center; z-index:3000;';
         modal.innerHTML = `
             <div style="background:white; padding:25px; border-radius:16px; max-width:500px; width:90%; max-height:90vh; overflow:auto;">
@@ -1641,6 +1738,19 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // Plaas bestelling
+    window.reorderItems = function(orderId)
+    {
+        const order = getOrderHistory().find(item => item.id === orderId);
+        if (!order)
+        {
+            return;
+        }
+
+        order.items.forEach(item => addToCart(item.name, item.price, item.quantity));
+        showCart();
+        alert('Items is weer by die mandjie gevoeg.');
+    };
+
     window.placeOrder = function() 
     {
         if(cart.length === 0)
@@ -1648,8 +1758,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        let summary = cart.map(item => `${item.name} × ${item.quantity}`).join(" | ");
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const summary = cart.map(item => `${item.name} × ${item.quantity}`).join(' | ');
 
         const saleRecord = {
             id: Date.now(),
@@ -1657,20 +1767,37 @@ document.addEventListener('DOMContentLoaded', function() {
             product_name: summary,
             quantity_sold: cart.reduce((sum, item) => sum + item.quantity, 0),
             total_amount: total,
-            notes: currentUser ? `Bestelling deur ${currentUser.name}` : "Gaste bestelling"
+            notes: currentUser ? `Bestelling deur ${currentUser.name}` : 'Gaste bestelling'
+        };
+
+        const orderRecord = {
+            id: saleRecord.id,
+            created_at: new Date().toISOString(),
+            dateLabel: new Date().toLocaleString('af-ZA', { dateStyle: 'medium', timeStyle: 'short' }),
+            total,
+            items: cart.map(item => ({ ...item }))
         };
 
         let sales = JSON.parse(localStorage.getItem('highveld_sales') || '[]');
         sales.unshift(saleRecord);
         localStorage.setItem('highveld_sales', JSON.stringify(sales));
 
-        alert(`✅ Bestelling suksesvol geplaas!\n\nTotaal: R ${total.toFixed(2)}\n\nDankie vir jou aankoop!`);
+        const orderHistory = getOrderHistory();
+        orderHistory.unshift(orderRecord);
+        saveOrderHistory(orderHistory.slice(0, 50));
+
+        alert(`✅ Bestelling suksesvol geplaas!
+
+        Totaal: ${formatCurrency(total)}
+
+        Dankie vir jou aankoop!`);
 
         cart = [];
         saveCart();
 
         // Sluit alle modals
-        document.querySelectorAll('.modal, div[style*="z-index:3000"]').forEach(el => el.remove());
+        document.querySelectorAll('.modal, div[data-cart-overlay="true"]').forEach(el => el.remove());
+        renderProfileOrders();
         if (typeof initTopProductsPreview === 'function') 
         {
             initTopProductsPreview();
@@ -1686,9 +1813,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         updateCartCount();
+        renderProfileOrders();
 
         // Maak mandjie beskikbaar in bestelvorm
         window.addToCart = addToCart;
+        window.showProfileModal = showProfileModal;
     });
 
 // ================================================================================= 
