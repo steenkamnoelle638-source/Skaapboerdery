@@ -295,7 +295,7 @@
 
     .order-history-products li {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 170px;
+        grid-template-columns: minmax(0, 1fr) 100px;
         align-items: baseline;
         column-gap: 0.8rem;
         font-size: 0.92rem;

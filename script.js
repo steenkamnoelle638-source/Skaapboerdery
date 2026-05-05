@@ -932,11 +932,11 @@
                 if (select && select.value && qtyInput && parseInt(qtyInput.value) > 0) 
                 {
                     const selectedOptionText = select.options[select.selectedIndex].text;
-                    const productName = selectedOptionText.split('–')[0].trim();
+                    const productName = normalizeProductName(selectedOptionText);
                     const price = productPrices[select.value] || 0;
                     const qty = parseInt(qtyInput.value);
                     
-                    addToCart(productName, qty, price);
+                    addToCart(productName, price, qty);
                     hasItems = true;
                 }
             });
@@ -1557,11 +1557,25 @@
 // ============================= INKOPIE MANDJIE =============================
     const CART_KEY = 'highveld_cart';
     const ORDER_HISTORY_KEY = 'highveld_orders';
-    let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    function normalizeProductName(name)
+    {
+        return String(name || '')
+            .replace(/\s+[–-]\s*R[\d\s.,]+$/u, '')
+            .trim();
+    }
+
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]')
+        .map(item => ({ ...item, name: normalizeProductName(item.name) }));
 
     function getOrderHistory()
     {
-        return JSON.parse(localStorage.getItem(ORDER_HISTORY_KEY) || '[]');
+        return JSON.parse(localStorage.getItem(ORDER_HISTORY_KEY) || '[]')
+            .map(order => ({
+                ...order,
+                items: Array.isArray(order.items)
+                    ? order.items.map(item => ({ ...item, name: normalizeProductName(item.name) }))
+                    : []
+            }));
     }
 
     function saveOrderHistory(history)
@@ -1603,7 +1617,10 @@
 
         return orders.map(order => {
             const itemsHtml = order.items.map(item => `
-                <li>${item.name} \t ${item.quantity} x ${formatCurrency(item.price)}</li>
+                <li>
+                    <span class="order-item-name">${item.name}</span>
+                    <span class="order-item-meta">${item.quantity} × ${formatCurrency(item.price)}</span>
+                </li>
             `).join('');
 
             return `
@@ -1672,7 +1689,8 @@
 
     function addToCart(productName, price, quantity = 1) 
     {
-        const existing = cart.find(item => item.name === productName);
+        const cleanProductName = normalizeProductName(productName);
+        const existing = cart.find(item => item.name === cleanProductName);
 
         if (existing) 
         {
@@ -1680,7 +1698,7 @@
         } 
         else 
         {
-            cart.push({ name: productName, price: price, quantity: quantity });
+            cart.push({ name: cleanProductName, price: price, quantity: quantity });
         }
         saveCart();
     }
@@ -1718,7 +1736,7 @@
             html += `<button onclick="placeOrder()" style="width:100%; margin-top:15px; padding:14px; background:#065f46; color:white; border:none; border-radius:8px; font-size:1.1rem;">Plaas Bestelling</button>`;
         }
 
-        html += `<section class="cart-order-history" style="margin-top:1rem;"><h4 class="order-history-title" style="margin-left: -50px;">Laaste 4 bestellings</h4>${renderOrderHistoryList(4)}</section>`;
+        html += `<section class="cart-order-history" style="margin-top:0.35rem;"><h4 class="order-history-title" style="margin: -30px 0 0.45rem -50px;">Laaste 4 bestellings</h4>${renderOrderHistoryList(4)}</section>`;
         document.querySelectorAll('div[data-cart-overlay="true"]').forEach(el => el.remove());
 
         // Gebruik bestaande modal
