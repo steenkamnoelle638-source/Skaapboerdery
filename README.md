@@ -126,6 +126,6 @@ Elke item in die voorraad databasis bevat die volgende velde:
     │   ├── OorOnsBlad_Skermskoot.png   
     │   └── ProdukteBlad_Skermskoot.png   
     └── ***Fase5_-_FinaleDemo/***   
-  * ├── Rekenaarskerm.mp4   
-  * ├── Tabletskerm.mp4   
-  * └── Slimfoon.mp4   
+        ├── Rekenaarskerm.mp4   
+        ├── Tabletskerm.mp4   
+        └── Slimfoon.mp4  
