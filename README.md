@@ -92,6 +92,7 @@ Elke item in die voorraad databasis bevat die volgende velde:
 - **Fase 1 tot 5** se volledige beplanning, CSS-verduidelikings, JavaScript-logika en databasis-dokumentasie is beskikbaar in die gids **`Fases_Dokumentasie/`**.
 
 ## Lêerstruktuur
+```
 **Skaapboerdery**/   
 ├── index.html   
 ├── oor_ons.html   
@@ -129,3 +130,4 @@ Elke item in die voorraad databasis bevat die volgende velde:
         ├── Rekenaarskerm.mp4   
         ├── Tabletskerm.mp4   
         └── Slimfoon.mp4  
+```
