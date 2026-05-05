@@ -106,26 +106,26 @@ Elke item in die voorraad databasis bevat die volgende velde:
 ├── database.sql   
 ├── Bemarking.vtt   
 ├── README.md   
- │   
+│   
 ├── **Media/**                    
- │   └── Alle foto's en video's wat in my webblaaie voorkom is hierbinne (38 Leers totaal)   
- │   
- ├── **Fases_Dokumentasie/**    
- │   ├── Fase1_Beplaning+Basies-HTML.docx   
- │   ├── Fase2_CSS+Uitleg.docx   
- │   ├── Fase3_Reponsief+Tabelle+Webvorm.docx   
- │   ├── Fase4_JS+Multimedia.docx   
- │   ├── Fase5_Databasis+Finale-Webblad.docx   
- │   ├── BuiteHanboekCode.docx   
- │   ├── Hanboek&ProjekVoorkom.docx   
- │   └── KI_media.docx   
- │   
- └── **Skermskote en Video/**   
+│   └── Alle foto's en video's wat in my webblaaie voorkom is hierbinne (38 Leers totaal)   
+│   
+├── **Fases_Dokumentasie/**    
+│   ├── Fase1_Beplaning+Basies-HTML.docx   
+│   ├── Fase2_CSS+Uitleg.docx   
+│   ├── Fase3_Reponsief+Tabelle+Webvorm.docx   
+│   ├── Fase4_JS+Multimedia.docx   
+│   ├── Fase5_Databasis+Finale-Webblad.docx   
+│   ├── BuiteHanboekCode.docx   
+│   ├── Hanboek&ProjekVoorkom.docx   
+│   └── KI_media.docx   
+│   
+└── **Skermskote en Video/**   
     ├── ***Fase2_-_3Blaaie/***   
-     │   ├── Tuisblad_Skermskoot.png   
-     │   ├── OorOnsBlad_Skermskoot.png   
-     │   └── ProdukteBlad_Skermskoot.png   
+    │   ├── Tuisblad_Skermskoot.png   
+    │   ├── OorOnsBlad_Skermskoot.png   
+    │   └── ProdukteBlad_Skermskoot.png   
     └── ***Fase5_-_FinaleDemo/***   
-        ├── Rekenaarskerm.mp4   
-        ├── Tabletskerm.mp4   
-        └── Slimfoon.mp4   
+       * ├── Rekenaarskerm.mp4   
+       * ├── Tabletskerm.mp4   
+       * └── Slimfoon.mp4   
