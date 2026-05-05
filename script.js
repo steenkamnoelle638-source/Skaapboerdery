@@ -810,6 +810,7 @@
             // Versameling vir multiselect produkte
             let orderItems = [];
             let totaal = 0;
+
             document.querySelectorAll('.product-row').forEach(row => {
                 const prod = row.querySelector('.product-select').value;
                 const qty = parseInt(row.querySelector('.quantity-input').value) || 0;
@@ -877,6 +878,7 @@
             // Betaling + betaal velde
             const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
 
+            // Betaling validasie
             if (!paymentMethod) 
             {
                 errors.push("Kies asseblief 'n betaalmetode.");
@@ -889,10 +891,25 @@
                 const cvv = document.getElementById('cvv').value;
                 const cardName = document.getElementById('cardName').value.trim();
 
-                if (!cardName) errors.push("Naam op kaart is verpligtend.");
-                if (cardNumber.length < 13 || cardNumber.length > 19) errors.push("Ongeldige kaartnommer.");
-                if (!/^\d{2}\/\d{2}$/.test(expiry)) errors.push("Vervaldatum moet MM/YY wees.");
-                if (cvv.length < 3 || cvv.length > 4) errors.push("CVV moet 3-4 syfers wees.");
+                if (!cardName) 
+                {
+                    errors.push("Naam op kaart is verpligtend.");
+                }
+
+                if (cardNumber.length < 13 || cardNumber.length > 19) 
+                {
+                    errors.push("Ongeldige kaartnommer.");
+                }
+
+                if (!/^\d{2}\/\d{2}$/.test(expiry)) 
+                {
+                    errors.push("Vervaldatum moet MM/YY wees.");
+                }
+
+                if (cvv.length < 3 || cvv.length > 4) 
+                {
+                    errors.push("CVV moet 3-4 syfers wees.");
+                }   
             }
 
             if (errors.length > 0) 
@@ -902,63 +919,67 @@
             }
 
 
-            // Bou sukses-boodskap op (met al die besonderhede)
-            let message = "Bestelling suksesvol geplaas!\n\n";
-            message += `Naam: ${name}\n`;
-            message += `E-pos: ${email}\n`;
-            message += "Bestelling items:\n" + orderItems.join("\n");
-            message += `\n\nTotaal: R ${totaal.toFixed(2)}\n`;
-            message += `Afleweringsopsie: ${deliveryOption === 'deliver' ? 'Aflewering' : 'Self-afhaal'}\n`;
-            message += `\nBetaalmetode: ${paymentMethod === 'card' ? 'Kaart' : paymentMethod === 'apple' ? 'Apple Pay' : 'Google Pay'}\n`;
-            message += "Betaling suksesvol!\n";
-
-            // Voeg adres by as aflewering gekies is
-            if (deliveryOption === 'deliver') 
-            {
-                message += `Adres: ${address}\n`;
-                message += `Aflewering: Ons lewer af binne 3-5 werksdae\n`;
-            } 
-            else 
-            {
-                message += `Afhaaldatum: ${pickupDate || 'Nie gekies nie'}\n`;
-                message += `Self-afhaal by plaas (Pretoria omgewing)\n`;
-            }
-
-            // Voeg notas by as daar iets ingevul is
-            if (notes) 
-            {
-                message += `Bykomende notas: ${notes}\n`;
-            }
-
-
-            // Wys finale boodskap in popup
-            alert(message);
-
-            // Maak die hele vorm leeg na sukses
-            document.getElementById('orderForm').reset();
-
-            // Herstel betaalopsie na kaart met toepaslike vereistes na reset
-            const cardDetails = document.getElementById('cardDetails');
-            if (cardDetails)
-            { 
-                cardDetails.style.display = 'block';
-            }
-
-            ['cardName', 'cardNumber', 'expiry', 'cvv'].forEach(id => {
-                const field = document.getElementById(id);
-                if (!field) 
+            // Voeg items by die mandjie
+            let hasItems = false;
+            document.querySelectorAll('.product-row').forEach(row => {
+                const select = row.querySelector('.product-select');
+                const qtyInput = row.querySelector('.quantity-input');
+                
+                if (select && select.value && qtyInput && parseInt(qtyInput.value) > 0) 
                 {
-                    return;
+                    const productText = select.options[select.selectedIndex].text;
+                    const price = productPrices[select.value] || 0;
+                    const qty = parseInt(qtyInput.value);
+                    
+                    addToCart(productText, price, qty);
+                    hasItems = true;
                 }
-
-                field.disabled = false;
-                field.required = true;
             });
 
-            // Maak adresveld toe en steek totaal weg
+            if (!hasItems) 
+            {
+                alert("Geen produkte is bygevoeg nie.");
+                return;
+            }
+
+            // Suksesboodskap
+            let message = `✅ Sukses, ${name}!\n\n`;
+            message += `Jou ${orderItemsForMessage.length} produk(te) is by die mandjie gevoeg.\n\n`;
+            message += orderItemsForMessage.join("\n") + "\n\n";
+            message += `Totaal: R ${totaal.toFixed(2)}\n\n`;
+            message += `Kliek op die 🛒 mandjie-ikoon bo regs om jou bestelling te sien en te finaliseer.`;
+
+            alert(message);
+
+            // Maak vorm skoon
+            document.getElementById('orderForm').reset();
+
+            // Herstel UI elemente
+            const totalDisplay = document.getElementById('totalDisplay');
+            const paymentSection = document.getElementById('paymentSection');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (totalDisplay) 
+            {
+                totalDisplay.style.display = 'none';
+            }
+
+            if (paymentSection) 
+            {
+                paymentSection.style.display = 'none';
+            }
+
+            if (submitBtn) 
+            {
+                submitBtn.style.display = 'none';
+            }
+
+            // Herstel ander velde
             toggleAddressField();
-            togglePickupDateField();
-            document.getElementById('totalDisplay').style.display = 'none';
+            if (typeof togglePickupDateField === 'function')
+            {
+                togglePickupDateField();
+            }
         }
 
     // ============================= KONTAKVORM VALIDASIE =============================
@@ -1081,14 +1102,14 @@
     window.addEventListener('scroll', checkSplitVisibility);
     window.addEventListener('resize', checkSplitVisibility);
 
-// ============================= VOORRAADBESTUUR BLAD DATABASIS ============================= 
+// ============================= DATABASIS: VOORRAADBESTUUR BLAD ============================= 
     const DB_KEY = 'highveld_inventory';
     const TX_KEY = 'highveld_transactions';
 
     let inventoryDB = [];
     let transactions = [];
 
-// Laai uit localStorage ("SQL databasis")
+    // Laai uit localStorage ("SQL databasis")
     function loadDB() 
     {
         const saved = localStorage.getItem(DB_KEY);
@@ -1103,14 +1124,14 @@
         transactions = savedTx ? JSON.parse(savedTx) : [];
     }
 
-// Stoor na localStorage
+    // Stoor na localStorage
     function saveDB() 
     {
         localStorage.setItem(DB_KEY, JSON.stringify(inventoryDB));
         localStorage.setItem(TX_KEY, JSON.stringify(transactions));
     }
 
-// Voeg transaksie by (soos 'n regte databasis log)
+    // Voeg transaksie by (soos 'n regte databasis log)
     function addTransaction(item_id, type, qty, notes) 
     {
         const tx = {
@@ -1125,7 +1146,7 @@
         saveDB();
     }
 
-// Herbou die tabel
+    // Herbou die tabel
     function renderInventory() 
     {
         const tbody = document.getElementById('inventoryBody');
@@ -1531,6 +1552,145 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// ============================= INKOPIE MANDJIE =============================
+    let cart = JSON.parse(localStorage.getItem('highveld_cart') || '[]');
+
+    function saveCart() 
+    {
+        localStorage.setItem('highveld_cart', JSON.stringify(cart));
+        updateCartCount();
+    }
+
+    function updateCartCount() 
+    {
+        const countEl = document.getElementById('cartCount');
+        if (countEl) 
+        {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            countEl.textContent = totalItems;
+            countEl.style.display = totalItems > 0 ? 'block' : 'none';
+        }
+    }
+
+    // Voeg item by mandjie (vervang jou ou add logic)
+    function addToCart(productName, price, quantity = 1) 
+    {
+        const existing = cart.find(item => item.name === productName);
+
+        if (existing) 
+        {
+            existing.quantity += quantity;
+        } 
+        else 
+        {
+            cart.push({ name: productName, price: price, quantity: quantity });
+        }
+        saveCart();
+
+        alert(`${quantity} x ${productName} is by die mandjie gevoeg!`);
+    }
+
+    // Wys mandjie modal
+    function showCart() 
+    {
+        if (cart.length === 0) 
+        {
+            alert("Jou mandjie is leeg.");
+            return;
+        }
+
+        let html = `<h3 style="margin-bottom:1rem;">Jou Inkopie Mandjie</h3>`;
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const subtotal = item.price * item.quantity;
+            total += subtotal;
+            html += `
+                <div style="display:flex; justify-content:space-between; margin:12px 0; padding:8px; background:#f9fafb; border-radius:8px;">
+                    <div>
+                        <strong>${item.name}</strong><br>
+                        <small>R ${item.price} × ${item.quantity}</small>
+                    </div>
+                    <div style="text-align:right;">
+                        <strong>R ${subtotal}</strong><br>
+                        <button onclick="removeFromCart(${index}); showCart();" style="color:#dc2626; font-size:0.9rem;">Verwyder</button>
+                    </div>
+                </div>`;
+        });
+
+        html += `<hr><p style="font-size:1.3rem; font-weight:bold; color:#065f46;">Totaal: R ${total.toFixed(2)}</p>`;
+
+        html += `<button onclick="placeOrder()" style="width:100%; margin-top:15px; padding:14px; background:#065f46; color:white; border:none; border-radius:8px; font-size:1.1rem;">Plaas Bestelling</button>`;
+
+        // Gebruik bestaande modal of maak 'n eenvoudige alert-agtige modal (vir eenvoud)
+        const modal = document.createElement('div');
+        modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:flex; align-items:center; justify-content:center; z-index:3000;';
+        modal.innerHTML = `
+            <div style="background:white; padding:25px; border-radius:16px; max-width:500px; width:90%; max-height:90vh; overflow:auto;">
+                ${html}
+                <button onclick="this.parentElement.parentElement.remove()" style="margin-top:15px; width:100%; padding:12px;">Sluit</button>
+            </div>`;
+        document.body.appendChild(modal);
+    }
+
+    // Verwyder uit mandjie
+    window.removeFromCart = function(index) 
+    {
+        cart.splice(index, 1);
+        saveCart();
+    };
+
+    // Plaas bestelling
+    window.placeOrder = function() 
+    {
+        if(cart.length === 0)
+        { 
+            return;
+        }
+
+        let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        let summary = cart.map(item => `${item.name} × ${item.quantity}`).join(" | ");
+
+        const saleRecord = {
+            id: Date.now(),
+            sale_date: new Date().toISOString().split('T')[0],
+            product_name: summary,
+            quantity_sold: cart.reduce((sum, item) => sum + item.quantity, 0),
+            total_amount: total,
+            notes: currentUser ? `Bestelling deur ${currentUser.name}` : "Gaste bestelling"
+        };
+
+        let sales = JSON.parse(localStorage.getItem('highveld_sales') || '[]');
+        sales.unshift(saleRecord);
+        localStorage.setItem('highveld_sales', JSON.stringify(sales));
+
+        alert(`✅ Bestelling suksesvol geplaas!\n\nTotaal: R ${total.toFixed(2)}\n\nDankie vir jou aankoop!`);
+
+        cart = [];
+        saveCart();
+
+        // Sluit alle modals
+        document.querySelectorAll('.modal, div[style*="z-index:3000"]').forEach(el => el.remove());
+        if (typeof initTopProductsPreview === 'function') 
+        {
+            initTopProductsPreview();
+        }
+    };
+
+    // Koppel mandjie knoppie
+    document.addEventListener('DOMContentLoaded', () => {
+        const cartBtn = document.getElementById('cartBtn');
+        if (cartBtn)
+        { 
+            cartBtn.addEventListener('click', showCart);
+        }
+
+        updateCartCount();
+
+        // Maak mandjie beskikbaar in bestelvorm
+        window.addToCart = addToCart;
+    });
 
 // ================================================================================= 
 // ----------------------------- RESPONSIEWE NAVIGASIE -----------------------------
