@@ -159,6 +159,164 @@
         </table>
     </div>
 
+    <!DOCTYPE html>
+<html lang="af">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Bestuur Highveld Boerdery se voorraad met soek, lae-voorraad waarskuwings en CRUD-funksies.">
+
+    <title>Voorraadbestuur - Highveld Boerdery</title>
+
+    <!-- Link na google fonts en fontawesome vir fonts en ikone -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Playfair+Display:ital@1&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <!-- Link CSS file -->
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="Print.css" media="print">
+</head>
+    
+<body>
+    <!-- NAVIGASIE EN MENU (Menu + Dropdown menu) -->
+    <header>
+        <div class="nav-houer">
+            <div class="logo-area">
+                <span><img src="Media/Logo.jpg" alt="Highveld Boerdery Logo" class="logo-img"></span>  
+                <span><div class="logo-teks">
+                <div class="logo-teks">
+                    <h1>Highveld Boerdery</h1>
+                    <p>Skaapboerdery</p>
+                </div>
+            </div>
+
+            <nav class="nav" id="mainNav">
+                <ul class="nav-menu">
+                    <li class="dropdown">
+                        <a href="index.html" class="dropbtn">Tuis<span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span></a>
+                        <ul class="dropdown-content">
+                            <li><a href="index.html#Welkom">Welkom</a></li>
+                            <li><a href="index.html#Hoogtepunte">Ons Hoogtepunte</a></li>
+                            <li><a href="index.html#Bestuursbenadering">Bestuursbenadering</a></li>
+                            <li><a href="index.html#VolhoubareToekoms">Ons volhoubare toekoms</a></li>
+                            <li><a href="index.html#OnsWaardes">Ons Waardes</a></li>
+                            <li><a href="index.html#OnsGalery">Ons Galery</a></li>
+                            <li><a href="index.html#OnsProduksie">Ons Produksie</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="oor_ons.html" class="dropbtn">Oor ons<span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span></a>
+                        <ul class="dropdown-content">
+                            <li><a href="oor_ons.html#Geskiedenis">Ons Geskiedenis</a></li>
+                            <li><a href="oor_ons.html#Missie">Missie & Sleutelwaardes</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="ons_trop.html" class="dropbtn">Ons trop<span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span></a>
+                        <ul class="dropdown-content">
+                            <li><a href="ons_trop.html#HoeBoer">Hoe Ons Boer</a></li>
+                            <li><a href="ons_trop.html#OnsTrop">Ons Trop</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="products.html" class="dropbtn">Ons Produkte<span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span></a>
+                        <ul class="dropdown-content">
+                            <li><a href="products.html#Pryslys">Pryslys</a></li>
+                            <li><a href="products.html#Top3Produkte">Top Produkte</a></li>
+                            <li><a href="products.html#Bestel">Bestel</a></li>
+                        </ul>
+                    </li>    
+
+                    <li class="dropdown">
+                        <a href="voorraadbestuur.html" class="dropbtn">Voorraadbestuur<span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span></i></a>
+                        <a href="voorraadbestuur.html" class="dropbtn">Voorraadbestuur<span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span></a>
+                        <ul class="dropdown-content">
+                            <li><a href="voorraadbestuur.html#Voorraadbestuur">Huidige Voorraad</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="verkope_en_rekord.html" class="dropbtn">Verkope & Rekords<span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span></a>
+                        <ul class="dropdown-content">
+                            <li><a href="verkope_en_rekord.html#OnlangseVerkope">Onlangse Verkope</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="contact.html" class="dropbtn">Kontak<span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span></a>
+                        <ul class="dropdown-content">
+                            <li><a href="contact.html#Kontak">Kontak Ons</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Gebruiker Ikoon + Hamburger (heel regs) -->
+            <div class="nav-right">
+    <!-- Mandjie Ikoon -->
+    <button id="cartBtn" class="auth-btn" aria-label="Inkopie mandjie" style="margin-right: 8px; position:relative;">
+@@ -136,50 +138,82 @@
+                    Wys Transaksies
+                </button>
+            </div>
+        </div>
+
+        <!-- Voorraadbestuur databsis - bevat id vir nuwe items en delete funksies -->
+            <!-- MAAK OOK: Behels verkoopde en aangekoopde items? - dalk doen -->
+        <table id="inventoryTable">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Kategorie</th>
+                    <th>Hoeveelheid</th>
+                    <th>Eenheid</th>
+                    <th>Herbestel by</th> <!-- Hoeveelheid wat koop as herbestel -->
+                    <th>Status</th>
+                    <th>Aksie</th>
+                </tr>
+            </thead>
+            
+            <!-- Id - sodat JS op regte plek veranderinge doen soos lae voorraad , delete en bysit -->
+            <tbody id="inventoryBody"></tbody>
+        </table>
+    </div>
+
+    <!-- Kalenderfunksie vir finale fase: dae met plaasgebeure word uitgelig -->
+    <section class="afdeling" id="Plaaskalender">
+        <div class="content-houer calendar-section">
+            <h2>Plaaskalender</h2>
+            <p class="section-intro">
+                Die kalender simuleer die nuwe Fase 5-fokus: funksionaliteit. Dae met plaasgebeure word groen uitgelig,
+                en wanneer jy op so 'n dag kliek, wys die gebeurtenisse onder die kalender.
+            </p>
+
+            <div class="calendar-toolbar">
+                <button type="button" class="add-btn" id="prevMonthBtn" aria-label="Vorige maand">← Vorige</button>
+                <h3 id="calendarTitle">Laai kalender...</h3>
+                <button type="button" class="add-btn" id="nextMonthBtn" aria-label="Volgende maand">Volgende →</button>
+            </div>
+
+            <div class="calendar-grid calendar-weekdays" aria-hidden="true">
+                <span>Ma</span>
+                <span>Di</span>
+                <span>Wo</span>
+                <span>Do</span>
+                <span>Vr</span>
+                <span>Sa</span>
+                <span>So</span>
+            </div>
+
+            <div id="farmCalendar" class="calendar-grid" aria-label="Plaaskalender met gemerkte gebeurtenisse"></div>
+            <div id="calendarEventList" class="calendar-events" aria-live="polite">
+                Kies 'n gemerkte dag om die gebeurtenisse te sien.
+            </div>
+        </div>
+    </section>
+
     <!-- Voetskrif -->
     <footer>
     <div class="footer-container">

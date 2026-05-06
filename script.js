@@ -619,7 +619,7 @@
                         </select>
                     </div>
                     <div class="quantity-wrap">
-                        <input type="number" class="quantity-input" min="1" placeholder="Aantal" required>
+                        <input type="number" class="quantity-input" min="1" max="500" step="1" placeholder="Aantal" required>
                     </div>
                     <button type="button" class="remove-product-btn">−</button>
                 `;
@@ -807,6 +807,7 @@
             const address = document.getElementById('deliveryAddress').value.trim();
             const notes = document.getElementById('notes').value.trim();
             const pickupDate = document.getElementById('pickupDate').value;
+            const pickupTime = document.getElementById('pickupTime').value;
 
             // Skikking - foute tydens validasie te stoor
             let errors = [];
@@ -858,16 +859,21 @@
                 errors.push("Kies asseblief 'n afhaaldatum.");
             }
 
-            if (errors.length > 0) 
+            if (deliveryOption === 'self' && !pickupTime)
+            {
+                errors.push("Kies asseblief 'n afhaaltyd.");
+            }
+
+            if (errors.length > 0)
             {
                 alert("Daar is foute:\n\n" + errors.join("\n"));
                 return;
             }
 
             // Spesifieke check vir aflewering
-            if (deliveryOption === 'deliver' && !address) 
+            if (deliveryOption === 'deliver' && address.length < 10)
             {
-                errors.push("Afleweringsadres is verpligtend as jy aflewering kies.");
+                errors.push("Afleweringsadres moet minstens 10 karakters wees as jy aflewering kies.");
             }
 
             // Wys waarskuwing en stop funksie as enige 'foute' is
@@ -905,9 +911,9 @@
                     errors.push("Ongeldige kaartnommer.");
                 }
 
-                if (!/^\d{2}\/\d{2}$/.test(expiry)) 
+                if (!/^(0[1-9]|1[0-2])\/[0-9]{2}$/.test(expiry))
                 {
-                    errors.push("Vervaldatum moet MM/YY wees.");
+                    errors.push("Vervaldatum moet MM/YY wees, bv. 08/28.");
                 }
 
                 if (cvv.length < 3 || cvv.length > 4) 
@@ -1000,6 +1006,8 @@
             const email = emailField.value.trim();
             const message = document.getElementById('message').value.trim();
             const reason = document.getElementById('deliveryOption').value;
+            const visitDate = document.getElementById('visitDate').value;
+            const visitTime = document.getElementById('visitTime').value;
 
             // Skikking - foute tydens validasie te stoor
             let errors = [];
@@ -1017,6 +1025,11 @@
 
                 // Spring na waar fout is
                 emailField.focus();
+            }
+
+            if (!reason)
+            {
+                errors.push("Kies asseblief 'n rede vir kontak.");
             } 
             
             // Slegs as Navrae gekies is, moet boodskap ingevul wees
@@ -1025,6 +1038,19 @@
                 if (message.length < 10) 
                 {
                     errors.push("Boodskap moet minstens 10 karakters wees vir 'n navraag.");
+                }
+            }
+
+            if (reason === 'Besoek')
+            {
+                if (!visitDate)
+                {
+                    errors.push("Kies asseblief 'n datum vir die plaasbesoek.");
+                }
+
+                if (!visitTime)
+                {
+                    errors.push("Kies asseblief 'n tyd vir die plaasbesoek.");
                 }
             }
 
@@ -1041,6 +1067,10 @@
             let successMsg = "Boodskap suksesvol gestuur!\n\n";
             successMsg += `Naam: ${name}\nE-pos: ${email}\n`;
             successMsg += `Rede: ${reason === 'Besoek' ? 'Plaas besoek' : 'Navrae'}\n`;
+            if (reason === 'Besoek')
+            {
+                successMsg += `Besoekdatum: ${visitDate} om ${visitTime}\n`;
+            }
 
             if (reason === 'Navraag') 
             {
@@ -1346,6 +1376,158 @@
 
         alert(msg);
     };
+
+// ============================= PLAASKALENDER =============================
+    const CALENDAR_KEY = 'highveld_calendar_events';
+
+    const defaultCalendarEvents = [
+        { date: '2026-05-08', title: 'Skeerbeplanning', type: 'Produksie', details: 'Kontroleer skeertoerusting en bevestig skeerspan.' },
+        { date: '2026-05-12', title: 'Entstofdag', type: 'Gesondheid', details: 'Dorper- en Merino-lammers kry geskeduleerde entstowwe.' },
+        { date: '2026-05-18', title: 'Voerbestelling', type: 'Voorraad', details: 'Bestel lusern en mineraallekke voordat voorraad laag raak.' },
+        { date: '2026-05-26', title: 'Markdag', type: 'Verkope', details: 'Lewende lammers en wol word vir kopers voorberei.' },
+        { date: '2026-06-03', title: 'Veeartsbesoek', type: 'Gesondheid', details: 'Kwartaal-kontrole van tropgesondheid en parasietbeheer.' },
+        { date: '2026-06-14', title: 'Rotasie-weiding skuif', type: 'Bestuur', details: 'Skuif trop na volgende kamp volgens weidingsplan.' }
+    ];
+
+    let calendarMonth = new Date(2026, 4, 1);
+    let selectedCalendarDate = null;
+
+    function loadCalendarEvents()
+    {
+        const saved = localStorage.getItem(CALENDAR_KEY);
+        if (saved)
+        {
+            return JSON.parse(saved);
+        }
+
+        localStorage.setItem(CALENDAR_KEY, JSON.stringify(defaultCalendarEvents));
+        return defaultCalendarEvents;
+    }
+
+    function formatDateKey(date)
+    {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    function renderCalendarEvents(dateKey, events)
+    {
+        const list = document.getElementById('calendarEventList');
+        if (!list)
+        {
+            return;
+        }
+
+        const dayEvents = events.filter(eventItem => eventItem.date === dateKey);
+        if (dayEvents.length === 0)
+        {
+            list.textContent = 'Geen gebeurtenisse op hierdie dag nie.';
+            return;
+        }
+
+        const formattedDate = new Date(`${dateKey}T00:00:00`).toLocaleDateString('af-ZA', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        list.innerHTML = `<strong>Gebeurtenisse vir ${formattedDate}:</strong><ul>${dayEvents.map(eventItem => `
+            <li><strong>${eventItem.title}</strong> (${eventItem.type}) – ${eventItem.details}</li>
+        `).join('')}</ul>`;
+    }
+
+    function renderFarmCalendar()
+    {
+        const calendar = document.getElementById('farmCalendar');
+        const title = document.getElementById('calendarTitle');
+        if (!calendar || !title)
+        {
+            return;
+        }
+
+        const events = loadCalendarEvents();
+        const year = calendarMonth.getFullYear();
+        const month = calendarMonth.getMonth();
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const mondayStartOffset = (firstDay.getDay() + 6) % 7;
+        const todayKey = formatDateKey(new Date());
+
+        title.textContent = calendarMonth.toLocaleDateString('af-ZA', { month: 'long', year: 'numeric' });
+        calendar.innerHTML = '';
+
+        for (let i = 0; i < mondayStartOffset; i++)
+        {
+            const emptyCell = document.createElement('div');
+            emptyCell.className = 'calendar-day empty';
+            calendar.appendChild(emptyCell);
+        }
+
+        for (let day = 1; day <= lastDay.getDate(); day++)
+        {
+            const date = new Date(year, month, day);
+            const dateKey = formatDateKey(date);
+            const dayEvents = events.filter(eventItem => eventItem.date === dateKey);
+            const dayButton = document.createElement('button');
+            dayButton.type = 'button';
+            dayButton.className = 'calendar-day';
+            dayButton.setAttribute('aria-label', `${dateKey}${dayEvents.length ? ' met gebeurtenisse' : ''}`);
+
+            if (dayEvents.length > 0)
+            {
+                dayButton.classList.add('has-event');
+            }
+
+            if (dateKey === todayKey)
+            {
+                dayButton.classList.add('today');
+            }
+
+            if (dateKey === selectedCalendarDate)
+            {
+                dayButton.classList.add('selected');
+            }
+
+            dayButton.innerHTML = `
+                <span class="calendar-date-number">${day}</span>
+                ${dayEvents.map(() => '<span class="calendar-event-dot"></span>').join('')}
+            `;
+
+            dayButton.addEventListener('click', () => {
+                selectedCalendarDate = dateKey;
+                renderFarmCalendar();
+                renderCalendarEvents(dateKey, events);
+            });
+
+            calendar.appendChild(dayButton);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!document.getElementById('farmCalendar'))
+        {
+            return;
+        }
+
+        document.getElementById('prevMonthBtn')?.addEventListener('click', () => {
+            calendarMonth = new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() - 1, 1);
+            selectedCalendarDate = null;
+            renderFarmCalendar();
+            document.getElementById('calendarEventList').textContent = 'Kies \'n gemerkte dag om die gebeurtenisse te sien.';
+        });
+
+        document.getElementById('nextMonthBtn')?.addEventListener('click', () => {
+            calendarMonth = new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() + 1, 1);
+            selectedCalendarDate = null;
+            renderFarmCalendar();
+            document.getElementById('calendarEventList').textContent = 'Kies \'n gemerkte dag om die gebeurtenisse te sien.';
+        });
+
+        renderFarmCalendar();
+    });
 
 // ============================= INTEKEN =============================
     let currentUser = null;

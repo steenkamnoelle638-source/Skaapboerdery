@@ -1598,6 +1598,132 @@
         color: #047857;
     }
 
+/* ============================= PLAASKALENDER ============================= */
+    .calendar-section {
+        background: #ffffff;
+        border-radius: 18px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .calendar-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin: 1.5rem 0;
+    }
+
+    .calendar-toolbar h3 {
+        color: #065f46;
+        font-size: 1.4rem;
+        text-align: center;
+        flex: 1;
+    }
+
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(42px, 1fr));
+        gap: 0.45rem;
+    }
+
+    .calendar-weekdays span {
+        background: #065f46;
+        color: white;
+        padding: 0.65rem;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .calendar-day {
+        min-height: 82px;
+        border: 1px solid #d1d5db;
+        border-radius: 12px;
+        background: #f9fafb;
+        padding: 0.55rem;
+        text-align: left;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .calendar-day:hover,
+    .calendar-day:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+        outline: 2px solid #0f766e;
+    }
+
+    .calendar-day.empty {
+        background: transparent;
+        border: none;
+        cursor: default;
+        box-shadow: none;
+    }
+
+    .calendar-day.has-event {
+        background: #dcfce7;
+        border: 2px solid #16a34a;
+    }
+
+    .calendar-day.today {
+        border: 2px solid #f59e0b;
+    }
+
+    .calendar-day.selected {
+        background: #065f46;
+        color: white;
+    }
+
+    .calendar-date-number {
+        font-weight: 700;
+        display: block;
+        margin-bottom: 0.3rem;
+    }
+
+    .calendar-event-dot {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #16a34a;
+        margin-right: 0.25rem;
+    }
+
+    .calendar-day.selected .calendar-event-dot {
+        background: #bbf7d0;
+    }
+
+    .calendar-events {
+        margin-top: 1rem;
+        padding: 1rem;
+        background: #f0fdf4;
+        border-left: 5px solid #16a34a;
+        border-radius: 12px;
+        line-height: 1.7;
+    }
+
+    .calendar-events ul {
+        margin-left: 1.2rem;
+    }
+
+    @media (max-width: 600px) {
+        .calendar-grid {
+            gap: 0.25rem;
+        }
+
+        .calendar-day {
+            min-height: 58px;
+            padding: 0.35rem;
+            font-size: 0.8rem;
+        }
+
+        .calendar-weekdays span {
+            padding: 0.45rem 0.25rem;
+            font-size: 0.8rem;
+        }
+    }
+
 /* ============================= CSS FILTER - logo en prente ============================= */
     .logo-img, .split img, .carousel-item img {
         filter: brightness(1.05) contrast(1.1);   /* ligte verbetering */
