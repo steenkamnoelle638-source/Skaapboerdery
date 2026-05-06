@@ -1480,6 +1480,10 @@
             {
                 dayButton.classList.add('has-event');
             }
+            else
+            {
+                dayButton.classList.add('no-event');
+            }
 
             if (dateKey === todayKey)
             {

@@ -85,6 +85,7 @@
                     <li class="dropdown">
                         <a href="contact.html" class="dropbtn">Kontak<span class="dropdown-toggle"><i class="fa-solid fa-caret-down"></i></span></a>
                         <ul class="dropdown-content">
+                            <li><a href="contact.html#Plaaskalender">Ons kalender</a></li>
                             <li><a href="contact.html#Kontak">Kontak Ons</a></li>
                         </ul>
                     </li>
@@ -118,6 +119,37 @@
         <div class="hero-teks">
             <h1>Kontak ons</h1>
             <p>Ons is beskikbaar vir enige vrae of terugvoer wat jy kan hê oor ons produkte of dienste.</p>
+        </div>
+    </section>
+
+    <!-- Kalenderfunksie vir finale fase: dae met plaasgebeure word uitgelig -->
+    <section class="afdeling-3" id="Plaaskalender">
+        <div class="content-houer calendar-section">
+            <h2>Plaaskalender</h2>
+            <p class="section-intro" style="margin-top: -25px;">
+                Dae met plaasgebeure is ligte groen, en wanneer jy dit kliek, wys die dag se gebeurtenisse onder die kalender.
+            </p>
+
+            <div class="calendar-toolbar">
+                <button type="button" class="add-btn" id="prevMonthBtn" aria-label="Vorige maand">← Vorige</button>
+                <h3 id="calendarTitle">Laai kalender...</h3>
+                <button type="button" class="add-btn" id="nextMonthBtn" aria-label="Volgende maand">Volgende →</button>
+            </div>
+
+            <div class="calendar-grid calendar-weekdays" aria-hidden="true">
+                <span>Ma</span>
+                <span>Di</span>
+                <span>Wo</span>
+                <span>Do</span>
+                <span>Vr</span>
+                <span>Sa</span>
+                <span>So</span>
+            </div>
+
+            <div id="farmCalendar" class="calendar-grid" aria-label="Plaaskalender met gemerkte gebeurtenisse"></div>
+            <div id="calendarEventList" class="calendar-events" aria-live="polite">
+                Kies 'n gemerkte dag om die gebeurtenisse te sien.
+            </div>
         </div>
     </section>
 

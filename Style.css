@@ -1661,6 +1661,12 @@
         box-shadow: none;
     }
 
+    .calendar-day.no-event {
+        background: #f1f3f7;
+        border-color: #d1d5db;
+        color: #6b7280;
+    }
+
     .calendar-day.has-event {
         background: #dcfce7;
         border: 2px solid #16a34a;
