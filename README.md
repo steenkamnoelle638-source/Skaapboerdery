@@ -19,7 +19,12 @@ Die webblad bevat inligting oor:
 Daar is gebruik gemaak van CSS en JS om die webtuiste profesioneel, aantreklik en gebruikersvriendelik te maak en te maak lyk.  
 Die webblad moet 'n multibladsy ontwerp hê met multimedia, tabelle, 2 webvorms en 'n CRUD databasis.  
 Die webwerf moet dus 'n profesionele multifunksie webblad wees wat responsief is, databerging implementeer asook verskeie prente en inligting oor die boerdery bevat.  
-Die webwerf is tans net 'n simulasie en word geen data gestoor nie. Eers in fase 5 sal data gestoor word en dan sal net voorraad en voorraadinligting in 'n databasis gestoor word.
+Die lêer `database.sql` dokumenteer die beplande SQL-struktuur vir 'n toekomstige regte databasis.
+Die webwerf is 'n simulasie en word slegs die volgende in die webblaaier *(`localStorage`)* gestoor:    
+- Voorraad vir voorraadbeheer
+- Transaksies (Transaksie log vir CRUD operasies) nie geld transaksies en inligting nie.
+- Gebruikers besonderhede vir inteken
+- Kliente se laaste 4 bestellings
 
 ### Bladsy-oorsig
 - **`index.html`** – Tuisblad en oorsig van die boerdery en produkte.
@@ -44,10 +49,11 @@ Die webwerf is tans net 'n simulasie en word geen data gestoor nie. Eers in fase
 - **Print-vriendelike** styl vir fakture en verslae
 
 ## Databasis Struktuur
-Die webtuiste gebruik **`localStorage`** as databasis met **twee tabelle** (VOORRAAD_ITEMS (products.html tabel) en VERKOPE_REKORDS(verkope_en_rekord.html tabel)) vir realistiese plaasbestuur:
+Die webtuiste gebruik **`localStorage`** as 'n eenvoudige front-end databasis-simulasie vir realistiese plaasbestuur. Die projek dokumenteer ook 'n SQL-datamodel in **`database.sql`** met twee tabelle:
 
 - **VOORRAAD_ITEMS** – Beheer alle voorraaditems (voer, medisyne, toerusting, produkte, ens.) met velde soos hoeveelheid, eenheid en herbestelpunt.
-- **Transaksies** – Volledige logboek van alle veranderinge (byvoeg, aanpas, verwyder).
+- **VERKOPE_REKORDS** – Dokumenteer verkope met datum, produknaam, hoeveelheid en totale bedrag.
+- **Transaksies in `localStorage`** – Volledige logboek van voorraadveranderinge (byvoeg, aanpas, verwyder) vir die webdemo.
    
 Elke item in die voorraad databasis bevat die volgende velde:
 - **id** – Unieke identifiseerder (timestamp)
@@ -73,7 +79,7 @@ Elke item in die voorraad databasis bevat die volgende velde:
 - **Kode:** HTML5, CSS, JavaScript
 - **Styling:** Eksterne Style.css met media queries vir responsiwiteit en Print.css vir pdf en print van webblad
 - **Interaktiwiteit:** script.js (galerye, animasies, vormvalidasie, DOM-manipulasie)
-- **Databasis**: localStorage met 2 tabelle (VOORRAAD_ITEMS + transaksies)
+- **Databasis**: `localStorage` vir die webdemo, plus `database.sql` met VOORRAAD_ITEMS en VERKOPE_REKORDS
 - **Multimedia**: Galerye, Carousel, Video met onderskrifte
 - **Responsief**: Werk op selfoon, tablet en rekenaar
 - **Eksterne bronne:** Google Fonts (Poppins, Playfair Display), Font Awesome ikone
@@ -126,7 +132,7 @@ Skaapboerdery/
     │   ├─ Tuisblad_Skermskoot.png   
     │   ├─ OorOnsBlad_Skermskoot.png   
     │   └─ ProdukteBlad_Skermskoot.png   
-    └─ Fase5 - FinaleDemo/   
+    └─ Fase5 - Demo Video's/   
         ├─ Rekenaarskerm.mp4   
         ├─ Tabletskerm.mp4   
         └─ Slimfoon.mp4  
