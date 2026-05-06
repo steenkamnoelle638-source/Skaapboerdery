@@ -2092,7 +2092,7 @@
         };
 
         let sales = JSON.parse(localStorage.getItem('highveld_sales') || '[]');
-        sales.unshift(saleRecord);
+        sales.unshift(orderRecord);
         localStorage.setItem('highveld_sales', JSON.stringify(sales));
 
         const orderHistory = getOrderHistory();
