@@ -1137,8 +1137,10 @@
     window.addEventListener('resize', checkSplitVisibility);
 
 // ============================= DATABASIS: VOORRAADBESTUUR BLAD ============================= 
-    const DB_KEY = 'highveld_inventory';
-    const TX_KEY = 'highveld_transactions';
+    const DB_KEY = 'VOORRAAD_ITEM';
+    const TX_KEY = 'VOORRAAD_TRANSAKSIE';
+    const LEGACY_DB_KEY = 'highveld_inventory';
+    const LEGACY_TX_KEY = 'highveld_transactions';
 
     let inventoryDB = [];
     let transactions = [];
@@ -1146,16 +1148,34 @@
     // Laai uit localStorage (SQL databasis)
     function loadDB() 
     {
-        const saved = localStorage.getItem(DB_KEY);
+        const saved = localStorage.getItem(DB_KEY) || localStorage.getItem(LEGACY_DB_KEY);
         inventoryDB = saved ? JSON.parse(saved) : [
-            { id:1, item_name:"Lusern hooi", category:"Voer", quantity:45, unit:"bale", reorder_level:30 },
-            { id:2, item_name:"Dorper entstof", category:"Medisyne", quantity:8, unit:"bottels", reorder_level:15 },
-            { id:3, item_name:"Skeertoerusting", category:"Toerusting", quantity:3, unit:"stelle", reorder_level:2 },
-            { id:4, item_name:"Voerkrippe", category:"Toerusting", quantity:12, unit:"stuks", reorder_level:10 }
+            { id:1, item_name:"Lusern hooi", category:"Voer", quantity:45, unit:"bale", reorder_level:30, last_updated:new Date().toISOString() },
+            { id:2, item_name:"Dorper entstof", category:"Medisyne", quantity:8, unit:"bottels", reorder_level:15, last_updated:new Date().toISOString() },
+            { id:3, item_name:"Skeertoerusting", category:"Toerusting", quantity:3, unit:"stelle", reorder_level:2, last_updated:new Date().toISOString() },
+            { id:4, item_name:"Voerkrippe", category:"Toerusting", quantity:12, unit:"stuks", reorder_level:10, last_updated:new Date().toISOString() },
+            { id:5, item_name:"Merino wol", category:"Produk", quantity:120, unit:"kg", reorder_level:50, last_updated:new Date().toISOString() }
         ];
 
-        const savedTx = localStorage.getItem(TX_KEY);
-        transactions = savedTx ? JSON.parse(savedTx) : [];
+        inventoryDB = inventoryDB.map(item => ({
+            id: item.id,
+            item_name: item.item_name,
+            category: item.category,
+            quantity: item.quantity,
+            unit: item.unit,
+            reorder_level: item.reorder_level,
+            last_updated: item.last_updated || new Date().toISOString()
+        }));
+
+        const savedTx = localStorage.getItem(TX_KEY) || localStorage.getItem(LEGACY_TX_KEY);
+        transactions = savedTx ? JSON.parse(savedTx).map(tx => ({
+            id: tx.id,
+            item_id: tx.item_id,
+            transaction_type: tx.transaction_type,
+            quantity: tx.quantity,
+            date: tx.date || new Date().toISOString()
+        })) : [];
+        saveDB();
     }
 
     // Stoor na localStorage
@@ -1165,16 +1185,15 @@
         localStorage.setItem(TX_KEY, JSON.stringify(transactions));
     }
 
-    // Voeg transaksie by (soos 'n regte databasis log)
-    function addTransaction(item_id, type, qty, notes) 
+    // Voeg transaksie by
+    function addTransaction(item_id, type, qty) 
     {
         const tx = {
             id: Date.now(),
             item_id: item_id,
             transaction_type: type,
             quantity: qty,
-            date: new Date().toISOString(),
-            notes: notes || ''
+            date: new Date().toISOString()
         };
         transactions.unshift(tx); // nuutste bo
         saveDB();
@@ -1225,7 +1244,7 @@
         };
 
         inventoryDB.push(newItem);
-        addTransaction(newItem.id, 'add', quantity, 'Handmatig bygevoeg');
+        addTransaction(newItem.id, 'add', quantity);
         saveDB();
         renderInventory();
     };
@@ -1242,7 +1261,7 @@
 
         if (item) 
         {
-            addTransaction(id, 'sell', item.quantity, 'Verwyder uit voorraad');
+            addTransaction(id, 'sell', item.quantity);
         }
         
         inventoryDB = inventoryDB.filter(i => i.id !== id);
@@ -1269,7 +1288,7 @@
         item.quantity = newQty;
         item.last_updated = new Date().toISOString();
 
-        addTransaction(id, diff > 0 ? 'add' : 'adjust', Math.abs(diff), 'Handmatig gewysig');
+        addTransaction(id, diff > 0 ? 'add' : 'adjust', Math.abs(diff));
         saveDB();
         renderInventory();
     };
@@ -1292,7 +1311,7 @@
         transactions.slice(0, 15).forEach(tx => {
             const item = inventoryDB.find(i => i.id === tx.item_id);
             const itemName = item ? item.item_name : 'Onbekend';
-            msg += `${tx.date.split('T')[0]} ${tx.transaction_type.toUpperCase()} ${tx.quantity} × ${itemName} ${tx.notes ? '('+tx.notes+')' : ''}\n`;
+            msg += `${tx.date.split('T')[0]} ${tx.transaction_type.toUpperCase()} ${tx.quantity} × ${itemName}\n`;
         });
 
         if (transactions.length === 0) 
@@ -1378,9 +1397,9 @@
     };
 
 // ============================= PLAASKALENDER =============================
-    const CALENDAR_KEY = 'highveld_calendar_events';
+    // Nie tans databasis maar dalk in future een maak/gebruik
 
-    const defaultCalendarEvents = [
+    const CALENDAR_EVENTS  = [
         { date: '2026-05-08', title: 'Skeerbeplanning', type: 'Produksie', details: 'Kontroleer skeertoerusting en bevestig skeerspan.' },
         { date: '2026-05-12', title: 'Entstofdag', type: 'Gesondheid', details: 'Dorper- en Merino-lammers kry geskeduleerde entstowwe.' },
         { date: '2026-05-18', title: 'Voerbestelling', type: 'Voorraad', details: 'Bestel lusern en mineraallekke voordat voorraad laag raak.' },
@@ -1391,18 +1410,6 @@
 
     let calendarMonth = new Date(2026, 4, 1);
     let selectedCalendarDate = null;
-
-    function loadCalendarEvents()
-    {
-        const saved = localStorage.getItem(CALENDAR_KEY);
-        if (saved)
-        {
-            return JSON.parse(saved);
-        }
-
-        localStorage.setItem(CALENDAR_KEY, JSON.stringify(defaultCalendarEvents));
-        return defaultCalendarEvents;
-    }
 
     function formatDateKey(date)
     {
@@ -1448,7 +1455,7 @@
             return;
         }
 
-        const events = loadCalendarEvents();
+        const events = CALENDAR_EVENTS;
         const year = calendarMonth.getFullYear();
         const month = calendarMonth.getMonth();
         const firstDay = new Date(year, month, 1);
@@ -1520,26 +1527,49 @@
             calendarMonth = new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() - 1, 1);
             selectedCalendarDate = null;
             renderFarmCalendar();
-            document.getElementById('calendarEventList').textContent = 'Kies \'n gemerkte dag om die gebeurtenisse te sien.';
+            document.getElementById('calendarEventList').textContent = "Kies 'n gemerkte dag om die gebeurtenisse te sien.";
         });
 
         document.getElementById('nextMonthBtn')?.addEventListener('click', () => {
             calendarMonth = new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() + 1, 1);
             selectedCalendarDate = null;
             renderFarmCalendar();
-            document.getElementById('calendarEventList').textContent = 'Kies \'n gemerkte dag om die gebeurtenisse te sien.';
+            document.getElementById('calendarEventList').textContent = "Kies 'n gemerkte dag om die gebeurtenisse te sien.";
         });
 
         renderFarmCalendar();
     });
 
 // ============================= INTEKEN =============================
+    const USER_KEY = 'GEBRUIKER';
+    const ACTIVE_USER_KEY = 'highveld_user';
+    const LEGACY_USER_KEY = 'highveld_users';
     let currentUser = null;
+
+    function getUsers()
+    {
+        const saved = localStorage.getItem(USER_KEY) || localStorage.getItem(LEGACY_USER_KEY) || '[]';
+        const users = JSON.parse(saved).map(user => ({
+            id: user.id || Date.now() + Math.floor(Math.random() * 1000),
+            name: user.name,
+            email: user.email,
+            password_hash: user.password_hash || user.password,
+            created_at: user.created_at || new Date().toISOString()
+        }));
+
+        localStorage.setItem(USER_KEY, JSON.stringify(users));
+        return users;
+    }
+
+    function saveUsers(users)
+    {
+        localStorage.setItem(USER_KEY, JSON.stringify(users));
+    }
 
     // Laai gebruiker as daar een is
     function loadUser() 
     {
-        const savedUser = localStorage.getItem('highveld_user');
+        const savedUser = localStorage.getItem(ACTIVE_USER_KEY);
         if (savedUser)  
         {
             currentUser = JSON.parse(savedUser);
@@ -1664,13 +1694,13 @@
         const email = document.getElementById('loginEmail').value.trim();
         const password = document.getElementById('loginPassword').value;
 
-        const users = JSON.parse(localStorage.getItem('highveld_users') || '[]');
-        const user = users.find(u => u.email === email && u.password === password);
+        const users = getUsers();
+        const user = users.find(u => u.email === email && u.password_hash === password);
 
         if (user) 
         {
-            currentUser = { name: user.name, email: user.email };
-            localStorage.setItem('highveld_user', JSON.stringify(currentUser));
+            currentUser = { id: user.id, name: user.name, email: user.email };
+            localStorage.setItem(ACTIVE_USER_KEY, JSON.stringify(currentUser));
             updateAuthUI();
             closeAuthModal();
             alert(`Welkom terug, ${user.name}!`);
@@ -1689,7 +1719,7 @@
         const email = document.getElementById('regEmail').value.trim();
         const password = document.getElementById('regPassword').value;
 
-        let users = JSON.parse(localStorage.getItem('highveld_users') || '[]');
+        let users = getUsers();
 
         if (users.some(u => u.email === email)) 
         {
@@ -1697,9 +1727,15 @@
             return;
         }
 
-        const newUser = { name, email, password };
+        const newUser = {
+            id: Date.now(),
+            name,
+            email,
+            password_hash: password,
+            created_at: new Date().toISOString()
+        };
         users.push(newUser);
-        localStorage.setItem('highveld_users', JSON.stringify(users));
+        saveUsers(users);
 
         currentUser = { name, email };
         localStorage.setItem('highveld_user', JSON.stringify(currentUser));
@@ -1741,8 +1777,12 @@
     });
 
 // ============================= INKOPIE MANDJIE =============================
-    const CART_KEY = 'highveld_cart';
-    const ORDER_HISTORY_KEY = 'highveld_orders';
+    const CART_KEY = 'MANDJIE_ITEM';
+    const ORDER_HISTORY_KEY = 'BESTELLING';
+    const ORDER_ITEMS_KEY = 'BESTELLING_ITEM';
+    const LEGACY_CART_KEY = 'highveld_cart';
+    const LEGACY_ORDER_HISTORY_KEY = 'highveld_orders';
+
     function normalizeProductName(name)
     {
         return String(name || '')
@@ -1750,23 +1790,83 @@
             .trim();
     }
 
-    let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]')
-        .map(item => ({ ...item, name: normalizeProductName(item.name) }));
+    function getCurrentUserId()
+    {
+        return currentUser?.id || null;
+    }
+
+    function normalizeCartItem(item)
+    {
+        return {
+            id: item.id || Date.now() + Math.floor(Math.random() * 1000),
+            user_id: item.user_id ?? getCurrentUserId(),
+            product_name: normalizeProductName(item.product_name || item.name),
+            price: Number(item.price) || 0,
+            quantity: parseInt(item.quantity, 10) || 1,
+            added_at: item.added_at || new Date().toISOString()
+        };
+    }
+
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || localStorage.getItem(LEGACY_CART_KEY) || '[]')
+        .map(normalizeCartItem);
+
+    function normalizeOrder(order)
+    {
+        const orderId = order.id || Date.now() + Math.floor(Math.random() * 1000);
+        return {
+            id: orderId,
+            user_id: order.user_id ?? getCurrentUserId(),
+            created_at: order.created_at || new Date().toISOString(),
+            date_label: order.date_label || order.dateLabel || new Date().toLocaleString('af-ZA', { dateStyle: 'medium', timeStyle: 'short' }),
+            total: Number(order.total) || 0,
+            status: order.status || 'Geplaas',
+            items: Array.isArray(order.items)
+                ? order.items.map(item => ({
+                    id: item.id || Date.now() + Math.floor(Math.random() * 1000),
+                    order_id: item.order_id || orderId,
+                    product_name: normalizeProductName(item.product_name || item.name),
+                    price: Number(item.price) || 0,
+                    quantity: parseInt(item.quantity, 10) || 1
+                }))
+                : []
+        };
+    }
 
     function getOrderHistory()
     {
-        return JSON.parse(localStorage.getItem(ORDER_HISTORY_KEY) || '[]')
-            .map(order => ({
-                ...order,
-                items: Array.isArray(order.items)
-                    ? order.items.map(item => ({ ...item, name: normalizeProductName(item.name) }))
-                    : []
-            }));
+        const storedOrders = JSON.parse(localStorage.getItem(ORDER_HISTORY_KEY) || localStorage.getItem(LEGACY_ORDER_HISTORY_KEY) || '[]');
+        const storedOrderItems = JSON.parse(localStorage.getItem(ORDER_ITEMS_KEY) || '[]');
+        const orders = storedOrders.map(normalizeOrder).map(order => ({
+            ...order,
+            items: order.items.length > 0
+                ? order.items
+                : storedOrderItems.filter(item => item.order_id === order.id).map(item => ({
+                    id: item.id,
+                    order_id: item.order_id,
+                    product_name: normalizeProductName(item.product_name || item.name),
+                    price: Number(item.price) || 0,
+                    quantity: parseInt(item.quantity, 10) || 1
+                }))
+        }));
+        saveOrderHistory(orders);
+        return orders;
     }
 
     function saveOrderHistory(history)
     {
-        localStorage.setItem(ORDER_HISTORY_KEY, JSON.stringify(history));
+        const normalizedOrders = history.map(normalizeOrder);
+        const orderItems = normalizedOrders.flatMap(order => order.items);
+        const orders = normalizedOrders.map(order => ({
+            id: order.id,
+            user_id: order.user_id,
+            created_at: order.created_at,
+            date_label: order.date_label,
+            total: order.total,
+            status: order.status
+        }));
+
+        localStorage.setItem(ORDER_HISTORY_KEY, JSON.stringify(orders));
+        localStorage.setItem(ORDER_ITEMS_KEY, JSON.stringify(orderItems));
     }
 
     function formatCurrency(amount)
@@ -1776,6 +1876,7 @@
 
     function saveCart() 
     {
+        cart = cart.map(normalizeCartItem);
         localStorage.setItem(CART_KEY, JSON.stringify(cart));
         updateCartCount();
     }
@@ -1804,7 +1905,7 @@
         return orders.map(order => {
             const itemsHtml = order.items.map(item => `
                 <li>
-                    <span class="order-item-name">${item.name}</span>
+                    <span class="order-item-name">${item.product_name}</span>
                     <span class="order-item-meta">${item.quantity} × ${formatCurrency(item.price)}</span>
                 </li>
             `).join('');
@@ -1812,7 +1913,7 @@
             return `
                 <article class="order-history-item">
                     <div class="order-history-head">
-                        <small>${order.dateLabel}</small>
+                        <small>${order.date_label} · ${order.status}</small>
                         <strong>${formatCurrency(order.total)}</strong>
                     </div>
                     <ul class="order-history-products">${itemsHtml}</ul>
@@ -1876,7 +1977,7 @@
     function addToCart(productName, price, quantity = 1) 
     {
         const cleanProductName = normalizeProductName(productName);
-        const existing = cart.find(item => item.name === cleanProductName);
+        const existing = cart.find(item => item.product_name === cleanProductName && item.user_id === getCurrentUserId());
 
         if (existing) 
         {
@@ -1884,7 +1985,14 @@
         } 
         else 
         {
-            cart.push({ name: cleanProductName, price: price, quantity: quantity });
+            cart.push({
+                id: Date.now(),
+                user_id: getCurrentUserId(),
+                product_name: cleanProductName,
+                price: price,
+                quantity: quantity,
+                added_at: new Date().toISOString()
+            });
         }
         saveCart();
     }
@@ -1907,7 +2015,7 @@
                 html += `
                     <div style="display:flex; justify-content:space-between; margin:12px 0; padding:8px; background:#f9fafb; border-radius:8px;">
                         <div>
-                            <strong>${item.name}</strong><br>
+                            <strong>${item.product_name}</strong><br>
                             <small>${formatCurrency(item.price)} × ${item.quantity} = ${formatCurrency(subtotal)}</small>                        
                         </div>
 
@@ -1953,8 +2061,7 @@
             return;
         }
 
-        order.items.forEach(item => addToCart(item.name, item.price, item.quantity));
-        showCart();
+        order.items.forEach(item => addToCart(item.product_name, item.price, item.quantity));
         alert('Items is weer by die mandjie gevoeg.');
     };
 
@@ -1966,23 +2073,22 @@
         }
 
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const summary = cart.map(item => `${item.name} × ${item.quantity}`).join(' | ');
-
-        const saleRecord = {
-            id: Date.now(),
-            sale_date: new Date().toISOString().split('T')[0],
-            product_name: summary,
-            quantity_sold: cart.reduce((sum, item) => sum + item.quantity, 0),
-            total_amount: total,
-            notes: currentUser ? `Bestelling deur ${currentUser.name}` : 'Gaste bestelling'
-        };
+        const orderId = Date.now();
 
         const orderRecord = {
-            id: saleRecord.id,
+            id: orderId,
+            user_id: getCurrentUserId(),
             created_at: new Date().toISOString(),
-            dateLabel: new Date().toLocaleString('af-ZA', { dateStyle: 'medium', timeStyle: 'short' }),
+            date_label: new Date().toLocaleString('af-ZA', { dateStyle: 'medium', timeStyle: 'short' }),
             total,
-            items: cart.map(item => ({ ...item }))
+            status: 'Geplaas',
+            items: cart.map((item, index) => ({
+                id: orderId + index + 1,
+                order_id: orderId,
+                product_name: item.product_name,
+                price: item.price,
+                quantity: item.quantity
+            }))
         };
 
         let sales = JSON.parse(localStorage.getItem('highveld_sales') || '[]');

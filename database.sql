@@ -66,9 +66,9 @@ CREATE TABLE BESTELLING_ITEM (
 );
 
 -- Voorbeeld data vir Voorraad (VOORRAAD_ITEM)
-INSERT INTO VOORRAAD_ITEM VALUES
+INSERT INTO VOORRAAD_ITEM (item_name, category, quantity, unit, reorder_level) VALUES
 ('Lusern hooi', 'Voer', 45, 'bale', 30),
 ('Dorper entstof', 'Medisyne', 8, 'bottels', 15),
 ('Skeertoerusting', 'Toerusting', 3, 'stelle', 2),
 ('Voerkrippe', 'Toerusting', 12, 'stuks', 10),
-('Merino wol', 'Produk', 120, 'kg', 50),
+('Merino wol', 'Produk', 120, 'kg', 50);
