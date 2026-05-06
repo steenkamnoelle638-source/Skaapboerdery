@@ -1143,7 +1143,7 @@
     let inventoryDB = [];
     let transactions = [];
 
-    // Laai uit localStorage ("SQL databasis")
+    // Laai uit localStorage (SQL databasis)
     function loadDB() 
     {
         const saved = localStorage.getItem(DB_KEY);

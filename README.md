@@ -36,7 +36,6 @@ Die webwerf is 'n simulasie en word slegs die volgende in die webblaaier *(`loca
 - **`contact.html`** – Kontakbesonderhede en navrae-vorm.
 
 ## Belangrikste Funksionaliteit
-
 - **Multi-bladsy responsiewe ontwerp** (werk uitstekend op selfoon, tablet en rekenaar)
 - **Professionele navigasie** met dropdown-menus en mobiele hamburger-menu
 - **Dinamiese galerye** en produk-carousel
@@ -48,31 +47,24 @@ Die webwerf is 'n simulasie en word slegs die volgende in die webblaaier *(`loca
 - **Multimedia** – Foto-galerye, produk-carousel en bemarkingsvideo met onderskrifte
 - **Print-vriendelike** styl vir fakture en verslae
 
-## Databasis-simulasie en Kalenderfunksie
-Die finale fase gebruik nie meer 'n verpligte CRUD-databasis as hoofvereiste nie. In plaas daarvan fokus die projek op **funksionaliteit** en 'n **plaaskalender**. Die databasis word dus in die dokumentasie en in **`database.sql`** gesimuleer: die SQL-lêer wys watter tabelle die stelsel sou hê indien dit later na 'n regte databasis oorgedra word.
+## Databasis-simulasie
+Die finale fase gebruik nie meer 'n verpligte CRUD-databasis as hoofvereiste nie.    
+In plaas daarvan fokus die projek op **funksionaliteit** en 'n **kalender**.   
+Die databasis word dus in die dokumentasie en in **`database.sql`** gesimuleer.   
+Die SQL-lêer wys watter tabelle die stelsel sou hê indien dit later na 'n regte databasis oorgedra word.
+Hieronder volg my tabelle:
+- `VOORRAAD_ITEM`- Hierdie tabel is my voorraadbestuur tabel wwarop CRUD toegepas kan word.
+- `VOORRAAD_TRANSAKSIE` - Hierdie tabel is vir alle CRUD funksies op die `VOORRAAD_ITEM` tabel uitgevoer
+- `GEBRUIKER` - Hierdie tabel stoor gebruikers se inteken besonderhede
+- `MANDJIE_ITEM` - Hierdie tabel stoor elke gebruiker se unieke mandjie besonderhede
+- `BESTELLING` - Hierdie tabel stoor elke gebruiker se bestellings
+- `BESTELLING_ITEM` - Hierdie tabel stoor al die besonderhede van elke item in 'n bestelling
 
-Die webdemo gebruik die volgende `localStorage`-sleutels:
-
-- **`highveld_inventory`** → sou ooreenstem met **VOORRAAD_ITEMS** vir voorraaditems.
-- **`highveld_transactions`** → sou ooreenstem met **VOORRAAD_TRANSAKSIES** vir voorraadveranderinge.
-- **`highveld_users`** → sou ooreenstem met **GEBRUIKERS** vir geregistreerde gebruikers.
-- **`highveld_user`** → sou ooreenstem met **GEBRUIKER_SESSIES** vir die huidige ingeteken gebruiker.
-- **`highveld_cart`** → sou ooreenstem met **MANDJIE_ITEMS** vir items in die inkopie-mandjie.
-- **`highveld_orders`** → sou ooreenstem met **BESTELLINGS** en **BESTELLING_ITEMS** vir bestelgeskiedenis.
-- **`highveld_sales`** → sou ooreenstem met **VERKOPE_REKORDS** vir verkoopsrekords.
-- **`highveld_calendar_events`** → sou ooreenstem met **KALENDER_GEBEURE** vir kalenderdae wat uitgelig word.
-
-### Plaaskalender
-Die kalender is op **`voorraadbestuur.html`**. Dit wys 'n maand-uitleg, merk dae met gebeurtenisse in groen, en wys die detail van 'n gebeurtenis wanneer die gebruiker op die dag kliek. Die kalender gebruik 'n JavaScript-skikking van gebeurtenisse en stoor dit in `localStorage` onder **`highveld_calendar_events`**.
-
-### Intekenopsie
-Die gebruiker kan met die profiel-ikoon registreer of inteken. Registrasie stoor naam, e-pos en wagwoord in `localStorage` onder **`highveld_users`**. Wanneer die gebruiker inteken, word die aktiewe gebruiker onder **`highveld_user`** gestoor en die profiel-ikoon verander om te wys dat iemand ingeteken is.
-
-### Mandjie en bestellings
-Die bestelvorm voeg produkte by die inkopie-mandjie in plaas daarvan om dadelik 'n finale databasisrekord te skep. Die mandjie word onder **`highveld_cart`** gestoor, wys 'n itemtelling in die navigasie en laat die gebruiker items verwyder. Wanneer 'n bestelling geplaas word, word dit in **`highveld_orders`** gestoor en 'n verkoopsrekord word in **`highveld_sales`** gesimuleer.
-
-### Validasie
-Die belangrikste vormvelde het HTML- en JavaScript-validasie: name het minimumlengtes en patrone, e-posvelde gebruik `type="email"`, hoeveelhede het minimum/maksimum waardes, aflewering vereis 'n adres, self-afhaal vereis datum/tyd, kaartbetaling vereis kaartnaam, kaartnommer, vervaldatum en CVV, en die kontakvorm vereis 'n rede en toepaslike boodskap/besoekdata.
+## Kalenderfunksie
+Die kalender is op **`contact.html`** blad.    
+Dit wys 'n maand-uitleg, merk dae met gebeurtenisse in ligte groen en wys die detail van 'n gebeurtenis wanneer die gebruiker op daardie dag kliek.    
+Dae waaropdaar geen gebeurtenisse is, is lig-grys, die huidige datum het 'n geel rand en 'n gekose daum is donker groen.   
+Die kalender gebruik 'n skikking vir gebeurtenisse.
 
 ## Tegnologie gebruik:
 - **Kode:** HTML5, CSS, JavaScript
